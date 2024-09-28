@@ -1,5 +1,5 @@
 'use client'
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Button } from 'antd';
 import { LeftOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,11 +9,12 @@ import 'swiper/css/pagination';
 import { Navigation } from 'swiper/modules';
 
 import style from './profile.module.scss';
-import { type User } from '../../../shared/types/index';
-import users from '../../../shared/api/api';
+import { type User } from '../../../entities/profile/index';
+import {users} from '../../../entities/profile/index';
 import photoMen from '../../../public/MenPng.jpg';
 import usaIcon from '../../../public/usaICon.png';
 import { useRouter } from 'next/navigation';
+import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
 
 
 const ProfilePage = () => {
@@ -96,10 +97,15 @@ const router = useRouter();
 				<p>Age: {user.age}</p>
 				<p>Interests: {user.profile.interests.join(', ')}</p>
 				<p>{user.profile.about}</p>
-				<button className={style.moreInfoButton} onClick={moreInfo}>
+				<Button
+					className={style.moreInfoButton}
+					type='primary'
+					onClick={moreInfo}
+				>
 					More Info
-				</button>
+				</Button>
 			</div>
+			<ContactButton userName={user.name} />{' '}
 		</div>
 	);
 };
