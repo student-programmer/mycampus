@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-// Пример API вызова для авторизации
 export const loginApi = async (credentials: {
 	email: string;
 	password: string;

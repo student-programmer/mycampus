@@ -6,15 +6,13 @@ import { UserState } from './userSlice';
 
 function* fetchUserSaga(action: PayloadAction<string>) {
 	try {
-		// Получаем данные пользователя из API
 		const user: User = yield call(fetchUserFromApi, action.payload);
 
-		// Преобразуем объект User в объект UserState
-		const userState: UserState = {
-			...user, // Используем поля, полученные из API
-			age: 25, // Добавляем недостающие поля
-			gender: 'unknown', // По умолчанию (или из других источников данных)
-			isLoading: false, // Устанавливаем, что данные загружены
+				const userState: UserState = {
+			...user,
+			age: 25,
+			gender: 'unknown',
+			isLoading: false, 
 		};
 
 		yield put(setUser(userState));
