@@ -1,0 +1,104 @@
+.profileWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.swiperContainer {
+  width: 100%;
+  height: calc(100vh - 100px); /* Оставляем место для навигации сверху и снизу */
+}
+
+.profileWrapperMain {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.photoProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoProfileImage {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.iconAndIcon {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.LeftOutline {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.profileInfo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profileInfo h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profileInfo p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.moreInfoButton {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.moreInfoButton:hover {
+  background-color: #40a9ff;
+}
+
+.swiperNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigationButton {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #1890ff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navigationButton:hover {
+  color: #40a9ff;
+}
