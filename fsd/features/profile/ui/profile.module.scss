@@ -1,0 +1,52 @@
+//ProfilePage
+
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.profileWrapperMain {
+  border-radius: 50px;
+  padding: 40px 40px;
+}
+
+.photoProfile {
+  position: relative; 
+  display: inline-block; 
+}
+
+.photoProfileImage{
+    border-radius: 50px;
+}
+
+.iconAndIcon {
+  position: absolute; 
+  top: 10px; 
+  left: 10px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.LeftOutline {
+  width: 24px;
+  height: 24px;
+  color: #000;
+}
+
+.textP {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  margin-left: 8px; 
+}
+
+
+//ProfileInfo
+
+
