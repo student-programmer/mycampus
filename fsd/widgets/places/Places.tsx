@@ -1,0 +1,68 @@
+'use client';
+
+import { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Button, Switch } from 'antd';
+import { UpOutlined, DownOutlined } from '@ant-design/icons';
+import PlaceCard from './PlaceCard';
+import { mockPlaces } from '../../entities/places/index';
+import { Place } from '../../entities/places/index';
+import style from './ui/places.module.scss';
+
+const Places = () => {
+	const [nearToMe, setNearToMe] = useState(false);
+
+	// Фильтр по близости (например, < 2 км)
+	const filteredPlaces: Place[] = nearToMe
+		? mockPlaces.filter(place => place.distance < 2)
+		: mockPlaces;
+
+	return (
+		<div className={style.placesWrapper}>
+			<div className={style.swiperNavigation}>
+				<button className={`swiper-button-up ${style.navigationButton}`}>
+					<UpOutlined />
+				</button>
+			</div>
+
+			<div className={style.filterSection}>
+				<Switch
+					checked={nearToMe}
+					onChange={() => setNearToMe(!nearToMe)}
+					checkedChildren='Near to me'
+					unCheckedChildren='All places'
+				/>
+			</div>
+
+			<Swiper
+				direction='vertical'
+				slidesPerView={1}
+				pagination={{ clickable: true }}
+				navigation={{
+					nextEl: '.swiper-button-down',
+					prevEl: '.swiper-button-up',
+				}}
+				modules={[Navigation]}
+				className={style.swiperContainer}
+			>
+				{filteredPlaces.map((place: Place) => (
+					<SwiperSlide key={place.id} className={style.slide}>
+						<PlaceCard place={place} />
+					</SwiperSlide>
+				))}
+			</Swiper>
+
+			<div className={style.swiperNavigation}>
+				<button className={`swiper-button-down ${style.navigationButton}`}>
+					<DownOutlined />
+				</button>
+			</div>
+		</div>
+	);
+};
+
+export default Places;
