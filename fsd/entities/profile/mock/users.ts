@@ -1,7 +1,6 @@
-import { User } from "../types";
+import { User } from '../model/users';
 
-
-const users: User[] = [ 
+export const users: User[] = [
 	{
 		id: '12345',
 		name: 'John Doe',
@@ -205,5 +204,3 @@ const users: User[] = [
 		},
 	},
 ];
-
-export default users;

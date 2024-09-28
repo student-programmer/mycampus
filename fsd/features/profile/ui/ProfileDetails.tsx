@@ -1,18 +1,20 @@
 'use client';
+
 import { useParams } from 'next/navigation';
-import users from '../../../shared/api/api'; // импортируем данные пользователей
+import { users } from '../../../entities/profile/index'; // импортируем данные пользователей
 import Image from 'next/image';
 import style from './profileInfo.module.scss';
 import photoMen from '../../../public/MenPng.jpg';
 import usaIcon from '../../../public/usaICon.png';
 import { useEffect, useState } from 'react';
-import { User } from '../../../shared/types';
+import {type User } from '../../../entities/profile/index';
+import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
 
 const ProfileInfo = () => {
 	const { id } = useParams(); // Получаем id из параметров URL
-
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState<boolean>(true); // Для отслеживания состояния загрузки
+
 
 	useEffect(() => {
 		// Проверяем, что id существует и он доступен
@@ -22,6 +24,8 @@ const ProfileInfo = () => {
 			setLoading(false); // Завершаем загрузку
 		}
 	}, [id]);
+
+	
 
 	// Если еще не загружено или id нет, показываем сообщение о загрузке
 	if (loading) {
@@ -59,6 +63,8 @@ const ProfileInfo = () => {
 				<p>{user.profile.interests.join(', ')}</p>
 				<h3>Contact Information</h3>
 				<p>Email: {user.email}</p>
+				{/* Кнопка Contact */}
+				<ContactButton userName={user.name} />{' '}
 			</div>
 		</div>
 	);

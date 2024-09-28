@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
+  width: 400px;
   margin: 0 auto;
   position: absolute;
   left:50%;
@@ -70,19 +70,9 @@
 }
 
 .moreInfoButton {
-  background-color: #1890ff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+margin-bottom: 10px;
 }
 
-.moreInfoButton:hover {
-  background-color: #40a9ff;
-}
 
 .swiperNavigation {
   display: flex;
