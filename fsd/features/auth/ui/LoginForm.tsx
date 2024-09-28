@@ -1,32 +1,21 @@
-'use client'
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../model/authSlice';
+'use client';
+import React from 'react';
+import { Button } from 'antd';
+import { useRouter } from 'next/navigation'; // импортируем хук useRouter
 
 const LoginForm = () => {
-	const dispatch = useDispatch();
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const router = useRouter(); // создаем инстанс useRouter
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		dispatch(login({ email, password }));
+	const handleLogin = () => {
+		router.push('/profile'); // выполняем редирект на страницу profile
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				type='email'
-				value={email}
-				onChange={e => setEmail(e.target.value)}
-			/>
-			<input
-				type='password'
-				value={password}
-				onChange={e => setPassword(e.target.value)}
-			/>
-			<button type='submit'>Login</button>
-		</form>
+		<div className='ml-10'>
+			<Button type='primary' onClick={handleLogin}>
+				login via UNI
+			</Button>
+		</div>
 	);
 };
 
