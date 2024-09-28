@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import '../fsd/app/style/global.css';
+import '../fsd/app/style/global.scss';
 import { AppProviders } from '../fsd/app/providers';
 
 
