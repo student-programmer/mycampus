@@ -1,0 +1,40 @@
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  gap: 30px;
+  margin-top: 60px;
+  padding: 0px;
+}
+
+.navList a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.borderElement {
+  border-top: 1px solid black;
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: center;  
+}
+
+.linkNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 20px;
+  border: 1px solid  #00C0FF;
+  border-radius: 10px;
+  background-color:  #00C0FF;
+  color: #fff;
+}
+
+.linkNav li {
+  color: #fff;
+}
