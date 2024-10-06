@@ -3,3 +3,9 @@
     left:50%;
     transform: translateX(-50%);
 }
+.login_button{
+    background-color: #10ae7e;
+    :focus{
+          background-color: #10ae7e;
+    }
+}

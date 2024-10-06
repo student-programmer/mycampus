@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0f0f0;
 }
 
 .swiperContainer {
@@ -13,7 +12,7 @@
 }
 
 .profileWrapperMain {
-  background-color: #fff;
+  background-color: #10ae7e;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -84,11 +83,38 @@ margin-bottom: 10px;
   background-color: transparent;
   border: none;
   font-size: 24px;
-  color: #1890ff;
+  color: #10ae7e;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .navigationButton:hover {
-  color: #40a9ff;
+  color: #10ae7e;
+}
+
+
+
+@media screen and (max-width: 768px) {
+	.navList {
+
+		justify-content: center;
+		gap: 10px;
+	}
+  .profileWrapperMain {
+    width:320px;
+    height:440px;
+    
+  }
+  .profileWrapper{
+    height:80vh;
+  }
+
+  .profileInfo h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.profileInfo {
+ 
+margin-top: 5px;
+}
 }
