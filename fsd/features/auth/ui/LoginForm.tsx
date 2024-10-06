@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   return (
     <div className={l.login_form}>
-      <Button type="primary" onClick={handleLogin}>
+      <Button type="primary" onClick={handleLogin} className={l.login_button}>
         login via UNI
       </Button>
     </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BulbFilled, ProfileFilled, SnippetsFilled, WechatFilled } from "@ant-design/icons";
-import style from "./NavMenu.module.scss";
+import style from "./ui/NavMenu.module.scss";
 
 export const NavMenu = () => {
   return (
@@ -8,19 +8,19 @@ export const NavMenu = () => {
       <ul className={style.navList}>
         <Link className={style.linkNav} href="/profile">
           <ProfileFilled />
-          <li>profile</li>
+          <li>Profile</li>
         </Link>
         <Link className={style.linkNav} href="/chats">
           <WechatFilled />
-          <li>chats</li>
+          <li>Chats</li>
         </Link>
         <Link className={style.linkNav} href="/places">
           <SnippetsFilled />
-          <li>places</li>
+          <li>Places</li>
         </Link>
         <Link className={style.linkNav} href="/events">
           <BulbFilled />
-          <li>events</li>
+          <li>Events</li>
         </Link>
       </ul>
     </div>

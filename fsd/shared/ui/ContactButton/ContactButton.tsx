@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { Modal, Button, Input } from 'antd'; // Ant Design components
+import style from './ui/contactButton.module.scss'
+
 
 interface ContactButtonProps {
 	userName: string; // Имя пользователя, к которому обращаемся
@@ -29,13 +31,14 @@ const ContactButton = ({ userName }: ContactButtonProps) => {
 
 	return (
 		<>
-			<Button type='primary' onClick={showModal}>
+			<Button type='primary' onClick={showModal} className={style.contact}>
 				Contact
 			</Button>
 
 			{/* Модальное окно */}
 			<Modal
 				title={`Contact ${userName}`}
+				className={style.contact_modal}
 				open={isModalOpen}
 				onCancel={handleCancel}
 				footer={[
