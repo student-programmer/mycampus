@@ -1,0 +1,21 @@
+.wrapperDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: white;
+}
