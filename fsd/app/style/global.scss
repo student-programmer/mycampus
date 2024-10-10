@@ -5,3 +5,39 @@ body {
   overflow-x: hidden;
 }
 
+.h2{
+  font-size: 20px;
+  font-weight: 700;
+  color:#DEE6F2
+}
+
+.h3{
+  font-size: 16px;
+  font-weight: 400;
+  color: #DEE6F2;
+}
+
+.inputBase{
+  color: #DEE6F2;
+  background: linear-gradient(115deg, #00bf8f, #001510);
+  border: none;
+}
+
+.inputBase::placeholder{
+  color: #DEE6F2;
+}
+
+
+.defaultButton{
+  background-color: transparent !important;
+  color:#DEE6F2
+}
+
+.ant-list-item-meta-title{
+  color:#DEE6F2 !important
+}
+
+.ant-list-item-meta-description{
+  color:#fff !important
+}
+

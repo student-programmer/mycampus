@@ -38,13 +38,14 @@ const ChatDetail = () => {
 
   return (
     <div className={style.wrapperDetail}>
-      <h2>Чат с Пользователем: {chatNameDecode}</h2>
+      <h2 className="h2">Чат с Пользователем: {chatNameDecode}</h2>
       <List
         className={style.listContainer}
         dataSource={messages}
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
+              className=""
               avatar={<Avatar src={item.avatar} />}
               title={item.sender}
               description={item.content}
@@ -54,6 +55,7 @@ const ChatDetail = () => {
       />
       <div className={style.inputContainer}>
         <Input
+          className="inputBase"
           placeholder="Введите сообщение..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -61,6 +63,7 @@ const ChatDetail = () => {
         />
         <Button
           type="primary"
+          className="defaultButton"
           icon={<SendOutlined />}
           onClick={handleSendMessage}
         />

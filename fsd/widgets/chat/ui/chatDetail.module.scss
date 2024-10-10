@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding: 20px;
   min-height: 80vh;
+  background: linear-gradient(115deg, #00bf8f, #001510);
 }
 
 .listContainer {
@@ -16,6 +17,9 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-top: 1px solid #ddd;
-  background: white;
+}
+
+.ant-spin-nested-loading,
+.css-dev-only-do-not-override-5wsri9 {
+  background-color: #F5F9FE;
 }
