@@ -1,20 +1,21 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { users } from '../../../entities/profile/index'; // импортируем данные пользователей
 import Image from 'next/image';
 import style from './profileInfo.module.scss';
 import photoMen from '../../../public/MenPng.jpg';
 import usaIcon from '../../../public/usaICon.png';
 import { useEffect, useState } from 'react';
-import {type User } from '../../../entities/profile/index';
+import { type User } from '../../../entities/profile/index';
 import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
+import { Button } from 'antd';
 
 const ProfileInfo = () => {
 	const { id } = useParams(); // Получаем id из параметров URL
+	const router = useRouter();
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState<boolean>(true); // Для отслеживания состояния загрузки
-
 
 	useEffect(() => {
 		// Проверяем, что id существует и он доступен
@@ -24,8 +25,6 @@ const ProfileInfo = () => {
 			setLoading(false); // Завершаем загрузку
 		}
 	}, [id]);
-
-	
 
 	// Если еще не загружено или id нет, показываем сообщение о загрузке
 	if (loading) {
@@ -65,6 +64,9 @@ const ProfileInfo = () => {
 				<p>Email: {user.email}</p>
 				{/* Кнопка Contact */}
 				<ContactButton userName={user.name} />{' '}
+				<Button onClick={() => router.back()} type='primary'>
+					Back to ProfilesList
+				</Button>
 			</div>
 		</div>
 	);

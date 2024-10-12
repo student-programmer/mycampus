@@ -6,9 +6,12 @@ import { useState, useEffect } from 'react';
 import { Event } from '../../entities/events/index';
 import Image from 'next/image';
 import style from './ui/eventDetail.module.scss';
+import { Button } from 'antd';
+import { useRouter } from 'next/navigation';
 
 const EventDetail = () => {
 	const { id } = useParams();
+	const router = useRouter();
 	const [event, setEvent] = useState<Event | null>(null);
 
 	useEffect(() => {
@@ -45,6 +48,9 @@ const EventDetail = () => {
 					<strong>Category:</strong> {event.category}
 				</p>
 			</div>
+			<Button onClick={() => router.back()} type='primary'>
+				Back to Events
+			</Button>
 		</div>
 	);
 };

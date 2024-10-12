@@ -1,22 +1,36 @@
 .layoutStylesChat {
-  height: 80vh;
+	height: 80vh;
+	border-radius: 20px;
+	background: linear-gradient(115deg, #00bf8f, #001510);
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
 }
 
 .HeaderChatClient {
-  background-color: #dee6f2;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 0 20px;
-  width: 100%;
-  color: #001510;
+	// background-color: #dee6f2;
+	background: transparent;
+	font-size: 20px;
+	font-weight: 700;
+	padding: 0 20px;
+	width: 100%;
+	color: #001510;
 }
 
 .typoGraphy {
-  color: #fff;
-  margin: 0;
+	color: #fff;
+	margin: 0;
 }
 
 .ContentWrapper {
-  padding: 20px;
-  background: linear-gradient(115deg, #00bf8f, #001510);
+	padding: 20px;
+	background: transparent;
+	// background: linear-gradient(115deg, #00bf8f, #001510);
+}
+
+@media screen and (max-width: 768px) {
+	.layoutStylesChat {
+		width: 320px;
+    margin-top: 20px;
+	}
 }

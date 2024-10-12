@@ -2,7 +2,8 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
+ 	background: linear-gradient(115deg, #00bf8f, #001510);
+  height:90vh;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -23,4 +24,11 @@
 
 .eventDetailInfo p {
   margin: 10px 0;
+}
+
+
+@media screen and (max-width: 768px) {
+.eventDetailWrapper {
+ width: 310px;
+}
 }

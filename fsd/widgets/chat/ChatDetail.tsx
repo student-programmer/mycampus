@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { List, Avatar, Input, Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { enCodeUrl } from "@/fsd/shared/UrlHelpers/UrlHepler";
 import style from "./ui/chatDetail.module.scss";
 
 const ChatDetail = () => {
   const { id, chatName } = useParams();
+  const router = useRouter()
   const chatNameDecode = enCodeUrl(chatName);
 
   const [messages, setMessages] = useState([
@@ -16,7 +17,7 @@ const ChatDetail = () => {
       id: 1,
       sender: chatNameDecode,
       avatar: "https://i.pravatar.cc/300?img=1",
-      content: "Привет! Как дела?",
+      content: "Hi! How are you?",
     },
   ]);
 
@@ -37,39 +38,42 @@ const ChatDetail = () => {
   };
 
   return (
-    <div className={style.wrapperDetail}>
-      <h2 className="h2">Чат с Пользователем: {chatNameDecode}</h2>
-      <List
-        className={style.listContainer}
-        dataSource={messages}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              className=""
-              avatar={<Avatar src={item.avatar} />}
-              title={item.sender}
-              description={item.content}
-            />
-          </List.Item>
-        )}
-      />
-      <div className={style.inputContainer}>
-        <Input
-          className="inputBase"
-          placeholder="Введите сообщение..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onPressEnter={handleSendMessage}
-        />
-        <Button
-          type="primary"
-          className="defaultButton"
-          icon={<SendOutlined />}
-          onClick={handleSendMessage}
-        />
-      </div>
-    </div>
-  );
+		<div className={style.wrapperDetail}>
+			<Button onClick={() => router.back()} type='primary'>
+				Back to Chats
+			</Button>
+			<h2 className='h2'>User: {chatNameDecode}</h2>
+			<List
+				className={style.listContainer}
+				dataSource={messages}
+				renderItem={item => (
+					<List.Item>
+						<List.Item.Meta
+							className=''
+							avatar={<Avatar src={item.avatar} />}
+							title={item.sender}
+							description={item.content}
+						/>
+					</List.Item>
+				)}
+			/>
+			<div className={style.inputContainer}>
+				<Input
+					className='inputBase'
+					placeholder='Input message...'
+					value={inputValue}
+					onChange={e => setInputValue(e.target.value)}
+					onPressEnter={handleSendMessage}
+				/>
+				<Button
+					type='primary'
+					className='defaultButton'
+					icon={<SendOutlined />}
+					onClick={handleSendMessage}
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default ChatDetail;

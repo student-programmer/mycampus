@@ -1,85 +1,105 @@
 .eventsWrapper {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	position: relative;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 290px;
+	left: 50%;
+	transform: translateX(-50%);
+  margin-top:20px;
 }
 
 .filterButton {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 10;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 10;
 }
 
 .swiperContainer {
-  height: 90%;  // Оставляем немного места для стрелок
+	height: 90%; // Оставляем немного места для стрелок
+	background: linear-gradient(115deg, #00bf8f, #001510);
+	padding: 20px;
+  border-radius: 20px;
 }
 
 .slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.eventCardWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.eventCard {
 }
 
 .photoEvent {
-  position: relative;
+	position: relative;
 }
 
 .photoEventImage {
-  border-radius: 10px;
-  object-fit: cover;
+	border-radius: 10px;
+	object-fit: cover;
 }
 
 .iconAndBreadcrumb {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
 }
 
 .LeftOutline {
-  margin-right: 10px;
-  font-size: 18px;
+	margin-right: 10px;
+	font-size: 18px;
 }
 
 .eventInfo {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .moreInfoButton {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
-.swiperNavigationTop,
-.swiperNavigationBottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
+// .swiperNavigationTop,
+// .swiperNavigationBottom {
+// 	position: absolute;
+// 	left: 50%;
+// 	transform: translateX(-50%);
+// 	z-index: 10;
+// }
 
-.swiperNavigationTop {
-  top: 20px;
-}
+// .swiperNavigationTop {
+// 	top: 20px;
+// }
 
-.swiperNavigationBottom {
-  bottom: 20px;
+// .swiperNavigationBottom {
+// 	bottom: 20px;
+// }
+
+// .navigationButton {
+// 	background-color: #f0f0f0;
+// 	border: none;
+// 	padding: 10px;
+// 	cursor: pointer;
+// 	font-size: 20px;
+// 	border-radius: 50%;
+// }
+
+
+.swiperNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navigationButton {
-  background-color: #f0f0f0;
+  background-color: transparent;
   border: none;
-  padding: 10px;
+  font-size: 24px;
+  color: #10ae7e;
   cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
+  transition: color 0.3s;
+}
+
+.navigationButton:hover {
+  color: #10ae7e;
 }

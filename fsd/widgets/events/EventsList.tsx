@@ -27,12 +27,6 @@ const EventsPage = () => {
 
 	return (
 		<div className={style.eventsWrapper}>
-			<div className={style.swiperNavigation}>
-				<button className={`swiper-button-up ${style.navigationButton}`}>
-					<UpOutlined />
-				</button>
-			</div>
-
 			{/* Фильтр "Near to me" */}
 			<div className={style.filterSection}>
 				<Switch
@@ -41,6 +35,11 @@ const EventsPage = () => {
 					checkedChildren='Near to me'
 					unCheckedChildren='All events'
 				/>
+			</div>
+			<div className={style.swiperNavigation}>
+				<button className={`swiper-button-up ${style.navigationButton}`}>
+					<UpOutlined />
+				</button>
 			</div>
 
 			{/* Вертикальный слайдер для событий */}

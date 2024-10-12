@@ -23,12 +23,6 @@ const Places = () => {
 
 	return (
 		<div className={style.placesWrapper}>
-			<div className={style.swiperNavigation}>
-				<button className={`swiper-button-up ${style.navigationButton}`}>
-					<UpOutlined />
-				</button>
-			</div>
-
 			<div className={style.filterSection}>
 				<Switch
 					checked={nearToMe}
@@ -36,6 +30,11 @@ const Places = () => {
 					checkedChildren='Near to me'
 					unCheckedChildren='All places'
 				/>
+			</div>
+			<div className={style.swiperNavigation}>
+				<button className={`swiper-button-up ${style.navigationButton}`}>
+					<UpOutlined />
+				</button>
 			</div>
 
 			<Swiper

@@ -1,79 +1,70 @@
 // places.module.scss
 
-.placesWrapper {
-  height: 100vh; /* Полная высота экрана */
-  display: flex; /* Flex-контейнер */
-  flex-direction: column; /* Вертикальное направление */
-  justify-content: space-between; /* Равномерное распределение пространства */
-  align-items: center; /* Центрирование по горизонтали */
-  background-color: #f0f0f0; /* Цвет фона */
-}
-
 .swiperContainer {
-  width: 100%; /* Ширина на 100% */
-  height: calc(100vh - 100px); /* Высота с учетом верхней и нижней навигации */
+	width: 100%; /* Ширина на 100% */
+	height: calc(100vh - 100px); /* Высота с учетом верхней и нижней навигации */
 }
 
 .placeWrapper {
-  background-color: #fff; /* Белый фон карточки места */
-  padding: 20px; /* Внутренние отступы */
-  border-radius: 12px; /* Закругленные углы */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
-  display: flex; /* Flex-контейнер для содержимого карточки */
-  flex-direction: column; /* Вертикальное направление */
-  align-items: center; /* Центрирование по горизонтали */
-  width: 400px; /* Ширина карточки */
-  margin: 20px auto; /* Отступы сверху и снизу */
-  position: relative; /* Относительное позиционирование */
+	background: linear-gradient(115deg, #00bf8f, #001510);
+	border-radius: 20px; /* Закругленные углы */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+	padding: 20px; /* Внутренние отступы */
+	display: flex; /* Flex-контейнер для содержимого карточки */
+	flex-direction: column; /* Вертикальное направление */
+	align-items: center; /* Центрирование по горизонтали */
+	width: 400px; /* Ширина карточки */
+	margin: 20px auto; /* Отступы сверху и снизу */
+	position: relative; /* Относительное позиционирование */
 }
 
 .photoPlace {
-  width: 100%; /* Ширина на 100% */
-  border-radius: 12px; /* Закругленные углы для изображения */
-  height: 200px; /* Фиксированная высота для изображений */
-  object-fit: cover; /* Обрезка по размеру */
+	width: 100%; /* Ширина на 100% */
+	border-radius: 12px; /* Закругленные углы для изображения */
+	height: 200px; /* Фиксированная высота для изображений */
+	object-fit: cover; /* Обрезка по размеру */
 }
 
 .iconAndBreadcrumb {
-  display: flex; /* Flex-контейнер для иконок и крошек */
-  align-items: center; /* Центрирование по вертикали */
-  margin-top: 10px; /* Отступ сверху */
+	display: flex; /* Flex-контейнер для иконок и крошек */
+	align-items: center; /* Центрирование по вертикали */
+	margin-top: 10px; /* Отступ сверху */
 }
 
 .placeInfo {
-  text-align: center; /* Центрирование текста */
-  margin-top: 20px; /* Отступ сверху */
+	text-align: center; /* Центрирование текста */
+	margin-top: 20px; /* Отступ сверху */
 }
 
 .placeInfo h2 {
-  font-size: 24px; /* Размер шрифта заголовка */
-  margin-bottom: 10px; /* Отступ снизу */
+	font-size: 24px; /* Размер шрифта заголовка */
+	margin-bottom: 10px; /* Отступ снизу */
 }
 
 .placeInfo p {
-  font-size: 16px; /* Размер шрифта для абзацев */
-  margin: 5px 0; /* Отступы сверху и снизу */
+	font-size: 16px; /* Размер шрифта для абзацев */
+	margin: 5px 0; /* Отступы сверху и снизу */
 }
 
 .moreInfoButton {
-  margin-top: 10px; /* Отступ сверху */
+	margin-top: 10px; /* Отступ сверху */
 }
 
 .swiperNavigation {
-  display: flex; /* Flex-контейнер для навигации */
-  justify-content: center; /* Центрирование по горизонтали */
-  align-items: center; /* Центрирование по вертикали */
+	display: flex; /* Flex-контейнер для навигации */
+	justify-content: center; /* Центрирование по горизонтали */
+	align-items: center; /* Центрирование по вертикали */
 }
 
 .navigationButton {
-  background-color: transparent; /* Прозрачный фон */
-  border: none; /* Без границ */
-  font-size: 24px; /* Размер шрифта */
-  color: #1890ff; /* Цвет текста */
-  cursor: pointer; /* Курсор в виде указателя */
-  transition: color 0.3s; /* Плавный переход цвета */
+	background-color: transparent; /* Прозрачный фон */
+	border: none; /* Без границ */
+	font-size: 24px; /* Размер шрифта */
+	color: #1890ff; /* Цвет текста */
+	cursor: pointer; /* Курсор в виде указателя */
+	transition: color 0.3s; /* Плавный переход цвета */
 }
 
 .navigationButton:hover {
-  color: #40a9ff; /* Цвет текста при наведении */
+	color: #40a9ff; /* Цвет текста при наведении */
 }

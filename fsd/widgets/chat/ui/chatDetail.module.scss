@@ -1,25 +1,28 @@
 .wrapperDetail {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 20px;
-  min-height: 80vh;
-  background: linear-gradient(115deg, #00bf8f, #001510);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 20px;
+	padding: 20px;
+	min-height: 80vh;
+	background: linear-gradient(115deg, #00bf8f, #001510);
+	width: 270px;
 }
 
 .listContainer {
-  flex: 1;
-  overflow-y: auto;
+	flex: 1;
+	overflow-y: auto;
 }
 
 .inputContainer {
-  display: flex;
-  align-items: center;
-  padding: 10px;
+	display: flex;
+	align-items: center;
+	padding: 10px;
 }
 
 .ant-spin-nested-loading,
 .css-dev-only-do-not-override-5wsri9 {
-  background-color: #f5f9fe;
+	background-color: #f5f9fe;
 }
