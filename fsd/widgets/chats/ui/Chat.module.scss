@@ -3,9 +3,12 @@
 }
 
 .HeaderChatClient {
-  background-color: #1890ff;
+  background-color: #dee6f2;
+  font-size: 20px;
+  font-weight: 700;
   padding: 0 20px;
   width: 100%;
+  color: #001510;
 }
 
 .typoGraphy {
@@ -15,5 +18,5 @@
 
 .ContentWrapper {
   padding: 20px;
-  background-color: #fff;
+  background: linear-gradient(115deg, #00bf8f, #001510);
 }
