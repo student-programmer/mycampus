@@ -1,0 +1,25 @@
+.wrapperDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 80vh;
+  background: linear-gradient(115deg, #00bf8f, #001510);
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.ant-spin-nested-loading,
+.css-dev-only-do-not-override-5wsri9 {
+  background-color: #F5F9FE;
+}
