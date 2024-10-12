@@ -1,8 +1,11 @@
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow-y: auto;
   position: relative;
   overflow-x: hidden;
+  background: linear-gradient(115deg, #00bf8f, #001510);
+  background-repeat: no-repeat;
 }
 
 .h2{
