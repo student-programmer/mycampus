@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { BulbFilled, ProfileFilled, SnippetsFilled, WechatFilled } from "@ant-design/icons";
+import {
+  BulbFilled,
+  ProfileFilled,
+  SnippetsFilled,
+  WechatFilled,
+} from "@ant-design/icons";
 import style from "./ui/NavMenu.module.scss";
 
 export const NavMenu = () => {
@@ -7,20 +12,20 @@ export const NavMenu = () => {
     <div className={style.navWrapper}>
       <ul className={style.navList}>
         <Link className={style.linkNav} href="/profile">
-          <ProfileFilled />
-          <li>Profile</li>
+          <ProfileFilled className={style.LinkImg} />
+          <li className={style.navItem}>Profile</li>
         </Link>
         <Link className={style.linkNav} href="/chats">
-          <WechatFilled />
-          <li>Chats</li>
+          <WechatFilled className={style.LinkImg} />
+          <li className={style.navItem}>Chats</li>
         </Link>
         <Link className={style.linkNav} href="/places">
-          <SnippetsFilled />
-          <li>Places</li>
+          <SnippetsFilled className={style.LinkImg} />
+          <li className={style.navItem}>Places</li>
         </Link>
         <Link className={style.linkNav} href="/events">
-          <BulbFilled />
-          <li>Events</li>
+          <BulbFilled className={style.LinkImg} />
+          <li className={style.navItem}>Events</li>
         </Link>
       </ul>
     </div>

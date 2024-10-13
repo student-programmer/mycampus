@@ -1,50 +1,55 @@
 .navList {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	list-style: none;
-	gap: 30px;
-	margin-top: 60px;
-	bottom: 0px;
-	padding: 0px;
-	background-color: #10ae7e;
-	border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  gap: 30px;
+  margin-top: 60px;
+  bottom: 0px;
+  padding: 0px;
+  background-color: #10ae7e;
+  border-radius: 15px;
 }
 
 .navList a {
-	text-decoration: none;
-	color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .borderElement {
-	border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .navWrapper {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .linkNav {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	gap: 15px;
-	padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 20px;
 
-	border-radius: 10px;
-	background-color: #10ae7e;
+  border-radius: 10px;
+  background-color: #10ae7e;
+  color: #fff;
+}
+
+.LinkImg{
 	color: #fff;
 }
 
+
 .linkNav li {
-	color: black;
+  color: #fff;
 }
 
 @media screen and (max-width: 768px) {
-	.navList {
-		justify-content: center;
-		gap: 10px;
-	}
+  .navList {
+    justify-content: center;
+    gap: 10px;
+  }
 }
