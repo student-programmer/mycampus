@@ -33,7 +33,7 @@ const PlaceDetails = () => {
 				<h1>{place.name}</h1>
 				<p>{place.description}</p>
 				<p>Адрес: {place.address}</p>
-				<Button onClick={() => router.back()} type='primary'>
+				<Button className={style.buttonInfo} onClick={() => router.back()} type='primary'>
 					Back to Places
 				</Button>
 			</div>

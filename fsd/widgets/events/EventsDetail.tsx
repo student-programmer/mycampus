@@ -48,7 +48,7 @@ const EventDetail = () => {
 					<strong>Category:</strong> {event.category}
 				</p>
 			</div>
-			<Button onClick={() => router.back()} type='primary'>
+			<Button className={style.buttonDetail} onClick={() => router.back()} type='primary'>
 				Back to Events
 			</Button>
 		</div>

@@ -18,13 +18,21 @@
   text-align: center;
 }
 
+.buttonDetail{
+  background-color: #00bf8f;
+  font-weight: 700;
+}
+
 .eventDetailInfo h1 {
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .eventDetailInfo p {
   margin: 10px 0;
+  color: #fff;
 }
+
 
 
 @media screen and (max-width: 768px) {
