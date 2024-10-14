@@ -4,10 +4,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 
 .swiperContainer {
-  padding: 20px;
   width: 100%;
   height: calc(100vh - 100px); /* Оставляем место для навигации сверху и снизу */
 }

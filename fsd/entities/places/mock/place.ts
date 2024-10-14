@@ -8,7 +8,7 @@ export const mockPlaces: Place[] = [
 			'The best steakhouse in the city, offering a wide selection of premium cuts and an extensive wine list. Perfect for family dinners and special occasions.',
 		address: '12 Lenin Street',
 		distance: 1.2,
-		image: '/images/grill-house.jpg',
+		image: '/images/cinema-city.png',
 		category: 'Restaurant',
 	},
 	{

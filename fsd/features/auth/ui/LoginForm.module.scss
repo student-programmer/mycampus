@@ -1,9 +1,12 @@
 .login_form{
-    position:absolute;
-    left:50%;
-    transform: translateX(-50%);
+    position:relative;
+    height:75vh;
 }
 .login_button{
+    position:absolute;
+      left:50%;
+      top:50%;
+    transform: translate(-50%, -50%);
     background-color: #10ae7e;
     :focus{
           background-color: #10ae7e;

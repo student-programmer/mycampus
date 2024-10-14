@@ -52,6 +52,12 @@
   margin-top: 10px; /* Отступ сверху */
   background-color: #00bf8f;
 }
+.placeImage{
+  left:50%;
+  transform: translateX(-50%);
+  position: relative;
+  border-radius: 20px;
+}
 
 .swiperNavigation {
   display: flex; /* Flex-контейнер для навигации */
