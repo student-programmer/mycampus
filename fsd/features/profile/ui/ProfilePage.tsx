@@ -15,6 +15,7 @@ import photoMen from '../../../public/MenPng.jpg';
 import usaIcon from '../../../public/usaICon.png';
 import { useRouter } from 'next/navigation';
 import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
+import { NavMenu } from '@/fsd/widgets/navMenu/NavMenu';
 
 
 const ProfilePage = () => {
