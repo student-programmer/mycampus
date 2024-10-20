@@ -20,6 +20,21 @@
 	padding: 40px 23.5px; /* Сокращенный синтаксис для паддингов */
 	box-sizing: border-box;
 }
+.panel_busines {
+	display: flex; /* Flexbox для выравнивания */
+	flex-direction: column; /* Вертикальное выравнивание */
+	align-items: center; /* Горизонтальное выравнивание по центру */
+	justify-content: center; /* Вертикальное выравнивание по центру */
+	width: 100%;
+	height: 619px;
+	border-top-right-radius: 32px;
+	border-top-left-radius: 32px;
+	background-color: #1e2721;
+	position: absolute;
+	bottom: 0;
+	padding: 40px 23.5px; /* Сокращенный синтаксис для паддингов */
+	box-sizing: border-box;
+}
 
 .auth {
 	font-size: 32px;
@@ -30,6 +45,11 @@
 	font-size: 16px;
 	color: #c5c8c6;
 	text-align: center; /* Центрируем текст */
+	margin-bottom: 15px; 
+}
+
+.business_title{
+	margin: 0px;
 }
 
 .login_button {
@@ -39,9 +59,9 @@
 	height: 56px;
 	border-radius: 20px;
 	font-size: 18px;
-  border: none;
-  color:white;
-  cursor: pointer;
+	border: none;
+	color: white;
+	cursor: pointer;
 }
 
 .additionally {
@@ -57,16 +77,40 @@
 	color: #84cc16;
 }
 
-
-.logo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  left:50%;
-  transform: translateX(-50%);
-  position: absolute;
-  top:120px;
+.logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	top: 120px;
 }
-.logo_text{
-  font-size: 18px;
+.logo_text {
+	font-size: 18px;
+}
+
+.input_field {
+	width: 100%;
+	height: 56px;
+	border-radius: 20px;
+	font-size: 18px;
+	background-color: #111a14;
+	border: none;
+	color: #c5c8c6;
+	margin-top: 5px;
+}
+
+.input_field:focus {
+	outline: none; /* Убирает обводку при фокусе */
+	box-shadow: none; /* Убирает тени при фокусе */
+	border: 1px solid #84cc16; /* Убирает бордер */
+	background: none; /* Убирает фоновый цвет */
+	transition: none; /* Убирает все анимации */
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
 }
