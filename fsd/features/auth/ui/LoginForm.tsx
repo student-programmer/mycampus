@@ -9,7 +9,7 @@ const LoginForm = () => {
 	const router = useRouter();
 
 	const handleLogin = () => {
-		router.push('/profile');
+		router.push('/connects');
 	};
 
 	return (

@@ -1,10 +1,8 @@
 import React from 'react'
-import ProfileInfo from '../features/profile/ui/ProfileDetails'
+import ConnectsInfo from '../features/profile/ui/ConnectsDetails';
 
 const ProfileDetailsPage = () => {
-  return (
-    <ProfileInfo/>
-  )
+  return <ConnectsInfo/>;
 }
 
 export default ProfileDetailsPage

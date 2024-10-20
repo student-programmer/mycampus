@@ -18,7 +18,7 @@ import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
 import { NavMenu } from '@/fsd/widgets/navMenu/NavMenu';
 
 
-const ProfilePage = () => {
+const ConnectsPage = () => {
 	return (
 		<div className={style.profileWrapper}>
 			<div className={style.swiperNavigation}>
@@ -52,6 +52,7 @@ const ProfilePage = () => {
 					<DownOutlined />
 				</button>
 			</div>
+			{/* <NavMenu/> */}
 		</div>
 	);
 };
@@ -111,4 +112,4 @@ const router = useRouter();
 	);
 };
 
-export default ProfilePage;
+export default ConnectsPage;

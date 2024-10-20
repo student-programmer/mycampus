@@ -33,27 +33,39 @@
 }
 
 .linkNav {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	border-radius: 10px;
-	background-color: #1e2721;
-	color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #1e2721;
+  color: #fff;
+  transition: color 0.3s, background-color 0.3s; /* Плавный переход */
+  cursor: pointer;
 }
+
+.linkNav.active {
+  color: #84CC16; /* Цвет активного текста */
+
+}
+
 .navItem {
-	font-family: 'TT Commons', sans-serif;
-	font-size: 14px;
-	font-weight: 400px;
+  font-family: 'TT Commons', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
+
+.linkNav li {
+
+
+}
+
 
 .LinkImg {
 	color: #fff;
 }
 
-.linkNav li {
-	color: #fff;
-}
+
 
 @media screen and (max-width: 768px) {
 	.navList {

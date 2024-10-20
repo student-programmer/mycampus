@@ -1,42 +1,73 @@
-import Link from "next/link";
-import {
-  BulbFilled,
-  ProfileFilled,
-  SnippetsFilled,
-  WechatFilled,
-} from "@ant-design/icons";
-import style from "./ui/NavMenu.module.scss";
-import FirstIcon from "./firstIcon";
-import SecondIcon from "./SecondIcon";
-import ThirdIcon from "./ThirdIcon";
-import FourthIcon from "./FourthIcon";
-import FivethIcon from "./FivethIcon";
+'use client'; // Указываем, что компонент будет выполняться на клиентской стороне
+
+import { usePathname, useRouter } from 'next/navigation'; // Импортируем необходимые хуки
+import style from './ui/NavMenu.module.scss';
+import FirstIcon from './FirstIcon';
+import SecondIcon from './SecondIcon';
+import ThirdIcon from './ThirdIcon';
+import FourthIcon from './FourthIcon';
+import FivethIcon from './FivethIcon';
 
 export const NavMenu = () => {
-  return (
+	const router = useRouter(); // Получаем роутер из next/navigation
+	const pathname = usePathname(); // Получаем текущий путь
+
+	// Функция для проверки активного пути
+	const isActive = (path: string) => pathname === path;
+
+	// Функция для перехода по ссылке
+	const handleNavigation = (path: string) => {
+		router.push(path); // Переходим на указанный путь
+	};
+
+	return (
 		<div className={style.navWrapper}>
 			<ul className={style.navList}>
-				<Link className={style.linkNav} href='/profile'>
-					{/* <ProfileFilled className={style.LinkImg} /> */}
+				<li
+					className={`${style.linkNav} ${
+						isActive('/connects') ? style.active : ''
+					}`}
+					onClick={() => handleNavigation('/connects')}
+				>
 					<FirstIcon />
-					<li className={style.navItem}>Connects</li>
-				</Link>
-				<Link className={style.linkNav} href='/chats'>
+					<span className={style.navItem}>Connects</span>
+				</li>
+				<li
+					className={`${style.linkNav} ${
+						isActive('/chats') ? style.active : ''
+					}`}
+					onClick={() => handleNavigation('/chats')}
+				>
 					<SecondIcon />
-					<li className={style.navItem}>Chats</li>
-				</Link>
-				<Link className={style.linkNav} href='/places'>
+					<span className={style.navItem}>Chats</span>
+				</li>
+				<li
+					className={`${style.linkNav} ${
+						isActive('/places') ? style.active : ''
+					}`}
+					onClick={() => handleNavigation('/places')}
+				>
 					<ThirdIcon />
-					<li className={style.navItem}>Places</li>
-				</Link>
-				<Link className={style.linkNav} href='/events'>
+					<span className={style.navItem}>Places</span>
+				</li>
+				<li
+					className={`${style.linkNav} ${
+						isActive('/events') ? style.active : ''
+					}`}
+					onClick={() => handleNavigation('/events')}
+				>
 					<FourthIcon />
-					<li className={style.navItem}>Events</li>
-				</Link>
-				<Link className={style.linkNav} href='/events'>
+					<span className={style.navItem}>Events</span>
+				</li>
+				<li
+					className={`${style.linkNav} ${
+						isActive('/profile') ? style.active : ''
+					}`}
+					onClick={() => handleNavigation('/profile')}
+				>
 					<FivethIcon />
-					<li className={style.navItem}>Profile</li>
-				</Link>
+					<span className={style.navItem}>Profile</span>
+				</li>
 			</ul>
 		</div>
 	);

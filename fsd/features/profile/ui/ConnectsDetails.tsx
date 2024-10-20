@@ -11,7 +11,7 @@ import { type User } from '../../../entities/profile/index';
 import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
 import { Button } from 'antd';
 
-const ProfileInfo = () => {
+const ConnectsInfo = () => {
 	const { id } = useParams(); // Получаем id из параметров URL
 	const router = useRouter();
 	const [user, setUser] = useState<User | null>(null);
@@ -72,4 +72,4 @@ const ProfileInfo = () => {
 	);
 };
 
-export default ProfileInfo;
+export default ConnectsInfo;

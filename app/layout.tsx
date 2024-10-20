@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../fsd/app/style/global.scss';
 import { AppProviders } from '../fsd/app/providers';
+import { NavMenu } from '@/fsd/widgets/navMenu/NavMenu';
 
 
 
@@ -16,10 +17,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body
-			>
+			<body>
 				<AppProviders>
-					{children}
+					<>
+						{children}
+					</>
 				</AppProviders>
 			</body>
 		</html>
