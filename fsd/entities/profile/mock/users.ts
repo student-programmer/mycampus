@@ -15,6 +15,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'United States',
+				icon:'/public/chinaIcon.svg'
 			},
 			languagesSpoken: ['English', 'Spanish'],
 			about: 'Enthusiastic developer with a background in AI and robotics.',
@@ -35,6 +36,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'United Kingdom',
+				icon:''
 			},
 			languagesSpoken: ['English', 'French'],
 			about: 'Passionate about cybersecurity and software engineering.',
@@ -55,6 +57,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Canada',
+				icon:''
 			},
 			languagesSpoken: ['English'],
 			about:
@@ -76,6 +79,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Australia',
+				icon:''
 			},
 			languagesSpoken: ['English', 'Mandarin'],
 			about:
@@ -97,6 +101,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Germany',
+				icon:''
 			},
 			languagesSpoken: ['German', 'English'],
 			about: 'AI researcher focused on natural language processing.',
@@ -117,6 +122,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'United Kingdom',
+				icon:''
 			},
 			languagesSpoken: ['English', 'Spanish'],
 			about: 'Business strategist passionate about startups and innovation.',
@@ -137,6 +143,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'United States',
+				icon:''
 			},
 			languagesSpoken: ['English', 'Japanese'],
 			about: 'Electrical engineer working on renewable energy solutions.',
@@ -157,6 +164,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Spain',
+				icon:''
 			},
 			languagesSpoken: ['Spanish', 'English'],
 			about: 'Psychologist with a focus on mental health and well-being.',
@@ -177,6 +185,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Australia',
+				icon:''
 			},
 			languagesSpoken: ['English'],
 			about: 'Mechanical engineer specializing in robotics and automation.',
@@ -197,6 +206,7 @@ export const users: User[] = [
 			},
 			country: {
 				name: 'Mexico',
+				icon:''
 			},
 			languagesSpoken: ['Spanish', 'English'],
 			about: 'Creative graphic designer with a passion for branding and UX/UI.',
@@ -204,3 +214,5 @@ export const users: User[] = [
 		},
 	},
 ];
+
+

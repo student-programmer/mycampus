@@ -23,4 +23,5 @@ interface Education {
 
 interface Country {
 	name: string;
+	icon:string
 }
