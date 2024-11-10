@@ -8,7 +8,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-image: url('/background.png');
+  // background-image: url('/background.png');
+  background-color: #111A14;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,6 +18,7 @@ body {
   font-style: normal;
    box-sizing: border-box;
 }
+
 
 
 .h2{
@@ -66,4 +68,9 @@ body {
 }
 .ant-click-animating-node {
   display: none;
+}
+
+.ant-avatar{
+  width:64px;
+  height:64px;
 }
