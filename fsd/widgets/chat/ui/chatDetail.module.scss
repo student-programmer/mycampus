@@ -14,12 +14,20 @@
 .listContainer {
 	flex: 1;
 	overflow-y: auto;
+	
+}
+.inputs {
+background-color: #1E2721;
+color: white;
+
 }
 
 .inputContainer {
 	display: flex;
 	align-items: center;
 	padding: 10px;
+	background-color: #303935;
+	width:100%;
 }
 
 .ant-spin-nested-loading,
