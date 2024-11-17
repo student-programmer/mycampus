@@ -21,6 +21,7 @@
 .slide {
 	display: flex; /* Flex-контейнер для карточек мест */
 	justify-content: center; /* Центрирование содержимого */
+	flex-direction: column;
 }
 
 .placeWrapper {
