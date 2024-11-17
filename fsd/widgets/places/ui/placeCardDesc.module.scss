@@ -1,0 +1,184 @@
+.placeCardWrapper {
+  background-color: #1e2721;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: absolute;
+  bottom: 180px;
+  z-index: 1;
+}
+
+.headerWrapper {
+}
+
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin-top: 10px;
+}
+.liKey {
+  padding: 4px 12px;
+  border-radius: 6px;
+  background-color: #313a34;
+  font-size: 12px;
+  line-height: 18px;
+  opacity: 0.64;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.keyHeader {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #fff;
+  margin: 0;
+  margin-top: 16px;
+}
+
+.placeCardHeader {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.rateContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adressContainer {
+  opacity: 0.64;
+  display: flex;
+  gap: 3px;
+}
+
+.restStars {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paragraphRate {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  opacity: 0.64;
+  margin: 0;
+}
+
+.buttonPlaceDetail {
+  background-color: #84cc16;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+}
+
+.placeDetail {
+  max-height: 300px; /* Установите фиксированную или максимальную высоту */
+  overflow-y: auto; /* Включает вертикальную прокрутку */
+  padding-right: 10px; /* Добавьте отступ для скроллбара */
+  scrollbar-width: thin;
+}
+
+.contactsWrapper {
+}
+
+.contactsH2 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.hoursWrapper {
+}
+
+.divider {
+  background: #ffffff1f;
+}
+
+.headerText {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 18px;
+  opacity: 0.64;
+}
+
+.hoursHeaderWrapper {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.timeText {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.hoursWrapperMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.hourWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+}
+
+.timeWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.campusReviews {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewCampusHeader {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+
+.headerMainWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
