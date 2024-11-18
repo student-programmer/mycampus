@@ -132,3 +132,33 @@ ul {
 :where(.css-dev-only-do-not-override-5wsri9).ant-divider-horizontal {
   margin: 0;
 }
+
+:where(
+    .css-dev-only-do-not-override-5wsri9
+  ).ant-picker-outlined.ant-picker-disabled,
+:where(.css-dev-only-do-not-override-5wsri9).ant-picker-outlined[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  border-color: #d9d9d9;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+:where(.css-dev-only-do-not-override-5wsri9).ant-picker
+  .ant-picker-input
+  > input[disabled] {
+  background: transparent;
+  color: #313a34;
+  cursor: not-allowed;
+}
+
+.ant-picker {
+  width: 147px;
+  height: 40px;
+  border-radius: 12px !important;
+}
+
+.ant-picker-suffix {
+  color: #313a34 !important;
+}

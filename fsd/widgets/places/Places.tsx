@@ -22,7 +22,6 @@ const Places = () => {
 
   return (
     <div className={style.placesWrapper}>
-      <div className={style.filterSection}></div>
       <Swiper
         direction="vertical"
         slidesPerView={1}
