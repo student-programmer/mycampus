@@ -21,7 +21,6 @@ const EventsPage = () => {
   const [nearToMe, setNearToMe] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
 
-  // Инициализация данных до рендера
   useEffect(() => {
     const initializeEvents = () => {
       const events = nearToMe
@@ -30,49 +29,22 @@ const EventsPage = () => {
       setFilteredEvents(events);
     };
     initializeEvents();
-  }, [nearToMe]); // Обновляем фильтр при изменении nearToMe
+  }, [nearToMe]);
 
   return (
     <div className={style.eventsWrapper}>
-      {/* Фильтр "Near to me" */}
-      <div className={style.filterSection}>
-        <Switch
-          checked={nearToMe}
-          onChange={() => setNearToMe(!nearToMe)}
-          checkedChildren="Near to me"
-          unCheckedChildren="All events"
-        />
-      </div>
-      <div className={style.swiperNavigation}>
-        <button className={`swiper-button-up ${style.navigationButton}`}>
-          <UpOutlined />
-        </button>
-      </div>
-
-      {/* Вертикальный слайдер для событий */}
       <Swiper
         direction="vertical"
         slidesPerView={1}
-        pagination={{ clickable: true }}
-        navigation={{
-          nextEl: ".swiper-button-down",
-          prevEl: ".swiper-button-up",
-        }}
-        modules={[Navigation]}
+        navigation={false}
         className={style.swiperContainer}
       >
-        {filteredEvents.map((event: Event) => (
-          <SwiperSlide key={event.id} className={style.slide}>
+        {filteredEvents.map((event, index) => (
+          <SwiperSlide key={index} className={style.slide}>
             <EventCard event={event} />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className={style.swiperNavigation}>
-        <button className={`swiper-button-down ${style.navigationButton}`}>
-          <DownOutlined />
-        </button>
-      </div>
     </div>
   );
 };

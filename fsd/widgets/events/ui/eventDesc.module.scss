@@ -1,4 +1,4 @@
-.placeCardWrapper {
+.eventsCardWrapper {
   background-color: #1e2721;
   padding: 24px;
   display: flex;
@@ -9,13 +9,16 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   position: absolute;
-  left: 0;
+  bottom: 110px;
+  left: 0; 
   right: 0;
-  bottom: 180px;
   z-index: 1;
 }
 
 .headerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .keys {
@@ -48,7 +51,7 @@
   margin-top: 16px;
 }
 
-.placeCardHeader {
+.eventsCardHeader {
   font-size: 24px;
   line-height: 32px;
   font-weight: 500;
@@ -90,14 +93,14 @@
   margin: 0;
 }
 
-.buttonPlaceDetail {
+.buttonEventsDetail {
   background-color: #84cc16;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
 }
 
-.placeDetail {
+.eventsDetail {
   max-height: 300px; /* Установите фиксированную или максимальную высоту */
   overflow-y: auto; /* Включает вертикальную прокрутку */
   padding-right: 10px; /* Добавьте отступ для скроллбара */
@@ -182,4 +185,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.datePickers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerAndIcon {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.buttonPlaceDetail {
+  background-color: #84cc16;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
 }
