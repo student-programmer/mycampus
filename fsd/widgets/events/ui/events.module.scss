@@ -16,15 +16,15 @@
 .swiperContainer {
   height: 80vh; /* или нужная высота */
   width: 100%;
-
 }
 
-.slide{
+.slide {
   width: 100%;
 }
 
-.placeImage{
+.placeImage {
   width: 100%;
+  border-radius: 12px;
 }
 
 .eventCard {
@@ -111,5 +111,3 @@
 .eventDetails p {
   color: #fff;
 }
-
-
