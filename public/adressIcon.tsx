@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdressIcon = () => {
+const AddressIcon = () => {
   return (
     <svg
       width="14"
@@ -27,4 +27,4 @@ const AdressIcon = () => {
   );
 };
 
-export default AdressIcon;
+export default AddressIcon;

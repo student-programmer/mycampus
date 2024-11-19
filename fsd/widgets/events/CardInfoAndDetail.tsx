@@ -1,5 +1,5 @@
 "use client";
-import AdressIcon from "@/public/adressIcon";
+import AddressIcon from "@/public/adressIcon";
 import { EventCardProps } from "./EventsCard";
 import style from "./ui/eventDesc.module.scss";
 import { Button, DatePicker, TimePicker } from "antd";
@@ -28,8 +28,8 @@ const CardInfoAndDetail = ({ event }: EventCardProps) => {
           )}
         </div>
         <p className={style.paragraphRate}>{event.category}</p>
-        <div className={style.adressContainer}>
-          <AdressIcon />
+        <div className={style.addressContainer}>
+          <AddressIcon />
           <p className={style.paragraphRate}>{event.location}</p>
         </div>
       </div>
