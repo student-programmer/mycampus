@@ -22,28 +22,28 @@ export const Contacts = ({
     <div className={style.contactsWrapper}>
       <div className={style.containerContact}>
         <div className={style.constData}>
-          <Image src={web} />
+          <Image src={web} alt={""} />
           <p className={style.paragraphOpacity}>Website</p>
         </div>
         <p className={style.paragraphNoOpacity}>{website}</p>
       </div>
       <div className={style.containerContact}>
         <div className={style.constData}>
-          <Image src={inst} />
+          <Image src={inst} alt={""} />
           <p className={style.paragraphOpacity}>Instagram</p>
         </div>
         <p className={style.paragraphNoOpacity}>{instagram}</p>
       </div>
       <div className={style.containerContact}>
         <div className={style.constData}>
-          <Image src={googleMaps} />
+          <Image src={googleMaps} alt={""} />
           <p className={style.paragraphOpacity}>Google maps</p>
         </div>
         <p className={style.paragraphNoOpacity}>{maps}</p>
       </div>
       <div className={style.containerContact}>
         <div className={style.constData}>
-          <Image src={phone} />
+          <Image src={phone} alt={""} />
           <p className={style.paragraphOpacity}>Phone</p>
         </div>
         <p className={style.paragraphNoOpacity}>{phoneNumber}</p>

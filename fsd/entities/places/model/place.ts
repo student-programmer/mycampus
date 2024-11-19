@@ -20,6 +20,6 @@ export interface Place {
     phone: string;
     maps: string;
   };
-  reviews:Reviews
+  reviews:Reviews[]
 }
 
