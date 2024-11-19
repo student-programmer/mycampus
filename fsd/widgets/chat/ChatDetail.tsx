@@ -84,7 +84,7 @@ import { List, Avatar } from 'antd';
 import { LeftOutlined, SendOutlined } from '@ant-design/icons';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { mockChats } from '../../entities/chats';
-import style from './ui/ChatDetail.module.scss';
+import style from './ui/chatDetail.module.scss';
 
 interface Message {
 	id: number;
