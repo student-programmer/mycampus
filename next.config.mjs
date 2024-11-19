@@ -1,10 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",
-  basePath: "/mycampus",
-  images: {
-    unoptimized: true,
-  },
-};
+const nextConfig = {};
 
-export default nextConfig
+export default nextConfig;
