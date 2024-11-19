@@ -21,7 +21,6 @@ const ProfilePage = () => {
   return (
     <div className={style.profileWrapper}>
       <div className={style.swiperNavigation}>
-        {/* Навигационные кнопки сверху */}
         <button className={`swiper-button-up ${style.navigationButton}`}>
           <UpOutlined />
         </button>
@@ -46,7 +45,6 @@ const ProfilePage = () => {
       </Swiper>
 
       <div className={style.swiperNavigation}>
-        {/* Навигационные кнопки снизу */}
         <button className={`swiper-button-down ${style.navigationButton}`}>
           <DownOutlined />
         </button>
@@ -54,8 +52,7 @@ const ProfilePage = () => {
     </div>
   );
 };
-
-// Компонент карточки пользователя
+  
 const UserCard = ({ user }: { user: User }) => {
   const router = useRouter();
 

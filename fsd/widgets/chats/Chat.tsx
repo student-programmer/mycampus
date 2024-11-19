@@ -1,5 +1,4 @@
 "use client";
-/* 'это писал gpt */
 import { Layout, Typography } from "antd";
 import { mockChats } from "../../entities/chats/index";
 import ChatList from "./ChatList";
