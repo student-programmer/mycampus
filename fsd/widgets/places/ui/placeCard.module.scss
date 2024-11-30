@@ -11,7 +11,13 @@
   align-items: center;
 }
 
+.likeImage {
+ position: absolute;
+ z-index: 10;
+ top: 10px;
+ left: 320px;
+}
 
-.swiperWrapper{
-  height: 100%
+.swiperWrapper {
+  height: 100%;
 }
