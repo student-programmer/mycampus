@@ -64,7 +64,7 @@ const UserCard = ({ user }: { user: User }) => {
   };
   return (
     <div className={style.profileWrapperMain}>
-      <div className={style.photoProfile}>
+      <div className={style.photoProfile}>    
         <Image
           src={photoMen}
           alt={user.name}

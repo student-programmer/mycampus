@@ -12,7 +12,7 @@
   width: 100%;
   height: calc(
     100vh - 100px
-  ); /* Оставляем место для навигации сверху и снизу */
+  ); 
 }
 
 .slide{
@@ -31,7 +31,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  height: 80%;
+  height: 93%;
   justify-content: center;
 }
 
@@ -58,7 +58,7 @@
   border-top-right-radius: 32px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  max-height: 340px;
+  min-height: 340px;
 }
 
 .mainParagraphH1 {
@@ -135,6 +135,7 @@
 
 .buttonsContainer {
   margin-top: 15px;
+  // margin-bottom: 140px;
   display: flex;
   justify-content: space-between;
 }
@@ -245,7 +246,7 @@
     //height: 500px;
   }
   .profileWrapper {
-    height: 80vh;
+    height: 90%;
   }
 
   .profileInfo h2 {

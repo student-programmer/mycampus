@@ -14,6 +14,7 @@ interface Profile {
 	languagesSpoken: string[];
 	about: string;
 	interests: string[];
+	photo: string;
 }
 
 interface Education {
