@@ -1,36 +1,54 @@
 import { Chat } from '../model/chats';
 
 export const mockChats: Chat[] = [
-	{
+{
 		id: '1',
-		title: 'Rohan Verma',
+		title: 'Mei Ying',
 		lastMessage: 'Hey, are you coming to the meeting?',
 		timestamp: '09:30 AM',
 		unreadCount: 2,
-		avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+		avatar: '/Mei.png',
 	},
 	{
 		id: '2',
-		title: 'Kate Killer',
+		title: 'Musa Dlamini',
 		lastMessage: 'Got it, thanks!',
 		timestamp: 'Yesterday',
 		unreadCount: 0,
-		avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+		avatar: '/Musa.png',
 	},
 	{
 		id: '3',
-		title: 'Shane Martinez',
+		title: 'Rohan Verma',
 		lastMessage: "Let's merge the PR today.",
 		timestamp: 'Monday',
 		unreadCount: 5,
-		avatar: 'https://randomuser.me/api/portraits/men/56.jpg',
+		avatar: '/Rohan.png',
 	},
 	{
 		id: '4',
-		title: 'Melvin Pratt',
+		title: 'Chloe Matthews',
 		lastMessage: 'The new campaign is ready to go.',
 		timestamp: 'Sunday',
 		unreadCount: 1,
-		avatar: 'https://randomuser.me/api/portraits/women/12.jpg',
+		avatar: '/Chloe.png',
 	},
+	{
+		id: '5',
+		title: 'Rami Al-Fahim',
+		lastMessage: 'Can we discuss the new project?',
+		timestamp: 'Last week',
+		unreadCount: 3,
+		avatar: '/Rami.png',
+	},
+
 ];
+
+// {
+// 		id: '1',
+// 		title: 'Rohan Verma',
+// 		lastMessage: 'Hey, are you coming to the meeting?',
+// 		timestamp: '09:30 AM',
+// 		unreadCount: 2,
+// 		avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+// 	},

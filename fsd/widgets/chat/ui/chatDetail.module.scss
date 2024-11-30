@@ -4,7 +4,7 @@
 	justify-content: space-between;
 	margin: 0 auto;
 	border-radius: 20px;
-	min-height: 80vh;
+	min-height: 90vh;
 	font-family: 'TT Commons', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
@@ -17,9 +17,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-		font-family: 'TT Commons', sans-serif;
+	font-family: 'TT Commons', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
+	margin-bottom: 50px;
 }
 
 .inputs {
@@ -29,19 +30,26 @@
 	height: 48px;
 	border: none;
 	border-radius: 20px;
-		font-family: 'TT Commons', sans-serif;
+	font-family: 'TT Commons', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 }
 
 .inputContainer {
 	display: flex;
-	align-items: center;
-	padding: 10px;
+	// align-items: center;
+	padding: 40px 10px;
 	background-color: #303935;
-	height: 100px;
-	border-radius: 20px;
+	min-height: 110px;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
 	justify-content: space-around;
+	position: absolute;
+	width: 100%;
+	z-index: 0;
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .goBackContainer {

@@ -28,7 +28,8 @@
 	display: flex;
 	justify-content: center;
 	//height:318px;
-
+	position: relative;
+	z-index: 2;
 	background-color: transparent;
 }
 
