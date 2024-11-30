@@ -24,7 +24,6 @@ const Places = () => {
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.swiper.allowTouchMove = !openDetail;
-      console.log( swiperRef.current.swiper.allowTouchMove)
     }
   }, [openDetail]);
 
