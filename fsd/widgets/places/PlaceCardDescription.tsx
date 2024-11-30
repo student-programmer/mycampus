@@ -1,14 +1,8 @@
-"use client";
-import { useState } from "react";
-import { Divider } from "antd";
 import { Button, Rate } from "antd";
 import Image from "next/image";
 import { Place } from "@/fsd/entities/places";
 import style from "./ui/placeCardDesc.module.scss";
 import AdressIcon from "@/public/adressIcon";
-import { Contacts } from "@/fsd/shared/ui/Contacts/Contact";
-import { Overview } from "@/fsd/shared/ui/Overview/Overview";
-import { CampusReviews } from "@/fsd/shared/ui/CampusReviews/CampusReviews";
 import closeIcon from "../../../public/iconClose.svg";
 
 export const PlaceCardDescription = ({
