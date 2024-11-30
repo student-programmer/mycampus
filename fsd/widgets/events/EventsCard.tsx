@@ -7,34 +7,57 @@ import { Pagination } from "swiper/modules";
 import photo1 from "../../../public/PedroGonzalez.png";
 import photo2 from "../../../public/photo2.png";
 import CardInfoAndDetail from "./CardInfoAndDetail";
+import FullInfoDetail from "./FullInfoDetail";
 export interface EventCardProps {
   event: Event;
 }
 
-const EventCard = ({ event }: EventCardProps) => {
+const EventCard = ({
+  event,
+  openDetail,
+  setOpenDetail,
+}: {
+  event: EventCardProps;
+  openDetail: boolean;
+  setOpenDetail: (v: boolean) => void;
+}) => {
   const router = useRouter();
   const moreInfo = (id: string) => {
     router.push(`/events/${id}`);
   };
   const eventImage = [photo1, photo2];
   return (
-    <div>
-      <Swiper
-        direction="horizontal"
-        slidesPerView={1}
-        observer={true}
-        observeParents={true}
-        pagination
-        modules={[Pagination]}
-      >
-        {eventImage.map((i, index) => (
-          <SwiperSlide key={index}>
-            <Image src={i} alt={event.name} className={style.placeImage} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <CardInfoAndDetail event={event} />
-    </div>
+    <>
+      {!openDetail ? (
+        <div>
+          <Swiper
+            direction="horizontal"
+            slidesPerView={1}
+            observer={true}
+            observeParents={true}
+            pagination
+            modules={[Pagination]}
+          >
+            {eventImage.map((i, index) => (
+              <SwiperSlide key={index}>
+                <Image src={i} alt={event.name} className={style.placeImage} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <CardInfoAndDetail
+            event={event}
+            openDetail={openDetail}
+            setOpenDetail={setOpenDetail}
+          />
+        </div>
+      ) : (
+        <FullInfoDetail
+          event={event}
+          openDetail={openDetail}
+          setOpenDetail={setOpenDetail}
+        />
+      )}
+    </>
   );
 };
 

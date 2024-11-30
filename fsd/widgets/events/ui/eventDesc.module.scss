@@ -8,10 +8,22 @@
   border-top-right-radius: 32px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  position: absolute;
-  bottom: 110px;
-  left: 0;
-  right: 0;
+  position: relative;
+  bottom: 40px;
+  z-index: 1;
+}
+
+.eventsCardWrapperFull {
+  background-color: #1e2721;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: relative;
   z-index: 1;
 }
 
@@ -204,4 +216,17 @@
   font-weight: 400;
 }
 
+.buttonBuyTicket {
+  background-color: #84cc16;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding-right: 24px;
+  padding-left: 24px;
 
+  gap: 10px;
+}
