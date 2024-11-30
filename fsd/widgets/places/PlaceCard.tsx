@@ -38,24 +38,30 @@ const PlaceCard = ({
         >
           {placesImage.map((i, index) => (
             <SwiperSlide key={index}>
-              <div className={style.favIcon}>
-                <Image src={i} alt={place.name} className={style.placeImage} />
-                {!openDetail &&
-                  (fav ? (
-                    <Image
-                      onClick={() => setFav(false)}
-                      src={LikeActive}
-                      className={style.likeImage}
-                      alt=""
-                    />
-                  ) : (
-                    <Image
-                      onClick={() => setFav(true)}
-                      src={LikeNonActive}
-                      className={style.likeImage}
-                      alt=""
-                    />
-                  ))}
+              <div className={style.favIconWrapper}>
+                <div className={style.favIcon}>
+                  {!openDetail &&
+                    (fav ? (
+                      <Image
+                        onClick={() => setFav(false)}
+                        src={LikeActive}
+                        className={style.likeImage}
+                        alt=""
+                      />
+                    ) : (
+                      <Image
+                        onClick={() => setFav(true)}
+                        src={LikeNonActive}
+                        className={style.likeImage}
+                        alt=""
+                      />
+                    ))}
+                  <Image
+                    src={i}
+                    alt={place.name}
+                    className={style.placeImage}
+                  />
+                </div>
               </div>
             </SwiperSlide>
           ))}
