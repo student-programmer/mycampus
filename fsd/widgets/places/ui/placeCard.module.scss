@@ -14,10 +14,14 @@
 .likeImage {
  position: absolute;
  z-index: 10;
- top: 10px;
- left: 320px;
+ top: 20px;
+ left: 330px;
 }
 
 .swiperWrapper {
+  height: 100%;
+}
+
+.fullDetail{
   height: 100%;
 }

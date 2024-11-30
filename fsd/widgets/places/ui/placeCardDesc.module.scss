@@ -96,10 +96,18 @@
 }
 
 .placeDetail {
-  max-height: 300px; /* Установите фиксированную или максимальную высоту */
-  overflow-y: auto; /* Включает вертикальную прокрутку */
-  padding-right: 10px; /* Добавьте отступ для скроллбара */
+  overflow-y: auto;
+  padding-right: 10px;
   scrollbar-width: thin;
+  background-color: #1e2721;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 24px;
+  max-height: calc(90vh - 10%);
+  -webkit-overflow-scrolling: touch;  /* Для iOS */
+  touch-action: pan-y;  /* Разрешаем вертикальную прокрутку */
 }
 
 .contactsWrapper {
