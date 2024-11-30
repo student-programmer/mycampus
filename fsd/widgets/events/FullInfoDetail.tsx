@@ -10,7 +10,7 @@ import closeIcon from "../../../public/iconClose.svg";
 import { Overview } from "@/fsd/shared/ui/Overview/Overview";
 import { Contacts } from "@/fsd/shared/ui/Contacts/Contact";
 
-const CardInfoAndDetail = ({
+const FullInfoDetail = ({
   event,
   openDetail,
   setOpenDetail,
@@ -22,10 +22,16 @@ const CardInfoAndDetail = ({
   const dateInit = dayjs(event.date);
   const timeInit = dayjs().hour(20).minute(0).second(0);
   return (
-    <div className={style.eventsCardWrapper}>
+    <div className={style.eventsCardWrapperFull}>
       <div className={style.headerWrapper}>
         <div className={style.headerAndIcon}>
           <h2 className={style.eventsCardHeader}>{event.name}</h2>
+
+          <Image
+            src={closeIcon}
+            alt={event.name}
+            onClick={() => setOpenDetail(false)}
+          />
         </div>
         <p className={style.paragraphRate}>{event.category}</p>
         <div className={style.adressContainer}>
@@ -42,16 +48,27 @@ const CardInfoAndDetail = ({
           hideDisabledOptions={true}
         />
       </div>
-
+      <>
+        <Overview text={event.description} />
+        <div className={style.contactsWrapper}>
+          <h2 className={style.contactsH2}>Contacts:</h2>
+          <Contacts
+            phoneNumber={event.contacts.phone}
+            instagram={event.contacts.inst}
+            maps={event.contacts.maps}
+            website={event.contacts.web}
+          />
+        </div>
       <Button
         type="primary"
         onClick={() => setOpenDetail(true)}
-        className={style.buttonPlaceDetail}
+        className={style.buttonBuyTicket}
       >
-        Details
+        Buy tickets
       </Button>
+      </>
     </div>
   );
 };
 
-export default CardInfoAndDetail;
+export default FullInfoDetail;

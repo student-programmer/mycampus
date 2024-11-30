@@ -46,6 +46,13 @@ const UserCard = ({ user }: { user: User }) => {
 
 	return (
 		<div className={style.profileWrapperMain}>
+			<Image
+				className={style.photoBack}
+				src={user.profile.photo}
+				alt=''
+				width={358}
+				height={374}
+			/>
 			<div className={style.mainCardInfo}>
 				<div className={style.headerProfile}>
 					<p className={style.mainParagraphH1}>{user.name}</p>
@@ -93,13 +100,6 @@ const UserCard = ({ user }: { user: User }) => {
 					</div>
 				</div>
 			</div>
-			<Image
-				className={style.photoBack}
-				src={user.profile.photo}
-				alt=''
-				width={358}
-				height={374}
-			/>
 		</div>
 	);
 };

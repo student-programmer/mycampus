@@ -79,9 +79,6 @@ body {
 .swiper-pagination-custom,
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
-  top: var(--swiper-pagination-top, auto);
-  bottom: 80px !important;
-  left: 140px !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,6 +93,11 @@ body {
 .swiper-pagination-bullet {
   background: #ffffff7a !important;
   opacity: 1 !important;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  bottom: 60px !important;
 }
 
 .swiper-pagination-bullet-active {
