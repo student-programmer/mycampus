@@ -1,21 +1,20 @@
 "use client";
 import AdressIcon from "@/public/adressIcon";
-import { EventCardProps } from "./EventsCard";
 import style from "./ui/eventDesc.module.scss";
 import { Button, DatePicker, TimePicker } from "antd";
 import dayjs from "dayjs";
-import { useState } from "react";
 import Image from "next/image";
 import closeIcon from "../../../public/iconClose.svg";
 import { Overview } from "@/fsd/shared/ui/Overview/Overview";
 import { Contacts } from "@/fsd/shared/ui/Contacts/Contact";
+import { Event } from "@/fsd/entities/events";
 
 const FullInfoDetail = ({
   event,
   openDetail,
   setOpenDetail,
 }: {
-  event: EventCardProps;
+  event: Event;
   openDetail: boolean;
   setOpenDetail: (v: boolean) => void;
 }) => {
