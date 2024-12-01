@@ -25,14 +25,25 @@
 
 .inputs {
 	background-color: #1e2721;
-	color: white;
+	color: rgba(255, 255, 255, 0.64);
 	width: 301px;
 	height: 48px;
 	border: none;
+	font-weight: 600;
 	border-radius: 20px;
 	font-family: 'TT Commons', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
+	font-size: 16px;
+	outline: none;
+}
+
+.inputs::placeholder {
+	color: rgba(255, 255, 255, 0.64); /* Цвет текста для плейсхолдера */
+	padding-left: 10px;
+}
+
+.inputs:focus {
+	border-color: #007bff; /* Изменение цвета границы при фокусе (по желанию) */
+	outline: none; /* Убираем стандартный фокус браузера */
 }
 
 .inputContainer {
@@ -45,7 +56,7 @@
 	border-top-left-radius: 20px;
 	justify-content: space-around;
 	position: absolute;
-	width: 100%;
+	width: 95%;
 	z-index: 0;
 	bottom: 0px;
 	left: 50%;
@@ -112,4 +123,17 @@
 .messageContent {
 	padding: 8px 12px;
 	border-radius: 10px;
+}
+
+.onlineText {
+	font-family: 'Rubik', sans-serif; /* Шрифт Rubik */
+	font-weight: 400; /* Толщина шрифта */
+	font-size: 12px; /* Размер шрифта */
+	line-height: 12px; /* Высота строки */
+	text-align: center;
+	color: rgba(69, 182, 252, 1);
+	padding-top: 4px;
+}
+
+.head_text {
 }

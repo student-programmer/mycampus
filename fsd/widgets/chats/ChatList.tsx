@@ -20,8 +20,28 @@ const ChatList: React.FC<ChatListProps> = ({ chats }) => {
 				<Link href={`chat/${chat.title}/${chat.id}`}>
 					<List.Item className={style.listItem}>
 						<List.Item.Meta
-							avatar={<Avatar src={chat.avatar} />}
-							title={chat.title}
+							avatar={
+								<div className={style.avatarWrapper}>
+									<Avatar src={chat.avatar} />
+									<span
+										className={`${style.statusIndicator} ${
+											chat.isActive ? style.online : style.offline
+										}`}
+									/>
+								</div>
+							}
+							title={
+								<div className={style.title_block}>
+									<Text className={style.title}>{chat.title}</Text>
+									<Text
+										type='secondary'
+										color='#C5C8C6'
+										className={style.lastSeenText}
+									>
+										{chat.isActive ? 'Online' : `${chat.lastSeen}`}
+									</Text>
+								</div>
+							}
 							description={
 								<>
 									<Text

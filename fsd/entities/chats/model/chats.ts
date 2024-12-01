@@ -5,4 +5,6 @@ export interface Chat {
 	timestamp: string;
 	unreadCount: number;
 	avatar: string; // Ссылка на аватар пользователя
+	isActive: boolean;
+	lastSeen: string;
 }
