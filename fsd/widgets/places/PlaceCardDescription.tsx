@@ -1,18 +1,21 @@
-"use client";
-import { useState } from "react";
-import { Divider } from "antd";
 import { Button, Rate } from "antd";
 import Image from "next/image";
 import { Place } from "@/fsd/entities/places";
 import style from "./ui/placeCardDesc.module.scss";
 import AdressIcon from "@/public/adressIcon";
-import { Contacts } from "@/fsd/shared/ui/Contacts/Contact";
-import { Overview } from "@/fsd/shared/ui/Overview/Overview";
-import { CampusReviews } from "@/fsd/shared/ui/CampusReviews/CampusReviews";
 import closeIcon from "../../../public/iconClose.svg";
 
-export const PlaceCardDescription = ({ place }: { place: Place }) => {
-  const [openDetail, setOpenDetail] = useState(false);
+export const PlaceCardDescription = ({
+  place,
+  openDetail,
+  setOpenDetail,
+  needButton
+}: {
+  place: Place;
+  openDetail: boolean;
+  setOpenDetail: (v: boolean) => void;
+  needButton: boolean;
+}) => {
   return (
     <div className={style.placeCardWrapper}>
       <div className={style.headerWrapper}>
@@ -53,58 +56,7 @@ export const PlaceCardDescription = ({ place }: { place: Place }) => {
           })}
         </ul>
       </div>
-      {openDetail && (
-        <div className={style.placeDetail}>
-          <div className={style.contactsWrapper}>
-            <h2 className={style.contactsH2}>Contacts:</h2>
-            <Contacts
-              phoneNumber={place.contacts.phone}
-              instagram={place.contacts.inst}
-              maps={place.contacts.maps}
-              website={place.contacts.web}
-            />
-          </div>
-          <div className={style.hoursWrapper}>
-            <p className={style.hoursHeaderWrapper}>Opening hours:</p>
-            <Divider className={style.divider} />
-            <div className={style.hoursWrapperMain}>
-              <div className={style.hourWrapper}>
-                <p className={style.headerText}>Mon-Fri:</p>
-                <div className={style.timeWrapper}>
-                  <p className={style.timeText}>12:00 pm</p>
-                  <p className={style.timeText}>–</p>
-                  <p className={style.timeText}>09:00 pm</p>
-                </div>
-              </div>
-              <Divider className={style.divider} />
-              <div className={style.hourWrapper}>
-                <p className={style.headerText}>Sat-Sun:</p>
-                <div className={style.timeWrapper}>
-                  <p className={style.timeText}>01:00 pm</p>
-                  <p className={style.timeText}>–</p>
-                  <p className={style.timeText}>10:00 pm</p>
-                </div>
-              </div>
-              <Divider className={style.divider} />
-            </div>
-          </div>
-          <Overview text={place.description} />
-          <div className={style.campusReviews}>
-            <h2 className={style.reviewCampusHeader}>Campus reviews:</h2>
-            {place.reviews.map((i, index) => {
-              return (
-                <CampusReviews
-                  key={index}
-                  date={i.date}
-                  name={i.name}
-                  text={i.text}
-                />
-              );
-            })}
-          </div>
-        </div>
-      )}
-      {!openDetail && (
+      {!openDetail && needButton && (
         <Button
           type="primary"
           onClick={() => setOpenDetail(true)}

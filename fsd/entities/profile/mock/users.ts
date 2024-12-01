@@ -3,216 +3,141 @@ import { User } from '../model/users';
 export const users: User[] = [
 	{
 		id: '12345',
-		name: 'John Doe',
-		email: 'johndoe@example.com',
-		age: 30,
-		gender: 'male',
+		name: 'Mei Ying',
+		email: 'meiying@example.com',
+		age: 19,
+		gender: 'female',
 		isLoading: false,
 		profile: {
 			education: {
-				fieldOfStudy: 'Computer Science',
-				university: 'Massachusetts Institute of Technology',
+				fieldOfStudy: 'Interior Design',
+				university: 'Canadian University Dubai',
 			},
+			photo: '/Mei.png',
 			country: {
-				name: 'United States',
-				icon:'/public/chinaIcon.svg'
+				name: 'China',
+				icon: '/chinaIcon.svg',
 			},
-			languagesSpoken: ['English', 'Spanish'],
-			about: 'Enthusiastic developer with a background in AI and robotics.',
-			interests: ['coding', 'robotics', 'gaming'],
+			languagesSpoken: ['English', 'Chinese'],
+			about:
+				'Studying interior design and always in search of fresh ideas. I draw inspiration from contemporary art and natural forms. Outside of studies, I enjoy yoga, cooking new dishes, and exploring cultural events in Dubai. I also value time spent reading books and walking outdoors.',
+			interests: [
+				'Interior Design',
+				'Yoga',
+				'Cooking',
+				'Books',
+				'Cultural Events',
+			],
 		},
 	},
 	{
 		id: '12346',
-		name: 'Jane Smith',
-		email: 'janesmith@example.com',
-		age: 28,
-		gender: 'female',
-		isLoading: false,
-		profile: {
-			education: {
-				fieldOfStudy: 'Information Technology',
-				university: 'Stanford University',
-			},
-			country: {
-				name: 'United Kingdom',
-				icon:''
-			},
-			languagesSpoken: ['English', 'French'],
-			about: 'Passionate about cybersecurity and software engineering.',
-			interests: ['cybersecurity', 'travelling', 'yoga'],
-		},
-	},
-	{
-		id: '12347',
-		name: 'Alex Johnson',
-		email: 'alexjohnson@example.com',
-		age: 32,
+		name: 'Musa Dlamini',
+		email: 'musadlamini@example.com',
+		age: 22,
 		gender: 'male',
-		isLoading: false,
-		profile: {
-			education: {
-				fieldOfStudy: 'Software Engineering',
-				university: 'Harvard University',
-			},
-			country: {
-				name: 'Canada',
-				icon:''
-			},
-			languagesSpoken: ['English'],
-			about:
-				'Experienced software engineer with a love for open-source projects.',
-			interests: ['open-source', 'basketball', 'hiking'],
-		},
-	},
-	{
-		id: '12348',
-		name: 'Emily Davis',
-		email: 'emilydavis@example.com',
-		age: 27,
-		gender: 'female',
-		isLoading: false,
-		profile: {
-			education: {
-				fieldOfStudy: 'Data Science',
-				university: 'University of Toronto',
-			},
-			country: {
-				name: 'Australia',
-				icon:''
-			},
-			languagesSpoken: ['English', 'Mandarin'],
-			about:
-				'Data scientist with a strong interest in AI and machine learning.',
-			interests: ['data science', 'machine learning', 'photography'],
-		},
-	},
-	{
-		id: '12349',
-		name: 'Michael Brown',
-		email: 'michaelbrown@example.com',
-		age: 35,
-		gender: 'male',
-		isLoading: false,
-		profile: {
-			education: {
-				fieldOfStudy: 'Artificial Intelligence',
-				university: 'California Institute of Technology',
-			},
-			country: {
-				name: 'Germany',
-				icon:''
-			},
-			languagesSpoken: ['German', 'English'],
-			about: 'AI researcher focused on natural language processing.',
-			interests: ['AI', 'NLP', 'reading'],
-		},
-	},
-	{
-		id: '12350',
-		name: 'Sophia Taylor',
-		email: 'sophiataylor@example.com',
-		age: 29,
-		gender: 'female',
 		isLoading: false,
 		profile: {
 			education: {
 				fieldOfStudy: 'Business Administration',
-				university: 'London Business School',
+				university: 'University of Wollongong',
 			},
+			photo: '/Musa.png',
 			country: {
-				name: 'United Kingdom',
-				icon:''
+				name: 'South Africa',
+				icon: '',
 			},
-			languagesSpoken: ['English', 'Spanish'],
-			about: 'Business strategist passionate about startups and innovation.',
-			interests: ['business', 'entrepreneurship', 'fitness'],
+			languagesSpoken: ['English', 'Afrikaans'],
+			about:
+				'I have a strong interest in innovation and leadership. Soccer keeps me active, and I enjoy the camaraderie it fosters. Jazz music is my go-to for relaxation and inspiration. I’m passionate about traveling, discovering new cultures, and advocating for environmental sustainability through volunteer work.',
+			interests: [
+				'Business Innovation',
+				'Soccer',
+				'Jazz',
+				'Travel',
+				'Environmental Advocacy',
+			],
 		},
 	},
 	{
-		id: '12351',
-		name: 'David Wilson',
-		email: 'davidwilson@example.com',
-		age: 31,
+		id: '12347',
+		name: 'Rohan Verma',
+		email: 'rohanverma@example.com',
+		age: 20,
 		gender: 'male',
 		isLoading: false,
 		profile: {
 			education: {
-				fieldOfStudy: 'Electrical Engineering',
-				university: 'University of California, Berkeley',
+				fieldOfStudy: 'International Relations',
+				university: 'Zayed University',
 			},
+			photo: '/Rohan.png',
 			country: {
-				name: 'United States',
-				icon:''
+				name: 'India',
+				icon: '',
 			},
-			languagesSpoken: ['English', 'Japanese'],
-			about: 'Electrical engineer working on renewable energy solutions.',
-			interests: ['engineering', 'renewable energy', 'cycling'],
+			languagesSpoken: ['English', 'Hindi'],
+			about:
+				'Passionate about global affairs, I thrive on discussions around international diplomacy and cultural exchanges. I love exploring ancient civilizations and experimenting with Indian cuisine. Photography is my way of capturing cultural experiences during my travels, and I enjoy diving into classic literature that challenges societal norms.',
+			interests: [
+				'International Diplomacy',
+				'History',
+				'Cooking',
+				'Travel',
+				'Photography',
+			],
 		},
 	},
 	{
-		id: '12352',
-		name: 'Olivia Martinez',
-		email: 'oliviamartinez@example.com',
-		age: 26,
+		id: '12348',
+		name: 'Chloe Matthews',
+		email: 'chloematthews@example.com',
+		age: 21,
 		gender: 'female',
 		isLoading: false,
 		profile: {
 			education: {
-				fieldOfStudy: 'Psychology',
-				university: 'University of Oxford',
+				fieldOfStudy: 'Law',
+				university: 'Paris-Sorbonne University Abu Dhabi',
 			},
+			photo: '/Chloe.png',
 			country: {
-				name: 'Spain',
-				icon:''
+				name: 'England',
+				icon: '',
 			},
-			languagesSpoken: ['Spanish', 'English'],
-			about: 'Psychologist with a focus on mental health and well-being.',
-			interests: ['psychology', 'meditation', 'traveling'],
+			languagesSpoken: ['English', 'French'],
+			about:
+				'My passion for social justice drives me to engage in various volunteer initiatives, particularly those that support underprivileged communities. In my free time, I enjoy hiking and exploring nature, finding peace in the outdoors. I also love to express myself through writing, particularly poetry and short stories, which allow me to reflect on my experiences. A huge fan of international cinema, I enjoy watching films that tell diverse stories and broaden my understanding of different cultures.',
+			interests: [
+				'Social Justice',
+				'Volunteer Work',
+				'Hiking',
+				'Creative Writing',
+				'International Cinema',
+			],
 		},
 	},
 	{
-		id: '12353',
-		name: 'James Anderson',
-		email: 'jamesanderson@example.com',
-		age: 34,
+		id: '12349',
+		name: 'Rami Al-Fahim',
+		email: 'ramialfahim@example.com',
+		age: 24,
 		gender: 'male',
 		isLoading: false,
 		profile: {
 			education: {
-				fieldOfStudy: 'Mechanical Engineering',
-				university: 'University of Melbourne',
+				fieldOfStudy: 'Biomedical Sciences',
+				university: 'University of Sharjah',
 			},
+			photo: '/Rami.png',
 			country: {
-				name: 'Australia',
-				icon:''
+				name: 'UAE',
+				icon: '',
 			},
-			languagesSpoken: ['English'],
-			about: 'Mechanical engineer specializing in robotics and automation.',
-			interests: ['robotics', 'automation', 'surfing'],
-		},
-	},
-	{
-		id: '12354',
-		name: 'Isabella Garcia',
-		email: 'isabellagarcia@example.com',
-		age: 33,
-		gender: 'female',
-		isLoading: false,
-		profile: {
-			education: {
-				fieldOfStudy: 'Graphic Design',
-				university: 'Rhode Island School of Design',
-			},
-			country: {
-				name: 'Mexico',
-				icon:''
-			},
-			languagesSpoken: ['Spanish', 'English'],
-			about: 'Creative graphic designer with a passion for branding and UX/UI.',
-			interests: ['design', 'painting', 'travel'],
+			languagesSpoken: ['English', 'Arabic'],
+			about:
+				'My interest in science fuels my love for experimenting in the kitchen; I enjoy trying out new recipes and cooking healthy meals. I’m also an avid reader, particularly of science fiction and medical literature, which inspires my academic journey. Additionally, I love traveling and experiencing new cultures, which broadens my perspective on global health issues.',
+			interests: ['Cooking', 'Reading', 'Traveling', 'Science', 'Culture'],
 		},
 	},
 ];
-
-

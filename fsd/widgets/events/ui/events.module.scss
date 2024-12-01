@@ -1,9 +1,11 @@
 .eventsWrapper {
-  max-width: 800px;
-  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
   padding: 20px;
-  background: transparent;
-  height: 80vh;
 }
 
 .filterButton {
@@ -111,3 +113,11 @@
 .eventDetails p {
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+    .eventsWrapper {
+        height: 80vh;
+    }
+}
+
+

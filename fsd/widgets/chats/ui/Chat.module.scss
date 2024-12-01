@@ -1,7 +1,6 @@
 .layoutStylesChat {
-	height: 80vh;
+	height: 90vh;
 	border-radius: 20px;
-	// background: linear-gradient(115deg, #00bf8f, #001510);
 	background-color: transparent;
 	left: 50%;
 	transform: translateX(-50%);
@@ -9,7 +8,6 @@
 }
 
 .HeaderChatClient {
-	// background-color: #dee6f2;
 	background: transparent;
 	font-size: 20px;
 	font-weight: 700;
@@ -26,7 +24,6 @@
 .ContentWrapper {
 	padding: 20px;
 	background: transparent;
-	// background: linear-gradient(115deg, #00bf8f, #001510);
 }
 
 @media screen and (max-width: 768px) {
@@ -55,5 +52,40 @@
 
 .secondText {
 	color: #c5c8c6 !important;
+}
+.lastSeenText {
+	color: #c5c8c6 !important;
+	font-weight: 400;
+}
+.title {
+	color: white;
+}
+.title_block {
+	display: flex;
+	justify-content: space-between;
+}
 
+.avatarWrapper {
+	position: relative;
+}
+
+/* Индикатор активности */
+.statusIndicator {
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%; /* Белая обводка */
+	border: 2px solid #1e2721;
+}
+
+/* Цвета для статусов */
+.online {
+	background-color: rgba(132, 204, 21, 1); /* Зеленый */
+}
+
+.offline {
+	//   background-color: #a0a0a0; /* Серый */
+	display: none;
 }

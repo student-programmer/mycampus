@@ -12,7 +12,7 @@
   width: 100%;
   height: calc(
     100vh - 100px
-  ); /* Оставляем место для навигации сверху и снизу */
+  ); 
 }
 
 .slide{
@@ -30,12 +30,11 @@
   margin: 0 20px;
   position: relative;
   z-index: 2;
-  height: 80%;
+  height: 93%;
   justify-content: center;
 }
-
 .photoBack {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 1;
@@ -43,9 +42,10 @@
 }
 
 .mainCardInfo {
-  position: absolute; /* Абсолютное позиционирование */
-  bottom: 0px; /* Расположить внизу */
+  position: relative; /* Абсолютное позиционирование */
+  bottom: 40px; /* Расположить внизу */
   left: 0;
+  width: 100%;
   right: 0;
   background-color: #1e2721; /* Элементы внутри flex внизу */
   z-index: 2;
@@ -54,7 +54,7 @@
   border-top-right-radius: 32px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  max-height: 340px;
+  height: 100%;
 }
 
 .mainParagraphH1 {
@@ -131,6 +131,7 @@
 
 .buttonsContainer {
   margin-top: 15px;
+  // margin-bottom: 140px;
   display: flex;
   justify-content: space-between;
 }
@@ -241,7 +242,7 @@
     //height: 500px;
   }
   .profileWrapper {
-    height: 80vh;
+    height: 90%;
   }
 
   .profileInfo h2 {

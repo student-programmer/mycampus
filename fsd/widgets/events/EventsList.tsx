@@ -3,6 +3,7 @@
 
 import { Breadcrumb, Button, Switch } from "antd";
 import { LeftOutlined, UpOutlined, DownOutlined } from "@ant-design/icons";
+import type { Swiper as SwiperInstance } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -15,11 +16,19 @@ import { Event } from "../../entities/events/index";
 import { mockEvents } from "../../entities/events/index";
 import { useRouter } from "next/navigation";
 import EventCard from "./EventsCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+interface CustomSwiperInstance extends SwiperInstance {
+  swiper?: {
+    allowTouchMove: boolean;
+  };
+}
 
 const EventsPage = () => {
   const [nearToMe, setNearToMe] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+  const [openDetail, setOpenDetail] = useState(false);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     const initializeEvents = () => {
@@ -31,6 +40,12 @@ const EventsPage = () => {
     initializeEvents();
   }, [nearToMe]);
 
+  useEffect(() => {
+    if ((swiperRef.current as unknown as { swiper: any })?.swiper) {
+      (swiperRef.current as unknown as { swiper: any }).swiper.allowTouchMove = !openDetail;
+    }
+  }, [openDetail]);
+
   return (
     <div className={style.eventsWrapper}>
       <Swiper
@@ -38,10 +53,16 @@ const EventsPage = () => {
         slidesPerView={1}
         navigation={false}
         className={style.swiperContainer}
+        allowTouchMove={!openDetail}
+        ref={swiperRef}
       >
         {filteredEvents.map((event, index) => (
           <SwiperSlide key={index} className={style.slide}>
-            <EventCard event={event} />
+            <EventCard
+              event={event}
+              openDetail={openDetail}
+              setOpenDetail={setOpenDetail}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
