@@ -22,8 +22,9 @@ const Places = () => {
     : mockPlaces;
 
   useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.allowTouchMove = !openDetail;
+    if ((swiperRef.current as unknown as { swiper: any })?.swiper) {
+      (swiperRef.current as unknown as { swiper: any }).swiper.allowTouchMove =
+        !openDetail;
     }
   }, [openDetail]);
 

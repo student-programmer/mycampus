@@ -17,7 +17,7 @@ const EventCard = ({
   openDetail,
   setOpenDetail,
 }: {
-  event: EventCardProps;
+  event: Event;
   openDetail: boolean;
   setOpenDetail: (v: boolean) => void;
 }) => {

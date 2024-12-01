@@ -3,6 +3,7 @@
 
 import { Breadcrumb, Button, Switch } from "antd";
 import { LeftOutlined, UpOutlined, DownOutlined } from "@ant-design/icons";
+import type { Swiper as SwiperInstance } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -16,6 +17,12 @@ import { mockEvents } from "../../entities/events/index";
 import { useRouter } from "next/navigation";
 import EventCard from "./EventsCard";
 import { useState, useEffect, useRef } from "react";
+
+interface CustomSwiperInstance extends SwiperInstance {
+  swiper?: {
+    allowTouchMove: boolean;
+  };
+}
 
 const EventsPage = () => {
   const [nearToMe, setNearToMe] = useState(false);
@@ -34,8 +41,8 @@ const EventsPage = () => {
   }, [nearToMe]);
 
   useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.allowTouchMove = !openDetail;
+    if ((swiperRef.current as unknown as { swiper: any })?.swiper) {
+      (swiperRef.current as unknown as { swiper: any }).swiper.allowTouchMove = !openDetail;
     }
   }, [openDetail]);
 
