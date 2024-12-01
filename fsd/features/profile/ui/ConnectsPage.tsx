@@ -94,7 +94,7 @@ const UserCard = ({ user }: { user: User }) => {
           </div>
           <div className={style.buttonsContainer}>
               <Button className={style.buttonSendProfile}>Send message</Button>
-              <Button className={style.buttonViewProfile}>View Profilee</Button>
+              <Button className={style.buttonViewProfile}>View Profile</Button>
           </div>
         </div>
       </div>

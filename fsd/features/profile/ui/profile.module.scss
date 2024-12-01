@@ -22,13 +22,12 @@
 }
 
 .profileWrapperMain {
-  margin-top: 36px;
   padding: 20px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 20px;
   position: relative;
   z-index: 2;
   height: 80%;
@@ -40,10 +39,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius: 32px 32px 20px 20px;
 }
 
 .mainCardInfo {
@@ -128,8 +124,8 @@
 }
 
 .interestsBlock {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 

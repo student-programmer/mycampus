@@ -37,7 +37,7 @@ const LoginForm = () => {
 
 						{/* Основная форма входа */}
 						<button onClick={handleLogin} className={l.login_button}>
-							Sign in
+							sign in via UAE Pass
 						</button>
 
 						<div className={l.additionally}>
