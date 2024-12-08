@@ -81,7 +81,7 @@ const UserCard = ({ user }: { user: User }) => {
         </div>
         <div className={style.aboutPeople}>
           <p className={style.headerText}>About:</p>
-          <p className={style.textPmain}>{sliceText(user.profile.about, 100)}</p>
+          <p className={style.textPmain}>{sliceText(user.profile.about, 80)}</p>
         </div>
         <div className={style.interestsPeople}>
           <p className={style.headerText}>Interest:</p>

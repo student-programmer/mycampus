@@ -10,12 +10,10 @@
 
 .swiperContainer {
   width: 100%;
-  height: calc(
-    100vh - 100px
-  ); 
+  height: calc(100vh - 100px);
 }
 
-.slide{
+.slide {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,25 +27,28 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  position: relative;
   z-index: 2;
-  height: 93%;
-  justify-content: center;
+  justify-content: start;
+  overflow: hidden;
+  height: 100%;
 }
+
 .photoBack {
   position: relative;
-  top: 0;
-  left: 0;
   z-index: 1;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+
+  /* Убедитесь, что изображение не превышает размеры родителя */
+  height: auto;
+  max-height: 100%;
 }
 
 .mainCardInfo {
   position: relative; /* Абсолютное позиционирование */
-  bottom: 40px; /* Расположить внизу */
+  bottom: 100px; /* Расположить внизу */
   left: 0;
   width: 100%;
   right: 0;
@@ -58,7 +59,6 @@
   border-top-right-radius: 32px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  height: 100%;
 }
 
 .mainParagraphH1 {
@@ -109,7 +109,7 @@
 }
 
 .aboutPeople {
-  margin-top: 16px;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -124,13 +124,18 @@
 }
 
 .interestsPeople {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .interestsBlock {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  display: flex;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+  gap: 6px; /* Задает расстояние между элементами */
+}
+
+.interestsBlock > * {
+  flex: 1 0 calc(25% - 6px); /* Каждый элемент занимает 25% ширины контейнера с учетом gap */
+  box-sizing: border-box; /* Учитывает padding и border */
 }
 
 .buttonsContainer {
@@ -150,8 +155,8 @@
   padding: 11.5px 31px;
 }
 
-.buttonViewProfile{
-  background-color: #313A34;
+.buttonViewProfile {
+  background-color: #313a34;
   color: #ffffff;
   font-size: 14px;
   line-height: 17px;
@@ -256,12 +261,5 @@
   }
   .profileInfo {
     margin-top: 5px;
-  }
-}
-
-
-@media screen and (max-height:700px) {
-  .mainCardInfo{
-    bottom: -30px;
   }
 }
