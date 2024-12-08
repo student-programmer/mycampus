@@ -11,8 +11,8 @@
 	height: 64px;
 	background-color: #1e2721;
 	border-radius: 15px;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .navList a {
@@ -68,3 +68,13 @@
 		gap: 20px;
 	}
 }
+
+
+@supports (-webkit-touch-callout: none) {
+	/* Эти стили применятся только в Safari */
+	.navList {
+	  position: relative;
+	  bottom: 60px;
+	}
+  }
+  

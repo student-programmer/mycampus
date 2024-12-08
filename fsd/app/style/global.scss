@@ -4,7 +4,7 @@
 @import 'swiper/css/navigation';
 body {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
@@ -17,6 +17,11 @@ body {
 	font-weight: 400; /* Убедитесь, что вес соответствует тому, что вы хотите использовать */
 	font-style: normal;
 	box-sizing: border-box;
+}
+
+
+.appWrapper{
+
 }
 
 .h2 {
