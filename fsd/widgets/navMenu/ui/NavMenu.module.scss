@@ -26,7 +26,8 @@
 
 .navWrapper {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	padding: 0 20px;
 	//height:318px;
 	position: relative;
 	z-index: 2;
@@ -64,7 +65,9 @@
 
 @media screen and (max-width: 768px) {
 	.navList {
-		justify-content: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 20px;
 		gap: 20px;
 	}
 }
