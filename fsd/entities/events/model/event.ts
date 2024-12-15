@@ -2,6 +2,7 @@ export interface Event {
   id: string;
   name: string;
   description: string;
+  price: string;
   date: string;
   location: string;
   distance: number;

@@ -74,7 +74,7 @@ export const users: User[] = [
 			photo: '/Rohan.png',
 			country: {
 				name: 'India',
-				icon: '',
+				icon: '/indiaIcon.svg',
 			},
 			languagesSpoken: ['English', 'Hindi'],
 			about:
