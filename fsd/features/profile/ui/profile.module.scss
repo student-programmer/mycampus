@@ -32,6 +32,7 @@
   overflow: hidden;
   justify-content: center;
 }
+
 .photoBack {
   position: relative;
   top: 9px;
@@ -46,7 +47,7 @@
 
 .mainCardInfo {
   position: relative; /* Абсолютное позиционирование */
-  bottom: 100px; /* Расположить внизу */
+  bottom: 30px; /* Расположить внизу */
   left: 0;
   width: 100%;
   right: 0;
@@ -129,10 +130,6 @@
   gap: 6px;
 }
 
-.interestsBlock > * {
-  flex: 1 0 calc(25% - 6px); /* Каждый элемент занимает 25% ширины контейнера с учетом gap */
-  box-sizing: border-box; /* Учитывает padding и border */
-}
 .buttonsContainer {
   margin-top: 20px;
   // margin-bottom: 140px;
@@ -284,19 +281,19 @@
 }
 
 @media screen and (max-height: 850px) {
-  //.mainCardInfo {
-  //  bottom: -30px;
-  //}
+  .mainCardInfo {
+    bottom: 10px;
+  }
   .photoBack {
     top: 30px;
   }
 }
 
 @media screen and (max-height: 900px) {
-  //.mainCardInfo {
-  //  bottom: -30px;
-  //}
+  .mainCardInfo {
+    bottom: 20px;
+  }
   .photoBack {
-    top: 31px;
+    top: 25px;
   }
 }
