@@ -21,6 +21,7 @@ const CardInfoAndDetail = ({
       <div className={style.headerWrapper}>
         <div className={style.headerAndIcon}>
           <h2 className={style.eventsCardHeader}>{event.name}</h2>
+          <div className={style.eventsCardPrice}>{event.price + " AED" || null}</div>
         </div>
         <p className={style.paragraphRate}>{event.category}</p>
         <div className={style.adressContainer}>

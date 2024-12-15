@@ -10,7 +10,7 @@
 
 .swiperContainer {
   width: 100%;
-  height: 87vh;
+  height: 85vh;
 }
 
 .slide {
@@ -33,10 +33,14 @@
 
 .photoBack {
   position: relative;
-  top: 0;
+  top: 9px;
   left: 0;
   z-index: 1;
+  width: 89.5vw;
   border-radius: 32px 32px 20px 20px;
+  height: auto;
+  max-height: 100%;
+
 }
 
 .mainCardInfo {
@@ -106,8 +110,8 @@
 }
 
 .headerText {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 400;
   color: #ffffff;
   margin: 0;
@@ -125,10 +129,11 @@
 }
 
 .buttonsContainer {
-  margin-top: 15px;
+  margin-top: 20px;
   // margin-bottom: 140px;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .buttonSendProfile {
@@ -139,7 +144,8 @@
   font-weight: 400;
   border: none;
   border-radius: 12px;
-  padding: 11.5px 31px;
+  padding: 18px 31px;
+  width: 100%;
 }
 
 .buttonViewProfile {
@@ -150,12 +156,13 @@
   font-weight: 400;
   border: none;
   border-radius: 12px;
-  padding: 11.5px 31px;
+  padding: 18px 31px;
+  width: 100%;
 }
 
 .interestsBlocks {
   padding: 4px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #313a34;
   font-size: 12px;
   line-height: 18px;
@@ -235,11 +242,11 @@
     gap: 10px;
   }
   .profileWrapperMain {
-    width: 320px;
+    width: 79.5vw;
     //height: 500px;
   }
   .profileWrapper {
-    height: 90%;
+    height: 80%;
     padding: 20px;
   }
 
@@ -256,5 +263,35 @@
 @media screen and (max-height: 700px) {
   .mainCardInfo {
     bottom: -30px;
+  }
+  .photoBack {
+    top: 55px;
+  }
+}
+
+@media screen and (max-height: 740px) {
+  .mainCardInfo {
+    bottom: 10px;
+  }
+  .photoBack {
+    top: 10px;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  //.mainCardInfo {
+  //  bottom: -30px;
+  //}
+  .photoBack {
+    top: 30px;
+  }
+}
+
+@media screen and (max-height: 900px) {
+  //.mainCardInfo {
+  //  bottom: -30px;
+  //}
+  .photoBack {
+    top: 31px;
   }
 }

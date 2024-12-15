@@ -4,6 +4,7 @@ export const mockEvents: Event[] = [
   {
     id: "1",
     name: "City Music Festival",
+    price: "350 – 995",
     description:
       "An open-air music festival with the best artists from around the world.",
     date: "2024-10-01",
@@ -22,6 +23,7 @@ export const mockEvents: Event[] = [
     id: "2",
     name: "Local Farmer’s Market",
     description: "Come and taste fresh local produce and artisanal goods.",
+    price: "350 – 995",
     date: "2024-09-28",
     location: "Green Park, Central City",
     distance: 0.5,
@@ -37,6 +39,7 @@ export const mockEvents: Event[] = [
   {
     id: "3",
     name: "Outdoor Movie Night",
+    price: "350 – 995",
     description:
       "Enjoy a classic movie under the stars with family and friends.",
     date: "2024-09-30",
@@ -55,6 +58,7 @@ export const mockEvents: Event[] = [
     id: "4",
     name: "Art Exhibition: Modern Masters",
     description: "An exhibition showcasing modern art from local artists.",
+    price: "350 – 995",
     date: "2024-10-05",
     location: "City Art Gallery, Central City",
     distance: 2.7,

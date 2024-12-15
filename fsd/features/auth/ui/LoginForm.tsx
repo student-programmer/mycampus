@@ -36,6 +36,7 @@ const LoginForm = () => {
                         <p className={l.description}>Sign in 1 minute for free!</p>
 
                         {/* Основная форма входа */}
+
                         <button onClick={handleLogin} className={l.login_button}>
                             Sign in
                         </button>
