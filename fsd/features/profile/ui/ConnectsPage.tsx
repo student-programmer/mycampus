@@ -7,8 +7,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import style from './profile.module.scss';
-import {type User} from '../../../entities/profile/index';
-import {users} from '../../../entities/profile/index';
+import {type User} from '@/fsd/entities/profile';
+import {users} from '@/fsd/entities/profile';
 import {useRouter} from 'next/navigation';
 import CountyIcon from '@/public/chinaIcon.svg';
 import {useState} from "react";
@@ -37,7 +37,7 @@ const ConnectsPage = () => {
 
 const UserCard = ({user}: { user: User }) => {
     const router = useRouter();
-    const [maxLength] = useState(300);
+    const [maxLength] = useState(150);
 
     const moreInfo = () => {
         router.push(`/profile/${user.id}`);
@@ -45,13 +45,14 @@ const UserCard = ({user}: { user: User }) => {
 
     return (
         <div className={style.profileWrapperMain}>
+            <div className={style.photoBack}>
             <Image
-                className={style.photoBack}
                 src={user.profile.photo}
                 alt=''
                 width={358}
                 height={374}
             />
+            </div>
             <div className={style.mainCardInfo}>
                 <div className={style.headerProfile}>
                     <p className={style.mainParagraphH1}>{user.name}</p>

@@ -1,11 +1,12 @@
 .eventsWrapper {
-  height: 100vh;
+  height: calc(100dvh - 50px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 20px;
+  padding: 0 20px;
+  z-index: 20;
 }
 
 .filterButton {
@@ -16,7 +17,7 @@
 }
 
 .swiperContainer {
-  height: 85vh; /* или нужная высота */
+  height: calc(100dvh - 74px);
   width: 100%;
 }
 
@@ -25,8 +26,14 @@
 }
 
 .placeImage {
+  position: relative;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   width: 100%;
-  border-radius: 12px;
+  height: calc(50dvh - 50px);
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
 }
 
 .eventCard {
@@ -112,12 +119,6 @@
 
 .eventDetails p {
   color: #fff;
-}
-
-@media screen and (max-width: 768px) {
-    .eventsWrapper {
-        height: 85vh;
-    }
 }
 
 

@@ -1,13 +1,13 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { users } from '../../../entities/profile/index'; // импортируем данные пользователей
+import { users } from '@/fsd/entities/profile'; // импортируем данные пользователей
 import Image from 'next/image';
 import style from './profileInfo.module.scss';
 import photoMen from '../../../public/MenPng.jpg';
 import usaIcon from '../../../public/usaICon.png';
 import { useEffect, useState } from 'react';
-import { type User } from '../../../entities/profile/index';
+import { type User } from '@/fsd/entities/profile';
 import ContactButton from '../../../shared/ui/ContactButton/ContactButton';
 import { Button } from 'antd';
 

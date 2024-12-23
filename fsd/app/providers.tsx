@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { NavMenu } from "../widgets/navMenu/NavMenu";
 import { usePathname } from "next/navigation";
+import { ConfigProvider } from 'antd';
 
 export const AppProviders = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -11,10 +12,18 @@ export const AppProviders = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Provider store={store}>
-      <div>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#84cc16',
+          },
+        }}
+      >
+      <div style={{height:"100%", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
         {children}
         {showNavMenu && <NavMenu />}
       </div>
+      </ConfigProvider>
     </Provider>
   );
 };

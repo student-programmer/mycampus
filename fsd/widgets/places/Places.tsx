@@ -2,15 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Button, Switch } from "antd";
-import { UpOutlined, DownOutlined } from "@ant-design/icons";
 import PlaceCard from "./PlaceCard";
-import { mockPlaces } from "../../entities/places/index";
-import { Place } from "../../entities/places/index";
+import { mockPlaces } from "@/fsd/entities/places";
+import { Place } from "@/fsd/entities/places";
 import style from "./ui/places.module.scss";
 
 const Places = () => {

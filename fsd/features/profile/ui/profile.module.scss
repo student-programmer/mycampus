@@ -1,16 +1,15 @@
 .profileWrapper {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 16px 0 20px;
+  padding: 20px 20px 0;
 }
 
 .swiperContainer {
   width: 100%;
-  height: 85vh;
+  height: calc(100dvh - 90px);
 }
 
 .slide {
@@ -20,7 +19,6 @@
 }
 
 .profileWrapperMain {
-  padding: 20px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -28,33 +26,33 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  height: 93%;
   overflow: hidden;
   justify-content: center;
 }
 
 .photoBack {
   position: relative;
-  top: 9px;
+  width: 100%;
+  height: 32dvh;
   left: 0;
   z-index: 1;
-  width: 89.5vw;
-  border-radius: 32px 32px 20px 20px;
-  height: auto;
-  max-height: 100%;
+  border-radius: 20px;
+}
 
+.photoBack > img {
+  height: 120%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  position: absolute;
 }
 
 .mainCardInfo {
   position: relative; /* Абсолютное позиционирование */
-  bottom: 30px; /* Расположить внизу */
-  left: 0;
-  width: 100%;
-  right: 0;
   background-color: #1e2721; /* Элементы внутри flex внизу */
   z-index: 2;
   padding: 24px;
-  border-radius: 32px 32px 20px 20px;
+  border-radius: 20px;
   height: 100%;
 }
 
@@ -237,63 +235,4 @@
 
 .navigationButton:hover {
   color: #10ae7e;
-}
-
-@media screen and (max-width: 768px) {
-  .navList {
-    justify-content: center;
-    gap: 10px;
-  }
-  .profileWrapperMain {
-    width: 79.5vw;
-    //height: 500px;
-  }
-  .profileWrapper {
-    height: 90%;
-  }
-
-  .profileInfo h2 {
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-  .profileInfo {
-    margin-top: 5px;
-  }
-}
-
-
-@media screen and (max-height: 700px) {
-  .mainCardInfo {
-    bottom: -30px;
-  }
-  .photoBack {
-    top: 55px;
-  }
-}
-
-@media screen and (max-height: 740px) {
-  .mainCardInfo {
-    bottom: 10px;
-  }
-  .photoBack {
-    top: 10px;
-  }
-}
-
-@media screen and (max-height: 850px) {
-  .mainCardInfo {
-    bottom: 10px;
-  }
-  .photoBack {
-    top: 30px;
-  }
-}
-
-@media screen and (max-height: 900px) {
-  .mainCardInfo {
-    bottom: 20px;
-  }
-  .photoBack {
-    top: 25px;
-  }
 }

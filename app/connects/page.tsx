@@ -1,4 +1,4 @@
-import { Connects } from '../../fsd/pages/Connects';
+import { Connects } from '@/fsd/pages/Connects';
 
 export default function Page() {
 	return <Connects />;

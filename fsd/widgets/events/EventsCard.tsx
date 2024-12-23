@@ -29,7 +29,7 @@ const EventCard = ({
   return (
     <>
       {!openDetail ? (
-        <div>
+        <div style={{paddingTop: '20px'}}>
           <Swiper
             direction="horizontal"
             slidesPerView={1}

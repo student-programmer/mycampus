@@ -7,7 +7,6 @@
 	list-style: none;
 	gap: 20px;
 	// margin-top: 60px;
-	bottom: 0px;
 	height: 64px;
 	background-color: #1e2721;
 	border-radius: 15px;
@@ -27,7 +26,7 @@
 .navWrapper {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 20px 20px 20px;
+	padding: 0 20px 10px 20px;
 	//height:318px;
 	position: relative;
 	z-index: 2;
@@ -67,17 +66,8 @@
 	.navList {
 		justify-content: space-between;
 		width: 100%;
-		padding: 0 20px;
+		padding: 0 10px;
 		gap: 20px;
 	}
 }
 
-
-@supports (-webkit-touch-callout: none) {
-	/* Эти стили применятся только в Safari */
-	.navList {
-	  position: relative;
-	  bottom: 60px;
-	}
-  }
-  

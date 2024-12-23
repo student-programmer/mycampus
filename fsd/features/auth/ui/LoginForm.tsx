@@ -1,9 +1,10 @@
 'use client';
 import React, {useState} from 'react';
-import {Button} from 'antd';
+import { Button, Switch } from 'antd';
 import {useRouter} from 'next/navigation';
 import l from './LoginForm.module.scss';
 import LogoIcon from './LogoIcon';
+import BG from '@/fsd/public/images/login-bg.png'
 
 const LoginForm = () => {
     const router = useRouter();
@@ -21,7 +22,12 @@ const LoginForm = () => {
 
     return (
         <div className={l.login_form}>
-            <div className={l.background}></div>
+          <div className={l.switcher}>
+            <span>Student</span>
+            <Switch/>
+            <span>Business</span>
+          </div>
+            <div className={l.background} style={{backgroundImage: `url(${BG.src})`}}></div>
             {!isBusinessAccount && (
                 <div className={l.logo}>
                     <LogoIcon/>
@@ -46,10 +52,6 @@ const LoginForm = () => {
                         </button>
 
                         <div className={l.additionally}>
-                            {/* Переключение на бизнес-аккаунт */}
-                            <p onClick={toggleBusinessAccount} className={l.create}>
-                                Create business account
-                            </p>
                             <p className={l.password}>Forgot your password?</p>
                         </div>
                     </>

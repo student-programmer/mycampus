@@ -4,21 +4,23 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-radius: 32px 32px 20px 20px;
+  border-radius: 20px;
   position: relative;
   bottom: 40px;
   z-index: 1;
 }
 
 .eventsCardWrapperFull {
+  z-index: 20;
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
   background-color: #1e2721;
-  padding: 24px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-radius: 32px 32px 20px 20px;
+  border-radius: 0 0 20px 20px;
   position: relative;
-  z-index: 1;
 }
 
 .headerWrapper {
@@ -208,6 +210,10 @@
   justify-content: space-between;
 }
 
+.px-24 {
+  padding: 0 24px;
+}
+
 .headerAndIcon {
   display: flex;
   justify-content: space-between;
@@ -224,12 +230,19 @@
 
 .buttonBuyTicket {
   background-color: #84cc16;
-  font-size: 14px;
-  line-height: 17px;
-  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
   border-radius: 4px 4px 20px 20px;
-  padding-right: 24px;
-  padding-left: 24px;
-
+  padding: 32px 24px;
   gap: 10px;
+}
+
+.buttonBuyTicket > span:last-child {
+  font-size: 14px;
+  font-weight: 400;
 }

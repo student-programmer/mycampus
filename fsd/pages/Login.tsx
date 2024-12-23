@@ -3,11 +3,9 @@ import React from 'react';
 import LoginForm from '../features/auth/ui/LoginForm';
 
 const Login = () => {
-	return (
-		<div>
-			<LoginForm />
-		</div>
-	);
+  return (
+    <LoginForm/>
+  );
 };
 
 export default Login;

@@ -13,7 +13,7 @@ export const NavMenu = () => {
 	const pathname = usePathname(); // Получаем текущий путь
 
 	// Функция для проверки активного пути
-	const isActive = (path: string) => pathname === path;
+	const isActive = (path: string) => pathname.includes(path);
 
 	// Функция для перехода по ссылке
 	const handleNavigation = (path: string) => {
@@ -34,7 +34,7 @@ export const NavMenu = () => {
 				</li>
 				<li
 					className={`${style.linkNav} ${
-						isActive('/chats') ? style.active : ''
+						isActive('/chats') || isActive('/chat') ? style.active : ''
 					}`}
 					onClick={() => handleNavigation('/chats')}
 				>

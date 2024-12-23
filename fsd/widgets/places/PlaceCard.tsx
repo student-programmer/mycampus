@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -14,10 +14,10 @@ import LikeNonActive from "@/public/LikeNonActive.svg";
 import FullCardDetail from "./FullCardDetail";
 
 const PlaceCard = ({
-  place,
-  openDetail,
-  setOpenDetail,
-}: {
+                     place,
+                     openDetail,
+                     setOpenDetail,
+                   }: {
   place: Place;
   openDetail: boolean;
   setOpenDetail: (v: boolean) => void;
@@ -26,62 +26,66 @@ const PlaceCard = ({
   const [fav, setFav] = useState(false);
 
   return (
-    <div className={style.swiperWrapper}>
-      {!openDetail && (
+    <div className={ style.swiperWrapper }>
+      <div className={ style.favIconWrapper }>
+        <div className={ style.favIcon }>
+          { !openDetail &&
+            ( fav ? (
+              <Image
+                onClick={ () => setFav(false) }
+                src={ LikeActive }
+                className={ style.likeImage }
+                alt=""
+              />
+            ) : (
+              <Image
+                onClick={ () => setFav(true) }
+                src={ LikeNonActive }
+                className={ style.likeImage }
+                alt=""
+              />
+            ) ) }
+        </div>
+      </div>
+      { !openDetail && (
         <Swiper
           direction="horizontal"
-          slidesPerView={1}
-          observer={true}
-          observeParents={true}
+          slidesPerView={ 1 }
+          observer={ true }
+          observeParents={ true }
           pagination
-          modules={[Pagination]}
+          modules={ [Pagination] }
         >
-          {placesImage.map((i, index) => (
-            <SwiperSlide key={index}>
-              <div className={style.favIconWrapper}>
-                <div className={style.favIcon}>
-                  {!openDetail &&
-                    (fav ? (
-                      <Image
-                        onClick={() => setFav(false)}
-                        src={LikeActive}
-                        className={style.likeImage}
-                        alt=""
-                      />
-                    ) : (
-                      <Image
-                        onClick={() => setFav(true)}
-                        src={LikeNonActive}
-                        className={style.likeImage}
-                        alt=""
-                      />
-                    ))}
-                  <Image
-                    src={i}
-                    alt={place.name}
-                    className={style.placeImage}
-                  />
-                </div>
-              </div>
+          { placesImage.map((i, index) => (
+            <SwiperSlide key={ index }>
+              <Image
+                src={ i }
+                alt={ place.name }
+                className={ style.placeImage }
+              />
             </SwiperSlide>
-          ))}
+          )) }
 
           <PlaceCardDescription
             needButton
-            openDetail={openDetail}
-            setOpenDetail={setOpenDetail}
-            place={place}
+            openDetail={ openDetail }
+            setOpenDetail={ setOpenDetail }
+            place={ place }
           />
         </Swiper>
-      )}
-      <div className={style.fullDetail}>
-        {openDetail && (
-          <FullCardDetail
-            openDetail={openDetail}
-            setOpenDetail={setOpenDetail}
-            place={place}
-          />
-        )}
+      ) }
+      <div className={ style.fullDetail }>
+        { openDetail && (
+          <>
+            <div className={ style.shadow }/>
+
+            <FullCardDetail
+              openDetail={ openDetail }
+              setOpenDetail={ setOpenDetail }
+              place={ place }
+            />
+          </>
+        ) }
       </div>
     </div>
   );

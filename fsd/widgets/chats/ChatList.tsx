@@ -22,7 +22,7 @@ const ChatList: React.FC<ChatListProps> = ({ chats }) => {
 						<List.Item.Meta
 							avatar={
 								<div className={style.avatarWrapper}>
-									<Avatar src={chat.avatar} />
+									<Avatar style={{border: '1px solid #FFFFFF29'}} src={chat.avatar} />
 									<span
 										className={`${style.statusIndicator} ${
 											chat.isActive ? style.online : style.offline

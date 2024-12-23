@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import { mockPlaces } from '../../entities/places/index';
-import { Place } from '../../entities/places/index';
+import { mockPlaces } from '@/fsd/entities/places';
+import { Place } from '@/fsd/entities/places';
 import { Breadcrumb, Button } from 'antd';
 import Image from 'next/image';
 import style from './ui/placeDetails.module.scss';

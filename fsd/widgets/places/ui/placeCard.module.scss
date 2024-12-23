@@ -1,7 +1,11 @@
 .placeImage {
+  position: relative;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  width: 100%; /* Убедитесь, что изображение растягивается по ширине контейнера */
+  width: 100%;
+  margin-top: 20px;
+  height: calc(50dvh - 50px);
+  z-index: -1;
 }
 
 .swiperCustomPagination {
@@ -13,7 +17,7 @@
 
 .likeImage {
   position: absolute;
-  top: 10px; /* Отступ сверху */
+  top: 30px; /* Отступ сверху */
   right: 10px; /* Отступ справа */
   width: 40px; /* Фиксированный размер */
   height: 40px; /* Фиксированный размер */
@@ -31,15 +35,27 @@
 }
 
 .fullDetail {
-  height: 100%;
+  position: relative;
+  height: calc(100dvh - 80px);
 }
+
+.shadow {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 0 20px 20px;
+  height: 20%;
+  z-index: 20;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(30, 39, 33, 0) 0%, #1E2721 80%);
+}
+
 
 .favIconWrapper {
   position: relative; /* Контекст для абсолютного позиционирования */
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%; /* Контейнер занимает всю ширину */
-  height: auto; /* Высота подстраивается под содержимое */
-  overflow: hidden; /* Препятствует выходу дочерних элементов за пределы */
 }

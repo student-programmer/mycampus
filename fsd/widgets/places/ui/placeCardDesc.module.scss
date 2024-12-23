@@ -101,13 +101,15 @@
 }
 
 .placeDetail {
+  position: relative;
   overflow-y: auto;
-  padding-right: 10px;
+  box-sizing: border-box;
   scrollbar-width: thin;
-  background-color: #1e2721;
-  border-radius: 32px 32px 20px 20px;
-  padding: 24px;
-  max-height: calc(90vh - 10%);
+  background: #1e2721;
+
+  padding: 12px 24px;
+  height: 100%;
+  border-radius: 0 0 20px 20px;
   -webkit-overflow-scrolling: touch; /* Для iOS */
   touch-action: pan-y; /* Разрешаем вертикальную прокрутку */
 }

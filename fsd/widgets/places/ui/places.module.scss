@@ -1,11 +1,12 @@
 // places.module.scss
 
 .placesWrapper {
-	max-width: 90vh; /* Максимальная ширина контейнера */
 	margin: 0 auto; /* Центрирование страницы */
-	padding: 20px; /* Внутренние отступы */
+	padding: 0 20px; /* Внутренние отступы */
 	background: transparent;
-	height: 85vh;
+	height: calc(100dvh - 84px);
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .filterSection {
