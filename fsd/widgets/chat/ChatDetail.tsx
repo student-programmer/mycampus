@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, RefObject, DOMElement } from 'react';
 import { List, Avatar } from 'antd';
 import { LeftOutlined, SendOutlined } from '@ant-design/icons';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
@@ -20,7 +20,8 @@ const ChatDetail = () => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const chatName = searchParams.get('chatName');
-	const messagesEndRef = React.createRef();
+
+	const messagesEndRef = React.createRef<HTMLDivElement>();
 
 	const [messages, setMessages] = useState<Message[]>([]); // Указали тип Message[]
 
