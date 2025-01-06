@@ -141,3 +141,34 @@ export const users: User[] = [
 		},
 	},
 ];
+
+
+export const user: User = {
+	id: '12345',
+	name: 'Mei Ying',
+	email: 'meiying@example.com',
+	age: 19,
+	gender: 'female',
+	isLoading: false,
+	profile: {
+		education: {
+			fieldOfStudy: 'Interior Design',
+			university: 'Canadian University Dubai',
+		},
+		photo: '/Mei.png',
+		country: {
+			name: 'China',
+			icon: '/chinaIcon.svg',
+		},
+		languagesSpoken: ['English', 'Chinese'],
+		about:
+			'Studying interior design and always in search of fresh ideas. I draw inspiration from contemporary art and natural forms. Outside of studies, I enjoy yoga, cooking new dishes, and exploring cultural events in Dubai. I also value time spent reading books and walking outdoors.',
+		interests: [
+			'Interior Design',
+			'Yoga',
+			'Cooking',
+			'Books',
+			'Cultural Events',
+		],
+	},
+};

@@ -1,51 +1,19 @@
 'use client';
-import { Button } from 'antd';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import style from './profile.module.scss';
-import { type User } from '@/fsd/entities/profile';
-import { users } from '@/fsd/entities/profile';
-import { useRouter } from 'next/navigation';
+import style from './ui/profile.module.scss';
+import { type User } from '../../entities/profile/index';
+
 import CountyIcon from '@/public/chinaIcon.svg';
+
 import { useState } from 'react';
 
-const ConnectsPage = () => {
-	return (
-		<div className={style.profileWrapper}>
-			<Swiper
-				direction={'vertical'}
-				slidesPerView={1}
-				pagination={{ clickable: true }}
-				navigation={false}
-				centeredSlides
-				loop={true}
-				className={style.swiperContainer}
-			>
-				{users.map((user: User) => (
-					<SwiperSlide key={user.id} className={style.slide}>
-						<UserCard user={user} />
-					</SwiperSlide>
-				))}
-			</Swiper>
-		</div>
-	);
-};
-
-const UserCard = ({ user }: { user: User }) => {
-	const router = useRouter();
+const Profile = ({ user }: { user: User }) => {
 	const [maxLength] = useState(150);
-
-	const moreInfo = () => {
-		router.push(`/connects/${user.id}`);
-	};
-	const goToChat = () => {
-		router.push(`/chat/${user.name}/${user.id}`);
-	};
-
 	return (
 		<div className={style.profileWrapperMain}>
 			<div className={style.photoBack}>
@@ -100,18 +68,10 @@ const UserCard = ({ user }: { user: User }) => {
 							</p>
 						))}
 					</div>
-					<div className={style.buttonsContainer}>
-						<Button className={style.buttonSendProfile} onClick={goToChat}>
-							Send message
-						</Button>
-						<Button className={style.buttonViewProfile} onClick={moreInfo}>
-							View Profile
-						</Button>
-					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default ConnectsPage;
+export default Profile;

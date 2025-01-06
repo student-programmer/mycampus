@@ -2,7 +2,7 @@ import { Chat } from '../model/chats';
 
 export const mockChats: Chat[] = [
 	{
-		id: '1',
+		id: '12345',
 		title: 'Mei Ying',
 		lastMessage: 'Hey, are you coming to the meeting?',
 		timestamp: '09:30 AM',
@@ -12,7 +12,7 @@ export const mockChats: Chat[] = [
 		lastSeen: '10 min ago',
 	},
 	{
-		id: '2',
+		id: '12346',
 		title: 'Musa Dlamini',
 		lastMessage: 'Got it, thanks!',
 		timestamp: 'Yesterday',
@@ -22,7 +22,7 @@ export const mockChats: Chat[] = [
 		lastSeen: '10 min ago',
 	},
 	{
-		id: '3',
+		id: '12347',
 		title: 'Rohan Verma',
 		lastMessage: "Let's merge the PR today.",
 		timestamp: 'Monday',
@@ -32,7 +32,7 @@ export const mockChats: Chat[] = [
 		lastSeen: '10 min ago',
 	},
 	{
-		id: '4',
+		id: '12348',
 		title: 'Chloe Matthews',
 		lastMessage: 'The new campaign is ready to go.',
 		timestamp: 'Sunday',
@@ -42,7 +42,7 @@ export const mockChats: Chat[] = [
 		lastSeen: '10 min ago',
 	},
 	{
-		id: '5',
+		id: '12349',
 		title: 'Rami Al-Fahim',
 		lastMessage: 'Can we discuss the new project?',
 		timestamp: 'Last week',
