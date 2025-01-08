@@ -74,6 +74,23 @@
 	cursor: pointer;
 }
 
+.pass_button {
+	margin: 5px 0; /* Отступы между кнопкой и текстом */
+	border: 1px solid #84cc16;
+	background: transparent;
+	transition: 0.3s;
+	width: 100%;
+	padding: 16px 28px;
+	border-radius: 20px;
+	font-size: 18px;
+	color: white;
+	cursor: pointer;
+}
+
+.pass_button:hover {
+	background: #84cc15;
+}
+
 .additionally {
 	text-align: center; /* Центрируем текст */
 	margin-top: 10px; /* Отступ сверху для дополнительных ссылок */
@@ -138,4 +155,14 @@
 	font-size: 24px;
 	color:#84cc16;
 	cursor: pointer;
+}
+
+.buttons {
+	width: 100%;
+	display: flex;
+	gap: 12px;
+}
+
+.buttons > button {
+	text-wrap: none;
 }
