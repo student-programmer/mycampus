@@ -48,7 +48,7 @@ const FullCardDetail = ({
           <p className={style.paragraphRate}>{place.address}</p>
         </div>
         <div className={style.keyWrapper}>
-          <p className={style.keyHeader}>key:</p>
+          <p className={style.keyHeader}>Key:</p>
           <ul className={style.keys}>
             {place.key.map((i, index) => {
               return (
