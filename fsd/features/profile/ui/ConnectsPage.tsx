@@ -40,7 +40,7 @@ const UserCard = ({ user }: { user: User }) => {
 	const [maxLength] = useState(150);
 
 	const moreInfo = () => {
-		router.push(`/connects/${user.id}`);
+		// router.push(`/connects/${user.id}`);
 	};
 	const goToChat = () => {
 		router.push(`/chat/${user.name}/${user.id}`);

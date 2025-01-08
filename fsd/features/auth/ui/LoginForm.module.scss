@@ -52,13 +52,13 @@
 
 .description {
 	font-size: 1em;
-	color: #C5C8C6;
-	line-height:25.6px;
+	color: #c5c8c6;
+	line-height: 25.6px;
 	text-align: center; /* Центрируем текст */
 	margin-bottom: 15px;
 }
 
-.business_title{
+.business_title {
 	margin: 0;
 }
 
@@ -132,4 +132,10 @@
 	filter: blur(20px);
 	background-size: contain;
 	-webkit-filter: blur(20px);
+}
+
+.icon {
+	font-size: 24px;
+	color:#84cc16;
+	cursor: pointer;
 }
