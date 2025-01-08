@@ -10,18 +10,16 @@ import StudentIcon from "@/public/student";
 import BusinessIcon from "@/public/business";
 
 const LoginForm = () => {
-    const router = useRouter();
-    const [isBusinessAccount, setIsBusinessAccount] = useState(false); // Состояние для бизнес-аккаунта
+  const router = useRouter();
+  const [isBusinessAccount, setIsBusinessAccount] = useState(false);
 
-    // Обработчик для кнопки "Sign in"
-    const handleLogin = () => {
-        router.push('/connects');
-    };
+  const handleLogin = () => {
+    router.push('/connects');
+  };
 
-    // Обработчик для переключения на бизнес-аккаунт
-    const toggleBusinessAccount = () => {
-        setIsBusinessAccount(!isBusinessAccount);
-    };
+  const toggleBusinessAccount = () => {
+    setIsBusinessAccount(!isBusinessAccount);
+  };
 
     return (
         <div className={l.login_form}>
@@ -55,17 +53,22 @@ const LoginForm = () => {
                 {!isBusinessAccount && (
                     <>
                         <h1 className={l.auth}>Sign In</h1>
-                        <p className={l.description}>Become a part of study community!</p>
+                        <p className={l.description}>Sign in 1 minute for free!</p>
 
-                        {/* Основная форма входа */}
+            {/* Основная форма входа */ }
+            <div className={l.buttons}>
+              <button onClick={ handleLogin } className={ l.login_button }>
+                Sign in
+              </button>
 
-                        <button onClick={handleLogin} className={l.login_button}>
-                            Sign in
-                        </button>
-
-                        <button onClick={() => console.log("Sign in via UAE Pass")} className={l.login_button}>
-                            Sign in via UAE Pass
-                        </button>
+              <button
+                onClick={ () => console.log('Sign in via UAE Pass') }
+                className={ l.pass_button }
+              >
+                {/*Sign in via UAE Pass*/}
+                UAE Pass
+              </button>
+            </div>
 
                         <div className={l.additionally}>
                             <p className={l.password}>Forgot your password?</p>
