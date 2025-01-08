@@ -7,7 +7,7 @@
 	color: #f5f5f5;
 }
 
-.switcher {
+.business_button {
 	font-size: 12px;
 	display: flex;
 	align-items: center;
@@ -15,6 +15,16 @@
 	position: absolute;
 	top: 20px;
 	right: 20px;
+}
+
+.back_button{
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
 }
 
 .panel {
@@ -52,14 +62,45 @@
 
 .description {
 	font-size: 1em;
-	color: #c5c8c6;
-	line-height: 25.6px;
+	color: #C5C8C6;
+	line-height:25.6px;
+	font-weight: 300;
+	letter-spacing: -0.6%;
 	text-align: center; /* Центрируем текст */
+	margin-top: 7px;
 	margin-bottom: 15px;
 }
 
-.business_title {
+.business_title{
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 32px;
 	margin: 0;
+}
+
+
+.account_button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px; /* Высота кнопки */
+	padding: 4px 10px; /* Внутренний отступ */
+	font-size: 14px; /* Размер текста */
+	font-weight: 400; /* Толщина текста */
+	color: #fff; /* Белый текст для обычного состояния */
+	background-color: #84cc16; /* Зеленый фон для обычного состояния */
+	border: 1px solid #84cc16; /* Темно-зеленая граница */
+	border-radius: 16px; /* Закругленные углы */
+	cursor: pointer; /* Курсор "указатель" */
+	transition: all 0.3s ease; /* Плавный переход */
+}
+
+
+.account_button.active {
+	background-color: #f5f5f5; /* Светло-серый фон для активного состояния */
+	border-color: #d9d9d9; /* Светло-серая граница */
+	color: #84cc16; /* Черный текст */
+	box-shadow: none; /* Убираем свечение */
 }
 
 .login_button {
@@ -124,7 +165,7 @@
 	background-color: #111a14;
 	border: none;
 	color: #c5c8c6;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .input_field:focus {
@@ -135,10 +176,18 @@
 	transition: none; /* Убирает все анимации */
 }
 
-.inputs {
+.form_box{
 	display: flex;
+	width: 100%;
 	flex-direction: column;
-	gap: 30px;
+	gap: 24px;
+    padding: 16px 0;
+}
+
+.label{
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .background {
