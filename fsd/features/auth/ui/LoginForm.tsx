@@ -7,6 +7,7 @@ import LogoIcon from './LogoIcon';
 import BG from '@/fsd/public/images/login-bg.png'
 import style from "@/fsd/widgets/chat/ui/chatDetail.module.scss";
 import LeftPageIcon from "@/fsd/widgets/chat/ui/LeftPageIcon";
+import BusinessIcon from "@/public/business";
 
 const LoginForm = () => {
     const router = useRouter();
@@ -36,7 +37,7 @@ const LoginForm = () => {
                     onClick={toggleBusinessAccount}
                     className={`${l.account_button} ${isBusinessAccount ? l.active : ""}`}
                 >
-                    Business
+                    < BusinessIcon isBusinessAccount={isBusinessAccount}/>
                 </button>
             </div>
             <div className={l.background} style={{backgroundImage: `url(${BG.src})`}}></div>
