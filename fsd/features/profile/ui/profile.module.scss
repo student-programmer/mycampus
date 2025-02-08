@@ -83,6 +83,10 @@
 .textPmain {
   font-size: 12px;
   line-height: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   opacity: 0.64;
   font-weight: 400;
   color: #ffffff;

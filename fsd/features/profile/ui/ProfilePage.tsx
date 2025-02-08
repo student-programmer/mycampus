@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 
 import style from "./profile.module.scss";
 import { type User } from "../../../entities/profile/index";
-import { users } from "../../../entities/profile/index";
+import { mockUsers } from "../../../entities/profile/index";
 import photoMen from "../../../public/MenPng.jpg";
 import usaIcon from "../../../public/usaICon.png";
 import { useRouter } from "next/navigation";
@@ -38,7 +38,7 @@ const ProfilePage = () => {
         modules={[Navigation]}
         className={style.swiperContainer}
       >
-        {users.map((user: User) => (
+        {mockUsers.map((user: User) => (
           <SwiperSlide key={user.id} className={style.slide}>
             <UserCard user={user} />
           </SwiperSlide>

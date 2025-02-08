@@ -1,4 +1,4 @@
-import { Chat } from '../model/chats';
+import { Chat, Message } from '../model/chats';
 
 export const mockChats: Chat[] = [
 	{
@@ -50,6 +50,29 @@ export const mockChats: Chat[] = [
 		avatar: '/Rami.png',
 		isActive: false, // Индикатор активности (онлайн)
 		lastSeen: '10 min ago',
+	},
+];
+
+export const messageListMock: Message[] = [
+	{
+		id: 1,
+		sender: 'Rami Al-Fahim',
+		content: 'Hello! How are you?',
+	},
+	{
+		id: 2,
+		sender: 'You',
+		content: "I'm doing great, thanks! How about you?",
+	},
+	{
+		id: 3,
+		sender: 'Rami Al-Fahim',
+		content: 'I’m good too! Any updates on the project?',
+	},
+	{
+		id: 4,
+		sender: 'Rami Al-Fahim',
+		content: 'Yes, I’ll send you the details soon.',
 	},
 ];
 

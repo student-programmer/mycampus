@@ -1,9 +1,13 @@
+'use client'
+
 import React from 'react';
-import Profile from '../widgets/profile/Profile';
-import { user } from '../entities/profile/mock/users';
+import { useProfilesStore } from "@/fsd/app/stores/profiles/store";
+import Profile from "@/fsd/widgets/profile/Profile";
 
 const ProfilePage = () => {
-	return <Profile user={user} />;
+    const currentUser = useProfilesStore(store => store.currentProfile)
+
+    return <Profile user={ currentUser }/>;
 };
 
 export default ProfilePage;

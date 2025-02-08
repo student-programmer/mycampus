@@ -164,17 +164,40 @@
 	font-size: 18px;
 	background-color: #111a14;
 	border: none;
-	color: #c5c8c6;
+	color: #84cc16; /* Зелёный цвет текста по умолчанию */
 	margin-top: 10px;
+	transition: none;
+	caret-color: #84cc16; /* Цвет курсора */
 }
 
-.input_field:focus {
-	outline: none; /* Убирает обводку при фокусе */
-	box-shadow: none; /* Убирает тени при фокусе */
-	border: 1px solid #84cc16; /* Убирает бордер */
-	background: none; /* Убирает фоновый цвет */
-	transition: none; /* Убирает все анимации */
+/* Сохранение зелёного цвета при фокусе и вводе */
+.input_field:focus,
+.input_field:hover,
+.input_field:active {
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #84cc16;
+	background: none;
+	color: #84cc16; /* Текст остаётся зелёным */
+	caret-color: #84cc16;
 }
+
+/* Плейсхолдер остаётся серым */
+.input_field::placeholder {
+	color: #c5c8c6;
+}
+
+/* Отключаем белый фон автозаполнения в Chrome */
+.input_field:-webkit-autofill,
+.input_field:-webkit-autofill:hover,
+.input_field:-webkit-autofill:focus {
+	background-color: #111a14 !important;
+	color: #84cc16 !important;
+	-webkit-text-fill-color: #84cc16 !important;
+	-webkit-box-shadow: 0 0 0px 1000px #111a14 inset !important;
+	caret-color: #84cc16 !important;
+}
+
 
 .form_box{
 	display: flex;
@@ -209,6 +232,14 @@
 .buttons {
 	width: 100%;
 	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.buttons > div {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
 	gap: 12px;
 }
 

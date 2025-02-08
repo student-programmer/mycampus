@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { users } from '@/fsd/entities/profile'; // импортируем данные пользователей
+import { mockUsers } from '@/fsd/entities/profile'; // импортируем данные пользователей
 import Image from 'next/image';
 import style from './profileInfo.module.scss';
 import photoMen from '../../../public/MenPng.jpg';
@@ -20,7 +20,7 @@ const ConnectsInfo = () => {
 	useEffect(() => {
 		// Проверяем, что id существует и он доступен
 		if (id) {
-			const foundUser = users.find(user => user.id === id);
+			const foundUser = mockUsers.find(user => user.id === id);
 			setUser(foundUser || null);
 			setLoading(false); // Завершаем загрузку
 		}

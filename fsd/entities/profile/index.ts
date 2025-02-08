@@ -1,5 +1,5 @@
 // mock
-export { users } from './mock/users';
+export { mockUsers } from './mock/mockUsers';
 
 
 
