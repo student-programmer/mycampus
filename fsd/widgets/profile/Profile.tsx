@@ -10,10 +10,8 @@ import { type User } from '@/fsd/entities/profile';
 
 import CountyIcon from '@/public/chinaIcon.svg';
 
-import { useState } from 'react';
 
 const Profile = ({user}: { user: User }) => {
-    const [maxLength] = useState(150);
     return (
         <div className={ style.profileWrapperMain }>
             <div className={ style.photoBack }>

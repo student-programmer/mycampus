@@ -40,7 +40,6 @@ const ConnectsPage = () => {
 
 const UserCard = ({user}: { user: User }) => {
     const router = useRouter();
-    const [maxLength] = useState(150);
 
     const moreInfo = () => {
         // router.push(`/connects/${user.id}`);
@@ -90,7 +89,7 @@ const UserCard = ({user}: { user: User }) => {
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }>About:</p>
                     <p className={ style.textPmain }>
-                        {user.profile.about}
+                        { user.profile.about }
                     </p>
                 </div>
                 <div className={ style.interestsPeople }>
