@@ -14,7 +14,18 @@ export const AppProviders = ({children}: { children: React.ReactNode }) => {
             theme={ {
                 token: {
                     colorPrimary: '#84cc16',
+                    colorBorder: '#111a14'
                 },
+                components: {
+                    Input: {
+                        errorActiveShadow: '#F43F5E',
+                        activeShadow: '0 0 0 2px #84cc16',
+                        marginInlineEnd: "10px",
+                        paddingInline: "16px",
+                        paddingBlock: '16px',
+                        paddingInlineSM: '4px',
+                    }
+                }
             } }
         >
             <div style={ {
