@@ -9,7 +9,7 @@ export const EnteringForm = ({toggleSignIn, toggleSignUp}) => {
 
             {/* Основная форма входа */ }
             <div className={ l.buttons }>
-                <button onClick={ toggleSignIn } className={ l.login_button }>
+                <button onClick={ toggleSignIn } className={ l.login_button_active }>
                     Sign in
                 </button>
                 <div>
@@ -24,7 +24,6 @@ export const EnteringForm = ({toggleSignIn, toggleSignUp}) => {
                         disabled
                         style={ {opacity: "50%", pointerEvents: 'none'} }
                     >
-                        {/*Sign in via UAE Pass*/ }
                         UAE Pass
                     </button>
                 </div>

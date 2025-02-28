@@ -24,6 +24,11 @@ export const AppProviders = ({children}: { children: React.ReactNode }) => {
                         paddingInline: "16px",
                         paddingBlock: '16px',
                         paddingInlineSM: '4px',
+                    },
+                    Select: {
+                        activeShadow: '0 0 0 2px #84cc16',
+                        colorError: '#ff4d4f',
+                        colorErrorHover: '#ff4d4f',
                     }
                 }
             } }
