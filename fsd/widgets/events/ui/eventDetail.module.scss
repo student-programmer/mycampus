@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 20px;
  	background: linear-gradient(115deg, #00bf8f, #001510);
-  height:90vh;
+  height:calc(100dvh - 100px);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

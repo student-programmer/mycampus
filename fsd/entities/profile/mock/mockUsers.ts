@@ -1,6 +1,6 @@
 import { User } from '../model/users';
 
-export const users: User[] = [
+export const mockUsers: User[] = [
 	{
 		id: '12345',
 		name: 'Mei Ying',
@@ -143,7 +143,7 @@ export const users: User[] = [
 ];
 
 
-export const user: User = {
+export const mockUser: User = {
 	id: '12345',
 	name: 'Mei Ying',
 	email: 'meiying@example.com',
