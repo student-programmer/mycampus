@@ -226,10 +226,19 @@
             .rc-virtual-list-holder{
 
                 .rc-virtual-list-holder-inner{
+					gap: 3px;
+					.ant-select-item-option-selected{
+						background-color: #84cc15;
+						border-radius: 12px;
+						color: black !important;
+					}
 
                     .ant-select-item-option{
                         color: #84cc15;
                         font-size: 16px;
+						.ant-select-item-option-state{
+							color: black;
+						}
                     }
                     .ant-select-item-option-active{
                         background-color: #84cc15;
@@ -240,6 +249,76 @@
             }
         }
     }
+}
+
+
+.multiple_select_item {
+	width: 100%;
+    min-height: 56px;
+	height: fit-content;
+    margin-top: 10px;
+    background-color: #111a14; /* Фон элемента */
+    color: #84cc16;             /* Цвет текста */
+    font-weight: bold;          /* Сделаем текст жирным */
+    padding: 8px;             /* Добавим отступы */
+    border-radius: 20px;         /* Закруглим углы */
+	transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	outline: none;
+
+
+    :global {
+        .ant-select-selector{
+            border-radius: 16px;
+			padding: 0;
+            background-color: transparent !important;
+            border: none !important;
+			box-shadow: none !important;
+        }
+
+		.ant-select-selection-wrap{
+			height: 100%;
+			background-color: transparent !important;
+
+            .ant-select-selection-placeholder{
+                text-overflow: ellipsis;
+                color: rgba(197, 200, 198, 0.6);
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+			.ant-select-selection-overflow{
+				padding: 4px 5px;
+
+                .ant-select-selection-overflow-item{
+                    align-self: auto;
+                }
+
+				.ant-select-selection-overflow-wrap{
+					height: 100%;
+				}
+			}
+		}
+    }
+
+}
+
+.multiple_select_item:focus-within {
+	border: 0.1px solid #84cc16 !important;
+	box-shadow: 0 0 0 2px #84cc16;
+}
+
+.multiple_select_item:invalid {
+	border: 1px solid #F43F5E !important;
+}
+
+.tag{
+	background-color: #84cc15;
+	border-radius: 16px;
+    height: 100%;
+	padding: 2px 7px;
+    display: flex;
+    place-items: center;
+    font-size: 13px;
 }
 
 .ant-select-item-option-content{

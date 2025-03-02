@@ -5,6 +5,8 @@ import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { Input, Select } from "antd";
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
+import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
+
 
 export const SignUpForm = ({handleLogin}) => {
 
@@ -34,18 +36,34 @@ export const SignUpForm = ({handleLogin}) => {
             || !!formik.errors.interests || !!formik.errors.photo || !!formik.errors.location)
     }, [formik.errors])
 
-    console.log(formik.errors, 'formik.errors')
-    console.log(formik.values, 'formik')
     const uni = [
-        {value: 'jack', label: 'Jack'},
-        {value: 'lucy', label: 'Lucy'},
-        {value: 'Yiminghe', label: 'yiminghe'},
+        {value: 'Politeh', label: 'Politeh'},
+        {value: 'ITMO', label: 'ITMO'},
+        {value: 'Bonch', label: 'Bonch'},
+    ]
+
+    const interests = [
+        {value: 'Yoga'},
+        {value: 'Interest Item'},
+        {value: 'Cooking'},
+        {value: 'Books'},
+        {value: 'Cultural Events'},
+        {value: 'International Diplomacy'},
+        {value: 'History'},
+        {value: 'Photography'},
+    ];
+
+    const language = [
+        {value: 'Russian'},
+        {value: 'Hindi'},
+        {value: 'Chinese'},
+        {value: 'English'},
     ]
 
     const sex = [
         {value: 'male', label: 'Male'},
         {value: 'female', label: 'Female'},
-    ]
+    ];
 
     return (
         <>
@@ -132,18 +150,19 @@ export const SignUpForm = ({handleLogin}) => {
                     <label htmlFor='languages' className={ l.label }>
                         Languages
                     </label>
-                    <Input
+
+                    <CustomMultipleSelect
                         id={ 'languages' }
                         name={ 'languages' }
-                        className={ l.input_field }
-                        value={ formik.values.languages }
+                        status={ !!formik.errors.languages ? 'error' : null }
+                        placeholder="Enter your languages..."
                         onChange={ (e) => {
-                            formik.handleChange(e);
+                            formik.setFieldValue('languages', e)
                             formik.setFieldError("languages", null);
                         } }
-                        status={ !!formik.errors.sex ? 'error' : null }
-                        placeholder="Enter your languages..."
+                        option={ language }
                     />
+
                     { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }
                 </div>
 
@@ -151,17 +170,16 @@ export const SignUpForm = ({handleLogin}) => {
                     <label htmlFor='interests' className={ l.label }>
                         Interests
                     </label>
-                    <Input
+                    < CustomMultipleSelect
                         id={ 'interests' }
                         name={ 'interests' }
-                        className={ l.input_field }
-                        value={ formik.values.interests }
+                        status={ !!formik.errors.interests ? 'error' : null }
+                        placeholder="Enter your interests..."
                         onChange={ (e) => {
-                            formik.handleChange(e);
+                            formik.setFieldValue('interests', e)
                             formik.setFieldError("interests", null);
                         } }
-                        status={ !!formik.errors.sex ? 'error' : null }
-                        placeholder="Enter your interests..."
+                        option={ interests }
                     />
                     { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }
                 </div>
@@ -179,7 +197,7 @@ export const SignUpForm = ({handleLogin}) => {
                             formik.handleChange(e);
                             formik.setFieldError("photo", null);
                         } }
-                        status={ !!formik.errors.sex ? 'error' : null }
+                        status={ !!formik.errors.photo ? 'error' : null }
                         placeholder="Enter your photo..."
                     />
                     { formik.errors.photo && < ErrorComponent message={ formik.errors.photo }/> }
@@ -197,7 +215,7 @@ export const SignUpForm = ({handleLogin}) => {
                             formik.handleChange(e);
                             formik.setFieldError("location", null);
                         } }
-                        status={ !!formik.errors.sex ? 'error' : null }
+                        status={ !!formik.errors.location ? 'error' : null }
                         placeholder="Enter your location..."
                     />
                     { formik.errors.location && < ErrorComponent message={ formik.errors.location }/> }
