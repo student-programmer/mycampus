@@ -25,7 +25,7 @@ export const SignUpSchema = Yup.object({
     age: Yup.string().required(REQUIRED_MSG),
     sex: Yup.string().required(REQUIRED_MSG),
     languages: Yup.array().required(REQUIRED_MSG),
-    interests: Yup.string().required(REQUIRED_MSG),
+    interests: Yup.array().required(REQUIRED_MSG),
     photo: Yup.string().required(REQUIRED_MSG),
     location: Yup.string().required(REQUIRED_MSG)
 });

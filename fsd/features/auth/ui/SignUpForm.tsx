@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
-import { Input, Select } from "antd";
+import { Input } from "antd";
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
 import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
 
@@ -24,7 +24,7 @@ export const SignUpForm = ({handleLogin}) => {
             location: '',
         },
         onSubmit: (values) => {
-            handleLogin();
+            handleLogin()
         },
         validationSchema: SignUpSchema,
         validateOnChange: false,
@@ -51,6 +51,8 @@ export const SignUpForm = ({handleLogin}) => {
         {value: 'International Diplomacy'},
         {value: 'History'},
         {value: 'Photography'},
+        {value: 'Travel'},
+        {value: 'Job'},
     ];
 
     const language = [
@@ -139,7 +141,7 @@ export const SignUpForm = ({handleLogin}) => {
                         placeholder="Enter your sex..."
                         status={ !!formik.errors.sex ? 'error' : null }
                         onChange={ (e) => {
-                            formik.handleChange(e);
+                            formik.setFieldValue('sex', e)
                             formik.setFieldError("sex", null);
                         } }
                         options={ sex }
