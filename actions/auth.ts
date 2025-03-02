@@ -1,8 +1,8 @@
 import authService from "@/service/auth";
 
 const authActions = {
-    login: async () => {
-        const [data, error] = await authService.login();
+    login: async (values) => {
+        const [data, error] = await authService.login(values);
 
         if (error) {
             throw new Error(error);

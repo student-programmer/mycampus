@@ -8,9 +8,11 @@ import { SignInSchema } from "@/schemas/signIn";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { MailIcon } from "@/public/mailIcon";
 import { LockIcon } from "@/public/lockIcon";
+import authActions from "@/actions/auth";
+import { router } from "next/client";
 
 
-export const SignInForm = ({handleLogin}) => {
+export const SignInForm = () => {
 
     const [disabled, setDisabled] = useState(false)
 
@@ -19,10 +21,8 @@ export const SignInForm = ({handleLogin}) => {
             email: '',
             password: '',
         },
-        onSubmit: (values) => {
-            console.log('here')
-            handleLogin();
-        },
+        onSubmit: async (values) => await handleLogin(values)
+        ,
         validationSchema: SignInSchema,
         validateOnChange: false,
     })
@@ -30,6 +30,13 @@ export const SignInForm = ({handleLogin}) => {
     useEffect(() => {
         setDisabled(!!formik.errors.password || !!formik.errors.email)
     }, [formik.errors.password, formik.errors.email])
+
+
+    const handleLogin = async (values) => {
+        await authActions.login(values).then(r => {
+            router.push('/connects')
+        })
+    }
 
     return (
         <>

@@ -44,7 +44,7 @@ const LoginForm = () => {
             case 'SignIn':
                 return < SignInForm handleLogin={ handleLogin }/>
             case 'SignUp':
-                return < SignUpForm handleLogin={ handleLogin }/>
+                return < SignUpForm handleLogin={ handleLogin } setForm={ setForm }/>
             case null:
                 return < EnteringForm handleLogin={ handleLogin } toggleSignIn={ toggleSignIn }
                                       toggleSignUp={ toggleSignUp }/>;

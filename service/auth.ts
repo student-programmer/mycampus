@@ -1,9 +1,9 @@
 import axiosInstance from '../plugins/axios';
 
 const authService = {
-    login: async () => {
+    login: async (values) => {
         try {
-            const {data} = await axiosInstance.post('/auth/login');
+            const {data} = await axiosInstance.post('/auth/login', values);
             return [data, null];
         } catch (error) {
             return [null, error];

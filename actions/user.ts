@@ -1,10 +1,8 @@
-import { getToken } from '@/utils/profile';
 import userService from "@/service/user";
 
 const userActions = {
-    register: async () => {
-        const token = getToken();
-        const [data, error] = await userService.register(token);
+    register: async (values) => {
+        const [data, error] = await userService.register(values);
 
         if (error) {
             throw new Error(error);
