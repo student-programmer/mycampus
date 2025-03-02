@@ -362,7 +362,7 @@ export const SignUpForm = ({setForm}) => {
                 {/*</div>*/ }
             </div>
             <button disabled={ disabled } className={ disabled ? l.login_button : l.login_button_active }
-                    onClick={ () => formik.submitForm() }>
+                    onClick={ async () => await formik.submitForm() }>
                 Create account
             </button>
 
