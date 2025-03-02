@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 
-const REQUIRED_MSG = 'field is required!';
-const EMAIL_MSG = 'incorrect e-mail!';
+const REQUIRED_MSG = 'This field is required';
+const EMAIL_MSG = 'Invalid type of email!';
+const TYPEERROR_MSG = 'Number should be integer value';
 
 export const SignInSchema = Yup.object({
     email: Yup.string()
@@ -22,7 +23,7 @@ export const BusinessSchema = Yup.object({
 export const SignUpSchema = Yup.object({
     fullName: Yup.string().required(REQUIRED_MSG),
     university: Yup.string().required(REQUIRED_MSG),
-    age: Yup.string().required(REQUIRED_MSG),
+    age: Yup.number().integer(TYPEERROR_MSG).required(REQUIRED_MSG),
     sex: Yup.string().required(REQUIRED_MSG),
     languages: Yup.array().required(REQUIRED_MSG),
     interests: Yup.array().required(REQUIRED_MSG),
