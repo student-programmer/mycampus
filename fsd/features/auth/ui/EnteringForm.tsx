@@ -1,7 +1,13 @@
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React from "react";
 
-export const EnteringForm = ({toggleSignIn, toggleSignUp}) => {
+interface EnteringFormProps {
+    toggleSignIn: () => void;
+    toggleSignUp: () => void;
+}
+
+
+export const EnteringForm = ({toggleSignIn, toggleSignUp}: EnteringFormProps) => {
     return (
         <>
             <h1 className={ l.auth }>Sign In</h1>

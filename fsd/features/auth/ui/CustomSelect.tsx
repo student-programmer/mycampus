@@ -2,7 +2,26 @@ import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React from "react";
 import { Select } from "antd";
 
-export const CustomSelect = (props) => {
+interface OptionType {
+    value: string;
+    label: string;
+}
+
+interface CustomSelectProps {
+    id: string;
+    name: string;
+    status: 'error' | undefined;  // Статус ошибки
+    placeholder: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;  // Обработчик изменения
+    options: OptionType[];  // Массив опций для селекта
+}
+
+interface InputFieldProps {
+    props: CustomSelectProps;
+}
+
+
+export const CustomSelect = ({props}: InputFieldProps) => {
     return (
         <Select
             { ...props }

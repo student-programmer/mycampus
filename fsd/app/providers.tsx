@@ -20,13 +20,12 @@ export const AppProviders = ({children}: { children: React.ReactNode }) => {
                     Input: {
                         errorActiveShadow: '#F43F5E',
                         activeShadow: '0 0 0 2px #84cc16',
-                        marginInlineEnd: "10px",
-                        paddingInline: "16px",
-                        paddingBlock: '16px',
-                        paddingInlineSM: '4px',
+                        paddingInline: 16,
+                        paddingBlock: 16,
+                        paddingInlineSM: 4,
                     },
                     Select: {
-                        activeShadow: '0 0 0 2px #84cc16',
+                        activeBorderColor: '#84cc16',
                         colorError: '#ff4d4f',
                         colorErrorHover: '#ff4d4f',
                     }

@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 
 const REQUIRED_MSG = 'This field is required';
 const EMAIL_MSG = 'Invalid type of email!';
-const TYPEERROR_MSG = 'Number should be integer value';
 const INVALID_MSG = 'Passwords must match!';
 
 export const SignInSchema = Yup.object({
@@ -33,13 +32,4 @@ export const SignUpSchema = Yup.object({
         .test('comparePass', INVALID_MSG, (value, context) => {
             return value === context.parent?.password;
         }),
-
-    // fullName: Yup.string().required(REQUIRED_MSG),
-    // university: Yup.string().required(REQUIRED_MSG),
-    // age: Yup.number().integer(TYPEERROR_MSG).required(REQUIRED_MSG),
-    // sex: Yup.string().required(REQUIRED_MSG),
-    // languages: Yup.array().required(REQUIRED_MSG),
-    // interests: Yup.array().required(REQUIRED_MSG),
-    // photo: Yup.string().required(REQUIRED_MSG),
-    // location: Yup.string().required(REQUIRED_MSG)
 });

@@ -1,7 +1,8 @@
 import userService from "@/service/user";
+import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
 
 const userActions = {
-    register: async (values) => {
+    register: async (values: UserRegisterRequest) => {
         const [data, error] = await userService.register(values);
 
         if (error) {

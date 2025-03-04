@@ -5,6 +5,24 @@ import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 
 type TagRender = SelectProps['tagRender'];
 
+interface OptionType {
+    value: string;
+    label: string;
+}
+
+interface CustomSelectProps {
+    id: string;
+    name: string;
+    status: 'error' | undefined; // или просто string, если статус может быть чем-то кроме 'error'
+    placeholder: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // для поля ввода
+    option: OptionType[]; // предполагаю, что interests — это массив строк, если тип другой, измените его
+}
+
+interface InputFieldProps {
+    props: CustomSelectProps;
+}
+
 
 const tagRender: TagRender = (props) => {
     const {label, value, closable, onClose} = props;
@@ -25,7 +43,7 @@ const tagRender: TagRender = (props) => {
     );
 };
 
-export const CustomMultipleSelect = (props) => {
+export const CustomMultipleSelect = ({props}: InputFieldProps) => {
 
     const options: SelectProps['options'] = props.option;
 

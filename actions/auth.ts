@@ -1,7 +1,8 @@
 import authService from "@/service/auth";
+import { LoginRequest } from "@/fsd/shared/api/authApi";
 
 const authActions = {
-    login: async (values) => {
+    login: async (values: LoginRequest) => {
         const [data, error] = await authService.login(values);
 
         if (error) {

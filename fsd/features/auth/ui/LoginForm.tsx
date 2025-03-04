@@ -1,4 +1,5 @@
-'use client';
+'use client'
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import l from './LoginForm.module.scss';
@@ -15,7 +16,7 @@ import { EnteringForm } from "@/fsd/features/auth/ui/EnteringForm";
 
 const LoginForm = () => {
     const router = useRouter();
-    const [form, setForm] = useState<string>(null)
+    const [form, setForm] = useState<string | null>(null)
 
     const handleLogin = () => {
         router.push('/connects');
@@ -42,12 +43,11 @@ const LoginForm = () => {
             case 'Business':
                 return < BusinessForm handleLogin={ handleLogin }/>
             case 'SignIn':
-                return < SignInForm handleLogin={ handleLogin }/>
+                return < SignInForm/>
             case 'SignUp':
-                return < SignUpForm handleLogin={ handleLogin } setForm={ setForm }/>
+                return < SignUpForm setForm={ setForm }/>
             case null:
-                return < EnteringForm handleLogin={ handleLogin } toggleSignIn={ toggleSignIn }
-                                      toggleSignUp={ toggleSignUp }/>;
+                return < EnteringForm toggleSignIn={ toggleSignIn } toggleSignUp={ toggleSignUp }/>;
         }
     }
 
@@ -73,7 +73,7 @@ const LoginForm = () => {
                 </button>
             </div>
             <div className={ l.background } style={ {backgroundImage: `url(${ BG.src })`} }></div>
-            { form !== 'Business' && (
+            { (form !== 'Business' && form !== 'SignUp') && (
                 <div className={ l.logo }>
                     <LogoIcon/>
                     <p className={ l.logo_text }>Your UAE Student life</p>

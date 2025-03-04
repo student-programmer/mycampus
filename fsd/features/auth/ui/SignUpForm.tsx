@@ -7,9 +7,14 @@ import { Input } from "antd";
 import userActions from "@/actions/user";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
+
+interface SignUpFormProps {
+    setForm: (value: string | null) => void;
+}
 
 
-export const SignUpForm = ({setForm}) => {
+export const SignUpForm = ({setForm}: SignUpFormProps) => {
 
     const [disabled, setDisabled] = useState(false)
 
@@ -36,7 +41,7 @@ export const SignUpForm = ({setForm}) => {
         validateOnChange: false,
     })
 
-    const handleRegister = async (values) => {
+    const handleRegister = async (values: UserRegisterRequest) => {
         await userActions.register(values).then(r => {
             setForm(null)
         })
@@ -134,9 +139,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.firstName }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("firstName", null);
+                            formik.setFieldError("firstName", undefined);
                         } }
-                        status={ !!formik.errors.firstName ? 'error' : null }
+                        status={ !!formik.errors.firstName ? 'error' : undefined }
                         placeholder="Enter your first name..."
                     />
                     { formik.errors.firstName && < ErrorComponent message={ formik.errors.firstName }/> }
@@ -152,9 +157,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.lastName }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("lastName", null);
+                            formik.setFieldError("lastName", undefined);
                         } }
-                        status={ !!formik.errors.lastName ? 'error' : null }
+                        status={ !!formik.errors.lastName ? 'error' : undefined }
                         placeholder="Enter your last name..."
                     />
                     { formik.errors.lastName && < ErrorComponent message={ formik.errors.lastName }/> }
@@ -171,9 +176,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.description }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("description", null);
+                            formik.setFieldError("description", undefined);
                         } }
-                        status={ !!formik.errors.description ? 'error' : null }
+                        status={ !!formik.errors.description ? 'error' : undefined }
                         placeholder="Enter your description..."
                     />
                     { formik.errors.description && < ErrorComponent message={ formik.errors.description }/> }
@@ -190,9 +195,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.birthDate }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("birthDate", null);
+                            formik.setFieldError("birthDate", undefined);
                         } }
-                        status={ !!formik.errors.birthDate ? 'error' : null }
+                        status={ !!formik.errors.birthDate ? 'error' : undefined }
                         placeholder="Enter your birth date..."
                     />
                     { formik.errors.birthDate && < ErrorComponent message={ formik.errors.birthDate }/> }
@@ -209,9 +214,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.email }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("email", null);
+                            formik.setFieldError("email", undefined);
                         } }
-                        status={ !!formik.errors.email ? 'error' : null }
+                        status={ !!formik.errors.email ? 'error' : undefined }
                         placeholder="Enter your email..."
                     />
                     { formik.errors.email && < ErrorComponent message={ formik.errors.email }/> }
@@ -228,9 +233,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.password }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("password", null);
+                            formik.setFieldError("password", undefined);
                         } }
-                        status={ !!formik.errors.password ? 'error' : null }
+                        status={ !!formik.errors.password ? 'error' : undefined }
                         prefix={ <LockIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Input password..."
@@ -254,9 +259,9 @@ export const SignUpForm = ({setForm}) => {
                         value={ formik.values.passwordRepeat }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("passwordRepeat", null);
+                            formik.setFieldError("passwordRepeat", undefined);
                         } }
-                        status={ !!formik.errors.passwordRepeat ? 'error' : null }
+                        status={ !!formik.errors.passwordRepeat ? 'error' : undefined }
                         prefix={ <LockIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Repeat password..."

@@ -1,7 +1,11 @@
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import { SolidWarning } from "@/public/solidWarning";
 
-export const ErrorComponent = ({message}) => {
+interface ErrorComponentProps {
+    message: string;
+}
+
+export const ErrorComponent = ({message}: ErrorComponentProps) => {
     return (
         <div className={ l.errorBox }>
             < SolidWarning/>
