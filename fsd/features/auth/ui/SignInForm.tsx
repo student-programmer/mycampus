@@ -1,3 +1,5 @@
+'use client'
+
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
@@ -8,28 +10,38 @@ import { SignInSchema } from "@/schemas/signIn";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { MailIcon } from "@/public/mailIcon";
 import { LockIcon } from "@/public/lockIcon";
+import authActions from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import { LoginRequest } from "@/fsd/shared/api/authApi";
 
 
-export const SignInForm = ({handleLogin}) => {
+export const SignInForm = () => {
 
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(false);
+    const router = useRouter();
 
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
-        onSubmit: (values) => {
-            console.log('here')
-            handleLogin();
-        },
+        onSubmit: async (values) => await handleLogin(values)
+        ,
         validationSchema: SignInSchema,
         validateOnChange: false,
     })
 
     useEffect(() => {
         setDisabled(!!formik.errors.password || !!formik.errors.email)
-    }, [formik.errors.password, formik.errors.email])
+    }, [formik.errors])
+
+
+    const handleLogin = async (values: LoginRequest) => {
+        await authActions.login(values).then(r => {
+            localStorage.setItem('jwtToken', r.access_token)
+            router.push('/connects')
+        })
+    }
 
     return (
         <>
@@ -47,9 +59,9 @@ export const SignInForm = ({handleLogin}) => {
                         value={ formik.values.email }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("email", null);
+                            formik.setFieldError("email", undefined);
                         } }
-                        status={ !!formik.errors.email ? 'error' : null }
+                        status={ !!formik.errors.email ? 'error' : undefined }
                         className={ l.input_field }
                         prefix={ <MailIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
@@ -68,9 +80,9 @@ export const SignInForm = ({handleLogin}) => {
                         value={ formik.values.password }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("password", null);
+                            formik.setFieldError("password", undefined);
                         } }
-                        status={ !!formik.errors.password ? 'error' : null }
+                        status={ !!formik.errors.password ? 'error' : undefined }
                         prefix={ <LockIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Input password..."
@@ -85,7 +97,7 @@ export const SignInForm = ({handleLogin}) => {
             </div>
             <button disabled={ disabled }
                     className={ disabled ? l.login_button : l.login_button_active }
-                    onClick={ () => formik.submitForm() }>
+                    onClick={ async () => await formik.submitForm() }>
                 Sign in
             </button>
             <div className={ l.additionally }>

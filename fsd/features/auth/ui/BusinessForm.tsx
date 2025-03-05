@@ -9,7 +9,11 @@ import { MailIcon } from "@/public/mailIcon";
 import { LockIcon } from "@/public/lockIcon";
 import { UserSquare } from "@/public/userSquare";
 
-export const BusinessForm = ({handleLogin}) => {
+interface BusinessFormProps {
+    handleLogin: () => void;
+}
+
+export const BusinessForm = ({handleLogin}: BusinessFormProps) => {
 
     const [disabled, setDisabled] = useState(false)
 
@@ -28,7 +32,7 @@ export const BusinessForm = ({handleLogin}) => {
 
     useEffect(() => {
         setDisabled(!!formik.errors.password || !!formik.errors.email || !!formik.errors.companyName)
-    }, [formik.errors.password, formik.errors.email, formik.errors.companyName])
+    }, [formik.errors])
 
     return (
         <>
@@ -47,9 +51,9 @@ export const BusinessForm = ({handleLogin}) => {
                         value={ formik.values.companyName }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("companyName", null);
+                            formik.setFieldError("companyName", undefined);
                         } }
-                        status={ !!formik.errors.companyName ? 'error' : null }
+                        status={ !!formik.errors.companyName ? 'error' : undefined }
                         prefix={ <UserSquare
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Enter your company name..."
@@ -67,9 +71,9 @@ export const BusinessForm = ({handleLogin}) => {
                         value={ formik.values.email }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("email", null);
+                            formik.setFieldError("email", undefined);
                         } }
-                        status={ !!formik.errors.email ? 'error' : null }
+                        status={ !!formik.errors.email ? 'error' : undefined }
                         prefix={ <MailIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Enter your email..."
@@ -87,9 +91,9 @@ export const BusinessForm = ({handleLogin}) => {
                         value={ formik.values.password }
                         onChange={ (e) => {
                             formik.handleChange(e);
-                            formik.setFieldError("password", null);
+                            formik.setFieldError("password", undefined);
                         } }
-                        status={ !!formik.errors.password ? 'error' : null }
+                        status={ !!formik.errors.password ? 'error' : undefined }
                         prefix={ <LockIcon
                             style={ {fontSize: "22px", display: "flex", alignItems: "center", color: "white"} }/> }
                         placeholder="Input password..."

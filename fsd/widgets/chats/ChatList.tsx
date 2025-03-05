@@ -4,11 +4,16 @@ import { List, Avatar, Typography } from 'antd';
 import Link from 'next/link';
 import style from './ui/Chat.module.scss';
 import React from "react";
+import { Chat } from "@/fsd/entities/chats";
 
 const {Text} = Typography;
 
+interface ChatListProps {
+    chats: Chat[];  // Chat должен быть типом, который ты используешь для элементов чатов
+}
 
-const ChatList = ({chats}) => {
+
+const ChatList = ({chats}: ChatListProps) => {
     return (
         <List
             itemLayout='horizontal'
