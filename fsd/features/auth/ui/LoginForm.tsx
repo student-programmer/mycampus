@@ -21,6 +21,9 @@ const LoginForm = () => {
     const handleLogin = () => {
         router.push('/connects');
     };
+    const handlePreLogin = () => {
+        router.push('/pre-connects');
+    };
 
     const toggleBusinessAccount = () => {
         setForm(form === 'Business' ? null : 'Business');
@@ -47,7 +50,13 @@ const LoginForm = () => {
             case 'SignUp':
                 return < SignUpForm setForm={ setForm }/>
             case null:
-                return < EnteringForm toggleSignIn={ toggleSignIn } toggleSignUp={ toggleSignUp }/>;
+                return (
+									<EnteringForm
+										toggleSignIn={toggleSignIn}
+										toggleSignUp={toggleSignUp}
+										handleLogin={handlePreLogin}
+									/>
+								);
         }
     }
 
