@@ -43,7 +43,7 @@ export const EnteringForm = ({
 				<p className={l.password}>Forgot your password?</p>
 			</div>
 			<div className={l.additionally} onClick={handleLogin}>
-				<p className={l.password}>continue without logging in</p>
+				<p className={l.password}>Continue without logging in</p>
 			</div>
 		</>
 	);

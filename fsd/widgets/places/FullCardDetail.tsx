@@ -1,114 +1,121 @@
-import React from "react";
-import style from "./ui/placeCardDesc.module.scss";
-import { CampusReviews } from "@/fsd/shared/ui/CampusReviews/CampusReviews";
-import { Contacts } from "@/fsd/shared/ui/Contacts/Contact";
-import { Overview } from "@/fsd/shared/ui/Overview/Overview";
-import { Divider, Rate } from "antd";
-import { Place } from "@/fsd/entities/places";
-import Image from "next/image";
-import closeIcon from "../../../public/iconClose.svg";
-import AdressIcon from "@/public/adressIcon";
+import React from 'react';
+import style from './ui/placeCardDesc.module.scss';
+import { CampusReviews } from '@/fsd/shared/ui/CampusReviews/CampusReviews';
+import { Contacts } from '@/fsd/shared/ui/Contacts/Contact';
+import { Overview } from '@/fsd/shared/ui/Overview/Overview';
+import { Divider, Rate } from 'antd';
+import { Place } from '@/fsd/entities/places';
+import Image from 'next/image';
+import closeIcon from '../../../public/iconClose.svg';
+import AdressIcon from '@/public/adressIcon';
 
 const FullCardDetail = ({
-  place,
-  openDetail,
-  setOpenDetail,
+	place,
+	openDetail,
+	setOpenDetail,
 }: {
-  place: Place;
-  openDetail: boolean;
-  setOpenDetail: (v: boolean) => void;
+	place: Place;
+	openDetail: boolean;
+	setOpenDetail: (v: boolean) => void;
 }) => {
-  return (
-    <div className={style.placeDetail}>
-      <div>
-        <div className={style.headerWrapper}>
-          <div className={style.headerMainWrapper}>
-            <h2 className={style.placeCardHeader}>{place.name}</h2>
-            {openDetail && (
-              <Image
-                src={closeIcon}
-                alt={place.name}
-                onClick={() => setOpenDetail(false)}
-              />
-            )}
-          </div>
-          <div className={style.restStars}>
-            <div className={style.rateContainer}>
-              <Rate defaultValue={place.rate} allowHalf />
-              <p className={style.paragraphRate}>{place.rate}</p>
-            </div>
-            <div className={style.textContainer}>
-              <p className={style.paragraphRate}>•</p>
-              <p className={style.paragraphRate}>{place.category}</p>
-            </div>
-          </div>
-        </div>
-        <div className={style.adressContainer}>
-          <AdressIcon />
-          <p className={style.paragraphRate}>{place.address}</p>
-        </div>
-        <div className={style.keyWrapper}>
-          <p className={style.keyHeader}>Key:</p>
-          <ul className={style.keys}>
-            {place.key.map((i, index) => {
-              return (
-                <li className={style.liKey} key={index}>
-                  {i}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-      <div className={style.contactsWrapper}>
-        <h2 className={style.contactsH2}>Contacts:</h2>
-        <Contacts
-          phoneNumber={place.contacts.phone}
-          instagram={place.contacts.inst}
-          maps={place.contacts.maps}
-          website={place.contacts.web}
-        />
-      </div>
-      <div className={style.hoursWrapper}>
-        <p className={style.hoursHeaderWrapper}>Opening hours:</p>
-        <Divider className={style.divider} />
-        <div className={style.hoursWrapperMain}>
-          <div className={style.hourWrapper}>
-            <p className={style.headerText}>Mon-Fri:</p>
-            <div className={style.timeWrapper}>
-              <p className={style.timeText}>12:00 pm</p>
-              <p className={style.timeText}>–</p>
-              <p className={style.timeText}>09:00 pm</p>
-            </div>
-          </div>
-          <Divider className={style.divider} />
-          <div className={style.hourWrapper}>
-            <p className={style.headerText}>Sat-Sun:</p>
-            <div className={style.timeWrapper}>
-              <p className={style.timeText}>01:00 pm</p>
-              <p className={style.timeText}>–</p>
-              <p className={style.timeText}>10:00 pm</p>
-            </div>
-          </div>
-          <Divider className={style.divider} />
-        </div>
-      </div>
-      <Overview text={place.description} />
-      <div className={style.campusReviews}>
-        <h2 className={style.reviewCampusHeader}>Campus reviews:</h2>
-        {place.reviews.map((i, index) => {
-          return (
-            <CampusReviews
-              key={index}
-              date={i.date}
-              name={i.name}
-              text={i.text}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+	// Значения по умолчанию, если данные из API отсутствуют
+	const defaultPlace = {
+		name: 'Название места',
+		rating: 0,
+		category: 'Категория',
+		address: 'Адрес не указан',
+		keywords: 'Ключевые слова не указаны',
+		website: 'Сайт не указан',
+		instagram: 'Instagram не указан',
+		phoneNumber: 'Телефон не указан',
+		workingHours: 'Часы работы не указаны',
+		description: 'Описание отсутствует',
+	};
+
+	// Используем данные из API или значения по умолчанию
+	const currentPlace = {
+		name: place.name || defaultPlace.name,
+		rating: place.rating || defaultPlace.rating,
+		category: place.category || defaultPlace.category,
+		address: place.address || defaultPlace.address,
+		keywords: place.keywords || defaultPlace.keywords,
+		website: place.website || defaultPlace.website,
+		instagram: place.instagram || defaultPlace.instagram,
+		phoneNumber: place.phoneNumber || defaultPlace.phoneNumber,
+		workingHours: place.workingHours || defaultPlace.workingHours,
+		description: place.description || defaultPlace.description,
+	};
+
+	// Разделяем keywords на массив для отображения
+	const keywordsArray = currentPlace.keywords.split(',');
+
+	return (
+		<div className={style.placeDetail}>
+			<div>
+				<div className={style.headerWrapper}>
+					<div className={style.headerMainWrapper}>
+						<h2 className={style.placeCardHeader}>{currentPlace.name}</h2>
+						{openDetail && (
+							<Image
+								src={closeIcon}
+								alt={currentPlace.name}
+								onClick={() => setOpenDetail(false)}
+							/>
+						)}
+					</div>
+					<div className={style.restStars}>
+						<div className={style.rateContainer}>
+							<Rate defaultValue={currentPlace.rating} allowHalf disabled />
+							<p className={style.paragraphRate}>{currentPlace.rating}</p>
+						</div>
+						<div className={style.textContainer}>
+							<p className={style.paragraphRate}>•</p>
+							<p className={style.paragraphRate}>{currentPlace.category}</p>
+						</div>
+					</div>
+				</div>
+				<div className={style.adressContainer}>
+					<AdressIcon />
+					<p className={style.paragraphRate}>{currentPlace.address}</p>
+				</div>
+				<div className={style.keyWrapper}>
+					<p className={style.keyHeader}>Key:</p>
+					<ul className={style.keys}>
+						{keywordsArray.map((keyword, index) => (
+							<li className={style.liKey} key={index}>
+								{keyword.trim()}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div className={style.contactsWrapper}>
+				<h2 className={style.contactsH2}>Contacts:</h2>
+				<Contacts
+					phoneNumber={currentPlace.phoneNumber}
+					instagram={currentPlace.instagram}
+					website={currentPlace.website}
+				/>
+			</div>
+			<div className={style.hoursWrapper}>
+				<p className={style.hoursHeaderWrapper}>Opening hours:</p>
+				<Divider className={style.divider} />
+				<div className={style.hoursWrapperMain}>
+					<p className={style.timeText}>{currentPlace.workingHours}</p>
+				</div>
+			</div>
+			<Overview text={currentPlace.description} />
+			<div className={style.campusReviews}>
+				<h2 className={style.reviewCampusHeader}>Campus reviews:</h2>
+				{/* Отзывы пока не реализованы в интерфейсе Place */}
+				<CampusReviews
+					date='2023-10-01'
+					name='Иван Иванов'
+					text='Отличное место!'
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default FullCardDetail;
