@@ -1,11 +1,21 @@
+// export interface User {
+// 	id: string;
+// 	name: string;
+// 	email: string;
+// 	age: number;
+// 	gender: 'male' | 'female';
+// 	isLoading: boolean;
+// 	profile: Profile;
+// }
+
+
 export interface User {
-	id: string;
-	name: string;
-	email: string;
-	age: number;
-	gender: 'male' | 'female';
-	isLoading: boolean;
-	profile: Profile;
+	id: number;
+	authUserId: number;
+	firstName: string;
+	lastName: string;
+	birthDate: string;
+	description: string;
 }
 
 interface Profile {
