@@ -25,6 +25,12 @@ export const SignUpSchema = Yup.object({
     lastName: Yup.string().required(REQUIRED_MSG),
     description: Yup.string().required(REQUIRED_MSG),
     birthDate: Yup.date().required(REQUIRED_MSG),
+    sex: Yup.string().required(REQUIRED_MSG),
+    languages: Yup.array().required(REQUIRED_MSG),
+    interests: Yup.array().required(REQUIRED_MSG),
+    location: Yup.string().required(REQUIRED_MSG),
+    university: Yup.string().required(REQUIRED_MSG),
+    photo: Yup.string().required(REQUIRED_MSG),
     email: Yup.string().email().required(REQUIRED_MSG),
     password: Yup.string().required(REQUIRED_MSG),
     passwordRepeat: Yup.string()

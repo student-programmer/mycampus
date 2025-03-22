@@ -211,9 +211,6 @@
 			  padding-right: 16px !important;
 
               .ant-select-selection-wrap {
-                  .ant-select-selection-search {
-
-                  }
 
                   .ant-select-selection-placeholder {
                       color: rgba(197, 200, 198, 0.6);
@@ -302,7 +299,7 @@
             }
 
 			.ant-select-selection-overflow{
-				padding: 4px 5px;
+				padding: 4px 0;
 
                 .ant-select-selection-overflow-item{
                     align-self: auto;

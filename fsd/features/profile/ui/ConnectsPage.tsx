@@ -1,4 +1,5 @@
 'use client';
+
 import { Button } from 'antd';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,15 +11,23 @@ import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
 import { useRouter } from 'next/navigation';
 import CountyIcon from '@/public/chinaIcon.svg';
-import { useState } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
 import LeftPageIcon from '@/fsd/widgets/chat/ui/LeftPageIcon';
 
 const ConnectsPage = () => {
 	const userList = useProfilesStore(store => store.profileList);
 
+    const router = useRouter();
+	const toggleBack = () => {
+		router.push('/');
+	};
 	return (
 		<div className={style.profileWrapper}>
+			<div className={style.back_button}>
+				<button className={style.iconGoBack} onClick={toggleBack}>
+					<LeftPageIcon />
+				</button>
+			</div>
 			<Swiper
 				direction={'vertical'}
 				slidesPerView={1}
@@ -40,9 +49,6 @@ const ConnectsPage = () => {
 
 const UserCard = ({ user }: { user: User }) => {
 	const router = useRouter();
-	const toggleBack = () => {
-		router.push('/');
-	};
 	const moreInfo = () => {
 		// router.push(`/connects/${user.id}`);
 	};
@@ -52,11 +58,6 @@ const UserCard = ({ user }: { user: User }) => {
 
 	return (
 		<div className={style.profileWrapperMain}>
-			<div className={style.back_button}>
-				<button className={style.iconGoBack} onClick={toggleBack}>
-					<LeftPageIcon />
-				</button>
-			</div>
 			<div className={style.photoBack}>
 				<Image src={user.profile.photo} alt='' width={358} height={374} />
 			</div>

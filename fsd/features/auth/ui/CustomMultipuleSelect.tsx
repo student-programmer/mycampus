@@ -7,20 +7,15 @@ type TagRender = SelectProps['tagRender'];
 
 interface OptionType {
     value: string;
-    label: string;
 }
 
-interface CustomSelectProps {
+
+interface InputFieldProps {
     id: string;
-    name: string;
     status: 'error' | undefined; // или просто string, если статус может быть чем-то кроме 'error'
     placeholder: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // для поля ввода
     option: OptionType[]; // предполагаю, что interests — это массив строк, если тип другой, измените его
-}
-
-interface InputFieldProps {
-    props: CustomSelectProps;
 }
 
 
@@ -43,13 +38,16 @@ const tagRender: TagRender = (props) => {
     );
 };
 
-export const CustomMultipleSelect = ({props}: InputFieldProps) => {
+export const CustomMultipleSelect = ({id, status, placeholder, onChange, option}: InputFieldProps) => {
 
-    const options: SelectProps['options'] = props.option;
+    const options: SelectProps['options'] = option;
 
     return (
         <Select
-            { ...props }
+            id={ id }
+            status={ status }
+            placeholder={ placeholder }
+            onChange={ onChange }
             mode="multiple"
             tagRender={ tagRender }
             className={ l.multiple_select_item }

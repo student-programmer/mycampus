@@ -51,12 +51,12 @@ const LoginForm = () => {
                 return < SignUpForm setForm={ setForm }/>
             case null:
                 return (
-									<EnteringForm
-										toggleSignIn={toggleSignIn}
-										toggleSignUp={toggleSignUp}
-										handleLogin={handlePreLogin}
-									/>
-								);
+                    <EnteringForm
+                        toggleSignIn={ toggleSignIn }
+                        toggleSignUp={ toggleSignUp }
+                        handleLogin={ handlePreLogin }
+                    />
+                );
         }
     }
 
