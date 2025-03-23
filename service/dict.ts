@@ -1,5 +1,5 @@
 import axiosInstance from '../plugins/axios';
-import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
+import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
 
 const dictService = {
     getAllUniversities: async () => {

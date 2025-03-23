@@ -4,14 +4,36 @@ export interface User {
     email: string;
 }
 
-export interface UserRegisterRequest {
+export interface UserRegisterActionsRequest {
     firstName: string,
     lastName: string,
     description: string,
     birthDate: string,
     email: string,
+    sex: string,
+    languages: number[],
+    interests: number[],
+    location: string,
+    university: string,
+    photo: string,
     password: string,
-    passwordRepeat: string,
+    passwordRepeat: string | null,
 }
+
+export interface UserRegisterServiceRequest {
+    firstName: string,
+    lastName: string,
+    description: string,
+    birthDate: string,
+    email: string,
+    sex: string,
+    languages: number[],
+    interests: number[],
+    location: string,
+    university: string,
+    photo: string,
+    password: string,
+}
+
 
 

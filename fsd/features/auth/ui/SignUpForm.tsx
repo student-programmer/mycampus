@@ -1,3 +1,5 @@
+'use client'
+
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React, { useEffect, useState } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
@@ -7,9 +9,10 @@ import { Input } from "antd";
 import userActions from "@/actions/user";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
+import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
 import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
+import { useDictStore } from "@/fsd/app/stores/dict/store";
 
 interface SignUpFormProps {
     setForm: (value: string | null) => void;
@@ -18,7 +21,16 @@ interface SignUpFormProps {
 
 export const SignUpForm = ({setForm}: SignUpFormProps) => {
 
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState<boolean>(false)
+
+    const {
+        LanguageList,
+        UniversityList,
+        InterestsList,
+        fetchUniversities,
+        fetchInterests,
+        fetchLanguages
+    } = useDictStore();
 
     const formik = useFormik({
         initialValues: {
@@ -27,8 +39,8 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             description: '',
             birthDate: '',
             sex: '',
-            languages: '',
-            interests: '',
+            languages: [],
+            interests: [],
             location: '',
             university: '',
             photo: '',
@@ -41,43 +53,23 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         validateOnChange: false,
     })
 
-    const handleRegister = async (values: UserRegisterRequest) => {
+    const handleRegister = async (values: UserRegisterActionsRequest) => {
         await userActions.register(values).then(r => {
-            setForm(null)
+            setForm('SignIn')
         })
     }
+
+    useEffect(() => {
+        fetchUniversities();
+        fetchInterests();
+        fetchLanguages();
+    }, [])
 
     useEffect(() => {
         setDisabled(!!formik.errors.firstName || !!formik.errors.lastName
             || !!formik.errors.description || !!formik.errors.birthDate || !!formik.errors.email
             || !!formik.errors.password || !!formik.errors.passwordRepeat)
     }, [formik.errors])
-
-    const uni = [
-        {value: 'Politeh', label: 'Politeh'},
-        {value: 'ITMO', label: 'ITMO'},
-        {value: 'Bonch', label: 'Bonch'},
-    ]
-
-    const interests = [
-        {value: 'Yoga'},
-        {value: 'Interest Item'},
-        {value: 'Cooking'},
-        {value: 'Books'},
-        {value: 'Cultural Events'},
-        {value: 'International Diplomacy'},
-        {value: 'History'},
-        {value: 'Photography'},
-        {value: 'Travel'},
-        {value: 'Job'},
-    ];
-
-    const language = [
-        {value: 'Russian'},
-        {value: 'Hindi'},
-        {value: 'Chinese'},
-        {value: 'English'},
-    ]
 
     const sex = [
         {value: 'male', label: 'Male'},
@@ -210,10 +202,13 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                             placeholder="Enter your university..."
                             status={ !!formik.errors.university ? 'error' : undefined }
                             onChange={ (e) => {
-                                formik.setFieldValue("university", e);
+                                formik.setFieldValue("university", parseInt(e.toString()));
                                 formik.setFieldError("university", undefined);
                             } }
-                            options={ uni }
+                            options={ UniversityList.map(item => ({
+                                value: item.id.toString(),
+                                label: item.name,
+                            })) }
                         />
                     </div>
                     { formik.errors.university && < ErrorComponent message={ formik.errors.university }/> }
@@ -228,10 +223,19 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         status={ !!formik.errors.languages ? 'error' : undefined }
                         placeholder="Enter your languages..."
                         onChange={ (e) => {
-                            formik.setFieldValue('languages', e)
-                            formik.setFieldError("languages", undefined);
+
+                            const selectedNames = Array.isArray(e) ? e : [e];
+                            const selectedIds = selectedNames.map(name => {
+                                const selectedItem = LanguageList.find(item => item.name === name);
+                                return selectedItem ? selectedItem.id : null;
+                            }).filter(id => id !== null);
+
+                            formik.setFieldValue('languages', selectedIds);
+                            formik.setFieldError('languages', undefined);
                         } }
-                        option={ language }
+                        option={ LanguageList.map(item => ({
+                            value: item.name,
+                        })) }
                     />
 
                     { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }
@@ -246,10 +250,19 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         status={ !!formik.errors.interests ? 'error' : undefined }
                         placeholder="Enter your interests..."
                         onChange={ (e) => {
-                            formik.setFieldValue('interests', e)
-                            formik.setFieldError("interests", undefined);
+
+                            const selectedNames = Array.isArray(e) ? e : [e];
+                            const selectedIds = selectedNames.map(name => {
+                                const selectedItem = InterestsList.find(item => item.name === name);
+                                return selectedItem ? selectedItem.id : null;
+                            }).filter(id => id !== null);
+
+                            formik.setFieldValue('interests', selectedIds);
+                            formik.setFieldError('interests', undefined);
                         } }
-                        option={ interests }
+                        option={ InterestsList.map(item => ({
+                            value: item.name,
+                        })) }
                     />
                     { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }
                 </div>
@@ -342,11 +355,12 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     { formik.errors.passwordRepeat && < ErrorComponent message={ formik.errors.passwordRepeat }/> }
                 </div>
             </div>
-            <button disabled={ disabled } className={ disabled ? l.login_button : l.login_button_active }
+            <button disabled={ disabled }
+                    className={ disabled ? l.login_button : l.login_button_active }
                     onClick={ async () => await formik.submitForm() }>
                 Create account
             </button>
-
+            { console.log(formik.values, 'formik.values') }
         </>
     )
 }

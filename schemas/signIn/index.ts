@@ -26,8 +26,12 @@ export const SignUpSchema = Yup.object({
     description: Yup.string().required(REQUIRED_MSG),
     birthDate: Yup.date().required(REQUIRED_MSG),
     sex: Yup.string().required(REQUIRED_MSG),
-    languages: Yup.array().required(REQUIRED_MSG),
-    interests: Yup.array().required(REQUIRED_MSG),
+    languages: Yup.array().test('checkEmptyLanguages', REQUIRED_MSG, (value) => {
+        return value?.length !== 0;
+    }),
+    interests: Yup.array().test('checkEmptyInterests', REQUIRED_MSG, (value) => {
+        return value?.length !== 0;
+    }),
     location: Yup.string().required(REQUIRED_MSG),
     university: Yup.string().required(REQUIRED_MSG),
     photo: Yup.string().required(REQUIRED_MSG),

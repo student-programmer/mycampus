@@ -47,6 +47,22 @@ export const useProfilesStore = create<ProfilesState>(set => ({
 			set({ currentProfile: null }); // Оставляем текущий профиль пустым в случае ошибки
 		}
 	},
+	//
+	// fetchProfileById: async (id: number) => {
+	// 	try {
+	// 		const data = await connectActions.getProfileById(id);
+	//
+	// 		if (!data) {
+	// 			console.warn(`API не вернул данные для id=${id}`);
+	// 			set({ currentProfile: null }); // Оставляем текущий профиль пустым
+	// 		} else {
+	// 			set({ currentProfile: data });
+	// 		}
+	// 	} catch (error) {
+	// 		console.error(`Ошибка при загрузке профиля с id=${id}:`, error);
+	// 		set({ currentProfile: null }); // Оставляем текущий профиль пустым в случае ошибки
+	// 	}
+	// },
 
 	// Установка текущего профиля вручную
 	setCurrentProfile: user => set({ currentProfile: user }),

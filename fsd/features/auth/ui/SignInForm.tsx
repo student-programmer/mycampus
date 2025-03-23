@@ -25,8 +25,7 @@ export const SignInForm = () => {
             email: '',
             password: '',
         },
-        onSubmit: async (values) => await handleLogin(values)
-        ,
+        onSubmit: async (values) => await handleLogin(values),
         validationSchema: SignInSchema,
         validateOnChange: false,
     })
