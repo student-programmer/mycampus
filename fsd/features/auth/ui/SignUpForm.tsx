@@ -6,13 +6,13 @@ import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { Input } from "antd";
-import userActions from "@/actions/user";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
 import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
 import { useDictStore } from "@/fsd/app/stores/dict/store";
+import authActions from "@/actions/auth";
 
 interface SignUpFormProps {
     setForm: (value: string | null) => void;
@@ -54,7 +54,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
     })
 
     const handleRegister = async (values: UserRegisterActionsRequest) => {
-        await userActions.register(values).then(r => {
+        await authActions.register(values).then(r => {
             setForm('SignIn')
         })
     }
@@ -360,7 +360,6 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     onClick={ async () => await formik.submitForm() }>
                 Create account
             </button>
-            { console.log(formik.values, 'formik.values') }
         </>
     )
 }

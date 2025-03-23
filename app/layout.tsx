@@ -10,9 +10,7 @@ export default function RootLayout({children,}: Readonly<{
         <html lang='en'>
             <body>
                 <AppProviders>
-                    <>
-                        { children }
-                    </>
+                    { children }
                 </AppProviders>
             </body>
         </html>

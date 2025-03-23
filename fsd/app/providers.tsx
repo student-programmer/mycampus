@@ -1,15 +1,9 @@
 'use client';
 
-import { NavMenu } from '../widgets/navMenu/NavMenu';
-import { usePathname } from 'next/navigation';
 import { ConfigProvider } from 'antd';
 import React from 'react';
 
 export const AppProviders = ({children}: { children: React.ReactNode }) => {
-    const pathname = usePathname();
-    const showNavMenu =
-        pathname !== '/' && pathname !== '/login' && pathname !== '/pre-connects';
-
     return (
         <ConfigProvider
             theme={ {
@@ -33,17 +27,7 @@ export const AppProviders = ({children}: { children: React.ReactNode }) => {
                 },
             } }
         >
-            <div
-                style={ {
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                } }
-            >
-                { children }
-                { showNavMenu && <NavMenu/> }
-            </div>
+            { children }
         </ConfigProvider>
     );
 };

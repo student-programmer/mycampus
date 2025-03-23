@@ -1,10 +1,11 @@
 import axiosInstance from '../plugins/axios';
-import { UserRegisterServiceRequest } from "@/fsd/shared/api/userApi";
 
 const userService = {
-    register: async (values: UserRegisterServiceRequest) => {
+
+    getCurrentProfile: async (token: string) => {
         try {
-            const {data} = await axiosInstance.post('/user/register', values);
+            axiosInstance.defaults.headers.Authorization = `Bearer ${token}`;
+            const {data} = await axiosInstance.get('user/profile');
             return [data, null];
         } catch (error) {
             return [null, error];

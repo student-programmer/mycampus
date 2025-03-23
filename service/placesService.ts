@@ -5,7 +5,7 @@ const placesService = {
 	// Получить все места
 	getAllPlaces: async (): Promise<[Place[] | null, any]> => {
 		try {
-			const { data } = await axiosInstance.get('/api/v1/places');
+			const { data } = await axiosInstance.get('places');
 			return [data, null];
 		} catch (error) {
 			console.error('Ошибка при получении списка мест:', error);
@@ -16,7 +16,7 @@ const placesService = {
 	// Получить место по ID
 	getPlaceById: async (id: number): Promise<[Place | null, any]> => {
 		try {
-			const { data } = await axiosInstance.get(`/api/v1/places/${id}`);
+			const { data } = await axiosInstance.get(`places/${id}`);
 			return [data, null];
 		} catch (error) {
 			console.error(`Ошибка при получении места ${id}:`, error);
