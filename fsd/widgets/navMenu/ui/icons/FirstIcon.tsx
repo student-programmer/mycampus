@@ -1,9 +1,8 @@
-import React from 'react';
 interface Props {
 	className?: string;
 }
 
-const FirstIcon = ({ className }: Props) => {
+export const FirstIcon = ({ className }: Props) => {
 	return (
 		<svg
 			className={className}
@@ -23,5 +22,3 @@ const FirstIcon = ({ className }: Props) => {
 		</svg>
 	);
 };
-
-export default FirstIcon;

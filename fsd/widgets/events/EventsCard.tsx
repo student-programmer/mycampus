@@ -8,9 +8,6 @@ import photo1 from "../../../public/PedroGonzalez.png";
 import photo2 from "../../../public/photo2.png";
 import CardInfoAndDetail from "./CardInfoAndDetail";
 import FullInfoDetail from "./FullInfoDetail";
-export interface EventCardProps {
-  event: Event;
-}
 
 const EventCard = ({
   event,

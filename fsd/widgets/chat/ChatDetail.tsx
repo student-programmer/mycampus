@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import { Avatar } from 'antd';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { mockChats } from '../../entities/chats';
 import style from './ui/chatDetail.module.scss';
-import LeftPageIcon from './ui/LeftPageIcon';
-import SendIcon from './ui/SendIcon';
 import { Message } from "@/fsd/entities/chats/model/chats";
 import { useChatsStore } from "@/fsd/app/stores/chats/store";
+import { LeftPageIcon, SendIcon } from './ui';
 
 
 const ChatDetail = () => {
@@ -21,7 +20,7 @@ const ChatDetail = () => {
     const messageList = useChatsStore(store => store.messageList);
     const addMessage = useChatsStore(store => store.addMessage)
 
-    const messagesEndRef = React.createRef<HTMLDivElement>();
+    const messagesEndRef = createRef<HTMLDivElement>();
 
     useEffect(() => {
         messagesEndRef.current?.lastElementChild?.scrollIntoView()

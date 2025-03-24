@@ -6,7 +6,8 @@ import style from './profileInfo.module.scss';
 import { useEffect, useState } from 'react';
 import { type User } from '@/fsd/entities/profile';
 import { Button } from 'antd';
-import LeftPageIcon from '@/fsd/widgets/chat/ui/LeftPageIcon';
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
+
 
 const generateAvatar = (firstName?: string, lastName?: string) => {
 	// Если нет имени или фамилии — ставим заглушку "?"

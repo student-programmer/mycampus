@@ -9,10 +9,10 @@ import 'swiper/css/pagination';
 import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
 import { usePathname, useRouter } from 'next/navigation';
-import CountyIcon from '@/public/chinaIcon.svg';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
-import LeftPageIcon from '@/fsd/widgets/chat/ui/LeftPageIcon';
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
+
 
 const ConnectsPage = () => {
 	const { profileList, fetchProfiles } = useProfilesStore();

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "knip": "knip"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
@@ -26,12 +27,13 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.17.27",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
+    "knip": "^5.46.0",
     "postcss": "^8",
-    "typescript": "^5"
+    "typescript": "^5.8.2"
   }
 }

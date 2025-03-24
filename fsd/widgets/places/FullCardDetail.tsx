@@ -1,4 +1,4 @@
-import React from 'react';
+'use client'
 import style from './ui/placeCardDesc.module.scss';
 import { CampusReviews } from '@/fsd/shared/ui/CampusReviews/CampusReviews';
 import { Contacts } from '@/fsd/shared/ui/Contacts/Contact';
