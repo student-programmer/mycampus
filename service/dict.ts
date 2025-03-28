@@ -11,6 +11,15 @@ const dictService = {
         }
     },
 
+    getAllStudyDirections: async () => {
+        try {
+            const {data} = await axiosInstance.get('/dict/study_directions');
+            return [data, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+
     getAllLanguages: async () => {
         try {
             const {data} = await axiosInstance.get('/dict/languages');

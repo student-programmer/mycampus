@@ -10,9 +10,11 @@ interface DictState {
     LanguageList: DictItem[];
     UniversityList: DictItem[];
     InterestsList: DictItem[];
+    StudyDirectionsList: DictItem[];
     fetchLanguages: () => Promise<void>;
     fetchUniversities: () => Promise<void>;
     fetchInterests: () => Promise<void>;
+    fetchStudyDirections: () => Promise<void>;
 }
 
 
@@ -20,6 +22,7 @@ export const useDictStore = create<DictState>((set) => ({
     LanguageList: [],
     UniversityList: [],
     InterestsList: [],
+    StudyDirectionsList: [],
 
     fetchLanguages: async () => {
         try {
@@ -66,6 +69,22 @@ export const useDictStore = create<DictState>((set) => ({
         } catch (error) {
             console.error(`Ошибка при загрузке интересов:`, error);
             set({InterestsList: []});
+        }
+    },
+
+    fetchStudyDirections: async () => {
+        try {
+            const data = await dictActions.getAllStudyDirections();
+
+            if (!data) {
+                console.warn('API вернул пустые данные');
+                set({StudyDirectionsList: []});
+            } else {
+                set({StudyDirectionsList: data});
+            }
+        } catch (error) {
+            console.error(`Ошибка при загрузке направлений исследований:`, error);
+            set({StudyDirectionsList: []});
         }
     },
 

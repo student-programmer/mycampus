@@ -50,9 +50,9 @@ export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
             ) : (
                 <>
                     <Component />
-                    {navMenuOn && <NavMenu />}
                 </>
             )}
+            {navMenuOn && <NavMenu />}
         </div>
     );
 }

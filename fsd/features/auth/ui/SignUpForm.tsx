@@ -27,9 +27,11 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         LanguageList,
         UniversityList,
         InterestsList,
+        StudyDirectionsList,
         fetchUniversities,
         fetchInterests,
-        fetchLanguages
+        fetchLanguages,
+        fetchStudyDirections
     } = useDictStore();
 
     const formik = useFormik({
@@ -43,6 +45,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             interests: [],
             location: '',
             university: '',
+            studyDirection: '',
             photo: '',
             email: '',
             password: '',
@@ -56,6 +59,12 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
     const handleRegister = async (values: UserRegisterActionsRequest) => {
         await authActions.register(values).then(r => {
             setForm('SignIn')
+        }).catch(r => {
+            if (r.response.status === 400) {
+                formik.setFieldError(r.response.data.field, r.response.data.message)
+            } else {
+                console.error('Error caused in login:', r)
+            }
         })
     }
 
@@ -63,6 +72,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         fetchUniversities();
         fetchInterests();
         fetchLanguages();
+        fetchStudyDirections();
     }, [])
 
     useEffect(() => {
@@ -213,6 +223,29 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     </div>
                     { formik.errors.university && < ErrorComponent message={ formik.errors.university }/> }
                 </div>
+
+                <div>
+                    <label htmlFor='studyDirection' className={ l.label }>
+                        Study directions
+                    </label>
+                    <div>
+                        <CustomSelect
+                            id={ 'studyDirection' }
+                            placeholder="Enter your study directions..."
+                            status={ !!formik.errors.studyDirection ? 'error' : undefined }
+                            onChange={ (e) => {
+                                formik.setFieldValue("studyDirection", parseInt(e.toString()));
+                                formik.setFieldError("studyDirection", undefined);
+                            } }
+                            options={ StudyDirectionsList.map(item => ({
+                                value: item.id.toString(),
+                                label: item.name,
+                            })) }
+                        />
+                    </div>
+                    { formik.errors.studyDirection && < ErrorComponent message={ formik.errors.studyDirection }/> }
+                </div>
+
                 <div>
                     <label htmlFor='languages' className={ l.label }>
                         Languages
@@ -223,7 +256,6 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         status={ !!formik.errors.languages ? 'error' : undefined }
                         placeholder="Enter your languages..."
                         onChange={ (e) => {
-
                             const selectedNames = Array.isArray(e) ? e : [e];
                             const selectedIds = selectedNames.map(name => {
                                 const selectedItem = LanguageList.find(item => item.name === name);

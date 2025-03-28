@@ -39,6 +39,12 @@ export const SignInForm = () => {
         await authActions.login(values).then(r => {
             localStorage.setItem('jwtToken', r.access_token)
             router.push('/connects')
+        }).catch(r => {
+            if (r.response.status === 400) {
+                formik.setFieldError(r.response.data.field, r.response.data.message)
+            } else {
+                console.error('Error caused in login:', r)
+            }
         })
     }
 
@@ -102,7 +108,6 @@ export const SignInForm = () => {
             <div className={ l.additionally }>
                 <p className={ l.password }>Forgot your password?</p>
             </div>
-
         </>
     )
 }

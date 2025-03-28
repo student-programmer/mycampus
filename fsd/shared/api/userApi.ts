@@ -15,6 +15,7 @@ export interface UserRegisterActionsRequest {
     interests: number[],
     location: string,
     university: string,
+    studyDirection: string,
     photo: string,
     password: string,
     passwordRepeat: string | null,
@@ -31,6 +32,7 @@ export interface UserRegisterServiceRequest {
     interests: number[],
     location: string,
     university: string,
+    studyDirection: string,
     photo: string,
     password: string,
 }

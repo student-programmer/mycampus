@@ -9,6 +9,14 @@ const dictActions = {
         }
         return data;
     },
+    getAllStudyDirections: async () => {
+        const [data, error] = await dictService.getAllStudyDirections();
+
+        if (error) {
+            throw new Error(error);
+        }
+        return data;
+    },
     getAllUniversities: async () => {
         const [data, error] = await dictService.getAllUniversities();
 

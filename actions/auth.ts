@@ -7,7 +7,7 @@ const authActions = {
         const [data, error] = await authService.login(values);
 
         if (error) {
-            throw new Error(error);
+            throw error;
         }
         return data;
     },
@@ -24,6 +24,7 @@ const authActions = {
             interests: values.interests,
             location: values.location,
             university: values.university,
+            studyDirection: values.studyDirection,
             photo: values.photo,
             email: values.email,
             password: values.password,
@@ -32,8 +33,9 @@ const authActions = {
         const [data, error] = await authService.register(changedValues);
 
         if (error) {
-            throw new Error(error);
+            throw error;
         }
+
         return data;
     },
 };

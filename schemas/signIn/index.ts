@@ -34,6 +34,7 @@ export const SignUpSchema = Yup.object({
     }),
     location: Yup.string().required(REQUIRED_MSG),
     university: Yup.string().required(REQUIRED_MSG),
+    studyDirection: Yup.string().required(REQUIRED_MSG),
     photo: Yup.string().required(REQUIRED_MSG),
     email: Yup.string().email().required(REQUIRED_MSG),
     password: Yup.string().required(REQUIRED_MSG),

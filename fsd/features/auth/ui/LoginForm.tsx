@@ -70,17 +70,17 @@ const LoginForm = () => {
                     </button>
                 </div>
             }
-            <div className={ l.business_button }>
-                <button
-                    onClick={ toggleBusinessAccount }
-                    className={ `${ l.account_button } ${ form === 'Business' ? l.active : "" }` }
-                >
-                    { form === 'Business' ?
-                        < BusinessIcon/> :
-                        < StudentIcon/>
-                    }
-                </button>
-            </div>
+            {/*<div className={ l.business_button }>*/}
+            {/*    <button*/}
+            {/*        onClick={ toggleBusinessAccount }*/}
+            {/*        className={ `${ l.account_button } ${ form === 'Business' ? l.active : "" }` }*/}
+            {/*    >*/}
+            {/*        { form === 'Business' ?*/}
+            {/*            < BusinessIcon/> :*/}
+            {/*            < StudentIcon/>*/}
+            {/*        }*/}
+            {/*    </button>*/}
+            {/*</div>*/}
             <div className={ l.background } style={ {backgroundImage: `url(${ BG.src })`} }></div>
             { (form !== 'Business' && form !== 'SignUp') && (
                 <div className={ l.logo }>
