@@ -1,0 +1,42 @@
+.eventDetailWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+ 	background: linear-gradient(115deg, #00bf8f, #001510);
+  height:calc(100dvh - 100px);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.eventDetailImage {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.eventDetailInfo {
+  padding: 20px;
+  text-align: center;
+}
+
+.buttonDetail{
+  background-color: #00bf8f;
+  font-weight: 700;
+}
+
+.eventDetailInfo h1 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.eventDetailInfo p {
+  margin: 10px 0;
+  color: #fff;
+}
+
+
+
+@media screen and (max-width: 768px) {
+.eventDetailWrapper {
+ width: 310px;
+}
+}

@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=TT+Commons:wght@400;700&display=swap');
+
+.navList {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	list-style: none;
+	gap: 20px;
+	// margin-top: 60px;
+	height: 64px;
+	background-color: #1e2721;
+	border-radius: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.navList a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.borderElement {
+	border-top: 1px solid black;
+}
+
+.navWrapper {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px 10px 20px;
+	//height:318px;
+	position: relative;
+	z-index: 2;
+	background-color: transparent;
+}
+
+.linkNav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 10px;
+	background-color: #1e2721;
+	color: #fff;
+	transition: color 0.3s, background-color 0.3s; /* Плавный переход */
+	cursor: pointer;
+}
+
+.linkNav.active {
+	color: #84cc16; /* Цвет активного текста */
+}
+
+.navItem {
+	font-family: 'TT Commons', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.linkNav li {
+}
+
+.LinkImg {
+	color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+	.navList {
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 15px;
+		gap: 20px;
+	}
+}
+

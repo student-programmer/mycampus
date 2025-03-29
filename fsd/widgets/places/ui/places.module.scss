@@ -1,0 +1,95 @@
+// places.module.scss
+
+.placesWrapper {
+	margin: 0 auto; /* Центрирование страницы */
+	padding: 0 20px; /* Внутренние отступы */
+	background: transparent;
+	height: calc(100dvh - 84px);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.filterSection {
+	display: flex; /* Flex-контейнер для фильтров */
+	justify-content: flex-end; /* Выравнивание по правому краю */
+	margin-bottom: 20px; /* Отступ снизу */
+}
+
+.swiperContainer {
+	width: 100%; /* Ширина на 100% */
+	height: 90vh;
+}
+
+.slide {
+	display: flex; /* Flex-контейнер для карточек мест */
+	justify-content: center; /* Центрирование содержимого */
+	flex-direction: column;
+}
+
+.placeWrapper {
+	padding: 20px; /* Внутренние отступы */
+	border-radius: 12px; /* Закругленные углы */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+	width: 100%; /* Ширина на 100% */
+	display: flex; /* Flex-контейнер для содержимого карточки */
+	flex-direction: column; /* Вертикальное направление */
+	align-items: center; /* Центрирование по горизонтали */
+	margin-bottom: 20px; /* Отступ снизу между карточками */
+}
+
+.photoPlace {
+	width: 100%; /* Ширина на 100% */
+	position: relative; /* Относительное позиционирование для элемента Breadcrumb */
+}
+
+.placeImage {
+	border-radius: 12px; /* Закругленные углы для изображения */
+	object-fit: cover; /* Обрезка по размеру */
+	height: 200px; /* Фиксированная высота для изображений */
+	width: 100%; /* Ширина на 100% */
+}
+
+.iconAndBreadcrumb {
+	display: flex; /* Flex-контейнер для иконок и крошек */
+	align-items: center; /* Центрирование по вертикали */
+	margin-top: 10px; /* Отступ сверху */
+}
+
+.placeInfo {
+	text-align: center; /* Центрирование текста */
+	margin-top: 20px; /* Отступ сверху */
+}
+
+.placeInfo h2 {
+	font-size: 24px; /* Размер шрифта заголовка */
+	margin-bottom: 10px; /* Отступ снизу */
+}
+
+.placeInfo p {
+	font-size: 16px; /* Размер шрифта для абзацев */
+	margin: 5px 0; /* Отступы сверху и снизу */
+}
+
+.moreInfoButton {
+	margin-top: 10px; /* Отступ сверху */
+}
+
+
+.swiperNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigationButton {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #10ae7e;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navigationButton:hover {
+  color: #10ae7e;
+}

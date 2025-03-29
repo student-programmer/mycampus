@@ -1,0 +1,23 @@
+.placeDetailsWrapper {
+	height: 80vh;
+	width: 320px;
+	background: linear-gradient(115deg, #00bf8f, #001510);
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 20px;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.placeDetails p{
+	color: #fff;
+}
+
+.placeDetails h1{
+	color: #fff;
+}
+
+.buttonInfo{
+	background-color: #00bf8f;
+}
