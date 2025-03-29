@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Code Style and Structure  
+- Пиши лаконичный, технически точный TypeScript-код с корректными примерами.  
+- Используй функциональные и декларативные подходы; избегай классов.  
+- Предпочитай итерацию и модульность вместо дублирования кода.  
+- Используй говорящие имена переменных с вспомогательными глаголами (например, `isLoading`, `hasError`).  
+- Структура файлов:  
+  - Главный компонент  
+  - Подкомпоненты  
+  - Хелперы  
+  - Статический контент  
+  - Типы  
+
+ Naming Conventions  
+- Для директорий используй kebab-case (например, `components/auth-wizard`).  
+- Отдавай предпочтение именованным экспортам для компонентов.  
+
+ TypeScript Usage  
+- Используй TypeScript во всем коде; предпочитай интерфейсы вместо `type`.  
+- Избегай enum – вместо этого используй карты (Record или объектные маппинги).  
+- Все компоненты должны быть функциональными и описаны с интерфейсами TypeScript.  
+
+ Syntax and Formatting  
+- Для чистых функций используй `function` (например, `function formatDate() {}`), если функция объявлена отдельно.  
+- Минимизируй использование `{}` в JSX при коротких выражениях (`{condition && <Component />}`).  
+- Пиши декларативный JSX – избегай вложенных тернарных операторов.  
+
+ UI и стилизация  
+- Используй Ant Design для компонентов и кастомизации UI.  
+- Применяй модульные SCSS-файлы (`name.module.scss`).  
+- Стили храни в `styles/`, либо рядом с компонентами (`Component.module.scss`).  
+- Подключай SCSS-модули через `import styles from './Component.module.scss'`.  
+- Следи за адаптивностью – используй CSS-медиа-запросы или Ant Design Grid.  
+
+ Performance Optimization  
+- Минимизируй использование `'use client'`, `useEffect` и `useState`.  
+- Используй React Server Components там, где это возможно.  
+- Оборачивай клиентские компоненты в `<Suspense>` с `fallback`.  
+- Динамически загружай неключевые компоненты (`import('...').then(...)`).  
+- Оптимизируй изображения: WebP, размеры, `lazy loading` (`next/image`).  
+
+ Key Conventions  
+- Храни состояние в zustand, а не в `useState` (где это возможно).  
+- Оптимизируй Web Vitals (LCP, CLS, FID).  
+- Минимизируй `'use client'` и используй Next.js SSR:  
+  - Серверные компоненты по умолчанию  
+  - `use client` – только для взаимодействия с Web API  
+  - Не используй `use client` для фетчинга данных или state-менеджмента  
+
+ Next.js Best Practices  
+- Следуй официальной документации Next.js по Data Fetching, Rendering и Routing.  
+- Используй getServerSideProps или app-router API для SSR.  

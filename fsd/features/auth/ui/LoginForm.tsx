@@ -1,18 +1,18 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import l from './LoginForm.module.scss';
 import LogoIcon from './LogoIcon';
 import BG from '@/fsd/public/images/login-bg.png'
 import style from "@/fsd/widgets/chat/ui/chatDetail.module.scss";
-import LeftPageIcon from "@/fsd/widgets/chat/ui/LeftPageIcon";
 import StudentIcon from "@/public/student";
 import BusinessIcon from "@/public/business";
 import { BusinessForm } from "@/fsd/features/auth/ui/BusinessForm";
 import { SignInForm } from "@/fsd/features/auth/ui/SignInForm";
 import { SignUpForm } from "@/fsd/features/auth/ui/SignUpForm";
 import { EnteringForm } from "@/fsd/features/auth/ui/EnteringForm";
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 
 const LoginForm = () => {
     const router = useRouter();

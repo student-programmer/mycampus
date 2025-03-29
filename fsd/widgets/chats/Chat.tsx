@@ -1,5 +1,4 @@
 "use client";
-/* 'это писал gpt */
 import { Layout } from "antd";
 import ChatList from "./ChatList";
 import style from './ui/Chat.module.scss'

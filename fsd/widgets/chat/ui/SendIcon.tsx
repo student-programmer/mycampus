@@ -1,9 +1,9 @@
-import React from 'react';
+
 interface Props {
 	className?: string;
 }
 
-const SendIcon = ({ className }: Props) => {
+export const SendIcon = ({ className }: Props) => {
 	return (
 		<svg
 			width='24'
@@ -23,4 +23,3 @@ const SendIcon = ({ className }: Props) => {
 	);
 };
 
-export default SendIcon;

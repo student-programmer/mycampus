@@ -12,7 +12,8 @@ import { type User } from '@/fsd/entities/profile';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
-import LeftPageIcon from '@/fsd/widgets/chat/ui/LeftPageIcon';
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
+
 
 const ConnectsPage = () => {
     const {profileList, fetchProfiles} = useProfilesStore();

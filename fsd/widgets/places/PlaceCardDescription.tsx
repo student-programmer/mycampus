@@ -1,3 +1,4 @@
+'use client'
 import { Button, Rate } from 'antd';
 import Image from 'next/image';
 import { Place } from '@/fsd/entities/places';

@@ -2,11 +2,8 @@
 
 import { usePathname, useRouter } from 'next/navigation'; // Импортируем необходимые хуки
 import style from './ui/NavMenu.module.scss';
-import FirstIcon from './FirstIcon';
-import SecondIcon from './SecondIcon';
-import ThirdIcon from './ThirdIcon';
-import FourthIcon from './FourthIcon';
-import FivethIcon from './FivethIcon';
+
+import { FifthIcon, FirstIcon, FourthIcon, SecondIcon, ThirdIcon } from './ui/icons';
 
 export const NavMenu = () => {
 	const router = useRouter(); // Получаем роутер из next/navigation
@@ -65,7 +62,7 @@ export const NavMenu = () => {
 					}`}
 					onClick={() => handleNavigation('/profile/1')}
 				>
-					<FivethIcon />
+					<FifthIcon />
 					<span className={style.navItem}>Profile</span>
 				</li>
 			</ul>
