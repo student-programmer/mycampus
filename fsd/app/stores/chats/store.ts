@@ -3,29 +3,55 @@ import { Chat, mockChats } from "@/fsd/entities/chats";
 import { Message } from "@/fsd/entities/chats/model/chats";
 import { messageListMock } from "@/fsd/entities/chats/mock/chats";
 import { immer } from "zustand/middleware/immer";
+import chatActions from "@/actions/chat";
 
 
 interface ChatState {
-    chatList: Chat[],
-    messageList: Message[],
-    addMessage: (message: Message) => void;
+  chatList: Chat[],
+  messageList: Message[],
+  addMessage: (message: Message) => void;
+  fetchChatList: (userId: number) => void;
 }
 
 
-export const useChatsStore = create<ChatState>()(immer((set) => ({
-        chatList: mockChats,
-        messageList: messageListMock,
+export const useChatsStore = create<ChatState>()(immer((set) => ( {
+    chatList: [],
+    messageList: [],
 
-        addMessage: (message: Message) => set((state) => {
-            state.messageList.push(message);
-        }),
+    addMessage: (message: Message) => set((state) => {
+      state.messageList.push(message);
+    }),
 
-        fetchChatList: async () => {
-            // Заглушка
-        },
+    fetchChatList: async (userId) => {
+      try {
+        const data = await chatActions.getChatUsers(userId);
 
-        fetchMessageList: async () => {
-            // Заглушка
-        },
-    }))
+        if (!data) {
+          console.warn('API вернул пустые данные');
+          set({ chatList: [] });
+        } else {
+          set({ chatList: data });
+        }
+      } catch (error) {
+        console.error(`Ошибка при загрузке интересов:`, error);
+        set({ chatList: [] });
+      }
+    },
+
+    fetchMessageList: async (userId1, userId2) => {
+      try {
+        const data = await chatActions.getChatMessages(userId1, userId2);
+
+        if (!data) {
+          console.warn('API вернул пустые данные');
+          set({ messageList: [] });
+        } else {
+          set({ messageList: data });
+        }
+      } catch (error) {
+        console.error(`Ошибка при загрузке интересов:`, error);
+        set({ chatList: [] });
+      }
+    },
+  } ))
 );

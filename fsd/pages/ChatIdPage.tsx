@@ -1,8 +1,8 @@
 import ChatDetail from "../widgets/chat/ChatDetail"
 
 
-export const ChatIdPage = () => {
+export const ChatIdPage = ({ user }) => {
   return (
-   <><ChatDetail/></>
+    <><ChatDetail user={ user }/></>
   )
 }
