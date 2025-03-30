@@ -17,7 +17,7 @@ export const useSocket = (): SocketContextType => {
 	return context;
 };
 
-export const SocketProvider: React.FC<{ userId: number | null }> = ({
+export const SocketProvider: React.FC<{ userId: number | undefined, children: React.ReactNode }> = ({
 	userId,
 	children,
 }) => {

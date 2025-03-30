@@ -1,7 +1,6 @@
 import { create } from "zustand/react";
-import { Chat, mockChats } from "@/fsd/entities/chats";
+import { Chat } from "@/fsd/entities/chats";
 import { Message } from "@/fsd/entities/chats/model/chats";
-import { messageListMock } from "@/fsd/entities/chats/mock/chats";
 import { immer } from "zustand/middleware/immer";
 import chatActions from "@/actions/chat";
 
@@ -11,6 +10,7 @@ interface ChatState {
   messageList: Message[],
   addMessage: (message: Message) => void;
   fetchChatList: (userId: number) => void;
+  fetchMessageList: (userId1: number, userId2: number) => void
 }
 
 
@@ -22,7 +22,7 @@ export const useChatsStore = create<ChatState>()(immer((set) => ( {
       state.messageList.push(message);
     }),
 
-    fetchChatList: async (userId) => {
+    fetchChatList: async (userId: number) => {
       try {
         const data = await chatActions.getChatUsers(userId);
 
@@ -38,7 +38,7 @@ export const useChatsStore = create<ChatState>()(immer((set) => ( {
       }
     },
 
-    fetchMessageList: async (userId1, userId2) => {
+    fetchMessageList: async (userId1: number, userId2: number) => {
       try {
         const data = await chatActions.getChatMessages(userId1, userId2);
 

@@ -29,14 +29,35 @@ const ConnectsInfo = () => {
 		// Временно используем моковые данные
 
 
-		const mockUser: User = {
+		const mockUser: User =  {
 			id: 1,
-			authUserId: 1,
-			firstName: 'John',
-			lastName: 'Doe',
-			birthDate: '1990-01-01',
-			description: 'I am a software developer with 5 years of experience.',
-			// Добавьте другие поля, если они есть в вашем интерфейсе User
+			authUserId: 12345,
+			firstName: "John",
+			lastName: "Doe",
+			birthDate: "1990-05-15",
+			description: "Software developer passionate about travel and technology.",
+			photo: "",
+			sex: "Male",
+			country: {
+				id: 1,
+				name: "United States",
+				photo: ""
+			},
+			location: "New York, NY",
+			isOnline: true,
+			languages: [
+				{ id: 1, name: "English" },
+				{ id: 2, name: "Spanish" }
+			],
+			interests: [
+				{ id: 1, name: "Programming" },
+				{ id: 2, name: "Hiking" },
+				{ id: 3, name: "Photography" }
+			],
+			education: {
+				university: { id: 1, name: "MIT" },
+				studyDirection: { id: 1, name: "Computer Science" }
+			}
 		};
 		setUser(mockUser);
 		setLoading(false);

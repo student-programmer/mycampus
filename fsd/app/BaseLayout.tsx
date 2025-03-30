@@ -16,7 +16,7 @@ interface BaseLayoutProps {
 export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<User>()
+  const [user, setUser] = useState<User | null>()
 
 
   useEffect(() => {
@@ -54,7 +54,8 @@ export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
         { isLoading ? (
           <Loader/>
         ) : (
-            <Component user={user}/>
+          // @ts-ignore
+          <Component user={user}/>
         ) }
         { navMenuOn && <NavMenu/> }
       </div>

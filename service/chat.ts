@@ -1,7 +1,7 @@
 import axiosInstance from '../plugins/axios';
 
 const chatService = {
-  getChatUsers: async (userId) => {
+  getChatUsers: async (userId: number) => {
     try {
       const {data} = await axiosInstance.get(`/chat/users/${userId}`);
       return [data, null];
@@ -10,7 +10,7 @@ const chatService = {
     }
   },
 
-  getChatMessages: async (userId1, userId2) => {
+  getChatMessages: async (userId1: number, userId2: number) => {
     try {
       const {data} = await axiosInstance.get(`/chat/${userId1}/${userId2}`);
       return [data, null];

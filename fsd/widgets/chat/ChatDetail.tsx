@@ -3,7 +3,6 @@
 import { useState, useEffect, createRef } from 'react';
 import { Avatar } from 'antd';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { mockChats } from '../../entities/chats';
 import style from './ui/chatDetail.module.scss';
 import { Message } from "@/fsd/entities/chats/model/chats";
 import { useChatsStore } from "@/fsd/app/stores/chats/store";
@@ -40,8 +39,8 @@ const ChatDetail = ({ user }: ChatDetailProps) => {
 
 	useEffect(() => {
 		if (socket) {
-			const handleMessage = newMessage => {
-				if (newMessage.senderId == id || newMessage.senderId == user?.id) {
+			const handleMessage = (newMessage: Message) => {
+				if (newMessage.senderId === Number(id) || newMessage.senderId === Number(user?.id)) {
 					addMessage(newMessage);
 				}
 			};
@@ -55,7 +54,7 @@ const ChatDetail = ({ user }: ChatDetailProps) => {
 
 	useEffect(() => {
 		// Загружаем историю чата
-		fetchMessageList(id, user?.id);
+		fetchMessageList(Number(id), Number(user?.id));
 	}, [id]);
 
 	useEffect(() => {
