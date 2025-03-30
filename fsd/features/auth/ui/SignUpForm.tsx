@@ -1,13 +1,18 @@
+'use client'
+
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React, { useEffect, useState } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { Input } from "antd";
-import userActions from "@/actions/user";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
+import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
+import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
+import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
+import { useDictStore } from "@/fsd/app/stores/dict/store";
+import authActions from "@/actions/auth";
 
 interface SignUpFormProps {
     setForm: (value: string | null) => void;
@@ -16,22 +21,32 @@ interface SignUpFormProps {
 
 export const SignUpForm = ({setForm}: SignUpFormProps) => {
 
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState<boolean>(false)
+
+    const {
+        LanguageList,
+        UniversityList,
+        InterestsList,
+        StudyDirectionsList,
+        fetchUniversities,
+        fetchInterests,
+        fetchLanguages,
+        fetchStudyDirections
+    } = useDictStore();
 
     const formik = useFormik({
         initialValues: {
-            // fullName: '',
-            // university: '',
-            // age: '',
-            // sex: '',
-            // languages: '',
-            // interests: '',
-            // photo: '',
-            // location: '',
             firstName: '',
             lastName: '',
             description: '',
             birthDate: '',
+            sex: '',
+            languages: [],
+            interests: [],
+            location: '',
+            university: '',
+            studyDirection: '',
+            photo: '',
             email: '',
             password: '',
             passwordRepeat: '',
@@ -41,43 +56,30 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         validateOnChange: false,
     })
 
-    const handleRegister = async (values: UserRegisterRequest) => {
-        await userActions.register(values).then(r => {
-            setForm(null)
+    const handleRegister = async (values: UserRegisterActionsRequest) => {
+        await authActions.register(values).then(r => {
+            setForm('SignIn')
+        }).catch(r => {
+            if (r.response.status === 400) {
+                formik.setFieldError(r.response.data.field, r.response.data.message)
+            } else {
+                console.error('Error caused in login:', r)
+            }
         })
     }
+
+    useEffect(() => {
+        fetchUniversities();
+        fetchInterests();
+        fetchLanguages();
+        fetchStudyDirections();
+    }, [])
 
     useEffect(() => {
         setDisabled(!!formik.errors.firstName || !!formik.errors.lastName
             || !!formik.errors.description || !!formik.errors.birthDate || !!formik.errors.email
             || !!formik.errors.password || !!formik.errors.passwordRepeat)
     }, [formik.errors])
-
-    const uni = [
-        {value: 'Politeh', label: 'Politeh'},
-        {value: 'ITMO', label: 'ITMO'},
-        {value: 'Bonch', label: 'Bonch'},
-    ]
-
-    const interests = [
-        {value: 'Yoga'},
-        {value: 'Interest Item'},
-        {value: 'Cooking'},
-        {value: 'Books'},
-        {value: 'Cultural Events'},
-        {value: 'International Diplomacy'},
-        {value: 'History'},
-        {value: 'Photography'},
-        {value: 'Travel'},
-        {value: 'Job'},
-    ];
-
-    const language = [
-        {value: 'Russian'},
-        {value: 'Hindi'},
-        {value: 'Chinese'},
-        {value: 'English'},
-    ]
 
     const sex = [
         {value: 'male', label: 'Male'},
@@ -90,43 +92,6 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             <p className={ l.description }>Sign in 1 minute for free!</p>
 
             <div className={ l.form_box }>
-                {/*<div>*/ }
-                {/*    <label htmlFor='fullName' className={ l.label }>*/ }
-                {/*        Full name*/ }
-                {/*    </label>*/ }
-                {/*    <Input*/ }
-                {/*        id={ 'fullName' }*/ }
-                {/*        name={ 'fullName' }*/ }
-                {/*        className={ l.input_field }*/ }
-                {/*        value={ formik.values.fullName }*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.handleChange(e);*/ }
-                {/*            formik.setFieldError("fullName", null);*/ }
-                {/*        } }*/ }
-                {/*        status={ !!formik.errors.fullName ? 'error' : null }*/ }
-                {/*        placeholder="Enter your full name..."*/ }
-                {/*    />*/ }
-                {/*    { formik.errors.fullName && < ErrorComponent message={ formik.errors.fullName }/> }*/ }
-                {/*</div>*/ }
-                {/*<div>*/ }
-                {/*    <label htmlFor='university' className={ l.label }>*/ }
-                {/*        University*/ }
-                {/*    </label>*/ }
-                {/*    <div>*/ }
-                {/*        <CustomSelect*/ }
-                {/*            id={ 'university' }*/ }
-                {/*            name={ 'university' }*/ }
-                {/*            placeholder="Enter your university..."*/ }
-                {/*            status={ !!formik.errors.fullName ? 'error' : null }*/ }
-                {/*            onChange={ (e) => {*/ }
-                {/*                formik.setFieldValue("university", e);*/ }
-                {/*                formik.setFieldError("university", null);*/ }
-                {/*            } }*/ }
-                {/*            options={ uni }*/ }
-                {/*        />*/ }
-                {/*    </div>*/ }
-                {/*    { formik.errors.university && < ErrorComponent message={ formik.errors.university }/> }*/ }
-                {/*</div>*/ }
 
                 <div>
                     <label htmlFor='firstName' className={ l.label }>
@@ -202,7 +167,22 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     />
                     { formik.errors.birthDate && < ErrorComponent message={ formik.errors.birthDate }/> }
                 </div>
-
+                <div>
+                    <label htmlFor='sex' className={ l.label }>
+                        Sex
+                    </label>
+                    <CustomSelect
+                        id={ 'sex' }
+                        placeholder="Enter your sex..."
+                        status={ !!formik.errors.sex ? 'error' : undefined }
+                        onChange={ (e) => {
+                            formik.setFieldValue('sex', e)
+                            formik.setFieldError("sex", undefined);
+                        } }
+                        options={ sex }
+                    />
+                    { formik.errors.sex && < ErrorComponent message={ formik.errors.sex }/> }
+                </div>
                 <div>
                     <label htmlFor='email' className={ l.label }>
                         Email
@@ -222,6 +202,139 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     { formik.errors.email && < ErrorComponent message={ formik.errors.email }/> }
                 </div>
 
+                <div>
+                    <label htmlFor='university' className={ l.label }>
+                        University
+                    </label>
+                    <div>
+                        <CustomSelect
+                            id={ 'university' }
+                            placeholder="Enter your university..."
+                            status={ !!formik.errors.university ? 'error' : undefined }
+                            onChange={ (e) => {
+                                formik.setFieldValue("university", parseInt(e.toString()));
+                                formik.setFieldError("university", undefined);
+                            } }
+                            options={ UniversityList.map(item => ({
+                                value: item.id.toString(),
+                                label: item.name,
+                            })) }
+                        />
+                    </div>
+                    { formik.errors.university && < ErrorComponent message={ formik.errors.university }/> }
+                </div>
+
+                <div>
+                    <label htmlFor='studyDirection' className={ l.label }>
+                        Study directions
+                    </label>
+                    <div>
+                        <CustomSelect
+                            id={ 'studyDirection' }
+                            placeholder="Enter your study directions..."
+                            status={ !!formik.errors.studyDirection ? 'error' : undefined }
+                            onChange={ (e) => {
+                                formik.setFieldValue("studyDirection", parseInt(e.toString()));
+                                formik.setFieldError("studyDirection", undefined);
+                            } }
+                            options={ StudyDirectionsList.map(item => ({
+                                value: item.id.toString(),
+                                label: item.name,
+                            })) }
+                        />
+                    </div>
+                    { formik.errors.studyDirection && < ErrorComponent message={ formik.errors.studyDirection }/> }
+                </div>
+
+                <div>
+                    <label htmlFor='languages' className={ l.label }>
+                        Languages
+                    </label>
+
+                    <CustomMultipleSelect
+                        id={ 'languages' }
+                        status={ !!formik.errors.languages ? 'error' : undefined }
+                        placeholder="Enter your languages..."
+                        onChange={ (e) => {
+                            const selectedNames = Array.isArray(e) ? e : [e];
+                            const selectedIds = selectedNames.map(name => {
+                                const selectedItem = LanguageList.find(item => item.name === name);
+                                return selectedItem ? selectedItem.id : null;
+                            }).filter(id => id !== null);
+
+                            formik.setFieldValue('languages', selectedIds);
+                            formik.setFieldError('languages', undefined);
+                        } }
+                        option={ LanguageList.map(item => ({
+                            value: item.name,
+                        })) }
+                    />
+
+                    { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }
+                </div>
+
+                <div>
+                    <label htmlFor='interests' className={ l.label }>
+                        Interests
+                    </label>
+                    < CustomMultipleSelect
+                        id={ 'interests' }
+                        status={ !!formik.errors.interests ? 'error' : undefined }
+                        placeholder="Enter your interests..."
+                        onChange={ (e) => {
+
+                            const selectedNames = Array.isArray(e) ? e : [e];
+                            const selectedIds = selectedNames.map(name => {
+                                const selectedItem = InterestsList.find(item => item.name === name);
+                                return selectedItem ? selectedItem.id : null;
+                            }).filter(id => id !== null);
+
+                            formik.setFieldValue('interests', selectedIds);
+                            formik.setFieldError('interests', undefined);
+                        } }
+                        option={ InterestsList.map(item => ({
+                            value: item.name,
+                        })) }
+                    />
+                    { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }
+                </div>
+
+                <div>
+                    <label htmlFor='photo' className={ l.label }>
+                        Photo
+                    </label>
+                    <Input
+                        id={ 'photo' }
+                        name={ 'photo' }
+                        className={ l.input_field }
+                        value={ formik.values.photo }
+                        onChange={ (e) => {
+                            formik.handleChange(e);
+                            formik.setFieldError("photo", undefined);
+                        } }
+                        status={ !!formik.errors.photo ? 'error' : undefined }
+                        placeholder="Enter your photo..."
+                    />
+                    { formik.errors.photo && < ErrorComponent message={ formik.errors.photo }/> }
+                </div>
+                <div>
+                    <label htmlFor='location' className={ l.label }>
+                        Location
+                    </label>
+                    <Input
+                        id={ 'location' }
+                        name={ 'location' }
+                        className={ l.input_field }
+                        value={ formik.values.location }
+                        onChange={ (e) => {
+                            formik.handleChange(e);
+                            formik.setFieldError("location", undefined);
+                        } }
+                        status={ !!formik.errors.location ? 'error' : undefined }
+                        placeholder="Enter your location..."
+                    />
+                    { formik.errors.location && < ErrorComponent message={ formik.errors.location }/> }
+                </div>
                 <div>
                     <label htmlFor='password' className={ l.label }>
                         Password
@@ -273,104 +386,12 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     />
                     { formik.errors.passwordRepeat && < ErrorComponent message={ formik.errors.passwordRepeat }/> }
                 </div>
-
-                {/*<div>*/ }
-                {/*    <label htmlFor='sex' className={ l.label }>*/ }
-                {/*        Sex*/ }
-                {/*    </label>*/ }
-                {/*    <CustomSelect*/ }
-                {/*        id={ 'sex' }*/ }
-                {/*        name={ 'sex' }*/ }
-                {/*        placeholder="Enter your sex..."*/ }
-                {/*        status={ !!formik.errors.sex ? 'error' : null }*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.setFieldValue('sex', e)*/ }
-                {/*            formik.setFieldError("sex", null);*/ }
-                {/*        } }*/ }
-                {/*        options={ sex }*/ }
-                {/*    />*/ }
-                {/*    { formik.errors.sex && < ErrorComponent message={ formik.errors.sex }/> }*/ }
-                {/*</div>*/ }
-                {/*<div>*/ }
-                {/*    <label htmlFor='languages' className={ l.label }>*/ }
-                {/*        Languages*/ }
-                {/*    </label>*/ }
-
-                {/*    <CustomMultipleSelect*/ }
-                {/*        id={ 'languages' }*/ }
-                {/*        name={ 'languages' }*/ }
-                {/*        status={ !!formik.errors.languages ? 'error' : null }*/ }
-                {/*        placeholder="Enter your languages..."*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.setFieldValue('languages', e)*/ }
-                {/*            formik.setFieldError("languages", null);*/ }
-                {/*        } }*/ }
-                {/*        option={ language }*/ }
-                {/*    />*/ }
-
-                {/*    { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }*/ }
-                {/*</div>*/ }
-
-                {/*<div>*/ }
-                {/*    <label htmlFor='interests' className={ l.label }>*/ }
-                {/*        Interests*/ }
-                {/*    </label>*/ }
-                {/*    < CustomMultipleSelect*/ }
-                {/*        id={ 'interests' }*/ }
-                {/*        name={ 'interests' }*/ }
-                {/*        status={ !!formik.errors.interests ? 'error' : null }*/ }
-                {/*        placeholder="Enter your interests..."*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.setFieldValue('interests', e)*/ }
-                {/*            formik.setFieldError("interests", null);*/ }
-                {/*        } }*/ }
-                {/*        option={ interests }*/ }
-                {/*    />*/ }
-                {/*    { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }*/ }
-                {/*</div>*/ }
-
-                {/*<div>*/ }
-                {/*    <label htmlFor='photo' className={ l.label }>*/ }
-                {/*        Photo*/ }
-                {/*    </label>*/ }
-                {/*    <Input*/ }
-                {/*        id={ 'photo' }*/ }
-                {/*        name={ 'photo' }*/ }
-                {/*        className={ l.input_field }*/ }
-                {/*        value={ formik.values.photo }*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.handleChange(e);*/ }
-                {/*            formik.setFieldError("photo", null);*/ }
-                {/*        } }*/ }
-                {/*        status={ !!formik.errors.photo ? 'error' : null }*/ }
-                {/*        placeholder="Enter your photo..."*/ }
-                {/*    />*/ }
-                {/*    { formik.errors.photo && < ErrorComponent message={ formik.errors.photo }/> }*/ }
-                {/*</div>*/ }
-                {/*<div>*/ }
-                {/*    <label htmlFor='location' className={ l.label }>*/ }
-                {/*        Location*/ }
-                {/*    </label>*/ }
-                {/*    <Input*/ }
-                {/*        id={ 'location' }*/ }
-                {/*        name={ 'location' }*/ }
-                {/*        className={ l.input_field }*/ }
-                {/*        value={ formik.values.location }*/ }
-                {/*        onChange={ (e) => {*/ }
-                {/*            formik.handleChange(e);*/ }
-                {/*            formik.setFieldError("location", null);*/ }
-                {/*        } }*/ }
-                {/*        status={ !!formik.errors.location ? 'error' : null }*/ }
-                {/*        placeholder="Enter your location..."*/ }
-                {/*    />*/ }
-                {/*    { formik.errors.location && < ErrorComponent message={ formik.errors.location }/> }*/ }
-                {/*</div>*/ }
             </div>
-            <button disabled={ disabled } className={ disabled ? l.login_button : l.login_button_active }
+            <button disabled={ disabled }
+                    className={ disabled ? l.login_button : l.login_button_active }
                     onClick={ async () => await formik.submitForm() }>
                 Create account
             </button>
-
         </>
     )
 }

@@ -1,5 +1,6 @@
 import axiosInstance from '../plugins/axios';
 import { LoginRequest } from "@/fsd/shared/api/authApi";
+import { UserRegisterServiceRequest } from "@/fsd/shared/api/userApi";
 
 const authService = {
     login: async (values: LoginRequest) => {
@@ -11,9 +12,9 @@ const authService = {
         }
     },
 
-    profile: async () => {
+    register: async (values: UserRegisterServiceRequest) => {
         try {
-            const {data} = await axiosInstance.post('/auth/profile');
+            const {data} = await axiosInstance.post('/auth/register', values);
             return [data, null];
         } catch (error) {
             return [null, error];

@@ -1,15 +1,18 @@
 import userService from "@/service/user";
-import { UserRegisterRequest } from "@/fsd/shared/api/userApi";
+import { User } from "@/fsd/entities/profile";
 
 const userActions = {
-    register: async (values: UserRegisterRequest) => {
-        const [data, error] = await userService.register(values);
+
+    getCurrentProfile: async (token: string): Promise<User | null> => {
+
+        const [data, error] = await userService.getCurrentProfile(token);
 
         if (error) {
             throw new Error(error);
         }
         return data;
     },
+
 };
 
 export default userActions;

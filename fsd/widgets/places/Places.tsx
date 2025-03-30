@@ -19,7 +19,7 @@ const Places = () => {
 	// Делаем запрос на получение списка мест при монтировании компонента
 	useEffect(() => {
 		fetchAllPlaces();
-	}, [fetchAllPlaces]);
+	}, []);
 
 	// Обработка изменения состояния openDetail для Swiper
 	useEffect(() => {

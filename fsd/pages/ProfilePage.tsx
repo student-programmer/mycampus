@@ -3,26 +3,24 @@
 import React, { useEffect } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
 import Profile from '@/fsd/widgets/profile/Profile';
-// import { useRouter } from 'next/navigation';
 
-interface ProfileProps {
-	id: number; // Это ожидаемый тип пропса для id
-}
 
-const ProfilePage: React.FC<ProfileProps> = ({ id }) => {
-	const { currentProfile, fetchProfileById } = useProfilesStore();
+const ProfilePage = () => {
+    const {currentProfile, fetchCurrentProfile} = useProfilesStore();
 
-	useEffect(() => {
-		if (id) {
-			fetchProfileById(id); // Загружаем профиль по id
-		}
-	}, [id]); // Эффект сработает при изменении id
+    useEffect(() => {
+        const token = localStorage.getItem('jwtToken');
+        if (token) {
+            fetchCurrentProfile(token).then();
+        }
+    }, []);
 
-	if (!currentProfile) {
-		return <p>Loading...</p>; // Пока грузится профиль
-	}
 
-	return <Profile user={currentProfile} />;
+    if (!currentProfile) {
+        return <p>Loading...</p>; // Пока грузится профиль
+    }
+
+    return <Profile user={ currentProfile }/>;
 };
 
 export default ProfilePage;

@@ -1,23 +1,41 @@
-import axios from 'axios';
-export const fetchUserFromApi = async (id: string): Promise<User> => {
-	const response = await axios.get(`/api/users/${id}`);
-	return response.data;
-};
-
 export interface User {
-  id: string;
-  name: string;
-  email: string;
+    id: string;
+    name: string;
+    email: string;
 }
 
-export interface UserRegisterRequest{
+export interface UserRegisterActionsRequest {
     firstName: string,
     lastName: string,
     description: string,
     birthDate: string,
     email: string,
+    sex: string,
+    languages: number[],
+    interests: number[],
+    location: string,
+    university: string,
+    studyDirection: string,
+    photo: string,
     password: string,
-    passwordRepeat: string,
+    passwordRepeat: string | null,
 }
+
+export interface UserRegisterServiceRequest {
+    firstName: string,
+    lastName: string,
+    description: string,
+    birthDate: string,
+    email: string,
+    sex: string,
+    languages: number[],
+    interests: number[],
+    location: string,
+    university: string,
+    studyDirection: string,
+    photo: string,
+    password: string,
+}
+
 
 

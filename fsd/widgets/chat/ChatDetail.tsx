@@ -40,7 +40,7 @@ const ChatDetail = () => {
             content: inputValue,
         };
 
-        addMessage(newMessage); // Ошибки больше нет
+        addMessage(newMessage);
         setInputValue('');
     };
 
