@@ -9,26 +9,31 @@ import 'swiper/css/pagination';
 
 import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 
 
-const ConnectsPage = () => {
-    const {profileList, currentProfile, fetchProfiles} = useProfilesStore();
-
-    const filteredProfiles = profileList.filter(
-        (user: User) => user.id !== currentProfile?.id
-    );
+const PreConnectsPage = () => {
+    const {profileList, fetchProfiles} = useProfilesStore();
+    const pathname = usePathname();
 
     useEffect(() => {
-        fetchProfiles().catch(r => {
-            console.error("Не удалось подтянуть пользователей!")
-        });
+        fetchProfiles();
     }, []);
 
+    const router = useRouter();
+    const toggleBack = () => {
+        router.push('/');
+    };
     return (
         <div className={ style.profileWrapper }>
+            <div className={ style.back_button }>
+                <button className={ style.iconGoBack } onClick={ toggleBack }>
+                    <LeftPageIcon/>
+                </button>
+            </div>
             <Swiper
                 direction={ 'vertical' }
                 slidesPerView={ 1 }
@@ -38,7 +43,7 @@ const ConnectsPage = () => {
                 loop={ true }
                 className={ style.swiperContainer }
             >
-                { filteredProfiles.map((user: User) => (
+                { profileList.map((user: User) => (
                     <SwiperSlide key={ user.id } className={ style.slide }>
                         <UserCard user={ user }/>
                     </SwiperSlide>
@@ -137,4 +142,4 @@ const UserCard = ({user}: { user: User }) => {
     );
 };
 
-export default ConnectsPage;
+export default PreConnectsPage;

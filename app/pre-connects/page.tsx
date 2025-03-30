@@ -1,5 +1,5 @@
-import { Connects } from '@/fsd/pages/Connects';
+import { PreConnects } from "@/fsd/pages/PreConnects";
 
 export default function Page() {
-	return <Connects />;
+    return <PreConnects/>;
 }
