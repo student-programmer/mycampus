@@ -33,6 +33,14 @@ const dictActions = {
         }
         return data;
     },
+    getAllCountries: async () => {
+        const [data, error] = await dictService.getAllCountries();
+
+        if (error) {
+            throw new Error(error);
+        }
+        return data;
+    },
 };
 
 export default dictActions;

@@ -28,10 +28,12 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         UniversityList,
         InterestsList,
         StudyDirectionsList,
+        CountryList,
         fetchUniversities,
         fetchInterests,
         fetchLanguages,
-        fetchStudyDirections
+        fetchStudyDirections,
+        fetchCountries
     } = useDictStore();
 
     const formik = useFormik({
@@ -46,6 +48,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             location: '',
             university: '',
             studyDirection: '',
+            countryId: 0,
             photo: '',
             email: '',
             password: '',
@@ -73,6 +76,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         fetchInterests();
         fetchLanguages();
         fetchStudyDirections();
+        fetchCountries();
     }, [])
 
     useEffect(() => {
@@ -244,6 +248,28 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         />
                     </div>
                     { formik.errors.studyDirection && < ErrorComponent message={ formik.errors.studyDirection }/> }
+                </div>
+
+                <div>
+                    <label htmlFor='CountryId' className={ l.label }>
+                        Country
+                    </label>
+                    <div>
+                        <CustomSelect
+                            id={ 'countryId' }
+                            placeholder="Enter your country..."
+                            status={ !!formik.errors.countryId ? 'error' : undefined }
+                            onChange={ (e) => {
+                                formik.setFieldValue("countryId", parseInt(e.toString()));
+                                formik.setFieldError("countryId", undefined);
+                            } }
+                            options={ CountryList?.map(item => ({
+                                value: item.id.toString(),
+                                label: item.name,
+                            })) }
+                        />
+                    </div>
+                    { formik.errors.countryId && < ErrorComponent message={ formik.errors.countryId }/> }
                 </div>
 
                 <div>

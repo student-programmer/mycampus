@@ -29,8 +29,8 @@ const Profile = ({currentProfile}: { currentProfile: User }) => {
                         { currentProfile.firstName } { currentProfile.lastName }
                     </p>
                     <div className={ style.countryWrapper }>
-                        <p className={ style.textPmain }>Country</p>
-                        <Image src={ CountyIcon } width={ 20 } height={ 20 } alt='Country Icon'/>
+                        <p className={ style.textPmain }>{currentProfile.country?.name}</p>
+                        <Image src={currentProfile.country?.photo} width={ 20 } height={ 20 } alt=''/>
                     </div>
                 </div>
                 <div className={ style.languageAndAgeInfo }>

@@ -16,18 +16,19 @@ import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 import { generateAvatar } from "@/utils/utils";
 
 
-const ConnectsPage = () => {
-    const {profileList, currentProfile, fetchProfiles} = useProfilesStore();
-
-    const filteredProfiles = profileList.filter(
-        (user: User) => user.id !== currentProfile?.id
-    );
+const ConnectsPage = ({currentUser}) => {
+    const {profileList, fetchProfiles} = useProfilesStore();
 
     useEffect(() => {
         fetchProfiles().catch(r => {
             console.error("Не удалось подтянуть пользователей!")
         });
     }, []);
+
+    const filteredProfiles = profileList.filter(
+        (user: User) => user.id !== currentUser?.id
+    );
+
 
     return (
         <div className={ style.profileWrapper }>
@@ -77,8 +78,8 @@ const UserCard = ({user}: { user: User }) => {
                         { user.firstName } { user.lastName }
                     </p>
                     <div className={ style.countryWrapper }>
-                        <p className={ style.textPmain }>China</p> {/* Статичное значение */ }
-                        <Image src='/chinaIcon.svg' width={ 20 } height={ 20 } alt=''/>
+                        <p className={ style.textPmain }>{user.country?.name}</p> {/* Статичное значение */ }
+                        <Image src={user.country?.photo} width={ 20 } height={ 20 } alt=''/>
                     </div>
                 </div>
                 <div className={ style.languageAndAgeInfo }>
@@ -87,15 +88,13 @@ const UserCard = ({user}: { user: User }) => {
                         years
                     </p>
                     <p className={ style.textPmain }>•</p>
-                    <p className={ style.textPmain }>English, Chinese</p>{ ' ' }
-                    {/* Статичное значение */ }
+                    <p className={ style.textPmain }> {user.languages?.map(item => <a
+                        key={ item.id }>{ item.name }, </a>) }</p>{ ' ' }
                 </div>
                 <div className={ style.universityInfo }>
-                    <p className={ style.textPmain }>Interior Design</p>{ ' ' }
-                    {/* Статичное значение */ }
+                    <p className={ style.textPmain }>{ user.education.studyDirection.name }</p>
                     <p className={ style.textPmain }>-</p>
-                    <p className={ style.textPmain }>Canadian University Dubai</p>{ ' ' }
-                    {/* Статичное значение */ }
+                    <p className={ style.textPmain }>{ user.education.university.name }</p>
                 </div>
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }>About:</p>
@@ -104,11 +103,16 @@ const UserCard = ({user}: { user: User }) => {
                 <div className={ style.interestsPeople }>
                     <p className={ style.headerText }>Interests:</p>
                     <div className={ style.interestsBlock }>
-                        <p className={ style.interestsBlocks }>Interior Design</p>
-                        <p className={ style.interestsBlocks }>Yoga</p>
-                        <p className={ style.interestsBlocks }>Cooking</p>
-                        <p className={ style.interestsBlocks }>Books</p>
-                        <p className={ style.interestsBlocks }>Cultural Events</p>
+                        { !user.interests.length ?
+                            <p className={ style.interestsBlocks }>No interests available</p>
+                            :
+                            <>
+                                {
+                                    user.interests.map(item => <p className={ style.interestsBlocks }
+                                                                            key={ item.id }>{ item.name }</p>)
+                                }
+                            </>
+                        }
                     </div>
                     <div className={ style.buttonsContainer }>
                         <Button className={ style.buttonSendProfile } onClick={ goToChat }>

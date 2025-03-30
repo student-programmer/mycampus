@@ -1,4 +1,4 @@
-import { PreConnectsPage } from "@/fsd/features/profile/ui/PreConnects";
+import PreConnectsPage from "@/fsd/features/profile/ui/PreConnects";
 
 
 export const PreConnects = () => {

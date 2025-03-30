@@ -6,6 +6,10 @@ export interface User {
     birthDate: string;
     description: string;
     photo: string;
+    sex: string;
+    country: Country;
+    location: string;
+    isOnline: boolean;
     languages: DictItem[];
     interests: DictItem[];
     education: Education
@@ -19,5 +23,11 @@ interface DictItem {
 interface Education {
     university: DictItem,
     studyDirection: DictItem,
+}
+
+interface Country {
+    id: number,
+    name: string,
+    photo: string,
 }
 
