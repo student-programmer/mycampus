@@ -54,9 +54,7 @@ export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
         { isLoading ? (
           <Loader/>
         ) : (
-          <>
             <Component user={user}/>
-          </>
         ) }
         { navMenuOn && <NavMenu/> }
       </div>

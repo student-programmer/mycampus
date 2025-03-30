@@ -1,14 +1,3 @@
-// export interface User {
-// 	id: string;
-// 	name: string;
-// 	email: string;
-// 	age: number;
-// 	gender: 'male' | 'female';
-// 	isLoading: boolean;
-// 	profile: Profile;
-// }
-
-
 export interface User {
     id: number;
     authUserId: number;
@@ -16,46 +5,14 @@ export interface User {
     lastName: string;
     birthDate: string;
     description: string;
-}
-
-export interface CurrentUser {
-    id: number;
-    authUserId: number;
-    firstName: string;
-    email: string;
-    lastName: string;
-    birthDate: string;
-    description: string;
     photo: string;
-    languages: Languages[];
-    interests: Interest[];
-}
-
-// interface Profile {
-//     education: Education;
-//     country: Country;
-//     languagesSpoken: string[];
-//     about: string;
-//     interests: string[];
-//     photo: string;
-// }
-
-interface Languages {
-    userId: number,
-    languageId: number,
-    language: DictItem,
-}
-
-interface Interest {
-    userId: number,
-    interestId: number,
-    interest: DictItem,
-}
-
-interface Interest {
-    userId: number,
-    interestId: number,
-    interest: DictItem,
+    sex: string;
+    country: Country;
+    location: string;
+    isOnline: boolean;
+    languages: DictItem[];
+    interests: DictItem[];
+    education: Education
 }
 
 interface DictItem {
@@ -64,11 +21,13 @@ interface DictItem {
 }
 
 interface Education {
-    fieldOfStudy: string;
-    university: string;
+    university: DictItem,
+    studyDirection: DictItem,
 }
 
 interface Country {
-    name: string;
-    icon: string
+    id: number,
+    name: string,
+    photo: string,
 }
+

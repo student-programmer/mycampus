@@ -6,30 +6,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import style from './ui/profile.module.scss';
-import { type User } from '@/fsd/entities/profile';
 
 import CountyIcon from '@/public/chinaIcon.svg';
-import { CurrentUser } from "@/fsd/entities/profile/model/users";
+import { getAge } from "@/fsd/shared/helpers/getAge";
+import { User } from "@/fsd/entities/profile";
 import { generateAvatar } from "@/utils/utils";
 
-const getAge = (birthdate: string): number => {
-    const birthDate = new Date(birthdate);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-};
-
-
-const Profile = (user: CurrentUser) => {
+const Profile = ({currentProfile}: { currentProfile: User }) => {
     return (
         <div className={ style.profileWrapperMain }>
             <div className={ style.photoBack }>
                 <Image
-                    src={ generateAvatar(user.firstName, user.lastName) }
+                    src={ generateAvatar(currentProfile.firstName, currentProfile.lastName) }
                     alt='Profile Photo'
                     width={ 358 }
                     height={ 374 }
@@ -38,38 +26,38 @@ const Profile = (user: CurrentUser) => {
             <div className={ style.mainCardInfo }>
                 <div className={ style.headerProfile }>
                     <p className={ style.mainParagraphH1 }>
-                        { user.firstName } { user.lastName }
+                        { currentProfile.firstName } { currentProfile.lastName }
                     </p>
                     <div className={ style.countryWrapper }>
-                        <p className={ style.textPmain }>Country</p>
-                        <Image src={ CountyIcon } width={ 20 } height={ 20 } alt='Country Icon'/>
+                        <p className={ style.textPmain }>{currentProfile.country?.name}</p>
+                        <Image src={currentProfile.country?.photo} width={ 20 } height={ 20 } alt=''/>
                     </div>
                 </div>
                 <div className={ style.languageAndAgeInfo }>
-                    <p className={ style.textPmain }>{ getAge(user.birthDate) } years</p>
+                    <p className={ style.textPmain }>{ getAge(currentProfile.birthDate) } years</p>
                     <p className={ style.textPmain }>•</p>
-                    <p className={ style.textPmain }>{ user.languages.map(item => <a
-                        key={ item.language.id }>{ item.language.name }, </a>) }</p>
+                    <p className={ style.textPmain }>{ currentProfile.languages.map(item => <a
+                        key={ item.id }>{ item.name }, </a>) }</p>
                 </div>
                 <div className={ style.universityInfo }>
-                    <p className={ style.textPmain }>Field of Study</p>
+                    <p className={ style.textPmain }>{ currentProfile.education.studyDirection.name }</p>
                     <p className={ style.textPmain }>-</p>
-                    <p className={ style.textPmain }>University</p>
+                    <p className={ style.textPmain }>{ currentProfile.education.university.name }</p>
                 </div>
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }>About:</p>
-                    <p className={ style.textPmain }>{ user.description }</p>
+                    <p className={ style.textPmain }>{ currentProfile.description }</p>
                 </div>
                 <div className={ style.interestsPeople }>
                     <p className={ style.headerText }>Interests:</p>
                     <div className={ style.interestsBlock }>
-                        { user.interests === [] ?
+                        { !currentProfile.interests.length ?
                             <p className={ style.interestsBlocks }>No interests available</p>
                             :
                             <>
                                 {
-                                    user.interests.map(item => <p className={ style.interestsBlocks }
-                                                                  key={ item.interest.id }>{ item.interest.name }</p>)
+                                    currentProfile.interests.map(item => <p className={ style.interestsBlocks }
+                                                                            key={ item.id }>{ item.name }</p>)
                                 }
                             </>
                         }

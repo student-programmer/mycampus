@@ -20,7 +20,7 @@ const ProfilePage = () => {
         return <p>Loading...</p>; // Пока грузится профиль
     }
 
-    return <Profile user={ currentProfile }/>;
+    return <Profile currentProfile={ currentProfile }/>;
 };
 
 export default ProfilePage;

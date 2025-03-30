@@ -24,6 +24,7 @@ const authActions = {
             interests: values.interests,
             location: values.location,
             university: values.university,
+            countryId: values.countryId,
             studyDirection: values.studyDirection,
             photo: values.photo,
             email: values.email,

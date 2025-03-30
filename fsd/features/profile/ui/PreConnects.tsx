@@ -16,22 +16,24 @@ import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 import { generateAvatar } from "@/utils/utils";
 
 
-const ConnectsPage = ({currentUser}) => {
+const PreConnectsPage = () => {
     const {profileList, fetchProfiles} = useProfilesStore();
 
     useEffect(() => {
-        fetchProfiles().catch(r => {
-            console.error("Не удалось подтянуть пользователей!")
-        });
+        fetchProfiles();
     }, []);
 
-    const filteredProfiles = profileList.filter(
-        (user: User) => user.id !== currentUser?.id
-    );
-
-
+    const router = useRouter();
+    const toggleBack = () => {
+        router.push('/');
+    };
     return (
         <div className={ style.profileWrapper }>
+            <div className={ style.back_button }>
+                <button className={ style.iconGoBack } onClick={ toggleBack }>
+                    <LeftPageIcon/>
+                </button>
+            </div>
             <Swiper
                 direction={ 'vertical' }
                 slidesPerView={ 1 }
@@ -41,7 +43,7 @@ const ConnectsPage = ({currentUser}) => {
                 loop={ true }
                 className={ style.swiperContainer }
             >
-                { filteredProfiles.map((user: User) => (
+                { profileList.map((user: User) => (
                     <SwiperSlide key={ user.id } className={ style.slide }>
                         <UserCard user={ user }/>
                     </SwiperSlide>
@@ -49,7 +51,7 @@ const ConnectsPage = ({currentUser}) => {
             </Swiper>
         </div>
     );
-};
+}
 
 const UserCard = ({user}: { user: User }) => {
     const router = useRouter();
@@ -57,13 +59,12 @@ const UserCard = ({user}: { user: User }) => {
         router.push(`/connects/${ user.id }`);
     };
     const goToChat = () => {
-        router.push(`/chat/${ user.firstName } ${ user.lastName }/${ user.id }`);
+        router.push(`/chat/${ user.firstName }${ user.lastName }/${ user.id }`);
     };
 
     return (
         <div className={ style.profileWrapperMain }>
             <div className={ style.photoBack }>
-                {/* <Image src='/Mei.png' alt='' width={358} height={374} /> */ }
                 <Image
                     src={ generateAvatar(user.firstName, user.lastName) }
                     alt='avatar'
@@ -78,8 +79,8 @@ const UserCard = ({user}: { user: User }) => {
                         { user.firstName } { user.lastName }
                     </p>
                     <div className={ style.countryWrapper }>
-                        <p className={ style.textPmain }>{user.country?.name}</p> {/* Статичное значение */ }
-                        <Image src={user.country?.photo} width={ 20 } height={ 20 } alt=''/>
+                        <p className={ style.textPmain }>China</p> {/* Статичное значение */ }
+                        <Image src='/chinaIcon.svg' width={ 20 } height={ 20 } alt=''/>
                     </div>
                 </div>
                 <div className={ style.languageAndAgeInfo }>
@@ -88,13 +89,15 @@ const UserCard = ({user}: { user: User }) => {
                         years
                     </p>
                     <p className={ style.textPmain }>•</p>
-                    <p className={ style.textPmain }> {user.languages?.map(item => <a
-                        key={ item.id }>{ item.name }, </a>) }</p>{ ' ' }
+                    <p className={ style.textPmain }>English, Chinese</p>{ ' ' }
+                    {/* Статичное значение */ }
                 </div>
                 <div className={ style.universityInfo }>
-                    <p className={ style.textPmain }>{ user.education.studyDirection.name }</p>
+                    <p className={ style.textPmain }>Interior Design</p>{ ' ' }
+                    {/* Статичное значение */ }
                     <p className={ style.textPmain }>-</p>
-                    <p className={ style.textPmain }>{ user.education.university.name }</p>
+                    <p className={ style.textPmain }>Canadian University Dubai</p>{ ' ' }
+                    {/* Статичное значение */ }
                 </div>
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }>About:</p>
@@ -103,16 +106,11 @@ const UserCard = ({user}: { user: User }) => {
                 <div className={ style.interestsPeople }>
                     <p className={ style.headerText }>Interests:</p>
                     <div className={ style.interestsBlock }>
-                        { !user.interests.length ?
-                            <p className={ style.interestsBlocks }>No interests available</p>
-                            :
-                            <>
-                                {
-                                    user.interests.map(item => <p className={ style.interestsBlocks }
-                                                                            key={ item.id }>{ item.name }</p>)
-                                }
-                            </>
-                        }
+                        <p className={ style.interestsBlocks }>Interior Design</p>
+                        <p className={ style.interestsBlocks }>Yoga</p>
+                        <p className={ style.interestsBlocks }>Cooking</p>
+                        <p className={ style.interestsBlocks }>Books</p>
+                        <p className={ style.interestsBlocks }>Cultural Events</p>
                     </div>
                     <div className={ style.buttonsContainer }>
                         <Button className={ style.buttonSendProfile } onClick={ goToChat }>
@@ -128,4 +126,4 @@ const UserCard = ({user}: { user: User }) => {
     );
 };
 
-export default ConnectsPage;
+export default PreConnectsPage;
