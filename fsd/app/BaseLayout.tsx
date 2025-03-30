@@ -11,7 +11,7 @@ interface BaseLayoutProps {
     navMenuOn: boolean;
 }
 
-export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
+export default function BaseLayout({Component, navMenuOn}: BaseLayoutProps) {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -34,25 +34,24 @@ export default function BaseLayout({ Component, navMenuOn }: BaseLayoutProps) {
         const token = localStorage.getItem("jwtToken");
 
         getCurrentUser(token).then();
-    }, [router]); // router добавлен в зависимости
+    }, [router]);
 
     return (
         <div
-            style={{
+            style={ {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-            }}
+            } }
         >
-            {isLoading ? (
-                <Loader />
+            { isLoading ? (
+                <Loader/>
             ) : (
-                <>
-                    <Component />
-                </>
-            )}
-            {navMenuOn && <NavMenu />}
+                <Component/>
+            )
+            }
+            { navMenuOn && <NavMenu/> }
         </div>
     );
 }

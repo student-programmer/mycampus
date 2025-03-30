@@ -72,28 +72,15 @@ const generateAvatar = (firstName?: string, lastName?: string) => {
 
 const UserCard = ({user}: { user: User }) => {
     const router = useRouter();
-    const pathname = usePathname();
-    const toggleBack = () => {
-        router.push('/');
-    };
     const moreInfo = () => {
-        // router.push(`/connects/${user.id}`);
+        router.push(`/connects/${user.id}`);
     };
     const goToChat = () => {
         router.push(`/chat/${ user.firstName }${ user.lastName }/${ user.id }`);
     };
 
-    const showBackButton = pathname == '/pre-connects';
-
     return (
         <div className={ style.profileWrapperMain }>
-            { showBackButton && (
-                <div className={ style.back_button }>
-                    <button className={ style.iconGoBack } onClick={ toggleBack }>
-                        <LeftPageIcon/>
-                    </button>
-                </div>
-            ) }
             <div className={ style.photoBack }>
                 {/* <Image src='/Mei.png' alt='' width={358} height={374} /> */ }
                 <Image
@@ -147,9 +134,9 @@ const UserCard = ({user}: { user: User }) => {
                         <Button className={ style.buttonSendProfile } onClick={ goToChat }>
                             Send message
                         </Button>
-                        <Button className={ style.buttonViewProfile } onClick={ moreInfo }>
-                            View Profile
-                        </Button>
+                        {/*<Button className={ style.buttonViewProfile } onClick={ moreInfo }>*/}
+                        {/*    View Profile*/}
+                        {/*</Button>*/}
                     </div>
                 </div>
             </div>

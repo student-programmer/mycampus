@@ -60,7 +60,7 @@ export const NavMenu = () => {
 					className={`${style.linkNav} ${
 						isActive('/profile') ? style.active : ''
 					}`}
-					onClick={() => handleNavigation('/profile/1')}
+					onClick={() => handleNavigation('/profile')}
 				>
 					<FifthIcon />
 					<span className={style.navItem}>Profile</span>
