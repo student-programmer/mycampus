@@ -9,7 +9,7 @@ import { SocketProvider } from "@/contexts/SocketContext";
 import { User } from "@/fsd/entities/profile";
 
 interface BaseLayoutProps {
-  Component: React.ComponentType;
+  Component: React.FC;
   navMenuOn: boolean;
 }
 

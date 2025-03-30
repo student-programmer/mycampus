@@ -2,7 +2,7 @@ import chatService from "@/service/chat";
 
 
 const dictActions = {
-  getChatUsers: async (userId) => {
+  getChatUsers: async (userId: number) => {
     const [data, error] = await chatService.getChatUsers(userId);
 
     if (error) {
@@ -10,7 +10,7 @@ const dictActions = {
     }
     return data;
   },
-  getChatMessages: async (userId1, userId2) => {
+  getChatMessages: async (userId1: number, userId2: number) => {
     const [data, error] = await chatService.getChatMessages(userId1, userId2);
 
     if (error) {
