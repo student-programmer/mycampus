@@ -25,7 +25,7 @@ export const SocketProvider: React.FC<{ userId: number | undefined, children: Re
 
 	useEffect(() => {
 		if (userId) {
-			const socketInstance = io(process.env.NEXT_PUBLIC_BASE_URL, {
+			const socketInstance = io(process.env.NEXT_PUBLIC_WS_URL, {
 				query: { userId },
 			});
 			console.log('Socket connected successfully!');
