@@ -100,7 +100,6 @@ export const useDictStore = create<DictState>((set) => ({
     fetchCountries: async () => {
         try {
             const data = await dictActions.getAllCountries();
-            console.log(data, 'countries_data')
 
             if (!data) {
                 console.warn('API вернул пустые данные');

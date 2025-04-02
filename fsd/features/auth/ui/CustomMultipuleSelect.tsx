@@ -14,6 +14,7 @@ interface InputFieldProps {
     id: string;
     status: 'error' | undefined; // или просто string, если статус может быть чем-то кроме 'error'
     placeholder: string;
+    defaultValue: [] | undefined;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // для поля ввода
     option: OptionType[]; // предполагаю, что interests — это массив строк, если тип другой, измените его
 }
@@ -38,7 +39,7 @@ const tagRender: TagRender = (props) => {
     );
 };
 
-export const CustomMultipleSelect = ({id, status, placeholder, onChange, option}: InputFieldProps) => {
+export const CustomMultipleSelect = ({id, status, placeholder, defaultValue, onChange, option}: InputFieldProps) => {
 
     const options: SelectProps['options'] = option;
 
@@ -47,6 +48,7 @@ export const CustomMultipleSelect = ({id, status, placeholder, onChange, option}
             id={ id }
             status={ status }
             placeholder={ placeholder }
+            defaultValue={ defaultValue }
             onChange={ onChange }
             mode="multiple"
             tagRender={ tagRender }

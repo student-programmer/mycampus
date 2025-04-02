@@ -7,6 +7,7 @@ export interface User {
     description: string;
     photo: string;
     sex: string;
+    email: string;
     country: Country;
     location: string;
     isOnline: boolean;

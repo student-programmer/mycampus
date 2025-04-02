@@ -11,11 +11,12 @@ interface CustomSelectProps {
     id: string;
     status: 'error' | undefined;  // Статус ошибки
     placeholder: string;
+    defaultValue: string | undefined;
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;  // Обработчик изменения
     options: OptionType[];  // Массив опций для селекта
 }
 
-export const CustomSelect = ({id, status, placeholder, onChange, options}: CustomSelectProps) => {
+export const CustomSelect = ({id, status, placeholder, defaultValue, onChange, options}: CustomSelectProps) => {
     return (
         <Select
             id={ id }
@@ -23,6 +24,7 @@ export const CustomSelect = ({id, status, placeholder, onChange, options}: Custo
             status={ status }
             onChange={ onChange }
             options={ options }
+            defaultValue={ defaultValue }
             className={ l.customSelect }
             dropdownStyle={ {
                 backgroundColor: '#111a14',
