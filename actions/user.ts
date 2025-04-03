@@ -1,5 +1,6 @@
 import userService from "@/service/user";
 import { User } from "@/fsd/entities/profile";
+import { PasswordUpdateAction, UserUpdateActionsRequest } from "@/fsd/shared/api/userApi";
 
 const userActions = {
 
@@ -12,6 +13,24 @@ const userActions = {
         }
         return data;
     },
+
+    update: async (token: string, values: UserUpdateActionsRequest) => {
+        const [data, error] = await userService.update(token, values);
+
+        if (error) {
+            throw error;
+        }
+        return data;
+    },
+
+    updatePassword: async (token: string, values: PasswordUpdateAction) => {
+        const [data, error] = await userService.updatePassword(token, values);
+
+        if (error) {
+            throw error;
+        }
+        return data;
+    }
 
 };
 

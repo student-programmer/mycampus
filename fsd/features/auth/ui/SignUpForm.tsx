@@ -1,18 +1,24 @@
 'use client'
 
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
 import { Input } from "antd";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
 import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSelect";
 import { useDictStore } from "@/fsd/app/stores/dict/store";
 import authActions from "@/actions/auth";
+import style from "@/fsd/widgets/profile/ui/profile.module.scss";
+import TextArea from "antd/es/input/TextArea";
+import { isEmpty } from "@/utils/utils";
+import { UserRegisterActionsRequest } from "@/fsd/shared/api/authApi";
+import { sex } from "@/utils/common";
+import { CustomDatepicker } from "@/fsd/features/auth/CustomDatepicker";
+import dayjs from "dayjs";
 
 interface SignUpFormProps {
     setForm: (value: string | null) => void;
@@ -20,8 +26,6 @@ interface SignUpFormProps {
 
 
 export const SignUpForm = ({setForm}: SignUpFormProps) => {
-
-    const [disabled, setDisabled] = useState<boolean>(false)
 
     const {
         LanguageList,
@@ -38,21 +42,21 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
 
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
-            description: '',
-            birthDate: '',
-            sex: '',
+            firstName: undefined,
+            lastName: undefined,
+            description: undefined,
+            birthDate: undefined,
+            sex: undefined,
             languages: [],
             interests: [],
             location: '',
-            university: '',
-            studyDirection: '',
-            countryId: 0,
+            university: undefined,
+            studyDirection: undefined,
+            countryId: undefined,
             photo: '',
-            email: '',
-            password: '',
-            passwordRepeat: '',
+            email: undefined,
+            password: undefined,
+            passwordRepeat: undefined,
         },
         onSubmit: async (values) => await handleRegister(values),
         validationSchema: SignUpSchema,
@@ -63,7 +67,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         await authActions.register(values).then(r => {
             setForm('SignIn')
         }).catch(r => {
-            if (r.response.status === 400) {
+            if (r?.response?.status === 400) {
                 formik.setFieldError(r.response.data.field, r.response.data.message)
             } else {
                 console.error('Error caused in login:', r)
@@ -78,17 +82,6 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         fetchStudyDirections();
         fetchCountries();
     }, [])
-
-    useEffect(() => {
-        setDisabled(!!formik.errors.firstName || !!formik.errors.lastName
-            || !!formik.errors.description || !!formik.errors.birthDate || !!formik.errors.email
-            || !!formik.errors.password || !!formik.errors.passwordRepeat)
-    }, [formik.errors])
-
-    const sex = [
-        {value: 'male', label: 'Male'},
-        {value: 'female', label: 'Female'},
-    ];
 
     return (
         <>
@@ -138,10 +131,10 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     <label htmlFor='description' className={ l.label }>
                         Description
                     </label>
-                    <Input
+                    <TextArea
                         id={ 'description' }
                         name={ 'description' }
-                        className={ l.input_field }
+                        className={ style.input_field }
                         value={ formik.values.description }
                         onChange={ (e) => {
                             formik.handleChange(e);
@@ -149,6 +142,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         } }
                         status={ !!formik.errors.description ? 'error' : undefined }
                         placeholder="Enter your description..."
+                        autoSize={ {minRows: 3, maxRows: 6} }
                     />
                     { formik.errors.description && < ErrorComponent message={ formik.errors.description }/> }
                 </div>
@@ -156,14 +150,13 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     <label htmlFor='birthDate' className={ l.label }>
                         Birth date
                     </label>
-                    <Input
+                    < CustomDatepicker
                         id={ 'birthDate' }
                         name={ 'birthDate' }
-                        type={ 'date' }
-                        className={ l.input_field }
-                        value={ formik.values.birthDate }
+                        className={ style.datepicker_field }
+                        value={ dayjs(formik.values.birthDate) }
                         onChange={ (e) => {
-                            formik.handleChange(e);
+                            formik.setFieldValue('birthDate', e?.format('YYYY-MM-DD'));
                             formik.setFieldError("birthDate", undefined);
                         } }
                         status={ !!formik.errors.birthDate ? 'error' : undefined }
@@ -184,7 +177,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                             formik.setFieldError("sex", undefined);
                         } }
                         options={ sex }
-                    />
+                        defaultValue={ undefined }/>
                     { formik.errors.sex && < ErrorComponent message={ formik.errors.sex }/> }
                 </div>
                 <div>
@@ -223,6 +216,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                                 value: item.id.toString(),
                                 label: item.name,
                             })) }
+                            defaultValue={ undefined }
                         />
                     </div>
                     { formik.errors.university && < ErrorComponent message={ formik.errors.university }/> }
@@ -245,6 +239,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                                 value: item.id.toString(),
                                 label: item.name,
                             })) }
+                            defaultValue={ undefined }
                         />
                     </div>
                     { formik.errors.studyDirection && < ErrorComponent message={ formik.errors.studyDirection }/> }
@@ -267,6 +262,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                                 value: item.id.toString(),
                                 label: item.name,
                             })) }
+                            defaultValue={ undefined }
                         />
                     </div>
                     { formik.errors.countryId && < ErrorComponent message={ formik.errors.countryId }/> }
@@ -294,6 +290,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         option={ LanguageList.map(item => ({
                             value: item.name,
                         })) }
+                        defaultValue={ undefined }
                     />
 
                     { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }
@@ -321,46 +318,47 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         option={ InterestsList.map(item => ({
                             value: item.name,
                         })) }
+                        defaultValue={ undefined }
                     />
                     { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }
                 </div>
 
-                <div>
-                    <label htmlFor='photo' className={ l.label }>
-                        Photo
-                    </label>
-                    <Input
-                        id={ 'photo' }
-                        name={ 'photo' }
-                        className={ l.input_field }
-                        value={ formik.values.photo }
-                        onChange={ (e) => {
-                            formik.handleChange(e);
-                            formik.setFieldError("photo", undefined);
-                        } }
-                        status={ !!formik.errors.photo ? 'error' : undefined }
-                        placeholder="Enter your photo..."
-                    />
-                    { formik.errors.photo && < ErrorComponent message={ formik.errors.photo }/> }
-                </div>
-                <div>
-                    <label htmlFor='location' className={ l.label }>
-                        Location
-                    </label>
-                    <Input
-                        id={ 'location' }
-                        name={ 'location' }
-                        className={ l.input_field }
-                        value={ formik.values.location }
-                        onChange={ (e) => {
-                            formik.handleChange(e);
-                            formik.setFieldError("location", undefined);
-                        } }
-                        status={ !!formik.errors.location ? 'error' : undefined }
-                        placeholder="Enter your location..."
-                    />
-                    { formik.errors.location && < ErrorComponent message={ formik.errors.location }/> }
-                </div>
+                {/*<div>*/ }
+                {/*    <label htmlFor='photo' className={ l.label }>*/ }
+                {/*        Photo*/ }
+                {/*    </label>*/ }
+                {/*    <Input*/ }
+                {/*        id={ 'photo' }*/ }
+                {/*        name={ 'photo' }*/ }
+                {/*        className={ l.input_field }*/ }
+                {/*        value={ formik.values.photo }*/ }
+                {/*        onChange={ (e) => {*/ }
+                {/*            formik.handleChange(e);*/ }
+                {/*            formik.setFieldError("photo", undefined);*/ }
+                {/*        } }*/ }
+                {/*        status={ !!formik.errors.photo ? 'error' : undefined }*/ }
+                {/*        placeholder="Enter your photo..."*/ }
+                {/*    />*/ }
+                {/*    { formik.errors.photo && < ErrorComponent message={ formik.errors.photo }/> }*/ }
+                {/*</div>*/ }
+                {/*<div>*/ }
+                {/*    <label htmlFor='location' className={ l.label }>*/ }
+                {/*        Location*/ }
+                {/*    </label>*/ }
+                {/*    <Input*/ }
+                {/*        id={ 'location' }*/ }
+                {/*        name={ 'location' }*/ }
+                {/*        className={ l.input_field }*/ }
+                {/*        value={ formik.values.location }*/ }
+                {/*        onChange={ (e) => {*/ }
+                {/*            formik.handleChange(e);*/ }
+                {/*            formik.setFieldError("location", undefined);*/ }
+                {/*        } }*/ }
+                {/*        status={ !!formik.errors.location ? 'error' : undefined }*/ }
+                {/*        placeholder="Enter your location..."*/ }
+                {/*    />*/ }
+                {/*    { formik.errors.location && < ErrorComponent message={ formik.errors.location }/> }*/ }
+                {/*</div>*/ }
                 <div>
                     <label htmlFor='password' className={ l.label }>
                         Password
@@ -413,8 +411,8 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     { formik.errors.passwordRepeat && < ErrorComponent message={ formik.errors.passwordRepeat }/> }
                 </div>
             </div>
-            <button disabled={ disabled }
-                    className={ disabled ? l.login_button : l.login_button_active }
+            <button disabled={ !isEmpty(formik.errors) }
+                    className={ !isEmpty(formik.errors) ? l.login_button : l.login_button_active }
                     onClick={ async () => await formik.submitForm() }>
                 Create account
             </button>

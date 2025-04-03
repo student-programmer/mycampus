@@ -1,6 +1,6 @@
 import authService from "@/service/auth";
-import { LoginRequest } from "@/fsd/shared/api/authApi";
-import { UserRegisterActionsRequest, UserRegisterServiceRequest } from "@/fsd/shared/api/userApi";
+import { LoginRequest, UserRegisterServiceRequest } from "@/fsd/shared/api/authApi";
+import { UserRegisterActionsRequest } from "@/fsd/shared/api/userApi";
 
 const authActions = {
     login: async (values: LoginRequest) => {

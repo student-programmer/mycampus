@@ -35,6 +35,9 @@ export const EditProfile = Yup.object({
     studyDirection: Yup.string().required(REQUIRED_MSG),
     photo: Yup.string().nullable(),
     email: Yup.string().email().required(REQUIRED_MSG),
+});
+
+export const EditPassword = Yup.object({
     password: Yup.string().required(REQUIRED_MSG),
     passwordRepeat: Yup.string()
         .required(REQUIRED_MSG)

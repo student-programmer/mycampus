@@ -22,7 +22,7 @@ export interface UserRegisterActionsRequest {
     passwordRepeat: string | null,
 }
 
-export interface UserRegisterServiceRequest {
+export interface UserUpdateActionsRequest {
     firstName: string,
     lastName: string,
     description: string,
@@ -34,9 +34,13 @@ export interface UserRegisterServiceRequest {
     location: string,
     university: string,
     studyDirection: string,
-    countryId: number,
     photo: string,
+    countryId: number,
+}
+
+export interface PasswordUpdateAction {
     password: string,
+    passwordRepeat: string | null,
 }
 
 

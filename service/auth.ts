@@ -1,6 +1,5 @@
 import axiosInstance from '../plugins/axios';
-import { LoginRequest } from "@/fsd/shared/api/authApi";
-import { UserRegisterServiceRequest } from "@/fsd/shared/api/userApi";
+import { LoginRequest, UserRegisterServiceRequest } from "@/fsd/shared/api/authApi";
 
 const authService = {
     login: async (values: LoginRequest) => {

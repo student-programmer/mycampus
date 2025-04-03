@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 export const generateAvatar = (firstName?: string, lastName?: string) => {
     // Если нет имени или фамилии — ставим заглушку "?"
     const initials = `${ firstName?.[0] ?? '?' }${
@@ -15,13 +13,12 @@ export const generateAvatar = (firstName?: string, lastName?: string) => {
     `) }`;
 };
 
-export const formatYearMonthDay = (inputDate: string) => {
-    const dateObj = new Date(inputDate);
-
-    const year = dateObj.getFullYear();
-    const month: string = String(dateObj.getMonth() + 1).padStart(2, '0');
-    const day: string = String(dateObj.getDate()).padStart(2, '0');
-
-    return `${ year }-${ month }-${ day }`;
+export const isEmpty = (obj: object) => {
+    return obj && Object.keys(obj).length === 0 || false;
 }
+
+export const CurrentDate = () => {
+    return new Date().toISOString().split('T')[0];
+}
+
 

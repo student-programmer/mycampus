@@ -40,7 +40,6 @@ export const SignInForm = () => {
             localStorage.setItem('jwtToken', r.access_token)
             router.push('/connects')
         }).catch(r => {
-            console.log(r, 'r')
             if (r?.response?.status === 400) {
                 formik.setFieldError(r.response.data.field, r.response.data.message)
             } else {

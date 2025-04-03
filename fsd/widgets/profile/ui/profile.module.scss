@@ -276,6 +276,65 @@
   padding: 16px 0;
 }
 
+.groupButtons{
+  display: block;
+  width: 100%;
+}
+
+.radioButtonLeft{
+  border-start-start-radius: 12px !important;
+  border-end-start-radius: 12px !important;
+  background-color: #313A34 !important;
+  color: #A2A9A4 !important;
+}
+
+.radioButtonLeftActive{
+  border-start-start-radius: 12px !important;
+  border-end-start-radius: 12px !important;
+  background-color: #84cc15 !important;
+  color: white !important;
+}
+
+.radioButtonRight{
+  border-start-end-radius: 12px !important;
+  border-end-end-radius: 12px !important;
+  background-color: #313A34 !important;
+  color: #A2A9A4 !important;
+}
+
+.radioButtonRightActive{
+  border-start-end-radius: 12px !important;
+  border-end-end-radius: 12px !important;
+  background-color: #84cc15 !important;
+  color: white !important;
+}
+
+.input_field {
+  width: 100%;
+  height: 56px;
+  border-radius: 20px;
+  font-size: 18px;
+  background-color: #111a14 !important;
+  color: #84cc16 !important;
+  margin-top: 10px;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  caret-color: #84cc16 !important;
+
+}
+
+.input_field:-webkit-autofill,
+.input_field:-webkit-autofill:hover,
+.input_field:-webkit-autofill:focus {
+  background-color: #111a14 !important;
+  color: #84cc16 !important;
+  border: 0.01px solid #111a14;
+  outline:none;
+  box-shadow: 0 0 0 2px #111a14;
+  -webkit-text-fill-color: #84cc16 !important;
+  -webkit-box-shadow: 0 0 0 1000px #111a14 inset !important;
+  caret-color: #84cc16 !important;
+}
+
 
 .editCardInfo {
   position: relative; /* Абсолютное позиционирование */
@@ -301,6 +360,7 @@
      padding: 0 6px;
       input{
         font-size: 18px !important;
+        color: #84cc16 !important;
       }
       input::placeholder{
         color: rgba(197, 200, 198, 0.6) !important;
@@ -316,7 +376,7 @@
 .photoBack {
   position: relative;
   width: 100%;
-  height: 38dvh;
+  height: 37dvh;
   left: 0;
   z-index: 1;
   border-radius: 20px;
@@ -424,7 +484,7 @@
 }
 
 .buttonsContainerProfile {
-  margin-top: 10px;
+  margin-top: 15px;
   // margin-bottom: 140px;
   display: flex;
   justify-content: space-between;
@@ -434,6 +494,18 @@
 .buttonSendProfile {
   background-color: #84cc16;
   color: #ffffff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  border: none;
+  border-radius: 12px;
+  padding: 18px 31px;
+  width: 100%;
+}
+
+.buttonSendProfile:disabled {
+  background-color: #313A34;
+  color: #A2A9A4;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
