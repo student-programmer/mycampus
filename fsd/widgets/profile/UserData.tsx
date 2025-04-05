@@ -176,8 +176,8 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
                             id={ 'birthDate' }
                             name={ 'birthDate' }
                             className={ style.datepicker_field }
-                            defaultValue={ dayjs(currentProfile.birthDate) }
-                            value={ dayjs(formik.values.birthDate) }
+                            defaultValue={ currentProfile.birthDate }
+                            value={ formik.values.birthDate }
                             onChange={ (e) => {
                                 formik.setFieldValue('birthDate', e.format('YYYY-MM-DD'));
                                 formik.setFieldError("birthDate", undefined);

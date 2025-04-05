@@ -11,7 +11,7 @@ interface CustomDatepickerProps {
     placeholder: string;
     defaultValue?: string | undefined;
     value: string | undefined;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;  // Обработчик изменения
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const CustomDatepicker = ({
@@ -30,8 +30,8 @@ export const CustomDatepicker = ({
             id={ id }
             name={ name }
             className={ style.datepicker_field }
-            defaultValue={ defaultValue ? dayjs(defaultValue, 'YYYY-MM-DD') : '' }
-            value={ value ? dayjs(value, 'YYYY-MM-DD') : '' }
+            defaultValue={ typeof defaultValue === 'undefined' ? undefined : dayjs(defaultValue, 'YYYY-MM-DD') }
+            value={ typeof value === 'undefined' ? undefined : dayjs(value) }
             onChange={ onChange }
             status={ status }
             placeholder={ placeholder }

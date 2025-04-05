@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
-import { Input } from "antd";
+import { DatePicker, Input } from "antd";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
@@ -17,8 +17,8 @@ import TextArea from "antd/es/input/TextArea";
 import { isEmpty } from "@/utils/utils";
 import { UserRegisterActionsRequest } from "@/fsd/shared/api/authApi";
 import { sex } from "@/utils/common";
+import { CurrentDate } from "@/utils/utils";
 import { CustomDatepicker } from "@/fsd/features/auth/CustomDatepicker";
-import dayjs from "dayjs";
 
 interface SignUpFormProps {
     setForm: (value: string | null) => void;
@@ -154,7 +154,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         id={ 'birthDate' }
                         name={ 'birthDate' }
                         className={ style.datepicker_field }
-                        value={ dayjs(formik.values.birthDate) }
+                        value={ formik.values.birthDate }
                         onChange={ (e) => {
                             formik.setFieldValue('birthDate', e?.format('YYYY-MM-DD'));
                             formik.setFieldError("birthDate", undefined);

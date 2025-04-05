@@ -1,86 +1,159 @@
 .layoutStylesChat {
-	height: 87dvh;
-	border-radius: 20px;
-	background-color: transparent;
-	left: 50%;
-	transform: translateX(-50%);
-	position: relative;
+    height: 87 dvh;
+    border-radius: 20px;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
 }
 
 .HeaderChatClient {
-	background: transparent;
-	font-size: 20px;
-	font-weight: 700;
-	padding: 0 20px;
-	width: 100%;
-	color: #001510;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 20px;
+    width: 100%;
+    color: #001510;
 }
 
 .typoGraphy {
-	color: #fff !important;
-	padding: 5px;
+    color: #fff !important;
+    padding: 5px;
 }
 
 .ContentWrapper {
-	padding: 10px 20px 20px 20px;
-	background: transparent;
+    padding: 10px 20px 20px 20px;
+    background: transparent;
 }
 
 .listItem {
-	background-color: #1e2721;
-	margin-top: 4px;
-	margin-bottom: 4px;
-	padding-left: 16px !important;
-	padding-right: 16px !important;
-	border-radius: 20px;
+    background-color: #1e2721;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border-radius: 20px;
+}
+
+.plugItem {
+    background-color: rgba(128, 128, 128, 0.52);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border-radius: 20px;
+}
+.plug_title_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .avatar {
-	width: 64px !important;
-	height: 64px !important;
+    width: 64px !important;
+    height: 64px !important;
 }
+
 .unreadCount {
-	width: 64px;
-	height: 64px;
+    width: 64px;
+    height: 64px;
 }
 
 .secondText {
-	color: #c5c8c6 !important;
+    color: #c5c8c6 !important;
 }
+
 .lastSeenText {
-	color: #c5c8c6 !important;
-	font-weight: 400;
+    color: #c5c8c6 !important;
+    font-weight: 400;
 }
+
 .title {
-	color: white;
+    color: white;
 }
+
 .title_block {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .avatarWrapper {
-	position: relative;
+    position: relative;
 }
+
+.plugConnects {
+    height: calc(100dvh - 158px);
+    display: flex;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.plugConnects > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.headerPlug {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.41px;
+    text-align: center;
+    font-family: Rubik;
+}
+
+.textPlug {
+    color: #C5C8C6;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.8%;
+    text-align: center;
+    font-family: Rubik;
+}
+
+
+.buttonBack {
+    background-color: #84cc16;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+    border: none;
+    border-radius: 18px;
+    padding: 22px 32px;
+}
+
+.buttonConnects {
+
+}
+
 
 /* Индикатор активности */
 .statusIndicator {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	width: 18px;
-	height: 18px;
-	box-sizing: border-box;
-	border-radius: 50%; /* Белая обводка */
-	border: 4px solid #1e2721;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border-radius: 50%; /* Белая обводка */
+    border: 4px solid #1e2721;
 }
 
 /* Цвета для статусов */
 .online {
-	background-color: rgba(132, 204, 21, 1); /* Зеленый */
+    background-color: rgba(132, 204, 21, 1); /* Зеленый */
 }
 
 .offline {
-	//   background-color: #a0a0a0; /* Серый */
-	display: none;
+    //   background-color: #a0a0a0; /* Серый */
+    display: none;
 }
