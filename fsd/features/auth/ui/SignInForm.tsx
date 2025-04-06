@@ -2,7 +2,7 @@
 
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React, { useEffect, useState } from "react";
-import { Input } from "antd";
+import { Button, Input } from "antd";
 
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { useFormik } from "formik";
@@ -18,6 +18,7 @@ import { LoginRequest } from "@/fsd/shared/api/authApi";
 export const SignInForm = () => {
 
     const [disabled, setDisabled] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
     const formik = useFormik({
@@ -36,8 +37,10 @@ export const SignInForm = () => {
 
 
     const handleLogin = async (values: LoginRequest) => {
+        setIsLoading(true)
         await authActions.login(values).then(r => {
             localStorage.setItem('jwtToken', r.access_token)
+            setIsLoading(false)
             router.push('/connects')
         }).catch(r => {
             if (r?.response?.status === 400) {
@@ -45,6 +48,7 @@ export const SignInForm = () => {
             } else {
                 console.error('Error caused in login:', r)
             }
+            setIsLoading(false)
         })
     }
 
@@ -100,11 +104,11 @@ export const SignInForm = () => {
                     { formik.errors.password && < ErrorComponent message={ formik.errors.password }/> }
                 </div>
             </div>
-            <button disabled={ disabled }
+            <Button disabled={ disabled } loading={isLoading} size={'large'}
                     className={ disabled ? l.login_button : l.login_button_active }
                     onClick={ async () => await formik.submitForm() }>
                 Sign in
-            </button>
+            </Button>
             <div className={ l.additionally }>
                 <p className={ l.password }>Forgot your password?</p>
             </div>

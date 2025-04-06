@@ -24,7 +24,11 @@ const userActions = {
     },
 
     updatePassword: async (token: string, values: PasswordUpdateAction) => {
-        const [data, error] = await userService.updatePassword(token, values);
+        const changedVal = {
+            password: values.password
+        }
+
+        const [data, error] = await userService.updatePassword(token, changedVal);
 
         if (error) {
             throw error;

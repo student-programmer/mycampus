@@ -10,47 +10,56 @@ import 'swiper/css/pagination';
 import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
-import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 import { generateAvatar } from "@/utils/utils";
+import { ConnectsLoader } from "@/fsd/features/profile/ui/ConnectsLoader";
 
 interface ConnectsPageProps {
-	currentUser?: User;
+    currentUser?: User;
 }
 
-const ConnectsPage = ({ currentUser }: ConnectsPageProps) => {
-	const { profileList, fetchProfiles } = useProfilesStore();
+const ConnectsPage = ({currentUser}: ConnectsPageProps) => {
+    const {profileList, fetchProfiles} = useProfilesStore();
+    const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		fetchProfiles().catch(r => {
-			console.error('Не удалось подтянуть пользователей!');
-		});
-	}, []);
+    useEffect(() => {
+        fetchProfiles().then(r => {
+            setIsLoading(false)
+        }).catch(r => {
+            console.error('Не удалось подтянуть пользователей!');
+        });
+    }, []);
 
-	const filteredProfiles = profileList.filter(
-		(user: User) => user.id !== currentUser?.id
-	);
+    const filteredProfiles = profileList.filter(
+        (user: User) => user.id !== currentUser?.id
+    );
 
-	return (
-		<div className={style.profileWrapper}>
-			<Swiper
-				direction={'vertical'}
-				slidesPerView={1}
-				pagination={{ clickable: true }}
-				navigation={false}
-				centeredSlides
-				loop={true}
-				className={style.swiperContainer}
-			>
-				{filteredProfiles.map((user: User) => (
-					<SwiperSlide key={user.id} className={style.slide}>
-						<UserCard user={user} />
-					</SwiperSlide>
-				))}
-			</Swiper>
-		</div>
-	);
+    return (
+        <div className={ style.profileWrapper }>
+            { isLoading ?
+                < ConnectsLoader/>
+                :
+                <Swiper
+                    direction={ 'vertical' }
+                    slidesPerView={ 1 }
+                    pagination={ {clickable: true} }
+                    navigation={ false }
+                    centeredSlides
+                    loop={ true }
+                    className={ style.swiperContainer }
+                >
+
+                    { filteredProfiles.map((user: User) => (
+                        <SwiperSlide key={ user.id } className={ style.slide }>
+                            <UserCard user={ user }/>
+                        </SwiperSlide>
+                    )) }
+
+                </Swiper>
+            }
+        </div>
+    );
 };
 
 const UserCard = ({user}: { user: User }) => {
@@ -62,17 +71,19 @@ const UserCard = ({user}: { user: User }) => {
         router.push(`/chat/${ user.firstName } ${ user.lastName }/${ user.id }`);
     };
 
+    const avatarUrl = useMemo(() => {
+        return generateAvatar(user.firstName, user.lastName);
+    }, [user.firstName, user.lastName]); // Зависимости
+
     return (
         <div className={ style.profileWrapperMain }>
             <div className={ style.photoBack }>
-                {/* <Image src='/Mei.png' alt='' width={358} height={374} /> */ }
                 <Image
-                    src={ generateAvatar(user.firstName, user.lastName) }
+                    src={ avatarUrl }
                     alt='avatar'
                     width={ 358 }
                     height={ 374 }
                 />
-                ;
             </div>
             <div className={ style.mainCardInfo }>
                 <div className={ style.headerProfile }>
@@ -80,8 +91,8 @@ const UserCard = ({user}: { user: User }) => {
                         { user.firstName } { user.lastName }
                     </p>
                     <div className={ style.countryWrapper }>
-                        <p className={ style.textPmain }>{user.country?.name}</p> {/* Статичное значение */ }
-                        <Image src={user.country?.photo} width={ 20 } height={ 20 } alt=''/>
+                        <p className={ style.textPmain }>{ user.country?.name }</p> {/* Статичное значение */ }
+                        <Image src={ user.country?.photo } width={ 20 } height={ 20 } alt=''/>
                     </div>
                 </div>
                 <div className={ style.languageAndAgeInfo }>
@@ -90,7 +101,7 @@ const UserCard = ({user}: { user: User }) => {
                         years
                     </p>
                     <p className={ style.textPmain }>•</p>
-                    <p className={ style.textPmain }> {user.languages?.map(item => <a
+                    <p className={ style.textPmain }> { user.languages?.map(item => <a
                         key={ item.id }>{ item.name }, </a>) }</p>{ ' ' }
                 </div>
                 <div className={ style.universityInfo }>
@@ -111,7 +122,7 @@ const UserCard = ({user}: { user: User }) => {
                             <>
                                 {
                                     user.interests.map(item => <p className={ style.interestsBlocks }
-                                                                            key={ item.id }>{ item.name }</p>)
+                                                                  key={ item.id }>{ item.name }</p>)
                                 }
                             </>
                         }

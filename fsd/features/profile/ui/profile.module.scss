@@ -38,6 +38,131 @@
 	border-radius: 20px;
 }
 
+/* Skeleton-specific стили */
+.skeletonImage {
+	width: 100% !important;
+	height: 32dvh !important;
+	:global {
+		.ant-skeleton {
+			width: 100% !important;
+			height: 32dvh !important;
+			.ant-skeleton-avatar {
+				border-radius: 20px 20px 0 0 !important;
+				left: 0 !important;
+				position: relative !important;
+				z-index: 1 !important;
+			}
+		}
+	}
+}
+
+
+.skeletonName {
+	width: 160px !important;
+	height: 24px !important;
+	padding-top: 5px !important;
+	padding-bottom: 2px !important;
+}
+
+.skeletonEducation {
+	padding: 5px 0 5px 0;
+	:global {
+		.ant-skeleton-input {
+			width: 10px !important;
+		}
+	}
+}
+
+.skeletonYear {
+	width: 50px !important;
+	height: 20px !important;
+}
+
+.skeletonAbout {
+	:global {
+		.ant-skeleton-input {
+			height: 7dvh !important;
+			border-radius: 12px !important;
+		}
+	}
+}
+
+.skeletonFlag {
+	margin-left: 8px;
+}
+
+.skeletonAboutTitle,
+.skeletonInterestsTitle {
+	max-width: 60px;
+	margin-bottom: 8px;
+}
+
+.skeletonProfileWrapperMain {
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 20px;
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+	justify-content: center;
+	top: 20px;
+}
+
+.skeletonUniversityInfo {
+	display: flex;
+	gap: 8px;
+	text-align: center;
+	align-items: center;
+}
+
+.buttonSkeletonSendProfile {
+	background-color: #84cc16;
+	color: #ffffff;
+	border: none;
+	border-radius: 16px;
+	padding: 10px 30px;
+	width: 100% !important;
+	:global{
+		.ant-skeleton-button{
+			width: 100% !important;
+		}
+	}
+}
+
+.buttonSkeletonViewProfile {
+	background-color: #313a34;
+	color: #ffffff;
+	border-radius: 16px;
+	padding: 10px 30px;
+	width: 100% !important;
+	:global{
+		.ant-skeleton-button{
+			width: 100% !important;
+		}
+	}
+}
+
+.skeletonInterestsBlocks {
+	border-radius: 8px;
+	background-color: #313a34;
+	font-size: 12px;
+	line-height: 18px;
+	opacity: 0.64;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0;
+	text-align: center;
+	white-space: nowrap;
+
+	:global{
+		.ant-skeleton-button{
+			height: 25px !important;
+			width: 60px !important;;
+		}
+	}
+}
+
 .photoBack > img {
 	height: 120%;
 	width: 100%;
@@ -64,7 +189,6 @@
 
 .headerProfile {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	text-align: center;
 	justify-content: space-between;

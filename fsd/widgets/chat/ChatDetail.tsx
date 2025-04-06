@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, createRef } from 'react';
+import { useState, useEffect, createRef, useMemo } from 'react';
 import { Avatar } from 'antd';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import style from './ui/chatDetail.module.scss';
@@ -75,6 +75,10 @@ const ChatDetail = ({ user }: ChatDetailProps) => {
 		setInputValue('');
 	};
 
+	const avatarUrl = useMemo(() => {
+		return generateAvatar(receiverName, receiverLastName);
+	}, []); // Зависимости
+
 	return (
 		<div className={style.wrapperDetail}>
 			<div className={style.goBackContainer}>
@@ -91,7 +95,7 @@ const ChatDetail = ({ user }: ChatDetailProps) => {
 				</span>
 				<Avatar
 					style={{ border: '1px solid #FFFFFF29' }}
-					src={generateAvatar(receiverName, receiverLastName)}
+					src={avatarUrl}
 					size={48}
 				/>
 			</div>

@@ -43,5 +43,9 @@ export interface PasswordUpdateAction {
     passwordRepeat: string | null,
 }
 
+export interface PasswordUpdateService {
+    password: string,
+}
+
 
 

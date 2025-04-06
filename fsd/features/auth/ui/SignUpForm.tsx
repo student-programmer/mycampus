@@ -1,11 +1,11 @@
 'use client'
 
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SignUpSchema } from "@/schemas/signIn";
 import { useFormik } from "formik";
 import { ErrorComponent } from "@/fsd/features/auth/ui/ErrorComponent";
-import { DatePicker, Input } from "antd";
+import { Button, Input } from "antd";
 import { LockIcon } from "@/public/lockIcon";
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { CustomSelect } from "@/fsd/features/auth/ui/CustomSelect";
@@ -17,7 +17,6 @@ import TextArea from "antd/es/input/TextArea";
 import { isEmpty } from "@/utils/utils";
 import { UserRegisterActionsRequest } from "@/fsd/shared/api/authApi";
 import { sex } from "@/utils/common";
-import { CurrentDate } from "@/utils/utils";
 import { CustomDatepicker } from "@/fsd/features/auth/CustomDatepicker";
 
 interface SignUpFormProps {
@@ -26,6 +25,8 @@ interface SignUpFormProps {
 
 
 export const SignUpForm = ({setForm}: SignUpFormProps) => {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         LanguageList,
@@ -64,7 +65,9 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
     })
 
     const handleRegister = async (values: UserRegisterActionsRequest) => {
+        setIsLoading(true)
         await authActions.register(values).then(r => {
+            setIsLoading(false)
             setForm('SignIn')
         }).catch(r => {
             if (r?.response?.status === 400) {
@@ -72,6 +75,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             } else {
                 console.error('Error caused in login:', r)
             }
+            setIsLoading(false)
         })
     }
 
@@ -156,7 +160,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         className={ style.datepicker_field }
                         value={ formik.values.birthDate }
                         onChange={ (e) => {
-                            formik.setFieldValue('birthDate', e?.format('YYYY-MM-DD'));
+                            formik.setFieldValue('birthDate', e === null ? undefined : e.format('YYYY-MM-DD'));
                             formik.setFieldError("birthDate", undefined);
                         } }
                         status={ !!formik.errors.birthDate ? 'error' : undefined }
@@ -278,17 +282,11 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         status={ !!formik.errors.languages ? 'error' : undefined }
                         placeholder="Enter your languages..."
                         onChange={ (e) => {
-                            const selectedNames = Array.isArray(e) ? e : [e];
-                            const selectedIds = selectedNames.map(name => {
-                                const selectedItem = LanguageList.find(item => item.name === name);
-                                return selectedItem ? selectedItem.id : null;
-                            }).filter(id => id !== null);
-
-                            formik.setFieldValue('languages', selectedIds);
+                            formik.setFieldValue('languages', e);
                             formik.setFieldError('languages', undefined);
                         } }
                         option={ LanguageList.map(item => ({
-                            value: item.name,
+                            value: item.id, label: item.name
                         })) }
                         defaultValue={ undefined }
                     />
@@ -305,18 +303,11 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         status={ !!formik.errors.interests ? 'error' : undefined }
                         placeholder="Enter your interests..."
                         onChange={ (e) => {
-
-                            const selectedNames = Array.isArray(e) ? e : [e];
-                            const selectedIds = selectedNames.map(name => {
-                                const selectedItem = InterestsList.find(item => item.name === name);
-                                return selectedItem ? selectedItem.id : null;
-                            }).filter(id => id !== null);
-
-                            formik.setFieldValue('interests', selectedIds);
+                            formik.setFieldValue('interests', e);
                             formik.setFieldError('interests', undefined);
                         } }
                         option={ InterestsList.map(item => ({
-                            value: item.name,
+                            value: item.id, label: item.name
                         })) }
                         defaultValue={ undefined }
                     />
@@ -411,11 +402,11 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     { formik.errors.passwordRepeat && < ErrorComponent message={ formik.errors.passwordRepeat }/> }
                 </div>
             </div>
-            <button disabled={ !isEmpty(formik.errors) }
+            <Button disabled={ !isEmpty(formik.errors) } loading={ isLoading }
                     className={ !isEmpty(formik.errors) ? l.login_button : l.login_button_active }
                     onClick={ async () => await formik.submitForm() }>
                 Create account
-            </button>
+            </Button>
         </>
     )
 }

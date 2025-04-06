@@ -6,7 +6,8 @@ import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 type TagRender = SelectProps['tagRender'];
 
 interface OptionType {
-    value: string;
+    value: any;
+    label: string;
 }
 
 

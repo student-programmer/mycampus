@@ -11,10 +11,10 @@ import userActions from "@/actions/user";
 import { User } from "@/fsd/entities/profile";
 import { useFormik } from "formik";
 import { Button, Input } from "antd";
-import dayjs from "dayjs";
 import TextArea from "antd/es/input/TextArea";
 import { CustomDatepicker } from "@/fsd/features/auth/CustomDatepicker";
 import { sex } from "@/utils/common";
+import { useProfilesStore } from "@/fsd/app/stores/profiles/store";
 
 interface DetailProps {
     currentProfile: User;
@@ -38,6 +38,8 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
         fetchStudyDirections,
         fetchCountries
     } = useDictStore();
+
+    const {setCurrentProfile} = useProfilesStore();
 
     const formik = useFormik({
         initialValues: {
@@ -64,6 +66,9 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
         const token = localStorage.getItem('jwtToken');
         setIsLoadingButton(true);
         await userActions.update(token, values).then(r => {
+            if (r) {
+                setCurrentProfile(r)
+            }
             setStatus('profile')
         }).catch(r => {
             setIsLoadingButton(false)
@@ -90,8 +95,8 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
             description: currentProfile.description || '',
             birthDate: currentProfile.birthDate || '',
             sex: currentProfile.sex || '',
-            languages: currentProfile.languages?.map(item => item.name) || [],
-            interests: currentProfile.interests?.map(item => item.name) || [],
+            languages: currentProfile.languages?.map(item => item.id) || [],
+            interests: currentProfile.interests?.map(item => item.id) || [],
             location: currentProfile.location || '',
             university: currentProfile.education?.university?.id || '',
             studyDirection: currentProfile.education?.studyDirection?.id || '',
@@ -179,7 +184,7 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
                             defaultValue={ currentProfile.birthDate }
                             value={ formik.values.birthDate }
                             onChange={ (e) => {
-                                formik.setFieldValue('birthDate', e.format('YYYY-MM-DD'));
+                                formik.setFieldValue('birthDate', e === null ? undefined : e.format('YYYY-MM-DD'));
                                 formik.setFieldError("birthDate", undefined);
                             } }
                             status={ !!formik.errors.birthDate ? 'error' : undefined }
@@ -306,17 +311,11 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
                             placeholder={ "Enter your languages..." }
                             defaultValue={ formik.values.languages }
                             onChange={ (e) => {
-                                const selectedNames = Array.isArray(e) ? e : [e];
-                                const selectedIds = selectedNames.map(name => {
-                                    const selectedItem = LanguageList.find(item => item.name === name);
-                                    return selectedItem ? selectedItem.id : null;
-                                }).filter(id => id !== null);
-
-                                formik.setFieldValue('languages', selectedIds);
+                                formik.setFieldValue('languages', e);
                                 formik.setFieldError('languages', undefined);
                             } }
                             option={ LanguageList.map(item => ({
-                                value: item.name,
+                                value: item.id, label: item.name
                             })) }
                         />
 
@@ -333,17 +332,11 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
                             defaultValue={ formik.values.interests }
                             placeholder={ "Enter your interests..." }
                             onChange={ (e) => {
-                                const selectedNames = Array.isArray(e) ? e : [e];
-                                const selectedIds = selectedNames.map(name => {
-                                    const selectedItem = InterestsList.find(item => item.name === name);
-                                    return selectedItem ? selectedItem.id : null;
-                                }).filter(id => id !== null);
-
-                                formik.setFieldValue('interests', selectedIds);
+                                formik.setFieldValue('interests', e);
                                 formik.setFieldError('interests', undefined);
                             } }
                             option={ InterestsList.map(item => ({
-                                value: item.name,
+                                value: item.id, label: item.name
                             })) }
                         />
                         { formik.errors.interests && < ErrorComponent message={ formik.errors.interests }/> }

@@ -8,6 +8,7 @@ import { User } from "@/fsd/entities/profile";
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { Button } from "antd";
+import { useMemo } from "react";
 
 interface DetailProps {
     currentProfile: User;
@@ -28,11 +29,15 @@ export const Detail = ({currentProfile, setStatus}: DetailProps) => {
         setStatus('edit')
     }
 
+    const avatarUrl = useMemo(() => {
+        return generateAvatar(currentProfile.firstName, currentProfile.lastName);
+    }, [currentProfile.firstName, currentProfile.lastName]); // Зависимости
+
     return (
         <div className={ style.profileWrapperMain }>
             <div className={ style.photoBack }>
                 <Image
-                    src={ generateAvatar(currentProfile.firstName, currentProfile.lastName) }
+                    src={ avatarUrl }
                     alt='Profile Photo'
                     width={ 358 }
                     height={ 374 }

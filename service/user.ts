@@ -1,6 +1,6 @@
 import axiosInstance from '../plugins/axios';
 import { User } from "@/fsd/entities/profile";
-import { PasswordUpdateAction, UserUpdateActionsRequest } from "@/fsd/shared/api/userApi";
+import { PasswordUpdateAction, PasswordUpdateService, UserUpdateActionsRequest } from "@/fsd/shared/api/userApi";
 
 const userService = {
 
@@ -17,17 +17,17 @@ const userService = {
     update: async (token: string, values: UserUpdateActionsRequest): Promise<[User | null, any]> => {
         try {
             axiosInstance.defaults.headers.Authorization = `Bearer ${ token }`;
-            const {data} = await axiosInstance.post('user/current_profile', values);
+            const {data} = await axiosInstance.post('user/update', values);
             return [data, null];
         } catch (error) {
             return [null, error];
         }
     },
 
-    updatePassword: async (token: string, values: PasswordUpdateAction): Promise<[User | null, any]> => {
+    updatePassword: async (token: string, values: PasswordUpdateService) => {
         try {
             axiosInstance.defaults.headers.Authorization = `Bearer ${ token }`;
-            const {data} = await axiosInstance.post('user/current_profile', values);
+            const {data} = await axiosInstance.post('user/update_password', values);
             return [data, null];
         } catch (error) {
             return [null, error];

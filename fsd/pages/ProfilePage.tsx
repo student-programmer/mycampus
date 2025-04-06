@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
 import Profile from '@/fsd/widgets/profile/Profile';
+import { ProfileLoader } from "@/fsd/features/profile/ui/ProfileLoader";
 
 
 const ProfilePage = () => {
@@ -17,7 +18,7 @@ const ProfilePage = () => {
 
 
     if (!currentProfile) {
-        return <p>Loading...</p>; // Пока грузится профиль
+        return <ProfileLoader/>;
     }
 
     return <Profile currentProfile={ currentProfile }/>;
