@@ -1,8 +1,7 @@
-import React from 'react'
 interface Props {
 	className?: string;
 }
-const FourthIcon = ({ className }: Props) => {
+export const FourthIcon = ({ className }: Props) => {
 	return (
 		<svg
 			width='25'
@@ -21,5 +20,3 @@ const FourthIcon = ({ className }: Props) => {
 		</svg>
 	);
 };
-
-export default FourthIcon;

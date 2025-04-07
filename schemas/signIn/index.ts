@@ -32,10 +32,11 @@ export const SignUpSchema = Yup.object({
     interests: Yup.array().test('checkEmptyInterests', REQUIRED_MSG, (value) => {
         return value?.length !== 0;
     }),
-    location: Yup.string().required(REQUIRED_MSG),
+    location: Yup.string().nullable(),
+    countryId: Yup.number().required(REQUIRED_MSG),
     university: Yup.string().required(REQUIRED_MSG),
     studyDirection: Yup.string().required(REQUIRED_MSG),
-    photo: Yup.string().required(REQUIRED_MSG),
+    photo: Yup.string().nullable(),
     email: Yup.string().email().required(REQUIRED_MSG),
     password: Yup.string().required(REQUIRED_MSG),
     passwordRepeat: Yup.string()

@@ -17,6 +17,7 @@ export interface UserRegisterActionsRequest {
     university: string,
     studyDirection: string,
     photo: string,
+    countryId: number,
     password: string,
     passwordRepeat: string | null,
 }
@@ -33,6 +34,7 @@ export interface UserRegisterServiceRequest {
     location: string,
     university: string,
     studyDirection: string,
+    countryId: number,
     photo: string,
     password: string,
 }

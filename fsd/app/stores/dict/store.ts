@@ -6,15 +6,23 @@ interface DictItem {
     name: string,
 }
 
+interface CountryItem {
+    id: number,
+    name: string,
+    photo: string | null,
+}
+
 interface DictState {
     LanguageList: DictItem[];
     UniversityList: DictItem[];
     InterestsList: DictItem[];
+    CountryList: CountryItem[];
     StudyDirectionsList: DictItem[];
     fetchLanguages: () => Promise<void>;
     fetchUniversities: () => Promise<void>;
     fetchInterests: () => Promise<void>;
     fetchStudyDirections: () => Promise<void>;
+    fetchCountries: () => Promise<void>;
 }
 
 
@@ -22,6 +30,7 @@ export const useDictStore = create<DictState>((set) => ({
     LanguageList: [],
     UniversityList: [],
     InterestsList: [],
+    CountryList: [],
     StudyDirectionsList: [],
 
     fetchLanguages: async () => {
@@ -85,6 +94,23 @@ export const useDictStore = create<DictState>((set) => ({
         } catch (error) {
             console.error(`Ошибка при загрузке направлений исследований:`, error);
             set({StudyDirectionsList: []});
+        }
+    },
+
+    fetchCountries: async () => {
+        try {
+            const data = await dictActions.getAllCountries();
+            console.log(data, 'countries_data')
+
+            if (!data) {
+                console.warn('API вернул пустые данные');
+                set({CountryList: []});
+            } else {
+                set({CountryList: data});
+            }
+        } catch (error) {
+            console.error(`Ошибка при загрузке стран:`, error);
+            set({CountryList: []});
         }
     },
 

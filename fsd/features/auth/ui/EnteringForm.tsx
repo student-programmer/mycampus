@@ -38,12 +38,13 @@ export const EnteringForm = ({
 					</button>
 				</div>
 			</div>
-
+			<div className={l.additionally}>
+				<button className={l.try_now} onClick={handleLogin}>
+					Try now
+				</button>
+			</div>
 			<div className={l.additionally}>
 				<p className={l.password}>Forgot your password?</p>
-			</div>
-			<div className={l.additionally} onClick={handleLogin}>
-				<p className={l.password}>Continue without logging in</p>
 			</div>
 		</>
 	);

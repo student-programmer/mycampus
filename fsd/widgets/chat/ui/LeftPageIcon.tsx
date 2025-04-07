@@ -1,9 +1,8 @@
-import React from 'react';
 interface Props {
 	className?: string;
 }
 
-const LeftPageIcon = ({ className }: Props) => {
+export const LeftPageIcon = ({ className }: Props) => {
 	return (
 		<svg
 			width='16'
@@ -23,4 +22,3 @@ const LeftPageIcon = ({ className }: Props) => {
 	);
 };
 
-export default LeftPageIcon;

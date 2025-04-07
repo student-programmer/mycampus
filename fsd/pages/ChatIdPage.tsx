@@ -1,8 +1,14 @@
-import ChatDetail from "../widgets/chat/ChatDetail"
+import ChatDetail from '../widgets/chat/ChatDetail';
+import { User } from '@/fsd/entities/profile';
 
-
-export const ChatIdPage = () => {
-  return (
-   <><ChatDetail/></>
-  )
+interface ChatIDPageProps {
+	user?: User;
 }
+
+export const ChatIdPage = ({ user }: ChatIDPageProps) => {
+	return (
+		<>
+			<ChatDetail user={user} />
+		</>
+	);
+};

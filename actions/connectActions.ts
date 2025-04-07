@@ -12,6 +12,18 @@ const connectActions = {
 		return data;
 	},
 
+	getConnectsByParams: async (params: any) => {
+		const [data, error] = await connectService.getConnectsByParams(params);
+
+		if (error) {
+			console.error('Ошибка при получении connects:', error);
+			return [];
+		}
+
+		return data;
+	},
+
+	
 	getProfileById: async (id: number) => {
 		const [data, error] = await connectService.getProfileById(id);
 

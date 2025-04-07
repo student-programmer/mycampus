@@ -1,8 +1,7 @@
-import React from 'react'
 interface Props {
 	className?: string;
 }
-const SecondIcon = ({ className }: Props) => {
+export const SecondIcon = ({ className }: Props) => {
 	return (
 		<svg
 			width='25'
@@ -22,4 +21,3 @@ const SecondIcon = ({ className }: Props) => {
 	);
 };
 
-export default SecondIcon;

@@ -1,99 +1,134 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import { Avatar } from 'antd';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { mockChats } from '../../entities/chats';
 import style from './ui/chatDetail.module.scss';
-import LeftPageIcon from './ui/LeftPageIcon';
-import SendIcon from './ui/SendIcon';
 import { Message } from "@/fsd/entities/chats/model/chats";
 import { useChatsStore } from "@/fsd/app/stores/chats/store";
+import { LeftPageIcon, SendIcon } from './ui';
+import { User } from "@/fsd/entities/profile";
+import { useSocket } from "@/contexts/SocketContext";
+import { generateAvatar } from "@/utils/utils";
 
 
-const ChatDetail = () => {
-    const {id} = useParams();
-    const searchParams = useSearchParams();
-    const router = useRouter();
-
-    const chatName = searchParams.get('chatName');
-
-    const messageList = useChatsStore(store => store.messageList);
-    const addMessage = useChatsStore(store => store.addMessage)
-
-    const messagesEndRef = React.createRef<HTMLDivElement>();
-
-    useEffect(() => {
-        messagesEndRef.current?.lastElementChild?.scrollIntoView()
-    }, [messageList]);
-
-    const currentChat = mockChats.find(chat => chat.id === id);
+interface ChatDetailProps{
+  user?: User;
+}
 
 
-    const [inputValue, setInputValue] = useState('');
+const ChatDetail = ({ user }: ChatDetailProps) => {
+	const { id, chatName } = useParams();
+	const searchParams = useSearchParams();
+	const router = useRouter();
+	let receiverName = '';
+	let receiverLastName = '';
 
-    const handleSendMessage = () => {
-        if (!inputValue.trim()) return;
+	if (typeof chatName === 'string') {
+		let receiver = decodeURI(chatName)?.split(' ');
+		if (receiver) {
+			receiverName = receiver[0];
+			receiverLastName = receiver[1];
+		}
+	}
 
-        const newMessage: Message = {
-            id: messageList.length + 1,
-            sender: 'You',
-            content: inputValue,
-        };
+	const { socket } = useSocket(); // Получаем сокет из контекста
+	const { messageList, fetchMessageList, addMessage } = useChatsStore();
 
-        addMessage(newMessage);
-        setInputValue('');
-    };
+	const messagesEndRef = createRef<HTMLDivElement>();
 
-    if (!currentChat) {
-        return <div>Chat not found</div>;
-    }
+	useEffect(() => {
+		if (socket) {
+			const handleMessage = (newMessage: Message) => {
+				if (newMessage.senderId === Number(id) || newMessage.senderId === Number(user?.id)) {
+					addMessage(newMessage);
+				}
+			};
+			socket.on('userStatus', ({ userId, isOnline }) => {});
+			socket.on('message', handleMessage);
+			return () => {
+				socket.off('message', handleMessage);
+			};
+		}
+	}, [socket, id, user?.id, addMessage]);
 
-    return (
-        <div className={ style.wrapperDetail }>
-            <div className={ style.goBackContainer }>
-                <button className={ style.iconGoBack } onClick={ () => router.back() }>
-                    <LeftPageIcon/>
-                </button>
-                <span className={ style.head_text }>
-					<h2 className='h2'>{ currentChat.title }</h2>
-                    { currentChat.isActive && <p className={ style.onlineText }>Online</p> }
-                    { currentChat.lastSeen && !currentChat.isActive &&
-                        <p className={ style.lastSeenText }>{ currentChat.lastSeen }</p> }
+	useEffect(() => {
+		// Загружаем историю чата
+		fetchMessageList(Number(id), Number(user?.id));
+	}, [id]);
+
+	useEffect(() => {
+		messagesEndRef.current?.lastElementChild?.scrollIntoView();
+	}, [messageList]);
+
+	const [inputValue, setInputValue] = useState('');
+
+	const sendMessage = () => {
+		if (!inputValue.trim()) return;
+		if (socket) {
+			socket.emit('sendMessage', {
+				senderId: user?.id,
+				content: inputValue,
+				receiverId: id,
+			});
+		}
+		setInputValue('');
+	};
+
+	return (
+		<div className={style.wrapperDetail}>
+			<div className={style.goBackContainer}>
+				<button className={style.iconGoBack} onClick={() => router.back()}>
+					<LeftPageIcon />
+				</button>
+				<span className={style.head_text}>
+					<h2 className='h2'>
+						{receiverName} {receiverLastName}
+					</h2>
+					{/*{ currentChat.isOnline && <p className={ style.onlineText }>Online</p> }*/}
+					{/*{ !currentChat.isOnline &&*/}
+					{/*  <p className={ style.lastSeenText }>Offline</p> }*/}
 				</span>
-                <Avatar style={ {border: '1px solid #FFFFFF29'} } size={ 48 } src={ currentChat.avatar }/>
-            </div>
-            <div className={ style.listContainer }>
-                <div
-                    className={ style.messages }
-                    ref={ messagesEndRef }>
-                    { messageList.map(item => (
-                            <div
-                                key={ item.id }
-                                className={ `${ style.messageContainer } ${
-                                    item.sender === 'You' ? style.myMessage : style.otherMessage
-                                }` }
-                            >
-                                <div className={ style.messageContent }>{ item.content }</div>
-                            </div>
-                        )
-                    ) }
-                </div>
-            </div>
-            <div className={ style.inputContainer }>
-                <input
-                    type='text'
-                    className={ style.inputs }
-                    placeholder='Type to start chatting...'
-                    value={ inputValue }
-                    onChange={ e => setInputValue(e.target.value) }
-                />
-                <button className={ style.sendBtn } data-active={ !!inputValue } onClick={ handleSendMessage }>
-                    <SendIcon/>
-                </button>
-            </div>
-        </div>
-    );
+				<Avatar
+					style={{ border: '1px solid #FFFFFF29' }}
+					src={generateAvatar(receiverName, receiverLastName)}
+					size={48}
+				/>
+			</div>
+			<div className={style.listContainer}>
+				<div className={style.messages} ref={messagesEndRef}>
+					{messageList.map(item => (
+						<div
+							key={item.id}
+							className={`${style.messageContainer} ${
+								item.senderId === user?.id
+									? style.myMessage
+									: style.otherMessage
+							}`}
+						>
+							<div className={style.messageContent}>{item.content}</div>
+						</div>
+					))}
+				</div>
+			</div>
+			<div className={style.inputContainer}>
+				<input
+					type='text'
+					className={style.inputs}
+					placeholder='Type to start chatting...'
+					value={inputValue}
+					onChange={e => setInputValue(e.target.value)}
+				/>
+				<button
+					className={style.sendBtn}
+					data-active={!!inputValue}
+					onClick={sendMessage}
+				>
+					<SendIcon />
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default ChatDetail;

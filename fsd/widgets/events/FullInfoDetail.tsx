@@ -1,7 +1,7 @@
 "use client";
 import AdressIcon from "@/public/adressIcon";
 import style from "./ui/eventDesc.module.scss";
-import { Button, DatePicker, TimePicker, Switch } from "antd";
+import { Button, DatePicker, TimePicker } from "antd";
 import dayjs from "dayjs";
 import Image from "next/image";
 import closeIcon from "../../../public/iconClose.svg";

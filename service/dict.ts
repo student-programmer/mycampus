@@ -38,6 +38,15 @@ const dictService = {
         }
     },
 
+    getAllCountries: async () => {
+        try {
+            const {data} = await axiosInstance.get('/dict/countries');
+            return [data, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+
 
 };
 

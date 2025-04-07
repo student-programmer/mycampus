@@ -6,22 +6,8 @@ import style from './profileInfo.module.scss';
 import { useEffect, useState } from 'react';
 import { type User } from '@/fsd/entities/profile';
 import { Button } from 'antd';
-import LeftPageIcon from '@/fsd/widgets/chat/ui/LeftPageIcon';
-
-const generateAvatar = (firstName?: string, lastName?: string) => {
-	// Если нет имени или фамилии — ставим заглушку "?"
-	const initials = `${firstName?.[0] ?? '?'}${
-		lastName?.[0] ?? '?'
-	}`.toUpperCase();
-	const bgColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // случайный цвет
-
-	return `data:image/svg+xml;base64,${btoa(`
-        <svg xmlns="http://www.w3.org/2000/svg" width="358" height="374">
-            <rect width="358" height="374" fill="${bgColor}" rx="20"/>
-            <text x="50%" y="50%" font-size="100" font-family="Arial" dy=".3em" fill="white" text-anchor="middle">${initials}</text>
-        </svg>
-    `)}`;
-};
+import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
+import { generateAvatar } from "@/utils/utils";
 
 const ConnectsInfo = () => {
 	const { id } = useParams(); // Получаем id из параметров URL
@@ -42,15 +28,36 @@ const ConnectsInfo = () => {
 
 		// Временно используем моковые данные
 
-	
-		const mockUser: User = {
+
+		const mockUser: User =  {
 			id: 1,
-			authUserId: 1,
-			firstName: 'John',
-			lastName: 'Doe',
-			birthDate: '1990-01-01',
-			description: 'I am a software developer with 5 years of experience.',
-			// Добавьте другие поля, если они есть в вашем интерфейсе User
+			authUserId: 12345,
+			firstName: "John",
+			lastName: "Doe",
+			birthDate: "1990-05-15",
+			description: "Software developer passionate about travel and technology.",
+			photo: "",
+			sex: "Male",
+			country: {
+				id: 1,
+				name: "United States",
+				photo: ""
+			},
+			location: "New York, NY",
+			isOnline: true,
+			languages: [
+				{ id: 1, name: "English" },
+				{ id: 2, name: "Spanish" }
+			],
+			interests: [
+				{ id: 1, name: "Programming" },
+				{ id: 2, name: "Hiking" },
+				{ id: 3, name: "Photography" }
+			],
+			education: {
+				university: { id: 1, name: "MIT" },
+				studyDirection: { id: 1, name: "Computer Science" }
+			}
 		};
 		setUser(mockUser);
 		setLoading(false);
@@ -115,7 +122,7 @@ const ConnectsInfo = () => {
 				</div>
 				<Button
 					onClick={() =>
-						router.push(`/chat/${user.firstName}${user.lastName}/${user.id}`)
+						router.push(`/chat/${user.firstName} ${user.lastName}/${user.id}`)
 					}
 					type='primary'
 					className={style.buttonSendProfile}
