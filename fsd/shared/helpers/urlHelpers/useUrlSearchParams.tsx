@@ -16,7 +16,6 @@ const useUrlSearchParams = () => {
       newParams[key] = value;
     });
     setParams(newParams);
-    console.log(newParams)
   }, [searchParams]);
 
   const getParam = (param: string) => {

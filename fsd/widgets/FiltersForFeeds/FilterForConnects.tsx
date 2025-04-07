@@ -59,7 +59,6 @@ const FilterForConnects = () => {
   });
 
   useEffect(() => {
-    console.log(params)
     fetchProfilesByParams(params)
   }, [params])
 

@@ -9,6 +9,10 @@
 	box-sizing: border-box;
 }
 
+.filtersWrapper {
+	padding-top: 20px;
+}
+
 .filterSection {
 	display: flex; /* Flex-контейнер для фильтров */
 	justify-content: flex-end; /* Выравнивание по правому краю */
