@@ -1,34 +1,36 @@
-'use client';
+"use client";
 
-import { Button } from 'antd';
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Button } from "antd";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
 import { generateAvatar } from "@/utils/utils";
 import { ConnectsLoader } from "@/fsd/features/profile/ui/ConnectsLoader";
 
 interface ConnectsPageProps {
-    currentUser?: User;
+	currentUser?: User;
 }
 
-const ConnectsPage = ({currentUser}: ConnectsPageProps) => {
-    const {profileList, fetchProfiles} = useProfilesStore();
+const ConnectsPage = ({ currentUser }: ConnectsPageProps) => {
+	const { profileList, fetchProfiles } = useProfilesStore();
 
-    useEffect(() => {
-        fetchProfiles();
-    }, []);
+	useEffect(() => {
+		fetchProfiles().catch(r => {
+			console.error('Не удалось подтянуть пользователей!');
+		});
+	}, []);
 
-    const filteredProfiles = profileList.filter(
-        (user: User) => user.id !== currentUser?.id
-    );
+	const filteredProfiles = profileList.filter(
+		(user: User) => user.id !== currentUser?.id
+	);
 
     if (!profileList.length) {
         return <div className={ style.profileWrapper }>
@@ -59,14 +61,14 @@ const ConnectsPage = ({currentUser}: ConnectsPageProps) => {
     );
 };
 
-const UserCard = ({user}: { user: User }) => {
-    const router = useRouter();
-    const moreInfo = () => {
-        router.push(`/connects/${ user.id }`);
-    };
-    const goToChat = () => {
-        router.push(`/chat/${ user.firstName } ${ user.lastName }/${ user.id }`);
-    };
+const UserCard = ({ user }: { user: User }) => {
+  const router = useRouter();
+  const moreInfo = () => {
+    router.push(`/connects/${user.id}`);
+  };
+  const goToChat = () => {
+    router.push(`/chat/${user.firstName} ${user.lastName}/${user.id}`);
+  };
 
     const avatarUrl = useMemo(() => {
         return generateAvatar(user.firstName, user.lastName);

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
 import React, { useEffect, useState } from "react";
@@ -23,11 +23,8 @@ interface SignUpFormProps {
     setForm: (value: string | null) => void;
 }
 
-
 export const SignUpForm = ({setForm}: SignUpFormProps) => {
-
-    const [isLoading, setIsLoading] = useState(false);
-
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const {
         LanguageList,
         UniversityList,
@@ -38,7 +35,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         fetchInterests,
         fetchLanguages,
         fetchStudyDirections,
-        fetchCountries
+        fetchCountries,
     } = useDictStore();
 
     const formik = useFormik({
@@ -62,7 +59,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         onSubmit: async (values) => await handleRegister(values),
         validationSchema: SignUpSchema,
         validateOnChange: false,
-    })
+    });
 
     const handleRegister = async (values: UserRegisterActionsRequest) => {
         setIsLoading(true)
@@ -93,42 +90,45 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
             <p className={ l.description }>Sign in 1 minute for free!</p>
 
             <div className={ l.form_box }>
-
                 <div>
-                    <label htmlFor='firstName' className={ l.label }>
+                    <label htmlFor="firstName" className={ l.label }>
                         First name
                     </label>
                     <Input
-                        id={ 'firstName' }
-                        name={ 'firstName' }
+                        id={ "firstName" }
+                        name={ "firstName" }
                         className={ l.input_field }
                         value={ formik.values.firstName }
                         onChange={ (e) => {
                             formik.handleChange(e);
                             formik.setFieldError("firstName", undefined);
                         } }
-                        status={ !!formik.errors.firstName ? 'error' : undefined }
+                        status={ !!formik.errors.firstName ? "error" : undefined }
                         placeholder="Enter your first name..."
                     />
-                    { formik.errors.firstName && < ErrorComponent message={ formik.errors.firstName }/> }
+                    { formik.errors.firstName && (
+                        <ErrorComponent message={ formik.errors.firstName }/>
+                    ) }
                 </div>
                 <div>
-                    <label htmlFor='lastName' className={ l.label }>
+                    <label htmlFor="lastName" className={ l.label }>
                         Last name
                     </label>
                     <Input
-                        id={ 'lastName' }
-                        name={ 'lastName' }
+                        id={ "lastName" }
+                        name={ "lastName" }
                         className={ l.input_field }
                         value={ formik.values.lastName }
                         onChange={ (e) => {
                             formik.handleChange(e);
                             formik.setFieldError("lastName", undefined);
                         } }
-                        status={ !!formik.errors.lastName ? 'error' : undefined }
+                        status={ !!formik.errors.lastName ? "error" : undefined }
                         placeholder="Enter your last name..."
                     />
-                    { formik.errors.lastName && < ErrorComponent message={ formik.errors.lastName }/> }
+                    { formik.errors.lastName && (
+                        <ErrorComponent message={ formik.errors.lastName }/>
+                    ) }
                 </div>
 
                 <div>
@@ -273,7 +273,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                 </div>
 
                 <div>
-                    <label htmlFor='languages' className={ l.label }>
+                    <label htmlFor="languages" className={ l.label }>
                         Languages
                     </label>
 
@@ -291,7 +291,9 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         defaultValue={ undefined }
                     />
 
-                    { formik.errors.languages && < ErrorComponent message={ formik.errors.languages }/> }
+                    { formik.errors.languages && (
+                        <ErrorComponent message={ formik.errors.languages }/>
+                    ) }
                 </div>
 
                 <div>

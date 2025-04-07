@@ -9,6 +9,15 @@ const connectService = {
 			return [null, error];
 		}
 	},
+	
+	getConnectsByParams: async (params: any) => {
+		try {
+			const { data } = await axiosInstance.get('connects', { params });
+			return [data, null];
+		} catch (error) {
+			return [null, error];
+		}
+	},
 
 	getProfileById: async (id: number) => {
 		try {

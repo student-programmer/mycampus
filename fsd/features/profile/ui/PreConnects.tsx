@@ -1,67 +1,72 @@
-'use client';
+"use client";
 
-import { Button } from 'antd';
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Button } from "antd";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import style from './profile.module.scss';
-import { type User } from '@/fsd/entities/profile';
-import { useRouter } from 'next/navigation';
-import { useEffect, useMemo } from 'react';
-import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
-import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
-import { generateAvatar } from '@/utils/utils';
+import style from "./profile.module.scss";
+import { type User } from "@/fsd/entities/profile";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo } from "react";
+import { useProfilesStore } from "@/fsd/app/stores/profiles/store";
+import { LeftPageIcon } from "@/fsd/widgets/chat/ui";
+import { generateAvatar } from "@/utils/utils";
+import useUrlSearchParams from "@/fsd/shared/helpers/urlHelpers/useUrlSearchParams";
+import ModalComponent from "@/fsd/shared/ui/Modal/ModalComponent";
+import FilterForConnects from "@/fsd/widgets/FiltersForFeeds/FilterForConnects";
 
 interface PreConnectsPageProps {
-	user?: User;
+  user?: User;
 }
 
 const PreConnectsPage = ({ user }: PreConnectsPageProps) => {
-	const { profileList, fetchProfiles } = useProfilesStore();
+  const { profileList, fetchProfiles, fetchProfilesByParams } =
+    useProfilesStore();
 
-	useEffect(() => {
-		fetchProfiles();
-	}, []);
+  useEffect(() => {
+    fetchProfiles();
+  }, []);
 
-	const router = useRouter();
-	const toggleBack = () => {
-		router.push('/');
-	};
+  const router = useRouter();
+  const toggleBack = () => {
+    router.push("/");
+  };
 
-	return (
-		<div className={style.profileWrapper}>
-			<div className={style.back_button}>
-				<button className={style.iconGoBack} onClick={toggleBack}>
-					<LeftPageIcon />
-				</button>
-			</div>
-			<Swiper
-				direction={'vertical'}
-				slidesPerView={1}
-				pagination={{ clickable: true }}
-				navigation={false}
-				centeredSlides
-				loop={true}
-				className={style.swiperContainer}
-			>
-				{profileList.map((user: User) => (
-					<SwiperSlide key={user.id} className={style.slide}>
-						<UserCard user={user} />
-					</SwiperSlide>
-				))}
-			</Swiper>
-		</div>
-	);
+  return (
+    <div className={style.profileWrapper}>
+      <div className={style.back_button}>
+        <button className={style.iconGoBack} onClick={toggleBack}>
+          <LeftPageIcon />
+        </button>
+        <FilterForConnects />
+      </div>
+      <Swiper
+        direction={"vertical"}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation={false}
+        centeredSlides
+        loop={true}
+        className={style.swiperContainer}
+      >
+        {profileList.map((user: User) => (
+          <SwiperSlide key={user.id} className={style.slide}>
+            <UserCard user={user} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 const UserCard = ({ user }: { user: User }) => {
-	const router = useRouter();
-	const goToChat = () => {
-		router.push(`/chat/${user.firstName}${user.lastName}/${user.id}`);
-	};
+  const router = useRouter();
+  const goToChat = () => {
+    router.push(`/chat/${user.firstName}${user.lastName}/${user.id}`);
+  };
 
 	const avatarUrl = useMemo(() => {
 		return generateAvatar(user.firstName, user.lastName);
@@ -118,12 +123,12 @@ const UserCard = ({ user }: { user: User }) => {
 						<p className={style.interestsBlocks}>Cultural Events</p>
 					</div>
 					<div className={style.buttonsContainer}>
-						<Button disabled className={style.buttonSendProfile} onClick={goToChat}>
+						<Button className={style.buttonSendProfile} onClick={goToChat}>
 							Send message
 						</Button>
-						<Button className={ style.buttonViewProfile } disabled>
-						    View Profile
-						</Button>
+						{/*<Button className={ style.buttonViewProfile } onClick={ moreInfo }>*/}
+						{/*    View Profile*/}
+						{/*</Button>*/}
 					</div>
 				</div>
 			</div>
