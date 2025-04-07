@@ -7,6 +7,7 @@ type TagRender = SelectProps['tagRender'];
 
 interface OptionType {
     value: string;
+    label: string;
 }
 
 
