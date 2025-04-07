@@ -9,6 +9,15 @@
   z-index: 20;
 }
 
+
+.filtersWrapper{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100%;
+  z-index: 10;
+}
+
 .filterButton {
   position: absolute;
   top: 10px;

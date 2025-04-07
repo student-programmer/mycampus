@@ -9,8 +9,9 @@ import "swiper/css/pagination";
 
 import style from "./ui/events.module.scss";
 import EventCard from "./EventsCard";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useEventsStore } from "@/fsd/app/stores/events/store";
+import FiltersForEvents from "../FiltersForFeeds/FiltersForEvents";
 
 interface CustomSwiperInstance extends SwiperInstance {
     swiper?: {
@@ -22,7 +23,40 @@ const EventsDemoPage = () => {
 	const [openDetail, setOpenDetail] = useState(false);
 	const swiperRef = useRef(null);
 
-	const events = useEventsStore(store => store.eventsList);
+	const { eventsList, filteredEventsParams, setFilteredEventsParams } = useEventsStore();
+
+	const resetFilters = () => {
+		setFilteredEventsParams({
+			minPrice: "",
+			maxPrice: "",
+			date: "",
+			category: ""
+		});
+	};
+
+	const filteredEvents = useMemo(() => {
+		const allFieldsEmpty = Object.values(filteredEventsParams).every(value => 
+			!value || (typeof value === 'string' && value.length === 0)
+		);
+		
+		if (allFieldsEmpty) {
+			return eventsList;
+		}
+
+		return eventsList.filter(event => {
+			const minPrice = parseInt(filteredEventsParams.minPrice || "0");
+			const maxPrice = parseInt(filteredEventsParams.maxPrice || "999999");
+			const eventPrice = parseInt(event.price.split(" – ")[0]);
+			
+			const matchesPrice = eventPrice >= minPrice && eventPrice <= maxPrice;
+			const matchesCategory = !filteredEventsParams.category || 
+				event.category.toLowerCase() === filteredEventsParams.category.toLowerCase();
+			const matchesDate = !filteredEventsParams.date || 
+				event.date === filteredEventsParams.date;
+			
+			return matchesPrice && matchesCategory && matchesDate;
+		});
+	}, [eventsList, filteredEventsParams]);
 
 	useEffect(() => {
 		if ((swiperRef.current as unknown as { swiper: any })?.swiper) {
@@ -33,6 +67,9 @@ const EventsDemoPage = () => {
 
 	return (
 		<div className={style.eventsWrapper}>
+			<div className={style.filtersWrapper}>
+				<FiltersForEvents resetFilters={resetFilters} />
+			</div>
 			<Swiper
 				direction='vertical'
 				slidesPerView={1}
@@ -41,7 +78,7 @@ const EventsDemoPage = () => {
 				allowTouchMove={!openDetail}
 				ref={swiperRef}
 			>
-				{events.map((event, index) => (
+				{filteredEvents.map((event, index) => (
 					<SwiperSlide key={index} className={style.slide}>
 						<EventCard
 							event={event}

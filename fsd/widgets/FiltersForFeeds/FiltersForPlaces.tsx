@@ -12,7 +12,7 @@ import { CustomMultipleSelect } from "@/fsd/features/auth/ui/CustomMultipuleSele
 import useUrlSearchParams from "@/fsd/shared/helpers/urlHelpers/useUrlSearchParams";
 import { usePlacesStore } from "@/fsd/app/stores/places/store";
 
-const FilterForPlaces = ({resetFilters}: {resetFilters: () => void}) => {
+const FilterForPlaces = ({ resetFilters }: { resetFilters: () => void }) => {
   const {
     placesKeyWords,
     placesCategories,
