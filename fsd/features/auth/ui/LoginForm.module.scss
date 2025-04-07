@@ -115,7 +115,7 @@
     cursor: pointer;
 
 	:global{
-		height: 50px !important;
+		height: 55px !important;
 	}
 }
 .try_now {
@@ -133,21 +133,17 @@
 
 .login_button {
     margin: 5px 0; /* Отступы между кнопкой и текстом */
-    background-color: #313A34;
+    background-color: #313A34 !important;
     width: 100%;
     padding: 16px 28px;
     border-radius: 20px;
     font-size: 18px;
     border: none;
-    color: #A2A9A4;
+    color: #A2A9A4 !important;
     cursor: pointer;
-	height: 50px !important;
 
 	:global{
-		height: 50px !important;
-		.ant-btn {
-			height: 50px !important;
-		}
+		height: 55px !important;
 	}
 }
 

@@ -11,13 +11,8 @@ import style from "./ui/events.module.scss";
 import EventCard from "./EventsCard";
 import { useState, useEffect, useRef } from "react";
 import { useEventsStore } from "@/fsd/app/stores/events/store";
-import { ProfileLoader } from "@/fsd/features/profile/ui/ProfileLoader";
+import { EventsLoader } from "@/fsd/features/profile/ui/EventsLoader";
 
-interface CustomSwiperInstance extends SwiperInstance {
-    swiper?: {
-        allowTouchMove: boolean;
-    };
-}
 
 const EventsPage = () => {
     const [openDetail, setOpenDetail] = useState(false);
@@ -32,7 +27,7 @@ const EventsPage = () => {
     }, [openDetail]);
 
     if (!events.length) {
-        return < ProfileLoader/>
+        return < EventsLoader/>
     }
 
     return (

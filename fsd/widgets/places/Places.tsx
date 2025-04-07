@@ -8,7 +8,7 @@ import PlaceCard from './PlaceCard';
 import { Place } from '@/fsd/entities/places';
 import style from './ui/places.module.scss';
 import { usePlacesStore } from '@/fsd/app/stores/places/store';
-import { ProfileLoader } from "@/fsd/features/profile/ui/ProfileLoader";
+import { PlacesLoader } from "@/fsd/features/profile/ui/PlacesLoader";
 
 const Places = () => {
     const [openDetail, setOpenDetail] = useState(false);
@@ -34,7 +34,7 @@ const Places = () => {
     }, [openDetail]);
 
     if (!placesList.length) {
-        return < ProfileLoader/>
+        return < PlacesLoader/>
     }
 
     return (

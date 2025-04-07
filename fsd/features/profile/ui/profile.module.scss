@@ -131,6 +131,20 @@
 	}
 }
 
+.buttonSkeletonDatepicker {
+	background-color: #ffffff;
+	color: #ffffff;
+	border: none;
+	border-radius: 16px;
+	padding: 10px 30px;
+	width: 100% !important;
+	:global{
+		.ant-skeleton-button{
+			width: 100% !important;
+		}
+	}
+}
+
 .buttonSkeletonViewProfile {
 	background-color: #313a34;
 	color: #ffffff;
@@ -159,7 +173,7 @@
 	:global{
 		.ant-skeleton-button{
 			height: 25px !important;
-			width: 60px !important;;
+			width: 90px !important;;
 		}
 	}
 }
@@ -215,6 +229,15 @@
 	font-weight: 400;
 	color: #ffffff;
 	margin: 0;
+}
+
+.skeletonAddressContainer {
+	padding: 5px 0;
+	opacity: 0.64;
+	display: flex;
+	flex-direction: row;
+	place-items: center;
+	gap: 7px;
 }
 
 .languageAndAgeInfo {
