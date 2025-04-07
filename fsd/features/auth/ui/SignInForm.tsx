@@ -104,9 +104,9 @@ export const SignInForm = () => {
                     { formik.errors.password && < ErrorComponent message={ formik.errors.password }/> }
                 </div>
             </div>
-            <Button disabled={ disabled } loading={isLoading} size={'large'}
+            <Button disabled={ disabled } loading={ isLoading } size={ 'large' }
                     className={ disabled ? l.login_button : l.login_button_active }
-                    onClick={ async () => await formik.submitForm() }>
+                    onClick={ formik.submitForm }>
                 Sign in
             </Button>
             <div className={ l.additionally }>

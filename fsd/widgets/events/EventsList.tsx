@@ -11,6 +11,7 @@ import style from "./ui/events.module.scss";
 import EventCard from "./EventsCard";
 import { useState, useEffect, useRef } from "react";
 import { useEventsStore } from "@/fsd/app/stores/events/store";
+import { ProfileLoader } from "@/fsd/features/profile/ui/ProfileLoader";
 
 interface CustomSwiperInstance extends SwiperInstance {
     swiper?: {
@@ -20,6 +21,7 @@ interface CustomSwiperInstance extends SwiperInstance {
 
 const EventsPage = () => {
     const [openDetail, setOpenDetail] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const swiperRef = useRef(null);
 
     const events = useEventsStore(store => store.eventsList);
@@ -29,6 +31,14 @@ const EventsPage = () => {
             (swiperRef.current as unknown as { swiper: any }).swiper.allowTouchMove = !openDetail;
         }
     }, [openDetail]);
+
+    useEffect(() => {
+        setIsLoading(false)
+    }, [])
+
+    if (isLoading) {
+        return < ProfileLoader/>
+    }
 
     return (
         <div className={ style.eventsWrapper }>

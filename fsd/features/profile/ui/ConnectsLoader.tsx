@@ -35,11 +35,11 @@ export const ConnectsLoader = () => {
                         <Skeleton.Input active size="small" className={ style.skeletonEducation }/>
                     </div>
                     <div className={ style.aboutPeople }>
-                        <p className={ style.headerText }>About:</p>
+                        <p className={ style.headerText }></p>
                         <Skeleton.Input active block className={ style.skeletonAbout }/>
                     </div>
                     <div className={ style.interestsPeople }>
-                        <p className={ style.headerText }>Interests:</p>
+                        <p className={ style.headerText }></p>
                         <div className={ style.interestsBlock }>
                             { [...Array(4)].map((_, i) => (
                                 <Skeleton.Button

@@ -25,6 +25,7 @@
 	margin: 0 auto;
 	position: relative;
 	z-index: 2;
+	width: 100%;
 	overflow: hidden;
 	justify-content: center;
 }
@@ -181,7 +182,7 @@
 }
 
 .mainParagraphH1 {
-	font-size: 24px;
+	font-size: clamp(20px, 5vw, 24px);
 	font-weight: 500;
 	line-height: 32px;
 	color: #f5f5f5;
