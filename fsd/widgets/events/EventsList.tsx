@@ -21,7 +21,6 @@ interface CustomSwiperInstance extends SwiperInstance {
 
 const EventsPage = () => {
     const [openDetail, setOpenDetail] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const swiperRef = useRef(null);
 
     const events = useEventsStore(store => store.eventsList);
@@ -32,11 +31,7 @@ const EventsPage = () => {
         }
     }, [openDetail]);
 
-    useEffect(() => {
-        setIsLoading(false)
-    }, [])
-
-    if (isLoading) {
+    if (!events.length) {
         return < ProfileLoader/>
     }
 

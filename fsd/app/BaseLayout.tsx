@@ -63,7 +63,7 @@ export default function BaseLayout({
 					// @ts-ignore
 					<Component user={user} />
 				)}
-				{navMenuOn && <NavMenu notAuthentication/>}
+				{navMenuOn && <NavMenu notAuthentication={notAuthentication}/>}
 			</div>
 		</SocketProvider>
 	);

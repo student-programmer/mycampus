@@ -12,7 +12,6 @@ import { ProfileLoader } from "@/fsd/features/profile/ui/ProfileLoader";
 
 const Places = () => {
     const [openDetail, setOpenDetail] = useState(false);
-    const [isLoading, setIsLoading] = useState(true)
     const swiperRef = useRef(null);
 
 
@@ -21,9 +20,8 @@ const Places = () => {
 
     // Делаем запрос на получение списка мест при монтировании компонента
     useEffect(() => {
-        fetchAllPlaces().then(r => setIsLoading(false)).catch(error => {
+        fetchAllPlaces().catch(error => {
             console.error('Error in places', error)
-            setIsLoading(false)
         });
     }, []);
 
@@ -35,7 +33,7 @@ const Places = () => {
         }
     }, [openDetail]);
 
-    if (isLoading) {
+    if (!placesList.length) {
         return < ProfileLoader/>
     }
 

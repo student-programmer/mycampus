@@ -17,7 +17,7 @@ interface ChatListProps {
 
 const ChatList = ({chats, isLoading}: ChatListProps) => {
 
-    if (true) {
+    if (isLoading) {
         return <ChatLoader/>
     }
 

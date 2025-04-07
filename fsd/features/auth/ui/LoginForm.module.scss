@@ -113,6 +113,10 @@
     font-size: 18px;
     color: white;
     cursor: pointer;
+
+	:global{
+		height: 50px !important;
+	}
 }
 .try_now {
     margin: 5px 0; /* Отступы между кнопкой и текстом */
@@ -138,6 +142,13 @@
     color: #A2A9A4;
     cursor: pointer;
 	height: 50px !important;
+
+	:global{
+		height: 50px !important;
+		.ant-btn {
+			height: 50px !important;
+		}
+	}
 }
 
 

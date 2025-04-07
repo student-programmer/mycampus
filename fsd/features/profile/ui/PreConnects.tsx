@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import style from './profile.module.scss';
 import { type User } from '@/fsd/entities/profile';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useProfilesStore } from '@/fsd/app/stores/profiles/store';
 import { LeftPageIcon } from '@/fsd/widgets/chat/ui';
 import { generateAvatar } from '@/utils/utils';
@@ -30,7 +30,6 @@ const PreConnectsPage = ({ user }: PreConnectsPageProps) => {
 	const toggleBack = () => {
 		router.push('/');
 	};
-
 
 	return (
 		<div className={style.profileWrapper}>
@@ -64,11 +63,15 @@ const UserCard = ({ user }: { user: User }) => {
 		router.push(`/chat/${user.firstName}${user.lastName}/${user.id}`);
 	};
 
+	const avatarUrl = useMemo(() => {
+		return generateAvatar(user.firstName, user.lastName);
+	}, []);
+
 	return (
 		<div className={style.profileWrapperMain}>
 			<div className={style.photoBack}>
 				<Image
-					src={generateAvatar(user.firstName, user.lastName)}
+					src={avatarUrl}
 					alt='avatar'
 					width={358}
 					height={374}
@@ -115,12 +118,12 @@ const UserCard = ({ user }: { user: User }) => {
 						<p className={style.interestsBlocks}>Cultural Events</p>
 					</div>
 					<div className={style.buttonsContainer}>
-						<Button className={style.buttonSendProfile} onClick={goToChat}>
+						<Button disabled className={style.buttonSendProfile} onClick={goToChat}>
 							Send message
 						</Button>
-						{/*<Button className={ style.buttonViewProfile } onClick={ moreInfo }>*/}
-						{/*    View Profile*/}
-						{/*</Button>*/}
+						<Button className={ style.buttonViewProfile } disabled>
+						    View Profile
+						</Button>
 					</div>
 				</div>
 			</div>

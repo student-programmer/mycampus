@@ -21,43 +21,40 @@ interface ConnectsPageProps {
 
 const ConnectsPage = ({currentUser}: ConnectsPageProps) => {
     const {profileList, fetchProfiles} = useProfilesStore();
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchProfiles().then(r => {
-            setIsLoading(false)
-        }).catch(r => {
-            console.error('Не удалось подтянуть пользователей!');
-        });
+        fetchProfiles();
     }, []);
 
     const filteredProfiles = profileList.filter(
         (user: User) => user.id !== currentUser?.id
     );
 
+    if (!profileList.length) {
+        return <div className={ style.profileWrapper }>
+            < ConnectsLoader/>
+        </div>
+    }
+
     return (
         <div className={ style.profileWrapper }>
-            { isLoading ?
-                < ConnectsLoader/>
-                :
-                <Swiper
-                    direction={ 'vertical' }
-                    slidesPerView={ 1 }
-                    pagination={ {clickable: true} }
-                    navigation={ false }
-                    centeredSlides
-                    loop={ true }
-                    className={ style.swiperContainer }
-                >
+            <Swiper
+                direction={ 'vertical' }
+                slidesPerView={ 1 }
+                pagination={ {clickable: true} }
+                navigation={ false }
+                centeredSlides
+                loop={ true }
+                className={ style.swiperContainer }
+            >
 
-                    { filteredProfiles.map((user: User) => (
-                        <SwiperSlide key={ user.id } className={ style.slide }>
-                            <UserCard user={ user }/>
-                        </SwiperSlide>
-                    )) }
+                { filteredProfiles.map((user: User) => (
+                    <SwiperSlide key={ user.id } className={ style.slide }>
+                        <UserCard user={ user }/>
+                    </SwiperSlide>
+                )) }
 
-                </Swiper>
-            }
+            </Swiper>
         </div>
     );
 };
