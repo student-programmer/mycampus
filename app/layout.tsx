@@ -26,7 +26,7 @@ export default function RootLayout({ children, }: Readonly<{
     <body>
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQHD2VW5"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+              height="0" width="0" style={{display: "none", visibility: "hidden"}}></iframe>
     </noscript>
     <AppProviders>
       { children }
