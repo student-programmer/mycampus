@@ -32,15 +32,15 @@ export interface UserUpdateActionsRequest {
     languages: number[],
     interests: number[],
     location: string,
-    university: string,
-    studyDirection: string,
+    university: number,
+    studyDirection: number,
     photo: string,
     countryId: number,
 }
 
 export interface PasswordUpdateAction {
     password: string,
-    passwordRepeat: string | null,
+    passwordRepeat: string,
 }
 
 export interface PasswordUpdateService {

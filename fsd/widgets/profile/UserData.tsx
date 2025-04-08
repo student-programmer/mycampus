@@ -43,19 +43,19 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
 
     const formik = useFormik({
         initialValues: {
-            firstName: undefined,
-            lastName: undefined,
-            description: undefined,
-            birthDate: undefined,
-            sex: undefined,
+            firstName: '',
+            lastName: '',
+            description: '',
+            birthDate: '',
+            sex: '',
             languages: [],
             interests: [],
             location: '',
             university: 0,
             studyDirection: 0,
             countryId: 0,
-            photo: undefined,
-            email: undefined,
+            photo: '',
+            email: '',
         },
         onSubmit: async (values) => await handleEdit(values),
         validationSchema: EditProfile,
@@ -65,19 +65,21 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
     const handleEdit = async (values: UserUpdateActionsRequest) => {
         const token = localStorage.getItem('jwtToken');
         setIsLoadingButton(true);
-        await userActions.update(token, values).then(r => {
-            if (r) {
-                setCurrentProfile(r)
-            }
-            setStatus('profile')
-        }).catch(r => {
-            setIsLoadingButton(false)
-            if (r?.response?.status === 400) {
-                formik.setFieldError(r.response.data.field, r.response.data.message)
-            } else {
-                console.error('Error caused in edit:', r)
-            }
-        })
+        if (token) {
+            await userActions.update(token, values).then(r => {
+                if (r) {
+                    setCurrentProfile(r)
+                }
+                setStatus('profile')
+            }).catch(r => {
+                setIsLoadingButton(false)
+                if (r?.response?.status === 400) {
+                    formik.setFieldError(r.response.data.field, r.response.data.message)
+                } else {
+                    console.error('Error caused in edit:', r)
+                }
+            })
+        }
     }
 
     useEffect(() => {
@@ -89,24 +91,24 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
     }, [])
 
     useEffect(() => {
-        formik.setValues(() => ({
+        formik.setValues({
             firstName: currentProfile.firstName || '',
             lastName: currentProfile.lastName || '',
             description: currentProfile.description || '',
             birthDate: currentProfile.birthDate || '',
             sex: currentProfile.sex || '',
-            languages: currentProfile.languages?.map(item => item.id) || [],
-            interests: currentProfile.interests?.map(item => item.id) || [],
+            languages: currentProfile.languages?.map(item => item.id as never) ?? [], // Оставляем как number[]
+            interests: currentProfile.interests?.map(item => item.id as never) ?? [], // Оставляем как number[]
             location: currentProfile.location || '',
-            university: currentProfile.education?.university?.id || '',
-            studyDirection: currentProfile.education?.studyDirection?.id || '',
-            countryId: currentProfile.country?.id || '',
+            university: currentProfile.education?.university?.id ?? 0, // Используем 0 вместо ''
+            studyDirection: currentProfile.education?.studyDirection?.id ?? 0, // Используем 0 вместо ''
+            countryId: currentProfile.country?.id ?? 0, // Используем 0 вместо ''
             photo: currentProfile.photo || '',
             email: currentProfile.email || '',
-        })).then(r => {
-            setIsLoading(false)
         });
+        setIsLoading(false);
     }, [currentProfile]);
+
 
     return (
         <>
@@ -180,7 +182,6 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
                         < CustomDatepicker
                             id={ 'birthDate' }
                             name={ 'birthDate' }
-                            className={ style.datepicker_field }
                             defaultValue={ currentProfile.birthDate }
                             value={ formik.values.birthDate }
                             onChange={ (e) => {

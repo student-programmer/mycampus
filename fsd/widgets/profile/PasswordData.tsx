@@ -18,10 +18,10 @@ export const PasswordData = ({setPosition}: DetailProps) => {
 
     const [isLoadingButton, setIsLoadingButton] = useState<boolean>(false);
 
-    const formik = useFormik({
+    const formik = useFormik<PasswordUpdateAction>({
         initialValues: {
-            password: undefined,
-            repeatPassword: undefined,
+            password: '',
+            passwordRepeat: '',
         },
         onSubmit: async (values) => await handleEditPassword(values),
         validationSchema: EditPassword,
@@ -31,13 +31,15 @@ export const PasswordData = ({setPosition}: DetailProps) => {
     const handleEditPassword = async (values: PasswordUpdateAction) => {
         setIsLoadingButton(true)
         const token = localStorage.getItem('jwtToken');
-        await userActions.updatePassword(token, values).then(r => {
-            setPosition('user')
-            setIsLoadingButton(false)
-        }).catch(r => {
-            setIsLoadingButton(false)
-            console.error('Error caused in edit:', r)
-        })
+        if (token) {
+            await userActions.updatePassword(token, values).then(r => {
+                setPosition('user')
+                setIsLoadingButton(false)
+            }).catch(r => {
+                setIsLoadingButton(false)
+                console.error('Error caused in edit:', r)
+            })
+        }
     }
 
     return (

@@ -10,23 +10,23 @@ interface OptionType {
     label: string;
 }
 
-
 interface InputFieldProps {
     id: string;
-    status: 'error' | undefined; // или просто string, если статус может быть чем-то кроме 'error'
+    status?: 'error'; // сделали необязательным
     placeholder: string;
-    defaultValue: [] | undefined;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // для поля ввода
-    option: OptionType[]; // предполагаю, что interests — это массив строк, если тип другой, измените его
+    defaultValue?: string[]; // теперь только массив строк
+    onChange: (value: string[]) => void; // изменён тип
+    option: OptionType[]; // переименовали option в options для согласованности
 }
 
 
 const tagRender: TagRender = (props) => {
-    const {label, value, closable, onClose} = props;
+    const {label, closable, onClose} = props;
     const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
         event.preventDefault();
         event.stopPropagation();
     };
+
     return (
         <Tag
             onMouseDown={ onPreventMouseDown }
@@ -40,10 +40,14 @@ const tagRender: TagRender = (props) => {
     );
 };
 
-export const CustomMultipleSelect = ({id, status, placeholder, defaultValue, onChange, option}: InputFieldProps) => {
-
-    const options: SelectProps['options'] = option;
-
+export const CustomMultipleSelect = ({
+                                         id,
+                                         status,
+                                         placeholder,
+                                         defaultValue = [], // значение по умолчанию
+                                         onChange,
+                                         option // переименовали из option
+                                     }: InputFieldProps) => {
     return (
         <Select
             id={ id }
@@ -65,7 +69,7 @@ export const CustomMultipleSelect = ({id, status, placeholder, defaultValue, onC
                     { menu }
                 </div>
             ) }
-            options={ options }
+            options={ option }
         />
-    )
-}
+    );
+};

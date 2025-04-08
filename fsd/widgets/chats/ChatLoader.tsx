@@ -16,7 +16,7 @@ export const ChatLoader = () => (
                             <div><Skeleton.Button active size="small" shape="default" block/></div>
                         </div>
                     }
-                    description={ <Skeleton.Input active size="medium" block/> }
+                    description={ <Skeleton.Input active size="default" block/> }
                 />
             </List.Item>
         )) }

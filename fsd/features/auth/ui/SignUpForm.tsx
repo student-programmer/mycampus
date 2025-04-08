@@ -38,23 +38,23 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
         fetchCountries,
     } = useDictStore();
 
-    const formik = useFormik({
+    const formik = useFormik<UserRegisterActionsRequest>({
         initialValues: {
-            firstName: undefined,
-            lastName: undefined,
-            description: undefined,
-            birthDate: undefined,
-            sex: undefined,
+            firstName: '', // вместо undefined
+            lastName: '',  // вместо undefined
+            description: '',
+            birthDate: '', // или null, в зависимости от того, что ожидает ваш бэкенд
+            sex: '',       // или другое значение по умолчанию
             languages: [],
             interests: [],
             location: '',
-            university: undefined,
-            studyDirection: undefined,
-            countryId: undefined,
+            university: '',
+            studyDirection: '',
+            countryId: 0,  // или другое числовое значение по умолчанию
             photo: '',
-            email: undefined,
-            password: undefined,
-            passwordRepeat: undefined,
+            email: '',
+            password: '',
+            passwordRepeat: '',
         },
         onSubmit: async (values) => await handleRegister(values),
         validationSchema: SignUpSchema,
@@ -157,7 +157,6 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                     < CustomDatepicker
                         id={ 'birthDate' }
                         name={ 'birthDate' }
-                        className={ style.datepicker_field }
                         value={ formik.values.birthDate }
                         onChange={ (e) => {
                             formik.setFieldValue('birthDate', e === null ? undefined : e.format('YYYY-MM-DD'));
@@ -386,7 +385,7 @@ export const SignUpForm = ({setForm}: SignUpFormProps) => {
                         id={ 'passwordRepeat' }
                         name={ 'passwordRepeat' }
                         className={ l.input_field }
-                        value={ formik.values.passwordRepeat }
+                        value={formik.values.passwordRepeat ?? ''}
                         onChange={ (e) => {
                             formik.handleChange(e);
                             formik.setFieldError("passwordRepeat", undefined);

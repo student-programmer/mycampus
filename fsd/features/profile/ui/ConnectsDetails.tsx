@@ -36,6 +36,7 @@ const ConnectsInfo = () => {
 			lastName: "Doe",
 			birthDate: "1990-05-15",
 			description: "Software developer passionate about travel and technology.",
+			email: "john.doe@example.com",
 			photo: "",
 			sex: "Male",
 			country: {

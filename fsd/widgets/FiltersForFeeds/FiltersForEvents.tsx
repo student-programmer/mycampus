@@ -110,7 +110,6 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
               formik.setFieldError("maxPrice", undefined);
             }}
             placeholder="Max price"
-            style={{ width: "100%" }}
           />
         </div>
 
@@ -120,15 +119,13 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
           </label>
           <CustomSelect
             id="category"
-            className={l.input_field}
-            value={formik.values.category}
+            defaultValue={formik.values.category}
             onChange={(value) => formik.setFieldValue("category", value)}
             options={categories.map((category) => ({
               value: category,
               label: category,
             }))}
             placeholder="Select category"
-            style={{ width: "100%" }}
           />
         </div>
       </div>

@@ -1,17 +1,19 @@
 import style from "@/fsd/widgets/profile/ui/profile.module.scss";
 import React from "react";
 import { DatePicker } from "antd";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { CurrentDate } from "@/utils/utils";
+
+const DATE_FORMAT = 'YYYY-MM-DD';
 
 interface CustomDatepickerProps {
     id: string;
     name: string;
-    status: 'error' | undefined;  // Статус ошибки
+    status?: 'error';
     placeholder: string;
-    defaultValue?: string | undefined;
-    value: string | undefined;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    defaultValue?: string;
+    value?: string;
+    onChange: (value: Dayjs | null) => void;
 }
 
 export const CustomDatepicker = ({
@@ -27,19 +29,19 @@ export const CustomDatepicker = ({
 
     return (
         <DatePicker
-            id={ id }
-            name={ name }
-            className={ style.datepicker_field }
-            defaultValue={ typeof defaultValue === 'undefined' ? undefined : dayjs(defaultValue, 'YYYY-MM-DD') }
-            value={ typeof value === 'undefined' ? undefined : dayjs(value) }
-            onChange={ onChange }
-            status={ status }
-            placeholder={ placeholder }
-            maxDate={ dayjs(currentDate, 'YYYY-MM-DD') }
-            format={ {
-                format: 'YYYY-MM-DD',
+            id={id}
+            name={name}
+            className={style.datepicker_field}
+            defaultValue={defaultValue ? dayjs(defaultValue, DATE_FORMAT) : undefined}
+            value={value ? dayjs(value) : undefined}
+            onChange={onChange}
+            status={status}
+            placeholder={placeholder}
+            maxDate={dayjs(currentDate, DATE_FORMAT)}
+            format={{
+                format: DATE_FORMAT,
                 type: 'mask',
-            } }
+            }}
         />
-    )
-}
+    );
+};
