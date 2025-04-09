@@ -21,7 +21,7 @@ const LoginForm = () => {
         router.push('/connects');
     };
     const handlePreLogin = () => {
-        router.push('/pre-connects');
+        router.push('/connects-demo');
     };
 
     const toggleBusinessAccount = () => {

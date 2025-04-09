@@ -1,12 +1,12 @@
 import { create } from "zustand/react";
 import dictActions from "@/actions/dict";
 
-interface DictItem {
+export interface DictItem {
     id: number,
     name: string,
 }
 
-interface CountryItem {
+export interface CountryItem {
     id: number,
     name: string,
     photo: string | null,

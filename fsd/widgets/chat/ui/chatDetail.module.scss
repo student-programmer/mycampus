@@ -126,6 +126,48 @@
   line-height: 21.82px;
 }
 
+.myMessageSkeleton {
+  display: flex !important;
+  width: 200px !important;
+  height: 60px !important;
+  margin-left: auto !important;
+  background-color: rgba(128, 128, 128, 0.52) !important;
+  border-radius: 15px 15px 3px 15px !important;
+  color: white !important;
+  text-align: left !important;
+}
+
+.otherMessageSkeleton {
+  display: flex !important;
+  width: 200px !important;
+  height: 60px !important;
+  margin-right: auto !important;
+  background-color: rgba(128, 128, 128, 0.52) !important;
+  border-radius: 3px 15px 15px 15px !important;
+  color: white !important;
+  text-align: left !important;
+}
+
+.inputSkeleton {
+    display: flex !important;
+    gap: 12px !important;
+    background-color: #303935 !important;
+    border-radius: 20px !important;
+    height: 46px !important;
+    bottom: 0 !important;
+}
+
+.skeletonBtn {
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+    background-color: #647066 !important;
+    border: none !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+
 .myMessage {
   margin-left: auto;
   background-color: #84cc15;
