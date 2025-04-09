@@ -12,6 +12,7 @@ import EventCard from "./EventsCard";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useEventsStore } from "@/fsd/app/stores/events/store";
 import FiltersForEvents from "../FiltersForFeeds/FiltersForEvents";
+import { EventsLoader } from "@/fsd/features/profile/ui/EventsLoader";
 
 interface CustomSwiperInstance extends SwiperInstance {
     swiper?: {
@@ -64,6 +65,10 @@ const EventsDemoPage = () => {
 				!openDetail;
 		}
 	}, [openDetail]);
+
+	if (!eventsList) {
+		return < EventsLoader/>
+	}
 
 	return (
 		<div className={style.eventsWrapper}>

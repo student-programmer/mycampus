@@ -9,6 +9,7 @@ import { Place } from "@/fsd/entities/places";
 import style from "./ui/places.module.scss";
 import { usePlacesStore } from "@/fsd/app/stores/places/store";
 import FiltersForPlaces from "../FiltersForFeeds/FiltersForPlaces";
+import { PlacesLoader } from "@/fsd/features/profile/ui/PlacesLoader";
 
 const PlacesDemo = () => {
   const [openDetail, setOpenDetail] = useState(false);
@@ -58,6 +59,10 @@ const PlacesDemo = () => {
       category: [],
     });
   };
+
+  if (!placesList.length) {
+    return < PlacesLoader/>
+  }
 
 
   return (

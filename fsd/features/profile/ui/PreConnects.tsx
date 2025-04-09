@@ -17,6 +17,7 @@ import { generateAvatar } from "@/utils/utils";
 import useUrlSearchParams from "@/fsd/shared/helpers/urlHelpers/useUrlSearchParams";
 import ModalComponent from "@/fsd/shared/ui/Modal/ModalComponent";
 import FilterForConnects from "@/fsd/widgets/FiltersForFeeds/FilterForConnects";
+import { ConnectsLoader } from "@/fsd/features/profile/ui/ConnectsLoader";
 
 interface PreConnectsPageProps {
   user?: User;
@@ -34,6 +35,12 @@ const PreConnectsPage = ({ user }: PreConnectsPageProps) => {
   const toggleBack = () => {
     router.push("/");
   };
+
+	if (!profileList.length) {
+		return <div className={ style.profileWrapper }>
+			< ConnectsLoader/>
+		</div>
+	}
 
   return (
     <div className={style.profileWrapper}>

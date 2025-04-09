@@ -62,6 +62,10 @@
 	color: #84cc16; /* Цвет активного текста */
 }
 
+.linkNav.disabled {
+	color: grey; /* Цвет активного текста */
+}
+
 .navItem {
 	font-family: 'TT Commons', sans-serif;
 	font-size: 14px;
