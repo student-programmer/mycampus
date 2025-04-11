@@ -8,6 +8,7 @@ export interface Event {
   distance: number;
   image: string;
   category: string;
+  photos: string[];
   contacts: {
     inst: string;
     web: string;

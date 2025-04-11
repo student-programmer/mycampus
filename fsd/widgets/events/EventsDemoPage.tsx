@@ -24,7 +24,16 @@ const EventsDemoPage = () => {
 	const [openDetail, setOpenDetail] = useState(false);
 	const swiperRef = useRef(null);
 
-	const { eventsList, filteredEventsParams, setFilteredEventsParams } = useEventsStore();
+	const { eventsList, filteredEventsParams, setFilteredEventsParams, fetchAllEvents } = useEventsStore();
+
+	useEffect(() => {
+		if (!eventsList.length) {
+			fetchAllEvents().catch(error => {
+				console.error('Error in places', error)
+			});
+		}
+	}, []);
+
 
 	const resetFilters = () => {
 		setFilteredEventsParams({

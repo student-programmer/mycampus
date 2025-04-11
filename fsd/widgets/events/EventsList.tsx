@@ -1,7 +1,5 @@
 "use client";
 
-import type { Swiper as SwiperInstance } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,7 +16,15 @@ const EventsPage = () => {
     const [openDetail, setOpenDetail] = useState(false);
     const swiperRef = useRef(null);
 
-    const events = useEventsStore(store => store.eventsList);
+    const {eventsList, fetchAllEvents} = useEventsStore();
+
+    useEffect(() => {
+        if (!eventsList.length) {
+            fetchAllEvents().catch(error => {
+                console.error('Error in places', error)
+            });
+        }
+    }, []);
 
     useEffect(() => {
         if ((swiperRef.current as unknown as { swiper: any })?.swiper) {
@@ -26,7 +32,7 @@ const EventsPage = () => {
         }
     }, [openDetail]);
 
-    if (!events.length) {
+    if (!eventsList.length) {
         return < EventsLoader/>
     }
 
@@ -40,7 +46,7 @@ const EventsPage = () => {
                 allowTouchMove={ !openDetail }
                 ref={ swiperRef }
             >
-                { events.map((event, index) => (
+                { eventsList.map((event, index) => (
                     <SwiperSlide key={ index } className={ style.slide }>
                         <EventCard
                             event={ event }

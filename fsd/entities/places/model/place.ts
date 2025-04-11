@@ -30,6 +30,7 @@ export interface Place {
 	category: string;
 	address: string;
 	keywords: string;
+	photos: string[];
 	website?: string;
 	instagram?: string;
 	phoneNumber?: string;

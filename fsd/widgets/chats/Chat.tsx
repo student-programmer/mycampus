@@ -19,7 +19,7 @@ const Chat = ({user}: ChatProps) => {
 
     useEffect(() => {
         if (user?.id) {
-            fetchChatList(user.id, setIsLoading);
+            fetchChatList(user.id, setIsLoading).then();
         }
     }, [user]);
 
