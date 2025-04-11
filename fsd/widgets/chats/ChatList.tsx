@@ -22,7 +22,7 @@ const ChatList = ({chats, isLoading}: ChatListProps) => {
         return <ChatLoader/>
     }
 
-    const getAvatarUrl = (user) => {
+    const getAvatarUrl = (user: any) => {
         if (!user.photo)
             return generateAvatar(user.firstName, user.lastName);
         else return user.photo

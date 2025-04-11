@@ -12,6 +12,7 @@ export const mockEvents: Event[] = [
     distance: 1.2,
     image: "/images/music-festival.jpg",
     category: "Festival",
+    photos: [],
     contacts: {
       inst: "@citymusicfest",
       web: "https://citymusicfest.com",
@@ -29,6 +30,7 @@ export const mockEvents: Event[] = [
     distance: 0.5,
     image: "/images/farmers-market.jpg",
     category: "Market",
+    photos: [],
     contacts: {
       inst: "@localfarmersmarket",
       web: "https://localfarmersmarket.com",
@@ -47,6 +49,7 @@ export const mockEvents: Event[] = [
     distance: 3.4,
     image: "/images/outdoor-movie.jpg",
     category: "Movie",
+    photos: [],
     contacts: {
       inst: "@outdoormovienight",
       web: "https://outdoormovienight.com",
@@ -64,6 +67,7 @@ export const mockEvents: Event[] = [
     distance: 2.7,
     image: "/images/art-exhibition.jpg",
     category: "Exhibition",
+    photos: [],
     contacts: {
       inst: "@modernmastersart",
       web: "https://modernmastersart.com",
