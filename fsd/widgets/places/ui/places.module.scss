@@ -9,8 +9,15 @@
 	box-sizing: border-box;
 }
 
-.filtersWrapper {
-	padding-top: 20px;
+.filterButton {
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	position: absolute;
+	top: 27px;
+	left: 28px;
+	z-index: 5;
 }
 
 .filterSection {

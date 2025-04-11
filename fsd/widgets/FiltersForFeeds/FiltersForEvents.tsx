@@ -50,7 +50,6 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
   return (
     <ModalComponent
       title="Filters"
-      buttonText="Filters"
       showModalEmit={() => resetFilters()}
       footerArray={[
         <Button key="reset" onClick={resetFiltersForm}>

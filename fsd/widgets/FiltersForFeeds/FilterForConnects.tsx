@@ -93,10 +93,8 @@ const FilterForConnects = () => {
 
   return (
     <>
-    {/* <button onClick={() => deleteAllParams()}>Delete all params</button> */}
     <ModalComponent
       title="Filters"
-      buttonText="Filters"
       showModalEmit={() => resetFilters()}
       footerArray={[
         <Button key="reset" onClick={resetFilters}>

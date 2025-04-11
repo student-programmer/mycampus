@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "antd";
+import style from '../Modal/ui/modal.module.scss'
+import { FilterOutlined } from "@ant-design/icons";
 
 interface ModalComponentProps {
   title: string;
   children: React.ReactNode;
-  buttonText: string;
   handleOkEmit?: () => void;
   showModalEmit?: () => void;
   footerArray?: React.ReactNode;
@@ -13,7 +14,6 @@ interface ModalComponentProps {
 const ModalComponent: React.FC<ModalComponentProps> = ({
   title,
   children,
-  buttonText,
   handleOkEmit,
   showModalEmit,
   footerArray,
@@ -36,13 +36,14 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        {buttonText}
+      <Button className={style.iconFilter} type="primary" onClick={showModal}>
+          <FilterOutlined />
       </Button>
       <Modal
         title={title}
         open={isModalOpen}
         onOk={handleOk}
+        className={style.modalStyler}
         onCancel={handleCancel}
         cancelText="Cancel"
         okText="Apply"

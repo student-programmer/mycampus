@@ -49,7 +49,7 @@ const FilterForPlaces = ({ resetFilters }: { resetFilters: () => void }) => {
   return (
     <ModalComponent
       title="Filters"
-      buttonText="Filters"
+      className={style}
       showModalEmit={() => resetFilters()}
       footerArray={[
         <Button key="reset" onClick={() => resetFiltersForm()}>
