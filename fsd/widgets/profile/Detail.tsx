@@ -30,8 +30,11 @@ export const Detail = ({currentProfile, setStatus}: DetailProps) => {
     }
 
     const avatarUrl = useMemo(() => {
-        return generateAvatar(currentProfile.firstName, currentProfile.lastName);
+        if (!currentProfile.photo)
+            return generateAvatar(currentProfile.firstName, currentProfile.lastName);
+        else return currentProfile.photo
     }, [currentProfile.firstName, currentProfile.lastName]); // Зависимости
+
 
     return (
         <div className={ style.profileWrapperMain }>

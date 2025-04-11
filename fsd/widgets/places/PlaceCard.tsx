@@ -22,7 +22,7 @@ const PlaceCard = ({
   openDetail: boolean;
   setOpenDetail: (v: boolean) => void;
 }) => {
-  const placesImage = [Rest, Loop];
+  const placesImage = place.photos;
   const [fav, setFav] = useState(false);
 
   return (
@@ -58,11 +58,14 @@ const PlaceCard = ({
         >
           { placesImage.map((i, index) => (
             <SwiperSlide key={ index }>
-              <Image
-                src={ i }
-                alt={ place.name }
-                className={ style.placeImage }
-              />
+              <div className={ style.placeImage }>
+                <Image
+                  src={ i }
+                  alt={ place.name }
+                  style={ { objectFit: "cover" } }
+                  fill
+                />
+              </div>
             </SwiperSlide>
           )) }
 

@@ -7,6 +7,7 @@ import { Chat } from "@/fsd/entities/chats";
 import { generateAvatar } from "@/utils/utils";
 import { ChatPlug } from "@/fsd/widgets/chats/ChatPlug";
 import { ChatLoader } from "@/fsd/widgets/chats/ChatLoader";
+import { useMemo } from "react";
 
 const {Text} = Typography;
 
@@ -20,6 +21,13 @@ const ChatList = ({chats, isLoading}: ChatListProps) => {
     if (isLoading) {
         return <ChatLoader/>
     }
+
+    const getAvatarUrl = (user) => {
+        if (!user.photo)
+            return generateAvatar(user.firstName, user.lastName);
+        else return user.photo
+    }
+
 
     return (
         <>{
@@ -35,7 +43,7 @@ const ChatList = ({chats, isLoading}: ChatListProps) => {
                                 <List.Item.Meta
                                     avatar={
                                         <div className={ style.avatarWrapper }>
-                                            <Avatar src={ generateAvatar(chat.firstName, chat.lastName) }
+                                            <Avatar src={ getAvatarUrl(chat) }
                                                     style={ {border: '1px solid #FFFFFF29'} }/>
                                             <span
                                                 className={ `${ style.statusIndicator } ${

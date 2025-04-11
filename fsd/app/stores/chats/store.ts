@@ -8,6 +8,7 @@ import chatActions from "@/actions/chat";
 interface ChatState {
     chatList: Chat[],
     messageList: Message[],
+    receiverPhoto?: string,
     addMessage: (message: Message) => void;
     fetchChatList: (userId: number, setIsLoading: (isLoading: boolean) => void) => Promise<Chat[]>;
     fetchMessageList: (userId1: number, userId2: number) => void
@@ -48,7 +49,7 @@ export const useChatsStore = create<ChatState>()(immer((set) => ({
                     console.warn('API вернул пустые данные');
                     set({messageList: []});
                 } else {
-                    set({messageList: data});
+                    set({messageList: data?.messages, receiverPhoto: data?.receiverPhoto});
                 }
             } catch (error) {
                 console.error(`Ошибка при загрузке интересов:`, error);

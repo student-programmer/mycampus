@@ -70,9 +70,11 @@ const UserCard = ({ user }: { user: User }) => {
     router.push(`/chat/${user.firstName} ${user.lastName}/${user.id}`);
   };
 
-    const avatarUrl = useMemo(() => {
-        return generateAvatar(user.firstName, user.lastName);
-    }, [user.firstName, user.lastName]); // Зависимости
+  const avatarUrl = useMemo(() => {
+    if (!user.photo)
+      return generateAvatar(user.firstName, user.lastName);
+    else return user.photo
+  }, [user.firstName, user.lastName]); // Зависимости
 
     return (
         <div className={ style.profileWrapperMain }>

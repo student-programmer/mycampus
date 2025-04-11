@@ -33,7 +33,9 @@ const ChatDetail = ({user}: ChatDetailProps) => {
     }
 
     const {socket} = useSocket(); // Получаем сокет из контекста
-    const {messageList, fetchMessageList, addMessage} = useChatsStore();
+    const {messageList, fetchMessageList, addMessage, receiverPhoto} = useChatsStore();
+
+    console.log(receiverPhoto)
 
     const messagesEndRef = createRef<HTMLDivElement>();
 
@@ -54,8 +56,8 @@ const ChatDetail = ({user}: ChatDetailProps) => {
     }, [socket, id, user?.id, addMessage]);
 
     useEffect(() => {
-        // Загружаем историю чата
-        fetchMessageList(Number(id), Number(user?.id));
+        if (id && user?.id)
+            fetchMessageList(Number(id), Number(user?.id));
     }, [id, user?.id]);
 
     useEffect(() => {
@@ -76,9 +78,12 @@ const ChatDetail = ({user}: ChatDetailProps) => {
         setInputValue('');
     };
 
-    const avatarUrl = useMemo(() => {
-        return generateAvatar(receiverName, receiverLastName);
-    }, []); // Зависимости
+    const getAvatarUrl = () => {
+        if (!receiverPhoto)
+            return generateAvatar(receiverName, receiverLastName);
+        else return receiverPhoto
+    }
+
 
     if (!messageList.length) {
         return < ChatLoader/>
@@ -100,7 +105,7 @@ const ChatDetail = ({user}: ChatDetailProps) => {
 				</span>
                 <Avatar
                     style={ {border: '1px solid #FFFFFF29'} }
-                    src={ avatarUrl }
+                    src={ getAvatarUrl() }
                     size={ 48 }
                 />
             </div>

@@ -76,8 +76,10 @@ const UserCard = ({ user }: { user: User }) => {
   };
 
 	const avatarUrl = useMemo(() => {
-		return generateAvatar(user.firstName, user.lastName);
-	}, []);
+		if (!user.photo)
+			return generateAvatar(user.firstName, user.lastName);
+		else return user.photo
+	}, [user.firstName, user.lastName]); // Зависимости
 
 	return (
 		<div className={style.profileWrapperMain}>

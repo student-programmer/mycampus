@@ -20,9 +20,11 @@ const Places = () => {
 
     // Делаем запрос на получение списка мест при монтировании компонента
     useEffect(() => {
-        fetchAllPlaces().catch(error => {
-            console.error('Error in places', error)
-        });
+        if (!placesList.length) {
+            fetchAllPlaces().catch(error => {
+                console.error('Error in places', error)
+            });
+        }
     }, []);
 
     // Обработка изменения состояния openDetail для Swiper
