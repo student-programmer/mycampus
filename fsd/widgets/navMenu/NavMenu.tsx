@@ -13,20 +13,20 @@ import {
 import { useEffect, useState } from "react";
 
 interface NavMenuProps {
-    notAuthentication: boolean;
+    notAuthenticated: boolean;
 }
 
-export const NavMenu = ({notAuthentication}: NavMenuProps) => {
+export const NavMenu = ({notAuthenticated: notAuthenticated}: NavMenuProps) => {
     const router = useRouter();
     const pathname = usePathname();
 
     const isActive = (path: string) => pathname.includes(path);
     const [routes] = useState({
-        connects: notAuthentication ? '/connects-demo' : '/connects',
-        chats: notAuthentication ? '/chats-demo' : '/chats',
-        places: notAuthentication ? '/places-demo' : '/places',
-        events: notAuthentication ? '/events-demo' : '/events',
-        profile: notAuthentication ? '/profile-demo' : '/profile'
+        connects: notAuthenticated ? '/connects-demo' : '/connects',
+        chats: notAuthenticated ? '/chats-demo' : '/chats',
+        places: notAuthenticated ? '/places-demo' : '/places',
+        events: notAuthenticated ? '/events-demo' : '/events',
+        profile: notAuthenticated ? '/profile-demo' : '/profile'
     });
 
     const handleNavigation = (path: string) => {
@@ -47,12 +47,8 @@ export const NavMenu = ({notAuthentication}: NavMenuProps) => {
                 </li>
                 <li
                     className={ `${ style.linkNav } ${
-                        isActive(routes['chats']) ? style.active : ''
-                    } ${
-                        notAuthentication ? style.disabled : ''
-                    }` }
-                    style={ {pointerEvents: notAuthentication ? 'none' : 'auto'} }
-                    onClick={ notAuthentication ? undefined : () => handleNavigation(routes['chats']) }
+                        isActive(routes['chats']) ? style.active : '' } ` }
+                    onClick={ () => handleNavigation(routes['chats']) }
                 >
                     <SecondIcon/>
                     <span className={ style.navItem }>Chats</span>

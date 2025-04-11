@@ -67,7 +67,7 @@ const PlacesDemo = () => {
 
   return (
     <div className={style.placesWrapper}>
-      <div className={style.filtersWrapper}>
+      <div className={style.filterButton}>
         <FiltersForPlaces resetFilters={resetFilters} />
       </div>
       <Swiper

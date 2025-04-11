@@ -1,10 +1,10 @@
 "use client";
 import { Layout } from "antd";
-import ChatList from "./ChatList";
 import style from './ui/Chat.module.scss'
 import { useChatsStore } from "@/fsd/app/stores/chats/store";
 import { useEffect, useState } from "react";
 import { User } from '@/fsd/entities/profile';
+import { ChatList } from "@/fsd/widgets/chats/ChatList";
 
 const {Content} = Layout;
 

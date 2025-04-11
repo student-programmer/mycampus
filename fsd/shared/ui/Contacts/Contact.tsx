@@ -6,10 +6,10 @@ import phone from '../../../../public/phone.svg';
 import Image from 'next/image';
 
 type ContactsProps = {
-	website: string;
-	instagram: string;
-	maps?: string;
-	phoneNumber: string;
+	website: string | undefined;
+	instagram: string | undefined;
+	maps?: string | undefined;
+	phoneNumber: string | undefined;
 };
 
 export const Contacts = ({

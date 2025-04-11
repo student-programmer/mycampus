@@ -1,5 +1,5 @@
 "use client";
-import { Button, Input, DatePicker, InputNumber, Select } from "antd";
+import { Button, Input } from "antd";
 import React from "react";
 import { useFormik } from "formik";
 import dayjs from "dayjs";
@@ -19,11 +19,11 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
 
   const formik = useFormik({
     initialValues: {
-      minPrice: "",
-      maxPrice: "",
+      minPrice: undefined,
+      maxPrice: undefined,
       date: null,
-      category: "",
-      name: "",
+      category: undefined,
+      name: undefined,
     },
     onSubmit: (values) => {
       setFilteredEventsParams({
@@ -50,10 +50,9 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
   return (
     <ModalComponent
       title="Filters"
-      buttonText="Filters"
       showModalEmit={() => resetFilters()}
       footerArray={[
-        <Button key="reset" onClick={resetFiltersForm}>
+        <Button className={style.cancelButton} key="reset" onClick={ resetFiltersForm }>
           Reset Filters
         </Button>,
       ]}
@@ -125,7 +124,7 @@ const FilterForEvents = ({ resetFilters }: FiltersForEventsProps) => {
               value: category,
               label: category,
             }))}
-            placeholder="Select category"
+            placeholder={"Select category..."}
           />
         </div>
       </div>

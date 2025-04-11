@@ -15,7 +15,7 @@ interface ChatListProps {
     isLoading: boolean;
 }
 
-export const ChatList = ({chats, isLoading}: ChatListProps) => {
+export const ChatListDemo = ({chats, isLoading}: ChatListProps) => {
 
     if (isLoading) {
         return <ChatLoader/>
@@ -25,24 +25,17 @@ export const ChatList = ({chats, isLoading}: ChatListProps) => {
         return < ChatPlug/>
     }
 
-    const getAvatarUrl = (user: any) => {
-        if (!user.photo)
-            return generateAvatar(user.firstName, user.lastName);
-        else return user.photo
-    }
-
-
     return (
         <List
             itemLayout='horizontal'
             dataSource={ chats }
             renderItem={ (chat: Chat) => (
-                <Link href={ `chat/${ chat.firstName } ${ chat.lastName }/${ chat.id }` }>
+                <Link href={ `chat-demo/${ chat.firstName } ${ chat.lastName }/${ chat.id }` }>
                     <List.Item className={ style.listItem }>
                         <List.Item.Meta
                             avatar={
                                 <div className={ style.avatarWrapper }>
-                                    <Avatar src={ getAvatarUrl(chat) }
+                                    <Avatar src={ generateAvatar(chat.firstName, chat.lastName) }
                                             style={ {border: '1px solid #FFFFFF29'} }/>
                                     <span
                                         className={ `${ style.statusIndicator } ${
@@ -83,3 +76,4 @@ export const ChatList = ({chats, isLoading}: ChatListProps) => {
         />
     );
 };
+
