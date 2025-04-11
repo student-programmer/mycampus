@@ -51,10 +51,10 @@ const FullInfoDetail = ({
                 <div className={ style.contactsWrapper }>
                     <h2 className={ style.contactsH2 }>Contacts:</h2>
                     <Contacts
-                        phoneNumber={ event.contacts.phone }
-                        instagram={ event.contacts.inst }
-                        maps={ event.contacts.maps }
-                        website={ event.contacts.web }
+                        phoneNumber={ event.contacts?.phone  }
+                        instagram={ event.contacts?.inst }
+                        maps={ event.contacts?.maps }
+                        website={ event.contacts?.web }
                     />
                 </div>
             </div>

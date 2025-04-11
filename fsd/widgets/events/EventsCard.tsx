@@ -10,59 +10,64 @@ import CardInfoAndDetail from "./CardInfoAndDetail";
 import FullInfoDetail from "./FullInfoDetail";
 
 const EventCard = ({
-                     event,
-                     openDetail,
-                     setOpenDetail,
+                       event,
+                       openDetail,
+                       setOpenDetail,
                    }: {
-  event: Event;
-  openDetail: boolean;
-  setOpenDetail: (v: boolean) => void;
+    event: Event;
+    openDetail: boolean;
+    setOpenDetail: (v: boolean) => void;
 }) => {
-  const router = useRouter();
-  const moreInfo = (id: string) => {
-    router.push(`/events/${ id }`);
-  };
-  const eventImage = event.photos;
-  return (
-    <>
-      { !openDetail ? (
-        <div style={ { paddingTop: '20px' } }>
-          <Swiper
-            direction="horizontal"
-            slidesPerView={ 1 }
-            observer={ true }
-            observeParents={ true }
-            pagination
-            modules={ [Pagination] }
-          >
-            { eventImage?.map((i, index) => (
-              <SwiperSlide key={ index }>
-                <div className={ style.placeImage }>
-                  <Image
-                    src={ i }
-                    alt={ event.name }
-                    style={ { objectFit: "cover" } }
-                    fill
-                  />
+    const router = useRouter();
+
+    const moreInfo = (id: string) => {
+        router.push(`/events/${ id }`);
+    };
+
+    const eventImage = event.photos;
+
+    console.log(event, 'event')
+
+    return (
+        <>
+            { !openDetail ? (
+                <div style={ {paddingTop: '20px'} }>
+                    <Swiper
+                        direction="horizontal"
+                        slidesPerView={ 1 }
+                        observer={ true }
+                        observeParents={ true }
+                        pagination
+                        modules={ [Pagination] }
+                    >
+                        { eventImage?.map((i, index) => (
+                            <SwiperSlide key={ index }>
+                                <div className={ style.placeImage }>
+                                    <Image
+                                        src={ i }
+                                        alt={ event.name }
+                                        style={ {objectFit: "cover"} }
+                                        fill
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        )) }
+                    </Swiper>
+                    <CardInfoAndDetail
+                        event={ event }
+                        openDetail={ openDetail }
+                        setOpenDetail={ setOpenDetail }
+                    />
                 </div>
-              </SwiperSlide>
-            )) }
-          </Swiper>
-          <CardInfoAndDetail
-            event={ event }
-            openDetail={ openDetail }
-            setOpenDetail={ setOpenDetail }
-          />
-        </div>
-      ) : (
-        <FullInfoDetail
-          event={ event }
-          openDetail={ openDetail }
-          setOpenDetail={ setOpenDetail }
-        />
-      ) }
-    </>
-  );
+            ) : (
+                <FullInfoDetail
+                    event={ event }
+                    openDetail={ openDetail }
+                    setOpenDetail={ setOpenDetail }
+                />
+            ) }
+        </>
+    );
 };
 
 export default EventCard;

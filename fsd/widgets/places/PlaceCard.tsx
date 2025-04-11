@@ -56,7 +56,7 @@ const PlaceCard = ({
           pagination
           modules={ [Pagination] }
         >
-          { placesImage.map((i, index) => (
+          { placesImage?.map((i, index) => (
             <SwiperSlide key={ index }>
               <div className={ style.placeImage }>
                 <Image
