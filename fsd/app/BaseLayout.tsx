@@ -11,13 +11,13 @@ import { User } from '@/fsd/entities/profile';
 interface BaseLayoutProps {
 	Component: React.FC;
 	navMenuOn: boolean;
-	notAuthentication?: boolean;
+	notAuthenticated?: boolean;
 }
 
 export default function BaseLayout({
 	Component,
 	navMenuOn,
-	notAuthentication = false,
+	notAuthenticated = false,
 }: BaseLayoutProps) {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +41,7 @@ export default function BaseLayout({
 		};
 
 		const token = localStorage.getItem('jwtToken');
-		if (!notAuthentication) {
+		if (!notAuthenticated) {
 			getCurrentUser(token).then();
 		}
 		setIsLoading(false);
@@ -63,7 +63,7 @@ export default function BaseLayout({
 					// @ts-ignore
 					<Component user={user} />
 				)}
-				{navMenuOn && <NavMenu notAuthentication={notAuthentication}/>}
+				{navMenuOn && <NavMenu notAuthenticated={notAuthenticated}/>}
 			</div>
 		</SocketProvider>
 	);

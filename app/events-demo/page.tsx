@@ -5,5 +5,5 @@ import EventsDemo from '@/fsd/pages/EventsDemo';
 
 
 export default function Page() {
-	return < BaseLayout Component={ EventsDemo } navMenuOn notAuthentication/>;
+	return < BaseLayout Component={ EventsDemo } navMenuOn notAuthenticated/>;
 }

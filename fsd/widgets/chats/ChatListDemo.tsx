@@ -15,7 +15,7 @@ interface ChatListProps {
     isLoading: boolean;
 }
 
-const ChatList = ({chats, isLoading}: ChatListProps) => {
+export const ChatListDemo = ({chats, isLoading}: ChatListProps) => {
 
     if (isLoading) {
         return <ChatLoader/>
@@ -30,7 +30,7 @@ const ChatList = ({chats, isLoading}: ChatListProps) => {
             itemLayout='horizontal'
             dataSource={ chats }
             renderItem={ (chat: Chat) => (
-                <Link href={ `chat/${ chat.firstName } ${ chat.lastName }/${ chat.id }` }>
+                <Link href={ `chat-demo/${ chat.firstName } ${ chat.lastName }/${ chat.id }` }>
                     <List.Item className={ style.listItem }>
                         <List.Item.Meta
                             avatar={
@@ -77,4 +77,3 @@ const ChatList = ({chats, isLoading}: ChatListProps) => {
     );
 };
 
-export default ChatList;
