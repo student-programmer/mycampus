@@ -74,11 +74,10 @@ const PreConnectsPage = ({ user }: PreConnectsPageProps) => {
 };
 
 const UserCard = ({ user }: { user: User }) => {
-
   const router = useRouter();
-  const goToChat = () => {
+  /* const goToChat = () => {
     router.push(`/chat/${user.firstName}${user.lastName}/${user.id}`);
-  };
+  }; */
 
   const avatarUrl = useMemo(() => {
     if (!user.photo) return generateAvatar(user.firstName, user.lastName);
@@ -96,8 +95,9 @@ const UserCard = ({ user }: { user: User }) => {
             {user.firstName} {user.lastName}
           </p>
           <div className={style.countryWrapper}>
-            <p className={style.textPmain}>China</p> {/* Статичное значение */}
-            <Image src="/chinaIcon.svg" width={20} height={20} alt="" />
+            <p className={style.textPmain}>{user.country.name}</p>{" "}
+            {/* Статичное значение */}
+            <Image src={user.country.photo} width={20} height={20} alt="" />
           </div>
         </div>
         <div className={style.languageAndAgeInfo}>

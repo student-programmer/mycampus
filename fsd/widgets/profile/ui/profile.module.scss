@@ -45,7 +45,7 @@
   overflow: auto;
 }
 
-.editTitle{
+.editTitle {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -62,13 +62,12 @@
   max-width: 60%;
 }
 
-.editLabel{
+.editLabel {
   color: white;
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
 }
-
 
 .input_field {
   width: 100%;
@@ -80,7 +79,6 @@
   margin-top: 10px;
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
   caret-color: #84cc16 !important;
-
 }
 
 .input_field:-webkit-autofill,
@@ -89,7 +87,7 @@
   background-color: #111a14 !important;
   color: #84cc16 !important;
   border: 0.01px solid #111a14;
-  outline:none;
+  outline: none;
   box-shadow: 0 0 0 2px #111a14;
   -webkit-text-fill-color: #84cc16 !important;
   -webkit-box-shadow: 0 0 0 1000px #111a14 inset !important;
@@ -111,7 +109,6 @@
       padding-right: 16px !important;
 
       .ant-select-selection-wrap {
-
         .ant-select-selection-placeholder {
           color: rgba(197, 200, 198, 0.6);
         }
@@ -126,32 +123,30 @@
 
 .select_item {
   background-color: #111a14; /* Фон элемента */
-  color: #84cc16;             /* Цвет текста */
-  font-weight: bold;          /* Сделаем текст жирным */
-  padding: 8px;               /* Добавим отступы */
-  border-radius: 8px;         /* Закруглим углы */
+  color: #84cc16; /* Цвет текста */
+  font-weight: bold; /* Сделаем текст жирным */
+  padding: 8px; /* Добавим отступы */
+  border-radius: 8px; /* Закруглим углы */
 
   :global {
-    .rc-virtual-list{
-
-      .rc-virtual-list-holder{
-
-        .rc-virtual-list-holder-inner{
+    .rc-virtual-list {
+      .rc-virtual-list-holder {
+        .rc-virtual-list-holder-inner {
           gap: 3px;
-          .ant-select-item-option-selected{
+          .ant-select-item-option-selected {
             background-color: #84cc15;
             border-radius: 12px;
             color: black !important;
           }
 
-          .ant-select-item-option{
+          .ant-select-item-option {
             color: #84cc15;
             font-size: 16px;
-            .ant-select-item-option-state{
+            .ant-select-item-option-state {
               color: black;
             }
           }
-          .ant-select-item-option-active{
+          .ant-select-item-option-active {
             background-color: #84cc15;
             border-radius: 12px;
             color: black;
@@ -162,23 +157,21 @@
   }
 }
 
-
 .multiple_select_item {
   width: 100%;
   min-height: 56px;
   height: fit-content;
   margin-top: 10px;
   background-color: #111a14; /* Фон элемента */
-  color: #84cc16;             /* Цвет текста */
-  font-weight: bold;          /* Сделаем текст жирным */
-  padding: 8px;             /* Добавим отступы */
-  border-radius: 20px;         /* Закруглим углы */
+  color: #84cc16; /* Цвет текста */
+  font-weight: bold; /* Сделаем текст жирным */
+  padding: 8px; /* Добавим отступы */
+  border-radius: 20px; /* Закруглим углы */
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
   outline: none;
 
-
   :global {
-    .ant-select-selector{
+    .ant-select-selector {
       border-radius: 16px;
       padding: 0;
       padding-top: 2px;
@@ -187,31 +180,30 @@
       box-shadow: none !important;
     }
 
-    .ant-select-selection-wrap{
+    .ant-select-selection-wrap {
       height: 100%;
       background-color: transparent !important;
 
-      .ant-select-selection-placeholder{
+      .ant-select-selection-placeholder {
         text-overflow: ellipsis;
         color: rgba(197, 200, 198, 0.6);
         font-size: 18px;
         font-weight: 400;
       }
 
-      .ant-select-selection-overflow{
+      .ant-select-selection-overflow {
         padding: 4px 0;
 
-        .ant-select-selection-overflow-item{
+        .ant-select-selection-overflow-item {
           align-self: auto;
         }
 
-        .ant-select-selection-overflow-wrap{
+        .ant-select-selection-overflow-wrap {
           height: 100%;
         }
       }
     }
   }
-
 }
 
 .multiple_select_item:focus-within {
@@ -220,10 +212,10 @@
 }
 
 .multiple_select_item:invalid {
-  border: 1px solid #F43F5E !important;
+  border: 1px solid #f43f5e !important;
 }
 
-.tag{
+.tag {
   background-color: #84cc15;
   border-radius: 16px;
   height: 100%;
@@ -233,10 +225,9 @@
   font-size: 13px;
 }
 
-.ant-select-item-option-content{
+.ant-select-item-option-content {
   background-color: red;
 }
-
 
 .input_field::placeholder {
   text-overflow: ellipsis;
@@ -253,7 +244,6 @@
   margin-right: 5px;
 }
 
-
 /* Фикс бага с автозаполнением в Chrome */
 .input_field input:-webkit-autofill,
 .input_field input:-webkit-autofill:hover,
@@ -267,8 +257,7 @@
   caret-color: #84cc16 !important;
 }
 
-
-.form_box{
+.form_box {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -276,33 +265,33 @@
   padding: 16px 0;
 }
 
-.groupButtons{
+.groupButtons {
   display: block;
   width: 100%;
 }
 
-.radioButtonLeft{
+.radioButtonLeft {
   border-start-start-radius: 12px !important;
   border-end-start-radius: 12px !important;
-  background-color: #313A34 !important;
-  color: #A2A9A4 !important;
+  background-color: #313a34 !important;
+  color: #a2a9a4 !important;
 }
 
-.radioButtonLeftActive{
+.radioButtonLeftActive {
   border-start-start-radius: 12px !important;
   border-end-start-radius: 12px !important;
   background-color: #84cc15 !important;
   color: white !important;
 }
 
-.radioButtonRight{
+.radioButtonRight {
   border-start-end-radius: 12px !important;
   border-end-end-radius: 12px !important;
-  background-color: #313A34 !important;
-  color: #A2A9A4 !important;
+  background-color: #313a34 !important;
+  color: #a2a9a4 !important;
 }
 
-.radioButtonRightActive{
+.radioButtonRightActive {
   border-start-end-radius: 12px !important;
   border-end-end-radius: 12px !important;
   background-color: #84cc15 !important;
@@ -319,7 +308,6 @@
   margin-top: 10px;
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
   caret-color: #84cc16 !important;
-
 }
 
 .input_field:-webkit-autofill,
@@ -328,13 +316,12 @@
   background-color: #111a14 !important;
   color: #84cc16 !important;
   border: 0.01px solid #111a14;
-  outline:none;
+  outline: none;
   box-shadow: 0 0 0 2px #111a14;
   -webkit-text-fill-color: #84cc16 !important;
   -webkit-box-shadow: 0 0 0 1000px #111a14 inset !important;
   caret-color: #84cc16 !important;
 }
-
 
 .editCardInfo {
   position: relative; /* Абсолютное позиционирование */
@@ -342,7 +329,6 @@
   z-index: 2;
   padding: 24px;
   border-radius: 20px;
-
 }
 .datepicker_field {
   width: 100%;
@@ -356,25 +342,27 @@
   border-radius: 20px !important;
 
   :global {
-    .ant-picker-input{
-     padding: 0 6px;
-      input{
+    .ant-picker-input {
+      padding: 0 6px;
+      input {
         font-size: 18px !important;
         color: #84cc16 !important;
       }
-      input::placeholder{
+      input::placeholder {
         color: rgba(197, 200, 198, 0.6) !important;
       }
-      .ant-picker-suffix{
+      .ant-picker-suffix {
         color: rgba(197, 200, 198, 0.6) !important;
       }
     }
   }
-
 }
 
 .photoBack {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 37dvh;
   left: 0;
@@ -385,6 +373,7 @@
 .photoBack > img {
   height: 120%;
   width: 100%;
+  max-width: 533px;
   object-fit: cover;
   border-radius: 20px;
   position: absolute;
@@ -393,10 +382,9 @@
 .mainCardInfo {
   position: relative; /* Абсолютное позиционирование */
   background-color: #1e2721; /* Элементы внутри flex внизу */
-  z-index: 2;
+  z-index: 2; 
   padding: 24px;
   border-radius: 20px;
-
 }
 
 .mainParagraphH1 {
@@ -504,8 +492,8 @@
 }
 
 .buttonSendProfile:disabled {
-  background-color: #313A34;
-  color: #A2A9A4;
+  background-color: #313a34;
+  color: #a2a9a4;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
@@ -516,7 +504,7 @@
 }
 
 .buttonViewProfile {
-  background-color: #313A34;
+  background-color: #313a34;
   color: #ffffff;
   font-size: 14px;
   line-height: 17px;
