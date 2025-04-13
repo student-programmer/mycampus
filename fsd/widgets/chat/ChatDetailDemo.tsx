@@ -72,7 +72,7 @@ const chatList: Chat[] = [
 
 export const ChatDetailDemo = () => {
 
-    const {id, chatName} = useParams();
+    const {chatName} = useParams();
     const router = useRouter();
     let receiverName = '';
     let receiverLastName = '';
