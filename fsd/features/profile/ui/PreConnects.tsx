@@ -92,7 +92,6 @@ const UserCard = ({user}: { user: User }) => {
                     width={ 358 }
                     height={ 374 }
                 />
-                ;
             </div>
             <div className={ style.mainCardInfo }>
                 <div className={ style.headerProfile }>

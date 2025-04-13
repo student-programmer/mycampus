@@ -37,7 +37,6 @@ export const useProfilesStore = create<ProfilesState>((set) => ({
   fetchProfilesByParams: async (params: any) => {
     try {
       const data = await connectActions.getConnectsByParams(params);
-      console.log(data);
 
       if (!data || data.length === 0) {
         console.warn("API вернул пустые данные");
