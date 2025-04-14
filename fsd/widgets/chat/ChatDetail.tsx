@@ -20,6 +20,7 @@ interface ChatDetailProps {
 
 const ChatDetail = ({user}: ChatDetailProps) => {
     const {id, chatName} = useParams();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const router = useRouter();
     let receiverName = '';
     let receiverLastName = '';
@@ -35,7 +36,6 @@ const ChatDetail = ({user}: ChatDetailProps) => {
     const {socket} = useSocket(); // Получаем сокет из контекста
     const {messageList, fetchMessageList, addMessage, receiverPhoto} = useChatsStore();
 
-    console.log(receiverPhoto)
 
     const messagesEndRef = createRef<HTMLDivElement>();
 
@@ -57,7 +57,7 @@ const ChatDetail = ({user}: ChatDetailProps) => {
 
     useEffect(() => {
         if (id && user?.id)
-            fetchMessageList(Number(id), Number(user?.id));
+            fetchMessageList(Number(id), Number(user?.id), setIsLoading);
     }, [id, user?.id]);
 
     useEffect(() => {
@@ -85,7 +85,7 @@ const ChatDetail = ({user}: ChatDetailProps) => {
     }
 
 
-    if (!messageList.length) {
+    if (isLoading) {
         return < ChatLoader/>
     }
 

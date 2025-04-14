@@ -11,7 +11,7 @@ interface ChatState {
     receiverPhoto?: string,
     addMessage: (message: Message) => void;
     fetchChatList: (userId: number, setIsLoading: (isLoading: boolean) => void) => Promise<Chat[]>;
-    fetchMessageList: (userId1: number, userId2: number) => void
+    fetchMessageList: (userId1: number, userId2: number, setIsLoading: (isLoading: boolean) => void) => void
 }
 
 
@@ -23,25 +23,25 @@ export const useChatsStore = create<ChatState>()(immer((set) => ({
             state.messageList.push(message);
         }),
 
-    fetchChatList: async (userId: number, setIsLoading: (isLoading: boolean) => void): Promise<Chat[]> => {
-        try {
-            setIsLoading(true);
-            const data = await chatActions.getChatUsers(userId);
-            const chats = data || [];
-            set({ chatList: chats });
-            setIsLoading(false);
-            return chats;
-        } catch (error) {
+        fetchChatList: async (userId: number, setIsLoading: (isLoading: boolean) => void): Promise<Chat[]> => {
+            try {
+                setIsLoading(true);
+                const data = await chatActions.getChatUsers(userId);
+                const chats = data || [];
+                set({chatList: chats});
+                setIsLoading(false);
+                return chats;
+            } catch (error) {
 
-            console.error('Ошибка при загрузке чатов:', error);
-            set({ chatList: [] });
-            setIsLoading(false);
-            return [];
-        }
-    },
+                console.error('Ошибка при загрузке чатов:', error);
+                set({chatList: []});
+                setIsLoading(false);
+                return [];
+            }
+        },
 
 
-    fetchMessageList: async (userId1: number, userId2: number) => {
+        fetchMessageList: async (userId1: number, userId2: number, setIsLoading: (isLoading: boolean) => void) => {
             try {
                 const data = await chatActions.getChatMessages(userId1, userId2);
 
@@ -51,9 +51,11 @@ export const useChatsStore = create<ChatState>()(immer((set) => ({
                 } else {
                     set({messageList: data?.messages, receiverPhoto: data?.receiverPhoto});
                 }
+                setIsLoading(false)
             } catch (error) {
                 console.error(`Ошибка при загрузке интересов:`, error);
                 set({chatList: []});
+                setIsLoading(false)
             }
         },
     }))
