@@ -112,7 +112,7 @@ const UserCard = ({user}: { user: User }) => {
                 </div>
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }>About:</p>
-                    <p className={ style.textPmain }>{ user.description }</p>
+                    <p className={ style.textPmain } dangerouslySetInnerHTML={{__html: user.description}}/>
                 </div>
                 <div className={ style.interestsPeople }>
                     <p className={ style.headerText }>Interests:</p>
