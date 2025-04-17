@@ -180,3 +180,13 @@ ul {
 // .ant-badge-status-success{
 //   background-color: rgba(132, 204, 21, 1) !important;
 // }
+
+/* Препятствует скроллу страницы при скролле внутри выпадающего списка */
+.ant-select-dropdown {
+  overscroll-behavior: contain;
+}
+
+/* Для кастомных селектов, если используете свои классы */
+.custom-select-dropdown {
+  overscroll-behavior: contain;
+}
