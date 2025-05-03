@@ -24,6 +24,26 @@ const userService = {
         }
     },
 
+    uploadImage: async (token: string, uploadImage: File): Promise<(null | any)[]> => {
+        try {
+            axiosInstance.defaults.headers.Authorization = `Bearer ${ token }`;
+            const formData = new FormData();
+            formData.append('file', uploadImage);
+            const file = await axiosInstance.post(
+                `/user/file`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+            return [file, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+
     updatePassword: async (token: string, values: PasswordUpdateService) => {
         try {
             axiosInstance.defaults.headers.Authorization = `Bearer ${ token }`;
