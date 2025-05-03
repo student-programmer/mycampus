@@ -23,6 +23,14 @@ const userActions = {
         return data;
     },
 
+    uploadImage: async (token: string, uploadImage: File) => {
+        const [_, error] = await userService.uploadImage(token, uploadImage);
+
+        if (error) {
+            throw error;
+        }
+    },
+
     updatePassword: async (token: string, values: PasswordUpdateAction) => {
         const changedVal = {
             password: values.password

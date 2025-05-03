@@ -1,17 +1,23 @@
 .contactsWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .containerContact {
-  background-color: #313a34;
+  background-color: #84cc16;
   border-radius: 12px;
   gap: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 24px;
+  padding: 20px 20px;
+}
+
+.containerContact:active {
+  background-color: #3e4a42;
+  transform: scale(0.96); /* Эффект "нажатия" на мобильных */
 }
 
 .paragraphOpacity {

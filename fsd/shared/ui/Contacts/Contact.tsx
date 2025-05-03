@@ -6,50 +6,61 @@ import phone from '../../../../public/phone.svg';
 import Image from 'next/image';
 
 type ContactsProps = {
-	website: string | undefined;
-	instagram: string | undefined;
-	maps?: string | undefined;
-	phoneNumber: string | undefined;
+    website: string | undefined;
+    instagram: string | undefined;
+    maps?: string | undefined;
+    phoneNumber: string | undefined;
 };
 
 export const Contacts = ({
-	website,
-	instagram,
-	maps,
-	phoneNumber,
-}: ContactsProps) => {
-	return (
-		<div className={style.contactsWrapper}>
-			<div className={style.containerContact}>
-				<div className={style.constData}>
-					<Image src={web} alt={''} />
-					<p className={style.paragraphOpacity}>Website</p>
-				</div>
-				<p className={style.paragraphNoOpacity}>{website}</p>
-			</div>
-			<div className={style.containerContact}>
-				<div className={style.constData}>
-					<Image src={inst} alt={''} />
-					<p className={style.paragraphOpacity}>Instagram</p>
-				</div>
-				<p className={style.paragraphNoOpacity}>{instagram}</p>
-			</div>
-			{maps && (
-				<div className={style.containerContact}>
-					<div className={style.constData}>
-						<Image src={googleMaps} alt={''} />
-						<p className={style.paragraphOpacity}>Google maps</p>
-					</div>
-					<p className={style.paragraphNoOpacity}>{maps}</p>
-				</div>
-			)}
-			<div className={style.containerContact}>
-				<div className={style.constData}>
-					<Image src={phone} alt={''} />
-					<p className={style.paragraphOpacity}>Phone</p>
-				</div>
-				<p className={style.paragraphNoOpacity}>{phoneNumber}</p>
-			</div>
-		</div>
-	);
+                             website,
+                             instagram,
+                             maps,
+                             phoneNumber,
+                         }: ContactsProps) => {
+
+    const handleOpenWebsite = () => {
+        if (website) {
+            window.open(website)
+        }
+    }
+
+    const handleOpenInstagram = () => {
+        if (instagram) {
+            window.open(instagram)
+        }
+    }
+
+    const handleOpenMaps = () => {
+        if (maps) {
+            window.open(maps)
+        }
+    }
+
+    return (
+        <div className={ style.contactsWrapper }>
+            <div className={ style.containerContact }>
+                <div className={ style.constData } onClick={ handleOpenWebsite }>
+                    <Image src={ web } alt={ '' }/>
+                </div>
+            </div>
+            <div className={ style.containerContact }>
+                <div className={ style.constData } onClick={ handleOpenInstagram }>
+                    <Image src={ inst } alt={ '' }/>
+                </div>
+            </div>
+            { maps && (
+                <div className={ style.containerContact }>
+                    <div className={ style.constData }>
+                        <Image src={ googleMaps } alt={ '' } onClick={ handleOpenMaps }/>
+                    </div>
+                </div>
+            ) }
+            <div className={ style.containerContact }>
+                <a href={ `tel:${ phoneNumber }` } className={ style.constData }>
+                    <Image src={ phone } alt={ '' }/>
+                </a>
+            </div>
+        </div>
+    );
 };

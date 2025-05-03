@@ -15,6 +15,7 @@ import TextArea from "antd/es/input/TextArea";
 import { CustomDatepicker } from "@/fsd/features/auth/CustomDatepicker";
 import { sex } from "@/utils/common";
 import { useProfilesStore } from "@/fsd/app/stores/profiles/store";
+import { UploadPhoto } from "@/fsd/widgets/profile/UploadPhoto";
 
 interface DetailProps {
     currentProfile: User;
@@ -25,6 +26,8 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
 
     const [isLoadingButton, setIsLoadingButton] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [photoUrl, setPhotoUrl] = useState<string | null>('');
+    const [uploadImage, setUploadImage] = useState<File | null>(null);
 
     const {
         LanguageList,
@@ -62,10 +65,15 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
         validateOnChange: false,
     })
 
+
     const handleEdit = async (values: UserUpdateActionsRequest) => {
         const token = localStorage.getItem('jwtToken');
         setIsLoadingButton(true);
         if (token) {
+            if (currentProfile.photo !== photoUrl && uploadImage) {
+                await userActions.uploadImage(token, uploadImage).catch(r => console.error(r))
+            }
+
             await userActions.update(token, values).then(r => {
                 if (r) {
                     setCurrentProfile(r)
@@ -113,9 +121,10 @@ export const UserData = ({currentProfile, setStatus}: DetailProps) => {
         return <div>Loading..</div>
     }
 
-
     return (
         <>
+            < UploadPhoto setPhotoUrl={ setPhotoUrl } setUploadImage={ setUploadImage } photoUrl={ photoUrl }
+                          currentProfile={ currentProfile }/>
             <div>
                 <label htmlFor='firstName' className={ style.editLabel }>
                     First name
