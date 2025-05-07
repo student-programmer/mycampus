@@ -30,7 +30,7 @@ const userService = {
             const formData = new FormData();
             formData.append('file', uploadImage);
             const file = await axiosInstance.post(
-                `/user/file`,
+                `/user/upload`,
                 formData,
                 {
                     headers: {

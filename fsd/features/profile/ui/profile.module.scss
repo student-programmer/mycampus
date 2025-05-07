@@ -14,13 +14,13 @@
 	justify-content: center;
 	padding: 40px;
 	text-align: center;
-	
+
 	h3 {
 	  font-size: 18px;
 	  margin-bottom: 10px;
 	  color: #333;
 	}
-	
+
 	p {
 	  font-size: 14px;
 	  color: #666;
@@ -46,6 +46,7 @@
 	position: relative;
 	z-index: 2;
 	width: 100%;
+	height: 100%;
 	overflow: hidden;
 	justify-content: center;
 }
@@ -53,20 +54,21 @@
 .photoBack {
 	position: relative;
 	width: 100%;
-	height: 32dvh;
+	flex: 1;
+	height: 50dvh;
 	left: 0;
 	z-index: 1;
-	border-radius: 20px;
+	border-radius: 20px 20px 0 0;
 }
 
 /* Skeleton-specific стили */
 .skeletonImage {
 	width: 100% !important;
-	height: 32dvh !important;
+	height: 50dvh !important;
 	:global {
 		.ant-skeleton {
 			width: 100% !important;
-			height: 32dvh !important;
+			height: 50dvh !important;
 			.ant-skeleton-avatar {
 				border-radius: 20px 20px 0 0 !important;
 				left: 0 !important;
@@ -199,20 +201,20 @@
 }
 
 .photoBack > img {
-	height: 120%;
+	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	border-radius: 20px;
+	border-radius: 20px 20px 0 0;
 	position: absolute;
 }
 
 .mainCardInfo {
+	transform: translateY(-16px);
 	position: relative; /* Абсолютное позиционирование */
 	background-color: #1e2721; /* Элементы внутри flex внизу */
 	z-index: 2;
 	padding: 24px;
 	border-radius: 20px;
-	height: 100%;
 }
 
 .mainParagraphH1 {

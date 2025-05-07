@@ -29,11 +29,12 @@ const EventCard = ({
   return (
     <>
       {!openDetail ? (
-        <div style={{ paddingTop: "20px" }}>
+        <div style={{ paddingTop: "20px", height: '100%', display: 'flex', flexDirection: 'column' }}>
           <Swiper
             direction="horizontal"
             slidesPerView={1}
             observer={true}
+            style={{flex: '1 0 0', width: '100%'}}
             observeParents={true}
             pagination
             modules={[Pagination]}
