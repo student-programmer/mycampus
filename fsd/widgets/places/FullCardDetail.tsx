@@ -24,6 +24,7 @@ const FullCardDetail = ({
         rating: 0,
         category: 'Категория',
         address: 'Адрес не указан',
+        area: 'Area doesnt match',
         keywords: 'Ключевые слова не указаны',
         website: 'Сайт не указан',
         instagram: 'Instagram не указан',
@@ -39,6 +40,7 @@ const FullCardDetail = ({
         category: place.category || defaultPlace.category,
         address: place.address || defaultPlace.address,
         keywords: place.keywords || defaultPlace.keywords,
+        area: place.area || defaultPlace.area,
         website: place.website || defaultPlace.website,
         instagram: place.instagram || defaultPlace.instagram,
         phoneNumber: place.phoneNumber || defaultPlace.phoneNumber,
@@ -52,7 +54,7 @@ const FullCardDetail = ({
 
     return (
         <div className={ style.placeDetail }>
-            <div>
+            <div className={style.fullCardWrapper}>
                 <div className={ style.headerWrapper }>
                     <div className={ style.headerMainWrapper }>
                         <h2 className={ style.placeCardHeader }>{ currentPlace.name }</h2>
@@ -74,6 +76,9 @@ const FullCardDetail = ({
                             <p className={ style.paragraphRate }>{ currentPlace.category }</p>
                         </div>
                     </div>
+                </div>
+                <div className={style.areaContainer}>
+                    <div>Area: {currentPlace.area}</div>
                 </div>
                 <div className={ style.adressContainer }>
                     <AdressIcon/>

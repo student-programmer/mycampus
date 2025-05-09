@@ -29,6 +29,7 @@ export interface Place {
 	rating: number;
 	category: string;
 	address: string;
+	area: string;
 	keywords: string;
 	photos: string[];
 	website?: string;
