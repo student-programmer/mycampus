@@ -3,7 +3,6 @@ import { Button, Rate } from 'antd';
 import Image from 'next/image';
 import { Place } from '@/fsd/entities/places';
 import style from './ui/placeCardDesc.module.scss';
-import AdressIcon from '@/public/adressIcon';
 import closeIcon from '../../../public/iconClose.svg';
 
 export const PlaceCardDescription = ({
@@ -23,6 +22,7 @@ export const PlaceCardDescription = ({
 		rating: 0,
 		category: 'Категория',
 		address: 'Адрес не указан',
+		area: 'Area doesnt match',
 		keywords: 'Ключевые слова не указаны',
 	};
 
@@ -31,6 +31,7 @@ export const PlaceCardDescription = ({
 		name: place.name || defaultPlace.name,
 		rating: place.rating || defaultPlace.rating,
 		category: place.category || defaultPlace.category,
+		area: place.area || defaultPlace.area,
 		address: place.address || defaultPlace.address,
 		keywords: place.keywords || defaultPlace.keywords,
 	};
@@ -62,9 +63,8 @@ export const PlaceCardDescription = ({
 					</div>
 				</div>
 			</div>
-			<div className={style.adressContainer}>
-				<AdressIcon />
-				<p className={style.paragraphRate}>{currentPlace.address}</p>
+			<div className={style.areaContainer}>
+				<div>Area: {currentPlace.area}</div>
 			</div>
 			<div className={style.keyWrapper}>
 				<p className={style.keyHeader}>Key:</p>
