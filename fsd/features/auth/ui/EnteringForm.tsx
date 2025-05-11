@@ -1,12 +1,12 @@
-import l from "@/fsd/features/auth/ui/LoginForm.module.scss";
-import React from "react";
+import l from '@/fsd/features/auth/ui/LoginForm.module.scss';
+import React from 'react';
+import LogoIcon from './LogoIcon';
 
 interface EnteringFormProps {
-    toggleSignIn: () => void;
-    toggleSignUp: () => void;
-    handleLogin: () => void;
+	toggleSignIn: () => void;
+	toggleSignUp: () => void;
+	handleLogin: () => void;
 }
-
 
 export const EnteringForm = ({
 	toggleSignIn,
@@ -15,32 +15,23 @@ export const EnteringForm = ({
 }: EnteringFormProps) => {
 	return (
 		<>
-			<h1 className={l.auth}>Sign In</h1>
-			<p className={l.description}>Sign in 1 minute for free!</p>
-
+		
+				<p className={l.logo_text}>Your UAE Student life</p>
+			
 			{/* Основная форма входа */}
 			<div className={l.buttons}>
-				<button onClick={toggleSignIn} className={l.login_button_active}>
-					Sign in
-				</button>
 				<div>
 					<button onClick={toggleSignUp} className={l.pass_button}>
 						Sign up
 					</button>
-
-					<button
-						onClick={() => console.log('Sign in via UAE Pass')}
-						className={l.pass_button}
-						disabled
-						style={{ opacity: '50%', pointerEvents: 'none' }}
-					>
-						UAE Pass
+					<button onClick={toggleSignIn} className={l.login_button_active}>
+						Sign in
 					</button>
 				</div>
 			</div>
 			<div className={l.additionally}>
 				<button className={l.try_now} onClick={handleLogin}>
-					Try now
+					Try Demo now
 				</button>
 			</div>
 			<div className={l.additionally}>

@@ -10,10 +10,11 @@ import "swiper/css/pagination";
 import style from "./profile.module.scss";
 import { type User } from "@/fsd/entities/profile";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useProfilesStore } from "@/fsd/app/stores/profiles/store";
 import { generateAvatar } from "@/utils/utils";
 import { ConnectsLoader } from "@/fsd/features/profile/ui/ConnectsLoader";
+import HandHint from "@/fsd/shared/ui/HandHint/HandHint";
 
 interface ConnectsPageProps {
   currentUser?: User;
@@ -21,6 +22,12 @@ interface ConnectsPageProps {
 
 const ConnectsPage = ({ currentUser }: ConnectsPageProps) => {
   const { profileList, fetchProfiles } = useProfilesStore();
+    const [showHint, setShowHint] = useState(true);
+  
+    useEffect(() => {
+      const timeout = setTimeout(() => setShowHint(false), 4000);
+      return () => clearTimeout(timeout);
+    }, []);
 
   useEffect(() => {
     fetchProfiles().catch((r) => {
@@ -41,24 +48,25 @@ const ConnectsPage = ({ currentUser }: ConnectsPageProps) => {
   }
 
   return (
-    <div className={style.profileWrapper}>
-      <Swiper
-        direction={"vertical"}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        navigation={false}
-        centeredSlides
-        loop={true}
-        className={style.swiperContainer}
-      >
-        {filteredProfiles.map((user: User) => (
-          <SwiperSlide key={user.id} className={style.slide}>
-            <UserCard user={user} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-  );
+		<div className={style.profileWrapper}>
+			{showHint && <HandHint />}
+			<Swiper
+				direction={'vertical'}
+				slidesPerView={1}
+				pagination={{ clickable: true }}
+				navigation={false}
+				centeredSlides
+				loop={true}
+				className={style.swiperContainer}
+			>
+				{filteredProfiles.map((user: User) => (
+					<SwiperSlide key={user.id} className={style.slide}>
+						<UserCard user={user} />
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</div>
+	);
 };
 
 const UserCard = ({ user }: { user: User }) => {

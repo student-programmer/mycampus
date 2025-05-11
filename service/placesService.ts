@@ -26,3 +26,4 @@ const placesService = {
 };
 
 export default placesService;
+  
