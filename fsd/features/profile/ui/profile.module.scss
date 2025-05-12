@@ -55,7 +55,7 @@
 	position: relative;
 	width: 100%;
 	flex: 1;
-	height: 50dvh;
+	height: 45dvh;
 	left: 0;
 	z-index: 1;
 	border-radius: 20px 20px 0 0;
@@ -64,11 +64,11 @@
 /* Skeleton-specific стили */
 .skeletonImage {
 	width: 100% !important;
-	height: 50dvh !important;
+	height: 40dvh !important;
 	:global {
 		.ant-skeleton {
 			width: 100% !important;
-			height: 50dvh !important;
+			height: 45dvh !important;
 			.ant-skeleton-avatar {
 				border-radius: 20px 20px 0 0 !important;
 				left: 0 !important;
@@ -218,9 +218,9 @@
 }
 
 .mainParagraphH1 {
-	font-size: clamp(20px, 5vw, 24px);
+	font-size: clamp(15px, 5vw, 24px);
 	font-weight: 500;
-	line-height: 32px;
+	line-height: 1;
 	color: #f5f5f5;
 }
 
@@ -238,6 +238,11 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+}
+
+.countryWrapper img {
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .textPmain {

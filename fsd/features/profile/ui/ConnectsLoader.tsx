@@ -12,7 +12,6 @@ export const ConnectsLoader = () => {
                     } } shape="square" className={ style.skeletonImage }/>
                 </div>
                 <div className={ style.mainCardInfo }>
-
                     <div className={ style.headerProfile }>
                         <p className={ style.mainParagraphH1 }>
                             <Skeleton.Input active size="small" className={ style.skeletonName }/>
@@ -30,9 +29,9 @@ export const ConnectsLoader = () => {
                         <Skeleton.Input active size="small" className={ style.skeletonYear }/>
                     </div>
                     <div className={ style.skeletonUniversityInfo }>
-                        <Skeleton.Input active size="small"  className={ style.skeletonEducation }/>
-                        <p className={ style.textPmain }>-</p>
-                        <Skeleton.Input active size="small" className={ style.skeletonEducation }/>
+                        {/*<Skeleton.Input active size="small"  className={ style.skeletonEducation }/>*/}
+                        {/*<p className={ style.textPmain }>-</p>*/}
+                        {/*<Skeleton.Input active size="small" className={ style.skeletonEducation }/>*/}
                     </div>
                     <div className={ style.aboutPeople }>
                         <p className={ style.headerText }></p>
@@ -41,7 +40,7 @@ export const ConnectsLoader = () => {
                     <div className={ style.interestsPeople }>
                         <p className={ style.headerText }></p>
                         <div className={ style.interestsBlock }>
-                            { [...Array(4)].map((_, i) => (
+                            { [...Array(2)].map((_, i) => (
                                 <Skeleton.Button
                                     key={ i }
                                     active

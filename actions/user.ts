@@ -31,6 +31,15 @@ const userActions = {
         }
     },
 
+    verifyEmail:async (token: string) => {
+        const [response, error] = await userService.verifyEmail(token);
+
+        if (error) {
+            throw error;
+        }
+        return response;
+    },
+
     updatePassword: async (token: string, values: PasswordUpdateAction) => {
         const changedVal = {
             password: values.password

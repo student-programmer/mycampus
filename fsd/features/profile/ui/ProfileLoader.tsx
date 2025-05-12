@@ -7,7 +7,7 @@ export const ProfileLoader = () => {
             <div className={ style.photoBack }>
                 <Skeleton.Avatar active style={ {
                     width: "100%",
-                    height: "120%",
+                    height: "100%",
                 } } shape="square" className={ style.skeletonImage }/>
             </div>
             <div className={ style.mainCardInfo }>
@@ -28,9 +28,9 @@ export const ProfileLoader = () => {
                     <Skeleton.Input active size="small" className={ style.skeletonYear }/>
                 </div>
                 <div className={ style.skeletonUniversityInfo }>
-                    <Skeleton.Input active size="small" className={ style.skeletonEducation }/>
-                    <p className={ style.textPmain }>-</p>
-                    <Skeleton.Input active size="small" className={ style.skeletonEducation }/>
+                    {/*<Skeleton.Input active size="small" className={ style.skeletonEducation }/>*/}
+                    {/*<p className={ style.textPmain }>-</p>*/}
+                    {/*<Skeleton.Input active size="small" className={ style.skeletonEducation }/>*/}
                 </div>
                 <div className={ style.aboutPeople }>
                     <p className={ style.headerText }></p>
@@ -39,7 +39,7 @@ export const ProfileLoader = () => {
                 <div className={ style.interestsPeople }>
                     <p className={ style.headerText }></p>
                     <div className={ style.interestsBlock }>
-                        { [...Array(4)].map((_, i) => (
+                        { [...Array(2)].map((_, i) => (
                             <Skeleton.Button
                                 key={ i }
                                 active

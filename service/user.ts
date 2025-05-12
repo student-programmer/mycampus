@@ -24,6 +24,15 @@ const userService = {
         }
     },
 
+    verifyEmail: async (token: string): Promise<any> => {
+        try {
+            const response = await axiosInstance.post('auth/verify', { token: token });
+            return [response, null];
+        } catch (error) {
+            return [null, error];
+        }
+    },
+
     uploadImage: async (token: string, uploadImage: File): Promise<(null | any)[]> => {
         try {
             axiosInstance.defaults.headers.Authorization = `Bearer ${ token }`;

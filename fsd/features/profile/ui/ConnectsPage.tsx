@@ -23,9 +23,9 @@ interface ConnectsPageProps {
 const ConnectsPage = ({ currentUser }: ConnectsPageProps) => {
   const { profileList, fetchProfiles } = useProfilesStore();
     const [showHint, setShowHint] = useState(true);
-  
+
     useEffect(() => {
-      const timeout = setTimeout(() => setShowHint(false), 4000);
+      const timeout = setTimeout(() => setShowHint(false), 4500);
       return () => clearTimeout(timeout);
     }, []);
 
