@@ -46,7 +46,7 @@ const PlaceCard = ({
         </div>
       </div>
       { !openDetail && (
-        <div style={ { height: '100%', display: 'flex', flexDirection: 'column' } }>
+        <div style={ { height: '85%', display: 'flex', flexDirection: 'column' } }>
           <Swiper
             direction="horizontal"
             slidesPerView={ 1 }

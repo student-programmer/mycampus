@@ -24,7 +24,6 @@ export const Detail = ({currentProfile, setStatus}: DetailProps) => {
         router.push('/');
     }
 
-
     const handleChangeStatus = () => {
         setStatus('edit')
     }
@@ -38,7 +37,7 @@ export const Detail = ({currentProfile, setStatus}: DetailProps) => {
 
     return (
         <div className={ style.profileWrapperMain }>
-            <div className={ style.photoBack }>
+            <div className={ style.photoBack } style={{height: '35dvh'}}>
                 <Image
                     src={ avatarUrl }
                     alt='Profile Photo'
