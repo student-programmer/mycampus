@@ -48,6 +48,8 @@ export const UploadPhoto = ({ setPhotoUrl, setUploadImage, currentProfile, photo
     event.preventDefault();
 
     const file = event.target.files?.[0];
+    window.alert(file?.size)
+
     if (!file) return;
 
     const isIncorrect = isIncorrectType(file);
@@ -58,8 +60,8 @@ export const UploadPhoto = ({ setPhotoUrl, setUploadImage, currentProfile, photo
       return;
     } else {
       const size = file.size;
-      if (size > 5120000) {
-        console.error("Размер файла не должен превышать 5 МБ!");
+      if (size > 15120000) {
+        console.error("Размер файла не должен превышать 15 МБ!");
         return;
       }
     }
