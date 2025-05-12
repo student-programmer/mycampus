@@ -22,15 +22,16 @@ export default function VerifyEmailPage() {
     const verify = async () => {
       try {
         const res = userActions.verifyEmail(token)
-
-        if (res?.status === 201 || res?.status === 200) {
-          setStatus('success');
-          setMessage('✅ Email успешно подтверждён!');
-          router.push('/connects')
-        } else {
-          setStatus('error');
-          setMessage('Ошибка подтверждения.');
-        }
+        res.then(response => {
+          if (response?.status === 201 || response?.status === 200) {
+            setStatus('success');
+            setMessage('✅ Email успешно подтверждён!');
+            router.push('/connects')
+          } else {
+            setStatus('error');
+            setMessage('Ошибка подтверждения.');
+          }
+        })
       } catch (err) {
         setStatus('error');
         setMessage('Произошла ошибка при подтверждении email.');
