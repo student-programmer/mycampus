@@ -6,7 +6,7 @@ const placesService = {
 	getAllPlaces: async (): Promise<[Place[] | null, any]> => {
 		try {
 			const { data } = await axiosInstance.get('places');
-			return [data, null];
+			return [data?.data, null];
 		} catch (error) {
 			console.error('Ошибка при получении списка мест:', error);
 			return [null, error];
@@ -26,4 +26,3 @@ const placesService = {
 };
 
 export default placesService;
-  
