@@ -64,7 +64,8 @@ export const PlaceCardDescription = ({
 				</div>
 			</div>
 			<div className={style.areaContainer}>
-				<div>Area: {currentPlace.area}</div>
+				{/*<div>Area: {currentPlace.area}</div>*/}
+				{ " " }
 			</div>
 			<div className={style.keyWrapper}>
 				<p className={style.keyHeader}>Key:</p>
