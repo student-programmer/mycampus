@@ -78,7 +78,8 @@ const FullCardDetail = ({
                     </div>
                 </div>
                 <div className={style.areaContainer}>
-                    <div>Area: {currentPlace.area}</div>
+                    {/*<div>Area: {currentPlace.area}</div>*/}
+                    { " " }
                 </div>
                 <div className={ style.adressContainer }>
                     <AdressIcon/>
